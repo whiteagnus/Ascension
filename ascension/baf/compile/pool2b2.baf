@@ -14,6 +14,7 @@ THEN
     AmbientActivate("AMB_Stream2",FALSE)
     SoundActivate("Bridge1",FALSE)
     Wait(1)
+	ReallyForceSpellRES("SPWISH16",Player1)
     ReallyForceSpell(Player1,CLERIC_RESTORATION)
     ReallyForceSpell("balth2",CLERIC_RESTORATION)
     ReallyForceSpell("finbodh",CLERIC_RESTORATION)
