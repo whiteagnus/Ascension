@@ -1,0 +1,227 @@
+IF
+  StateCheck(Myself,STATE_INVISIBLE)
+  !GlobalTimerNotExpired("RunInvisible","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("RunInvisible","LOCALS",4)
+    SetInterrupt(FALSE)
+    ApplySpellRES("runrun",Myself)
+    RunAwayFrom(NearestEnemyOf(Myself),45)
+    SetInterrupt(TRUE)
+    Continue()
+END
+
+IF
+  RandomNum(2,1)
+  !StateCheck(Myself,STATE_INVISIBLE)
+  CheckStatGT(NearestEnemyOf(Myself),4,NUMBEROFATTACKS)
+  GlobalLT("InvisibleCount","LOCALS",6)
+  !GlobalTimerNotExpired("Invisibility","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Invisibility","LOCALS",12)
+    IncrementGlobal("InvisibleCount","LOCALS",1)
+    ForceSpell(Myself,WIZARD_INVISIBILITY)
+END
+
+IF
+  RandomNum(2,1)
+  !StateCheck(Myself,STATE_INVISIBLE)
+  Range(NearestEnemyOf(Myself),8)
+  Range(SecondNearestEnemyOf(Myself),8)
+  GlobalLT("InvisibleCount","LOCALS",6)
+  !GlobalTimerNotExpired("Invisibility","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Invisibility","LOCALS",12)
+    IncrementGlobal("InvisibleCount","LOCALS",1)
+    ForceSpell(Myself,WIZARD_INVISIBILITY)
+END
+
+IF
+  HPPercentLT(Myself,75)
+  OR(2)
+  StateCheck(Myself,STATE_INVISIBLE)
+  !Range(NearestEnemyOf(Myself),12)
+  !GlobalTimerNotExpired("SeriousWounds","LOCALS")
+  GlobalLT("HealCount","LOCALS",4)
+  RandomNum(2,1)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("SeriousWounds","LOCALS",15)
+    IncrementGlobal("HealCount","LOCALS",1)
+    ForceSpell(Myself,CLERIC_CURE_SERIOUS_WOUNDS)
+END
+
+IF
+  Allegiance(Myself,ENEMY)
+  !CheckStatGT(Myself,0,STONESKINS)
+  !GlobalTimerNotExpired("DragonStoneSkin","LOCALS")
+  RandomNum(2,1)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("DragonStoneSkin","LOCALS",30)
+    ForceSpell(Myself,DRAGON_STONE_SKIN)
+END
+
+IF
+  !Allegiance(Myself,ENEMY)
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  !StateCheck(LastSeenBy(Myself),STATE_DEAD)
+THEN
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  OR(3)
+  See(SecondNearestEnemyOfType([GOODCUTOFF.0.0.BARD]))
+  See(SecondNearestEnemyOfType([GOODCUTOFF.0.0.DRUID_ALL]))
+  See(SecondNearestEnemyOfType([GOODCUTOFF.0.0.CLERIC_ALL]))
+  !StateCheck(LastSeenBy(Myself),STATE_SILENCED)
+  !StateCheck(LastSeenBy(Myself),STATE_DEAD)
+THEN
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  OR(3)
+  See(NearestEnemyOfType([GOODCUTOFF.0.0.BARD]))
+  See(NearestEnemyOfType([GOODCUTOFF.0.0.DRUID_ALL]))
+  See(NearestEnemyOfType([GOODCUTOFF.0.0.CLERIC_ALL]))
+  !StateCheck(LastSeenBy(Myself),STATE_SILENCED)
+  !StateCheck(LastSeenBy(Myself),STATE_DEAD)
+THEN
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  OR(2)
+  See(ThirdNearestEnemyOfType([GOODCUTOFF.0.0.MAGE_ALL]))
+  See(ThirdNearestEnemyOfType([GOODCUTOFF.0.0.SORCERER]))
+  !StateCheck(LastSeenBy(Myself),STATE_SILENCED)
+  !StateCheck(LastSeenBy(Myself),STATE_DEAD)
+THEN
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  OR(2)
+  See(SecondNearestEnemyOfType([GOODCUTOFF.0.0.MAGE_ALL]))
+  See(SecondNearestEnemyOfType([GOODCUTOFF.0.0.SORCERER]))
+  !StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+  !StateCheck(LastSeenBy(Myself),STATE_STUNNED)
+  !StateCheck(LastSeenBy(Myself),STATE_PANIC)
+  !StateCheck(LastSeenBy(Myself),STATE_SILENCED)
+  !StateCheck(LastSeenBy(Myself),STATE_DEAD)
+THEN
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  OR(2)
+  See(NearestEnemyOfType([GOODCUTOFF.0.0.MAGE_ALL]))
+  See(NearestEnemyOfType([GOODCUTOFF.0.0.SORCERER]))
+  !StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+  !StateCheck(LastSeenBy(Myself),STATE_STUNNED)
+  !StateCheck(LastSeenBy(Myself),STATE_PANIC)
+  !StateCheck(LastSeenBy(Myself),STATE_SILENCED)
+  !StateCheck(LastSeenBy(Myself),STATE_DEAD)
+THEN
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  AttackedBy([ANYONE],DEFAULT)
+  See(LastAttackerOf(Myself))
+  !StateCheck(LastSeenBy(Myself),STATE_DEAD)
+THEN
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  Range(NearestEnemyOf(Myself),4)
+  See(NearestEnemyOf(Myself))
+  !StateCheck(LastSeenBy(Myself),STATE_DEAD)
+THEN
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  !Allegiance(LastSeenBy(Myself),GOODCUTOFF)
+  See([GOODCUTOFF])
+THEN
+  RESPONSE #100
+    MoveToObject([GOODCUTOFF])
+END
+
+IF
+  OR(2)
+  !Allegiance(LastSeenBy(Myself),GOODCUTOFF)
+  !See([GOODCUTOFF])
+THEN
+  RESPONSE #100
+    MoveToObject(Player1)
+END
+
+IF
+  Range(LastSeenBy(Myself),5)
+  !CheckStatGT(LastSeenBy(Myself),85,RESISTMAGIC)
+  !CheckStatGT(LastSeenBy(Myself),75,MAGICDAMAGERESISTANCE)
+  !GlobalTimerNotExpired("DRAKEBREATH","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("DRAKEBREATH","LOCALS",10)
+    ForceSpellRES("drake02",LastSeenBy(Myself))
+END
+
+IF
+  ActionListEmpty()
+  HPPercentLT(Myself,75)
+  RandomNum(2,1)
+THEN
+  RESPONSE #100
+    RunAwayFrom(LastSeenBy(Myself),45)
+END
+
+IF
+  ActionListEmpty()
+  !StateCheck(Myself,STATE_INVISIBLE)
+  !HPPercentLT(Myself,75)
+THEN
+  RESPONSE #100
+    AttackReevaluate(LastSeenBy(Myself),30)
+END
+
+IF
+  ActionListEmpty()
+  StateCheck(Myself,STATE_INVISIBLE)
+  !Range(LastSeenBy(Myself),5)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    MoveToObject(LastSeenBy(Myself))
+    SetInterrupt(TRUE)
+END
+
+IF
+  ActionListEmpty()
+  Allegiance(Myself,ENEMY)
+THEN
+  RESPONSE #100
+    AttackReevaluate(LastSeenBy(Myself),30)
+END
+

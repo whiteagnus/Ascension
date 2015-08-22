@@ -1,0 +1,39 @@
+// FINMEL01 translation file
+// Version vom 5.5.2002
+
+@591 = ~Ihr besitzt nicht die gesamte Essenz des Bhaal... und Ihr regiert hier nicht allein.~
+@592 = ~Ihr hättet treu zu Bhaal stehen sollen... nur er könnte Euch jetzt retten!~
+@594 = ~Ja klar, jeder hat so seinen Traum, Wahnsinnige.~
+@597 = ~Pah!  Ich sollte meine Zeit nicht mit Euch verschwenden!  Ich muss immer noch die Essenzen der Bhaalbrut in mich aufnehmen... und es ist genug Macht in dieser Ebene, um Euch zu beschäftigen.  Irenicus... Imoen... zeigt <CHARNAME> die Macht, der <PRO_HESHE> es wagt entgegenzutreten, während ich mir nehme, was mir gehört.~ [FINMEL25]
+@604 = ~Ihr glaubt nicht an meine Macht, ich kann es spüren.  Ihr habt in Eurer Vergangenheit gegen mächtige Gegner gekämpft und immer habt ihr es geschafft zu siegen.  Nun... Ihr hinterlasst eine Spur gefallener Feinde, sogar hier in der Abyss. So fand ich zum Beispiel diesen hier...~
+@605 = ~Ja, Ihr seit intelligenter als ich erwartet hatte, <CHARNAME>.  Und noch intelligenter war es, mir Balthasars Essenz zu verweigern... obwohl, um ehrlich zu sein, ich hatte insgeheim gehofft, er würde Euch besiegen können.  Unwahrscheinlich natürlich, wenn man bedenkt, dass der armselige Mönch kaum den Wald vor lauter Bäumen sieht.~
+@606 = ~Ich bin enttäuscht von Euch, <CHARNAME>.  Soviel Energie, soviel Kraft.  Soviel Macht und Weisheit eingesperrt in solch eine zerbrechliche Form.  Ich nehme an, Ihr glaubt tatsächlich, dass Ihr eine Chance habt, mir zu widerstehen und den Thron für Euch zu beanspruchen.  Welch eine Verblendung.~
+@607 = ~Irenicus, so habt Ihr ihn wohl genannt.  So einfach war es, ihn zu finden, da Ihr ihn ja erst kürzlich hier zurückgelassen habt... und was für eine wertvolle Informationsquelle er war, <CHARNAME>.  Ich glaube, ihr hattet einst eine gemeinsame Seele, oder nicht? Irenicus, sagt Hallo zu dem jungen Herrn. ~
+       ~Irenicus, so habt Ihr ihn wohl genannt.  So einfach war es, ihn zu finden, da Ihr ihn ja erst kürzlich hier zurückgelassen habt... und was für eine wertvolle Informationsquelle er war, <CHARNAME>.  Ich glaube, ihr hattet einst eine gemeinsame Seele, oder nicht? Irenicus, sagt Hallo zu der jungen Dame.~
+@608 = ~Nun, wenn Ihr wirklich eine Demonstration meiner Macht über die Essenzen wünscht, so kann ich dieses gerne tun.~
+@609 = ~Los, Imoen.  Ich kontrolliere die Essenz in Euch.  Ihr seit noch nicht fertig, hier zu sein... und jetzt seit Ihr hier.  Lasst uns doch einmal sehen, wie viel Macht in Eurer kleinen, jungen Seele steckt, hmmm?~
+@610 = ~Es scheint so, als ob Euch die kleine Imoen verloren gegangen ist, oder?  Aber ihre Essenz ist leicht zu kontrollieren.  Wollen doch mal hören, was sie zu sagen hat, nicht wahr?~
+@611 = ~Ihr müsst nirgendwo hingehen, meine Kleine.  Ich rufe nicht Euch, sondern ich rufe lediglich Eure Essenz hervor.~
+@612 = ~Nun los, Imoen.  Ich kontrolliere die Essenz in Euch.  Zeigt uns schon, wie viel Macht in Euch steckt.~
+@613 = ~Ah, Balthasar ist auch hier.  Wie geschickt, mir seine Essenz zu verweigern, <CHARNAME>.  Seid Ihr immer noch geblendet von der Hingabe zu Eurem Schicksal, Balthasar?  Oder habe ihr Euren Glauben so schnell aufgegeben?~
+@614 = ~Oh nein?  Vielleicht versteht Ihr immer noch nicht.  Dieses hier... dieser Platz ist die Quelle.  Hierher kehrt die Essenz aller Bhaal Kinder zurück, wenn sie sterben.  Habt Ihr Euch niemals gefragt, mein lieber Balthasar, *wofür* das Töten all der anderen Bhaalkinder nötig war?~
+@615 = ~Auch falls Ihr es nicht getan haben solltet, so habt Ihr mir doch bedingungslos geholfen.  Bhaal mag tatsächlich irgendwo sein... aber nicht hier.  Hier habe ich alle diese Essenzen gesammelt und ich trank regelmäßig davon.  Diese Quelle, der Thron, alles gehört mir... und das Gott-Sein ist nur einen kleinen Schritt entfernt.~
+@616 = ~Ich hätte sie sowieso wiederbelebt, damit sie mir als meine siegreichen Avatare dienen.  Und so gefallen sie mir auch viel besser... vollkommen unterwürfig, jedem Befehl folgend ohne Fragen zu stellen.~
+@617 = ~Nun, da Ihr Balthasar für Eure Seite gewinnen konntet, habe ich entschieden - welch herrliche Ironie - den armen, jämmerlichen Gromnir ebenfalls wiederauferstehen zu lassen.  Es erfreut mich ohne Ende, dass er über mich die ganze Zeit Bescheid wusste... und doch hat es keinen Unterschied gemacht.  Ihr ermordetet ihn trotzdem, genau wie ich es vorhergesehen habe.~
+@618 = ~Ihr hättet Eure Energien für Euch behalten sollen, Melissan.  Sie für die Wiedererschaffung der Fünf zu verwenden, wird Euch teuer zu stehen kommen... sehr teuer.~
+@619 = ~Vielleicht.  Aber ich bin bereits unsterblich, was bedeutet, dass nicht einmal Ihr mich töten könnt.  Und es existiert immer noch mehr von Eures Vaters Essenz, die ich aufnehmen kann.~
+@620 = ~Schon jeder für sich alleine war eine beträchtliche Herausforderung für Euch, <CHARNAME>.  Ich glaube kaum, dass Ihr gegen alle gleichzeitig bestehen könnt.~
+@621 = ~Nun kommt, <CHARNAME>... tötet Eure Geschwister ein weiteres Mal.  Wenn Ihr könnt.~
+@622 = ~Es ist genug Essenz da, sogar für Euch... Sarevok.~
+@623 = ~Aber... wir haben nicht alle Eure Geschwister hier versammelt, nicht wahr?  Haben wir nicht jemanden vergessen?~
+@624 = ~Aber sicher haben wir das, Sarevok.  Ich machte Euch bereits einmal ein Angebot und dieses gilt immer noch.  Unterstützt mich jetzt, verlasst diesen armseligen Jungen und stellt Euch auf meine Seite.~
+        ~Aber sicher haben wir das, Sarevok.  Ich machte Euch bereits einmal ein Angebot und dieses gilt immer noch.  Unterstützt mich jetzt, verlasst dieses armselige Mädchen und stellt Euch auf meine Seite.~
+@625 = ~Der Geas, den dieser Narr auf Euch gesprochen hat, ist nichts.  Ich kann ihn mit Leichtigkeit entfernen.  In Wahrheit mache ich dieses gerade. Seht... handelt nach Eurem eigenen Willen.~
+       ~Der Geas, den diese Närrin auf Euch gesprochen hat, ist nichts.  Ich kann ihn mit Leichtigkeit entfernen.  In Wahrheit mache ich dieses gerade. Seht... handelt nach Eurem eigenen Willen.~
+@626 = ~Vielleicht. Aber Ihr seid ein großer Krieger... und ihr könntet ein großartiger General sein, der meine irdischen Armeen anführt.  Macht, Reichtum, Respekt... alles was Ihr wünscht.  Und natürlich die Rückkehr der Bhaalessenz, die Ihr einst verloren habt.  Kommt Sarevok, seid der Dämon, der Ihr einst wart.  Dient mir.~
+@627 = ~Dann sollt Ihr für mich kämpfen!  Und Euer erstes Opfer soll Euer Bruder sein, der Eure Vergeltung wahrhaftig verdient.~
+       ~Dann sollt Ihr für mich kämpfen!  Und Euer erstes Opfer soll Eure Schwester sein, die Eure Vergeltung wahrhaftig verdient.~
+@628 = ~Dann sterbt mit Eurem schwachsinnigen Bruder, wenn das Euer Wunsch ist!  Die Fünf werden Euer beider Ende sein.~
+       ~Dann sterbt mit Eurer schwachsinnigen Schwester, wenn das Euer Wunsch ist!  Die Fünf werden Euer beider Ende sein.~
+@629 = ~Ich brachte Euch hierher, Sarevok.  Um Euch eine zweite Chance zu geben.  Unterstützt mich und kämpft gegen <CHARNAME> und ich werde Euch die Macht zurückgeben, die Ihr einst verlort, die Macht, nach der Ihr Euch so sehr sehnt.  Ich werde Euch wieder zu dem Mann machen, der Ihr einst wart.~
+@630 = ~Was--?  Sterblich!  Nein, das kann nicht sein!  Ich bin fast wieder sterblich!!  Ich habe zuviel Macht verloren!!  Dafür werdet Ihr bezahlen!!~

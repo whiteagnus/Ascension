@@ -1,0 +1,22 @@
+IF
+  Global("SarevokOath","GLOBAL",1)
+  Global("LowerChange","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("LowerChange","LOCALS",1)
+    IncrementGlobal("SarevokChange","GLOBAL",-1)
+END
+
+IF
+  !Allegiance(Myself,ENEMY)
+  OR(2)
+  Dead("balth2")
+  Global("BalthazarFights","GLOBAL",0)
+  Global("MelStillImmortal","AR6200",2)
+  Delay(6)
+  See([PC])
+THEN
+  RESPONSE #100
+    SetGlobal("MelStillImmortal","AR6200",3)
+    StartDialogNoSet([PC])
+END

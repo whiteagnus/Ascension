@@ -1,0 +1,624 @@
+                     Baldur's Gate II: Throne of Bhaal
+                           /------------------\
+                           | Ascension 1.4.24 |
+                           \------------------/
+                     David Gaider <davidg@bioware.com>
+                           Design, Bioware corp.
+
+                        Packaged as a WeiDU Mod by:
+		  Westley Weimer <weimer@cs.berkeley.edu>
+
+                           http://www.weidu.org/
+
+
+		Table of Contents
+		~~~~~~~~~~~~~~~~~
+I. 	About
+II. 	Installation
+III.    Component 1:    Ascension
+IV.     Component 2:    Tougher Abazigal
+V.      Component 3:    Tougher Demogorgon (v2.1)
+VI.     Component 4:    Tougher Gromnir
+VII.    Component 5:    Tougher Illasera
+VIII.   Component 6:    Tougher Yaga-Shura
+IX.	Bugs
+X.	Thanks
+XI.     FAQ (Spoilers)
+XII.	Changes
+
+		Section I. About
+		~~~~~~~~~~~~~~~~
+This is David Gaider's Ascension Mod repackaged in WeiDU format by Westley
+Weimer. All praise for the content goes to Gaider, all blame for any bugs
+goes to Weimer. Parts of the Ascension Mod were also written by the IEEAIS
+group. 
+
+Loosely, the Ascension mod rewrites the ending to Throne of Bhaal to
+contain (1) additional roleplaying aspects and (2) a much better final
+battle. See Section III for more details. 
+
+David Gaider's original words (from his READMEs) are inserted here to
+explain the mods. You can find his original documents in the
+"ascension\readmes" folder. 
+
+This mod is Ascension version 1.41 with the Ravager.CRE hitpoint fix, the
+SPPR509 "magic resistance = untargetable" fix, Dyara's "not dying" fix,
+Quitch's "self-wilting contingency" fix, the Baldurdash Mordenkainen sword
+fix, the Compton "Imoen ToB Banter" fix, Gaider's improved Tamah, and the
+"tougher illasera has speed boots" modification. 
+
+
+		Section II. Installation
+		~~~~~~~~~~~~~~~~~~~~~~~~
+BGII with the Throne of Bhaal expansion is required. Ascension/WeiDU should
+install correctly over any other mods (cross fingers). In particular, it
+will work fine for the other common WeiDU mods (e.g., the Solaufein
+Romance, the Kelsey Romance, the Tashia Romance, the Thief Stronghold). See
+the webpage for details. 
+
+Extract the main archive into your BGII main directory. This is normally:
+        C:\Program Files\Black Isle\BGII - SoA\
+
+Run (click on) "Setup-Ascension.exe". 
+
+First, pick your favorite language. Currently American English, German,
+French, Spanish, Chinese and Polish are available. Note that the
+language you pick does *not* have to be the same language as your main BGII
+installation. 
+
+Then choose which components you would like to install. You may always
+uninstall them later by re-running "Setup-Ascension.exe". 
+
+You do *not* need to start a new game to take advantage of anything you
+installed. However, Ascension works best if you start with a saved game
+*before* you have confronted Balthazar. It doesn't really make sense to
+load up a pre-ascension saved game in which you have already fought
+Balthazar: you're missing half the fun. 
+
+*** ADDITIONAL WARNING!  The mod involves changes to the battles in the
+*** last chapter of Throne of Bhaal that often have many more enemies and
+*** spell effects going off on-screen than are found normally in the
+*** official release of the expansion.  Even if your computer conforms to
+*** the min specs for ToB, it MAY NOT be enough to run the Ascension.  Min
+*** spec machines may chug severely or even crash when too much is
+*** occurring on-screen.  There is nothing I can do about this.  Use your
+*** own judgment. 
+  
+
+		Section III. Ascension 
+		~~~~~~~~~~~~~~~~~~~~~~
+[ Gaider's description ] 
+
+Well, here it is.  It's taken about four months to put this together...two
+months longer than I had expected, but I think the results are worth it.
+Unlike the previous mods that I've worked on for Throne of Bhaal (the
+"improved" battle series), the Ascension isn't all about making the combat
+more challenging.  It's about making the ending to Throne of Bhaal longer,
+[more fun] and a little more fulfilling.
+
+Some people like the ending to Throne of Bhaal well enough, I guess.  I
+liked it well enough (I did a lot of the work on it, after all), but I
+remember wishing that we had had the time to tinker with it more.  At
+Bioware we never seemed to have enough time to tinker with the Infinity
+Engine scripting language as much as I might have liked.  With better AI
+and some leisurely time spent considering various options, the ending might
+have been more fully realized.  That's a game designer's fantasy,
+obviously, especially when you're working within the time-frame of an
+expansion (which must come out while the game's still on peoples'
+hard-drives)...but seeing as a mod like this can be done in one's spare
+time, it doesn't have to be.  Consider this my offering of what might have
+been.  You might not necessarily like it better...heck, you might not even
+like it at all...but I think it shows off what the Infinity Engine can do
+when stretched to its limit and offers a bit more bite to Throne of Bhaal's
+climax for those who think that's not a bad idea.
+
+The whole thing started on Black Isle's BG2 message boards.  A friend of
+mine, Kevin Dorner (who runs an excellent site called Baldurdash at
+http://members.home.net/mrkevvy/ ...definitely check it out), had expressed
+a bit of disappointment at the fact that he had had no choice but to fight
+the strongest member of the Five, Balthazar.  Balthazar was a Lawful Good
+monk, after all, and wouldn't a charismatic and heroic Lawful Good
+character be able to maybe talk some sense into him?  He suggested that it
+would have been better to offer a non-fighting alternative or, hey, how
+about getting Balthazar to fight with you in the final battle?
+
+Another poster (alas, I forget who exactly) offered another idea that it
+would have been a great idea if the Five had been resurrected in the final
+battle...that it would be cool to face them all at once.  And I
+agreed...that was a very interesting idea.
+
+So the Ascension was born.  At first it was just a bit of extra dialogue
+for Balthazar and some work on the final battle, itself...but it's turned
+into a lot more than was expected.  Try it out.  If you like it, super!  If
+you don't, that's OK too.  Just remember two things:
+
+1) this is NOT an official Bioware product and Bioware does not support it.
+I work for Bioware, but I've done this on my own time.  If you encounter a
+bug or some other problem with the mod, please refer to the Technical
+Problems portion of the ReadMe...don't go to the Bioware message boards and
+post your problem there.  If you do, people I work with will come down to
+my office and frown at me and that would be bad.
+
+2) Even if you really, really like what this mod has done, please don't say
+things like 'this is how it should have been' or somesuch.  I didn't have
+any deadlines or economic realities to face, here...nor do I think it would
+be realistic to expect to be allowed to spend four extra months (the entire
+expansion took six) to tinker and play with a section of the game that
+lasts maybe a few hours.  I'm proud of how Throne of Bhaal turned out and
+the work the team did on it and I think almost any game, with a little love
+and a doubled development time, could be a bit better (or
+over-designed...take your pick).
+
+Enough about that.  Onto the game, itself.
+
+The mod mostly affects the end part of the game, starting at the very end
+of Chapter 9 when you meet with Balthazar and climaxing at the site of the
+ascension in the Throne of Bhaal.  In case you are planning on re-playing
+the whole expansion, you should be aware of a couple of things that affect
+the game beyond this section:
+
+1) The Slayer form that the player picks up in Spellhold all the way back
+in BG2 now upgrades.  It does so when you exceed 2 million, 4 million and 6
+million XP.  The upgrades get considerably stronger and deadlier, and one
+big change you will notice is that occasionally you will lose control over
+yourself.  The Slayer can sometimes go berserk and will attack the nearest
+target...this can last one round or go on for several...although there will
+always be a respite in the very last round before you take too much damage.
+The last upgrade gives the player the option to become the Ravager...the
+ultimate incarnation of murder...which is incredibly powerful but also the
+most difficult form to control.  Once the mod is installed, these upgrades
+are available in both BG2 and ToB.
+
+2) Imoen and Sarevok have some dialogues with the PC in ToB that are fairly
+important.  For Imoen, it involves her growing taint and she gets some
+Bhaalspawn abilities.  For Sarevok, it involves the chance of him changing
+alignment.  In ToB these were completely random...but since their stories
+come up in the Ascension, I thought it was important that these be seen.
+There are now event-based timers that will spur Imoen and Sarevok to speak
+their dialogues if they haven't already done so.  If you play through the
+game, you will get them all very  naturally.  If, however, you load up the
+mod and you have played through the game and NOT gotten them here's the
+warning...if you wait a minute they will start speaking all of their
+dialogues with about 15 seconds in-between.  It might seem a bit
+rapid-fire, but at least you'll have seen them.
+
+3) For those who have picked up the mod where the Bhaalspawn powers that
+the player obtains after the challenges in ToB were put back in, this mod
+contains them as well.  After each challenge in the pocket plane you will
+receive extra abilities. [ Weimer: you will also receive a journal entry
+detailing exactly what each ability is. ] If you're loading up a saved game
+from before you installed, this will not occur.  If you don't want it, it's
+not really a big deal: delete the AR4500.bcs file from your Override
+directory.
+
+4) This mod replaces in full the Improved Balthazar mod.  The new Balthazar
+is probably just as powerful...but a lot smarter and less cheesy...that is,
+if you fight him.
+
+If you have an appropriate save game, the best place to start up the mod is
+right before you go into Balthazar's stronghold in Amkethran (after
+completing both Sendai's and Abazigal's enclave).  If you're using your
+Final Save right before you go into Chapter 10, that's OK too...but you
+won't see any of the new dialogue with Balthazar from earlier.
+
+The highlights of the Ascension, itself, are:
+
+* extended Balthazar sequence: Balthazar has a lot more to discuss with you
+  when you meet him in his stronghold.  He's a Lawful Good monk determined
+  to destroy Bhaal and his evil essence forever, even in himself...but,
+  depending on your own nature, you may be able to talk him into forgoing a
+  battle or even fighting Melissan at your side.  This is, however, not an
+  easy thing to do.
+
+* Irenicus & Bodhi: if you've read the 'thanks' column, you may have come
+  across mention of Irenicus and Bodhi and thought 'what the?!'.  Don't
+  worry, it will all make sense.  And for those of you who wouldn't think
+  of pairing up with a goody two-shoes pansy like Balthazar, there's
+  another opportunity for an ally in the final battle here, as well.
+
+* a totally redone final battle: the battle at the Throne of Bhaal has been
+  completely redone, from start to finish.  Gone are the Elemental Princes
+  and the multiple battles with Melissan and her Slayer Shadows.  Melissan
+  has been completely re-done, and the allies she brings to bear against
+  you make this a whole new fight.
+
+* scaleable AI: I wish I could remove the things where the Difficulty
+  slider actually changes the rules of the game.  Easy still makes everyone
+  do half damage, and Insane still makes everyone do double damage.
+  Nothing I can do about that.  What I have done, however, is scaled the AI
+  more according to the difficulty level.  Core is about as difficult as
+  one can get and still have the true D&D rules.  If tough battles aren't
+  your thing, set it to Normal or Easy...you will face [fewer] opponents
+  and they will have access to less of their powers and spells (or use them
+  less often).  If you want a bigger challenge, try Hard or Insane...it
+  will set you against more opponents who do greater damage and less
+  resources to work with.
+
+* better AI: a lot of work has gone into the AI of the opponents you'll
+  face.  You can often disrupt their spells, but they'll work at preventing
+  you from being able to.  They are still immune to stuff that's
+  appropriate, but the stuff they aren't immune to they will try and deal
+  with when you use it on them.  They'll target appropriate opponents with
+  the appropriate attacks and generally use their abilities wisely.
+  Melissan is still a power-house...but she's practically a demigod...the
+  fight against her this time is much more tactical and you've got to
+  figure out how to weaken her before you can take her down.
+
+* some new epilogues: not all of the epilogues have changed, but some of
+  them have been lengthened to what they had been originally written as.  A
+  couple have changed completely, and a few new ones have been added.
+
+
+		Section IV. Tougher Abazigal 
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In David Gaider's words: "Some of the posters were recommending a
+multiple-dragon battle, so I added in some smaller drakes and a purple
+dragon into the Abazigal fight.  The AI has been tweaked heavily as well,
+blending in the mobility of Draconis (whom many thought was tougher than
+his father).  It's quite the fight, now...NOT for the faint of heart...but
+I'm told it's quite fun."
+
+
+		Section V. Tougher Demogorgon (v2.1)
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This mod restores the difficulty of the Demogorgon battle to what was
+originally planned before it was "toned down" for game balance reasons.
+This is the same as "version 2.1" available at Baldurdash. 
+
+
+		Section VI. Tougher Gromnir 
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In David Gaider's words: "It's just a little spruce-up to a fight that I
+thought was a little boring...it makes Gromnir a bit more formidable and
+gives both him and the other Bhaalspawn with him some extra abilities and
+better scripting.  I'm told it's of moderate difficulty but quite fun."
+
+
+		Section VII. Tougher Illasera 
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In David Gaider's words: "It is not very high difficulty...as a battle
+right at the beginning of the game shouldn't be...but it does make Illasera
+a credible opponent and member of the Five. She's a ranger/archer now,
+which was her original concept before we were forced to make the battle
+much, much easier (since people could potentially meet her with a single,
+newly-created sorcerer...and since the fight was unavoidable, those who
+couldn't get past it would be quite frustrated).  This version makes it so
+that you always meet the tougher Illasera as well as all her companions, so
+those who go into ToB with a weak character might want to stick with the
+original version."
+
+Weimer's comments: Despite what Gaider is saying, the Tougher Illasera
+battle is widely regarded as insanely difficult (although certain tactics,
+like the shield of reflection, physical mirror or a mordy jail can make it
+too simple). It's much harder than the Yaga-Shura or Gromnir fights. 
+
+NOTE: This Tougher Illasera *will* drop boots of speed, much like the
+original. 
+
+
+		Section VIII. Tougher Yaga-Shura 
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In David Gaider's words: "This mod makes the last fight with Yaga-Shura a
+bit more of a tussle... the army spawns have been increased in number and
+given better AI (as well as had some low-level mages and clerics thrown
+into the mix).  Yaga-Shura himself has been given some better powers and
+AI, including his lieutenants...and his invulnerability slowly wears off
+during the course of the battle with him, making this fight a bit trickier.
+One caution: a couple of times crashes were reported soon after Yaga-Shura
+re-appears.  I was not able to verify if this was due to a specific bug or
+due to too much graphic overload, but it does seem to be rare regardless."
+
+
+		Section IX. Bugs
+		~~~~~~~~~~~~~~~~
+Please tell Weimer (*not* Gaider) about any bugs you find in this mod. If
+they turn out to be true Ascension bugs (and not problems with the
+packaging) I will pass them along, but I don't want people spamming Gaider
+with a bunch of things that aren't his fault. 
+
+[ Gaider writes: ]
+
+First off, like I said way back in the beginning, this is NOT an official
+product of Bioware or Interplay.  Do not contact them for support for this
+mod or post messages at the Interplay or Bioware message boards asking for
+such.  As well, should you have the Ascension installed and have a problem
+elsewhere in your game, chances are they will not help you.  They
+might...but be kind enough to tell them if you have third-party mods
+installed...and if they figure that's probably the reason, then they can
+tell you so.  If you report a problem and they find out afterwards that you
+have a third-party mod, they will not be pleased...at you or at me, so
+please spare me the grief.  :)
+
+If you have a problem with the game, or would just like to comment on it,
+drop me a line at davidg@bioware.com.  It sometimes takes me awhile to get
+on top of my e-mail, so please be patient if there's some trouble.  Be
+aware, too, that since I don't have programmers who can de-bug the mod,
+there's always the chance that I might not be able to solve the problem
+you're having.
+
+
+Q: Sometimes the Five refuse to die in the final battle. They stay at
+Near-Death, even if you use Ctrl-Y. 
+
+A: Dyara's reply:
+
+  Hmmm, you´re the first one who encountered this with the fix installed.
+
+  The next time try to play with debug mode on. If it happens again you can
+  check the "death variable":
+
+  CLUAConsole:GetGlobal("DeathScriptSend","AR6200")
+
+  If the value is '1' you can set it back to '0' with
+
+  CLUAConsole:SetGlobal("DeathScriptSend","AR6200",0)
+
+  After this she should die immediatly.
+
+  If "DeathScriptSend" was '0' then it´s another problem that's independent
+  from my fix.
+
+  The variables for the other Five are
+
+  DeathScriptAbaz
+  DeathScriptGrom
+  DeathScriptIlla
+  DeathScriptSare
+  DeathScriptSend
+  DeathScriptYaga
+
+
+
+		Section X. Thanks
+		~~~~~~~~~~~~~~~~~
+[ Gaider's Thanks: ]
+
+Unlike the Improved Battles, I didn't do [Ascension] on my own.  I could
+have, maybe...but it wouldn't have contained nearly as much and I bet it
+wouldn't work half as well.  Allow me to take a moment to thank some people
+who really deserve it.
+
+There's a little message board on Yahoo called IEEAIS (Infinity Engine
+Enemy AI Scripting) that is dedicated to improving the AI used by enemies
+in the IE games.  Make the enemies not only smarter and therefore more fun
+to play against, but also smart enough that they don't need all those
+cheats (uninterruptable spells, lots of immunities, etc.)...and also smart
+enough that cheesy tactics on the part of the player don't work against
+them.  If this interests you, you can find the group at
+http://groups.yahoo.com/group/IEEAIS.
+
+At any rate, I have the warmest thanks to send out to the guys on this
+board for helping out in the biggest way.  Not only did they offer advice
+on how to take my AI scripting to the next level, but actively QA'd the mod
+and added content.  I'd like to name everyone, but allow me to give
+particular thanks (in no particular order) to:
+
+* Lorne Ledger (aka Cuvieronius) - for being the biggest Balthazar booster
+  (even writing Balthazar's epilogue), as well as being tireless and
+  reliable in his support and QA testing right back to my Improved battle
+  mods.
+
+* Quitch - for writing not only Bodhi's epilogue but also her dialogue in
+  the mod in its entirety, also a great tester and really a big nag who
+  kept insisting that the mod be tested fully and not come out too early.
+
+* Xyx - who I shall dub the 'grammar nazi' (although Tom Kenney runs a
+  close second and almost drove me bug-eyed when he and Quitch began
+  debating the merits of the Bodhi dialogue down to the ifs, ands and
+  buts...but, then, grammar has always been my bane and without these guys
+  you would find Balthazar saying things like 'surrendre' and 'alright' and
+  such).  Xyx also scripted Bodhi in both her enemy and allied forms.
+  Bunches of my own scripts are also based on (if not copied outright) from
+  his, especially the 'cast-n-attack'...ideally, I'd like to think I
+  credited him in each instance, but I don't think I did.
+
+* Spork - who provided the scripting for the Fallen Solar as well as
+  Irenicus, which ended up being a spectacular piece of work.  His scripts
+  also provided the base for lots of my own work.
+
+* Crusade - another great tester at IEEAIS, who came late but offered some
+  great insight into the final battles (especially the Hard and Insane
+  versions) and was very reliable.
+
+* Vulgar Zildrah and Kensai Ryu - First off, a big thanks to VZ and KR for
+  their support and for giving permission that I use their Detectable
+  Spells v1.2 in my mod.  This is a very handy tool for any IE scripter
+  that gives you the ability to detect when many spells are being used, an
+  ability that never before existed and limited the AI.  There's a seperate
+  ReadMe in the mod for Detectable Spells...and for those of you who are
+  interested, you can find updates at the IEEAIS site.  I have to throw out
+  KR as yet another person whose scripting knowledge taught me a lot (the
+  Bodhi script was originally his and re-done by Xyx)...he also happens to
+  be the person who enlightened us on how to alter the epilogues.
+
+Aside from the IEEAIS, I have a few other specific thanks to make:
+
+* Since I didn't use Bioware's IE utilities to work on the mod, a big
+  thanks to the editing community at TeamBG (check them out at
+  www.TeamBG.com) for advice on using the various editors made by members
+  of the community.  A big thanks to TL (Gustov Montessi) for working on
+  the IETMC especially for this mod...while I ended up not putting out the
+  mod in .tbg format, that may happen very soon.  The majority of this mod
+  was [originally created] using IDU 1.0.4a (updated by Paul Victorey aka
+  Cat specifically for my use...thanks, Cat!) and IEEP v1.0.9 build 39,
+  made by TL...awesome work on the utilities, guys. 
+
+* Kevin Dorner, naturally, not only for his support but for his own
+  tireless work on BG2, fixing bugs long after we at Bio could continue to
+  do so.  Since Bio hasn't done it yet, if there's any industry types out
+  there, do yourselves a favor: HIRE THIS MAN.
+
+* the posters at Black Isle's BG2 message boards, for their support and
+  fanaticism and general surliness.
+
+[ Weimer's Thanks: ]
+
+I would like to take a moment to thank my friends in the BG2 modding scene.
+Gebhard Blucher, the sine quo non of tactics. Jason Compton, the soul of
+roleplaying. Laura Uerling, who gets all the jokes and makes some of her
+own. Ghreyfain, Quitch and Michael Lyashenko for WeiDU suggestions and
+support from the front-lines. Luciana and Falk for giving so freely of
+their time. Be well. 
+
+Thanks to Dyara for her exceptional help with Ascension in general.
+
+Special thanks to Dyara and Falk Swoboda for the German translation. 
+
+Special thanks to Ly Meng, Archange de la Redemption, for the French
+translation. 
+
+Special thanks to Nerk, Thamar, Tadhik, Antielminster and Artemis Entreri
+of Clan REO (http://clanreo.ionichost.com) for the Spanish translation.
+
+Special thanks to kalabaka for the Chinese translation. 
+
+Special thanks to Damian Staniszewski for the Polish translation. 
+
+Special thanks to Pilferer, Serdrick & Aerie for the Russian translation. 
+
+
+		Section XI. FAQ (Spoilers)
+		~~~~~~~~~~~~~~~~~~~~~~~~~~
+Q: How can I convince Balthazar to join me?
+
+A: Be of Good or Neutral alignment (rumors indicate that you can do it with
+Evil if you are very wise and charismatic). Have a reputation greater than
+18.  Have a Wisdom greater than 15 (drink a potion for 18, having 19 is
+even better).  Have a Charisma greater than 15. Pick the right dialogue
+options. 
+
+
+Q: How can I convince Bodhi to join me? 
+
+A: You cannot be of Good alignment and your reputation must be less than
+12. If you have a high Charisma (around 15) she offerws to join you,
+otherwise you must ask.  Pick the right dialogue options.  Also, Balthazar
+cannot have joined you :-). If your Wisdom is greater than 15, you can get
+out of promising her your soul. 
+
+
+		Section XII. Changes
+		~~~~~~~~~~~~~~~~~~~~
+* Ascension/WeiDU v0
+  This is was my in-house alpha testing version. 
+    + Forgot to include a description for Sarevok's +4 blade of chaos. 
+    + Added two of the Bhaalpowers as special abilities instead of applying
+      them as spells.
+    + Forgot to copy over any of the creatures. Doh!
+    + Linkage problem between FINSOL01 and FINMEL01
+    + Fixed a double-bio problem with some characters
+
+* Ascension/WeiDU v1
+  This is the initial WeiDU release, based on Ascension v1.4 and WeiDU 40. 
+    + Change the state labels in the D files so as to avoid conflicting
+      with state numbers.
+    + Add a description for Sendai's Potion. Thanks, Dyara. 
+    + Added Dyara's "not dying" fix. 
+    + Added Dyara's german translation gender-based epilogues. 
+    + PPGUY02 @8 and @9 merged
+    + All embedded NULLs removed from the TRA files. 
+    + Added Dyara's German translation. 
+    + Tougher Illasera drops boots of speed, just like original Illasera.
+
+* Ascension/WeiDU v2
+  This is the second Asc/WeiDU release. 
+    + Really include the Ravager Bugfix this time. 
+    + Fixed a bug where the Tougher Fights would overwrite Asc files. 
+
+* Ascension/WeiDU v3
+    + Give SAREV25A state 1 an extra transition (people were running into a
+      bug where no valid transitions were available.) 
+
+* Ascension/WeiDU v4
+    + Newer WeiDU. 
+    + Upgrade to Improved Abazigal v1.1 (thanks Azaelus)
+
+* Ascension/WeiDU v5
+    + French Translation by Ly Meng included. 
+
+* Ascension/WeiDU v6
+    + As per Quitch's suggestion, the Chain Contingency of Irenicus in the
+      final battle now targets himself instead of illegally going after
+      the nearest enemy. 
+
+* Ascension/WeiDU v7
+    + Include the fixed Mordy sword instead of the old broken one with the
+      greenstone amulet.
+
+* Ascension/WeiDU v8
+    + New version number scheme (thanks, Quitch). 
+    + Includes Jason Compton's Imoen ToB banter dialogue fix. 
+    + Upgrade to the latest WeiDU.
+
+* Ascension/WeiDU v1.4.9
+    + Include Gaider's 12/02/2001 improved Tamah (Amethyst Dragon) in the
+      Improved Abazigal battle. Thanks to Ishan for bringing it to my
+      attention. 
+
+* Ascension/WeiDU v1.4.10
+    + New ImmyFix from JC. And again. 
+    + Typo: "prehaps" -> "perhaps", Quitch/Compton fix. 
+
+* Ascension/WeiDU v1.4.11
+    + New Spanish translation by Clan REO. 
+
+* Ascension/WeiDU v1.4.12
+    + Typo: "ascension", fixed by Compton. 
+    + Balthazar (balth2.d) now uses COPY_TRANS, fixed by Compton.
+
+* Ascension/WeiDU v1.4.13
+    + Epilogue typos fixed by Luca. 
+    + AR6200 Imoen Epilogue fix by Compton. 
+    + Other typos fixed by Azaelus. 
+
+* Ascension/WeiDU v1.4.14
+    + "Melissan" replaced with "Mélissane" in the French translation.
+      Thanks, Cocobard. 
+    + Upgraded to v1.2 of the Improved Demogorgon mod. Thanks, Azaelus. 
+
+* Ascension/WeiDU v1.4.15
+    + Some backup files were mistakenly included in the previously release. 
+      Thanks, Michel. 
+
+* Ascension/WeiDU v1.4.16
+    + Quitch was kind enough to provide previous version of his Bodhi
+      epilogues. You can find them in the readmes folder. It's an
+      interesting look at development. 
+    + Yaga Shura proficiency / dual-wielding fix. Previously the Runehammer
+      he was supposed to be dual-wielding was in the wrong slot. He now
+      also has the proficiencies to back it up. Thanks to Alex Geiger for
+      pointing out this minor bug. 
+
+* Ascension/WeiDU v1.4.17
+    + Chinese translation by kalabaka. Thanks!
+
+* Ascension/WeiDU v1.4.18
+    + Polish translation by Damian Staniszewski. Thanks!
+
+* Ascension/WeiDU v1.4.19
+    + Balor Telekinesis "Random Name" bug fixed. Thanks, Moon Elf!
+    + "True Sight" scripting state bug fixed. Thanks, Moon Elf!
+    + Russian translation by Pilferer, Serdric & Aerie.ru. Thanks!
+    + "Traditional Chinese" should now actually be useable. 
+
+* Ascension/WeiDU v1.4.20
+    + Added Kish's "the Five won't die" bugfix. 
+    + Added Lord Kain's "Dark Taint @ Level 25" bugfix. 
+    + The Hand Of Murder ability never actually did anything before. It
+      now works as advertised. 
+    + Bug in Balthazar's "Solar Stance" fixed -- it was supposed to make
+      all of his melee effects deal extra fire damage and heal him, but did
+      not. 
+
+* Ascension/WeiDU v1.4.21
+    + Setup-Ascension.tp2 was missing in the last version. 
+
+* Ascension/WeiDU v1.4.22
+    + Updated the Spanish translation with changes by Ghildrean. We also
+      picked up a Czech translation inbetween .21 and .22.
+      
+* Ascension/WeiDU v1.4.23
+    + Updated the French translation.
+    
+* Ascension/WeiDU v1.4.23
+    + Added Italian translation.

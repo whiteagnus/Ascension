@@ -1,0 +1,27 @@
+// PPGUY02 pøekladový soubor
+@1 = ~Vsouváš ruku do víru energie uvnitø jezírka, ale zøejmì je na tebe pøíliš silná.  Její tok se nepøerušil a místo toho energie odskoèila a zranila tì.~
+@2 = ~Vkládáš ruku do energie uvnitø jezírka a nasáváš do sebe esenci, odvádíš ji pryè od Melissan.  Naplòuje tì nekoneèná síla a mezitím, co se z ní vìtšina rozptyluje, tì jedna její èást naplòuje vnitøní energií.  Stáváš se imunním na smrtící magii a vorpal efekty.  Také jsi získal schopnost vyrvat ze sebe sílu jako krátký výbuch nièivé moci.  Energie také obnoví síly všech pøítomných.~~Vkládáš ruku do energie uvnitø jezírka a nasáváš do sebe esenci, odvádíš ji pryè od Melissan.  Naplòuje tì nekoneèná síla a mezitím, co se z ní vìtšina rozptyluje, tì jedna její èást naplòuje vnitøní energií.  Stáváš se imunním na smrtící magii a vorpal efekty.  Také jsi získala schopnost vyrvat ze sebe sílu jako krátký výbuch nièivé moci.  Energie také obnoví síly všech pøítomných.~
+@3 = ~Získána nová schopnost: "Utržení ze øetìzu"
+
+Schopnost "Utržení ze øetìzu" vrhne na cíl tvou vnitøní sílu s dosahem boje na blízko, zasáhne jej 10k12 magickým zranìním (polovina pøi úspìšné záchranì proti smrti), odhodí jej zpìt a obèas na chvíli zpùsobí bezvìdomí.  Tato schopnost mùže být použita každých 30 sekund.  Po jejím použití se Bhaalùv zplozenec cítí neuvìøitelnì unavenì a po 2 kola je 25% šance, že nesešle kouzlo.  Pøemìna v zabijáka není možná po 30 sekund, vzhledem k množství použité božské esence.~
+@4 = ~Získána nová schopnost: "Utržení ze øetìzu"
+
+Schopnost "Utržení ze øetìzu" vrhne na cíl tvou vnitøní sílu s dosahem boje na blízko, zasáhne jej 10k12 magickým zranìním (polovina pøi úspìšné záchranì proti smrti), odhodí jej zpìt a obèas na chvíli zpùsobí bezvìdomí.  Tato schopnost mùže být použita každých 30 sekund.  Po jejím použití se Bhaalùv zplozenec cítí neuvìøitelnì unavenì a po 2 kola je 25% šance, že nesešle kouzlo.  Pøemìna v zabijáka není možná po 30 sekund, vzhledem k množství použité božské esence.~
+@5 = ~Vkládáš ruku do energie uvnitø jezírka a nasáváš do sebe esenci, odvádíš ji pryè od Melissan.  Naplòuje tì nekoneèná síla a mezitím, co se z ní vìtšina rozptyluje, zùstává ti spousta Bhaalovy esence.  
+
+Získal jsi schopnost volné teleportace mezi prostorem a také schopnost vést souboj o ovládnutí démonù Propasti, kteøí jsou nyní pod kontrolou Melissan.  Èást schopnosti teleportace také zpùsobuje, že se stáváš plnì imunní na kouzla Bludištì a Uvìznìní.  Energie opìt obnoví sílu všech pøítomných.~~Vkládáš ruku do energie uvnitø jezírka a nasáváš do sebe esenci, odvádíš ji pryè od Melissan.  Naplòuje tì nekoneèná síla a mezitím, co se z ní vìtšina rozptyluje, zùstává ti spousta Bhaalovy esence.  
+
+Získala jsi schopnost volné teleportace mezi prostorem a také schopnost vést souboj o ovládnutí démonù Propasti, kteøí jsou nyní pod kontrolou Melissan.  Èást schopnosti teleportace také zpùsobuje, že se stáváš plnì imunní na kouzla Bludištì a Uvìznìní.  Energie opìt obnoví sílu všech pøítomných.~
+@6 = ~Získána nová schopnost: "Ovládnutí démona"
+
+Tato schopnost Bhaalovu zplozenci umožní, aby se pokusil ovládnout démony, kteøí jsou od Melissan vzdáleni a uèinit z nich spojence.  V duševním souboji, který trvá 1 kolo, zamìstná Bhaalùv zplozenec démona, který se tak mùže stát na konci kola jeho spojencem.  Nicménì není pod jeho pøímou kontrolou.  Tato schopnost mùže být použita každé 3 kola.
+
+Získána nová schopnost: "Dimenzionální dveøe"
+
+Nyní se mùže Bhaalùv zplozenec volnì pohybovat mezi prostorem a sférami.  Tato teleportaèní síla je použitelná jednou za kolo.~
+@7 = ~Vkládáš ruku do energie uvnitø jezírka a nasáváš do sebe esenci, odvádíš ji pryè od Melissan.  Na okamžik jsi naplnìn nekoneènou sílou a i když tì vìtšina z ní opouští a rozptyluje se do vesmíru, jedna její èást ti zùstává.  Získal jsi schopnost soustøedit svou vnitøní energii, aby tì na okamžik ochránila pøed magií kouzel, jako jsou Zastav èas, Rozložení a Maso na kámen.  Energie také obnoví sílu všech pøítomných.~~Vkládáš ruku do energie uvnitø jezírka a nasáváš do sebe esenci, odvádíš ji pryè od Melissan.  Na okamžik jsi naplnìna nekoneènou sílou a i když tì vìtšina z ní opouští a rozptyluje se do vesmíru, jedna její èást ti zùstává.  Získala jsi schopnost soustøedit svou vnitøní energii, aby tì na okamžik ochránila pøed magií kouzel, jako jsou Zastav èas, Rozložení a Maso na kámen.  Energie také obnoví sílu všech pøítomných.~
+@9 = ~"Ohnisko"
+
+Tato schopnost umožní Bhaalovu zplozenci soustøedit svoji energii, aby odolal kouzlùm, které pùsobí na venkovní prostor.  V prùbìhu 30 sekund se Bhaalùv zplozenec stává imunním na kouzla Maso na kámen, Rozložení a Zastav èas.  Všechna kouzla 1. - 3. úrovnì nebudou mít na Bhaalova zplozence vliv.  Tahle schopnost je použitelná jednou za minutu.~
+@10 = ~Poslední jezírko odteklo.  Svìtlo ze sloupce energie zaèalo úbývat.  Máš už pouze okamžik pro pøípravu na úplnì poslední støetnutí.~
+@11 = ~Melissan se již zaèala uprostøed proudu božské energie pohybovat.  Jakmile poslední jezírko odteèe, bude velmi málo èasu, než zaútoèí.~

@@ -1,0 +1,727 @@
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWCHAN01",Player1)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWCHAN01",Player1)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWCHAN01",Player2)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWCHAN01",Player2)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWCHAN01",Player3)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWCHAN01",Player3)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWCHAN01",Player4)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWCHAN01",Player4)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWCHAN01",Player5)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWCHAN01",Player5)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWCHAN01",Player6)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWCHAN01",Player6)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWCHAN02",Player1)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWCHAN02",Player1)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWCHAN02",Player2)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWCHAN02",Player2)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWCHAN02",Player3)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWCHAN02",Player3)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWCHAN02",Player4)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWCHAN02",Player4)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWCHAN02",Player5)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWCHAN02",Player5)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWCHAN02",Player6)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWCHAN02",Player6)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWSW1H01",Player1)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWCSW1H01",Player1)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWSW1H01",Player2)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWSW1H01",Player2)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWSW1H01",Player3)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWSW1H01",Player3)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWSW1H01",Player4)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWSW1H01",Player4)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWSW1H01",Player5)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWSW1H01",Player5)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWSW1H01",Player6)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWSW1H01",Player6)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWSW1H02",Player1)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWSW1H02",Player1)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWSW1H02",Player2)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWSW1H02",Player2)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWSW1H02",Player3)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWSW1H02",Player3)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWSW1H02",Player4)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWSW1H02",Player4)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWSW1H02",Player5)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWSW1H02",Player5)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWSW1H02",Player6)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWSW1H02",Player6)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWBLUN01",Player1)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWBLUN01",Player1)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWBLUN01",Player2)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWBLUN01",Player2)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWBLUN01",Player3)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWBLUN01",Player3)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWBLUN01",Player4)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWBLUN01",Player4)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWBLUN01",Player5)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWBLUN01",Player5)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWBLUN01",Player6)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWBLUN01",Player6)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWHALB01",Player1)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWHALB01",Player1)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWHALB01",Player2)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWHALB01",Player2)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWHALB01",Player3)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWHALB01",Player3)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWHALB01",Player4)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWHALB01",Player4)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWHALB01",Player5)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWHALB01",Player5)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWHALB01",Player6)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWHALB01",Player6)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWSPER01",Player1)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWSPER01",Player1)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWSPER01",Player2)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWSPER01",Player2)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWSPER01",Player3)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWSPER01",Player3)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWSPER01",Player4)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWSPER01",Player4)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWSPER01",Player5)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWSPER01",Player5)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWSPER01",Player6)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWSPER01",Player6)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWXBOW01",Player1)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWXBOW01",Player1)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWXBOW01",Player2)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWXBOW01",Player2)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWXBOW01",Player3)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWXBOW01",Player3)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWXBOW01",Player4)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWXBOW01",Player4)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWXBOW01",Player5)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWXBOW01",Player5)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWXBOW01",Player6)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWXBOW01",Player6)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWSHLD01",Player1)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWSHLD01",Player1)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWSHLD01",Player2)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWSHLD01",Player2)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWSHLD01",Player3)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWSHLD01",Player3)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWSHLD01",Player4)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWSHLD01",Player4)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWSHLD01",Player5)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWSHLD01",Player5)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWSHLD01",Player6)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWSHLD01",Player6)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWCLCK01",Player1)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWCLCK01",Player1)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWCLCK01",Player2)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWCLCK01",Player2)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWCLCK01",Player3)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWCLCK01",Player3)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWCLCK01",Player4)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWCLCK01",Player4)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWCLCK01",Player5)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWCLCK01",Player5)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWCLCK01",Player6)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWCLCK01",Player6)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWBOLT01",Player1)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWBOLT01",Player1)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWBOLT01",Player2)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWBOLT01",Player2)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWBOLT01",Player3)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWBOLT01",Player3)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWBOLT01",Player4)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWBOLT01",Player4)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWBOLT01",Player5)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWBOLT01",Player5)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWBOLT01",Player6)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWBOLT01",Player6)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWBOLT02",Player1)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWBOLT02",Player1)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWBOLT02",Player2)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWBOLT02",Player2)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWBOLT02",Player3)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWBOLT02",Player3)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWBOLT02",Player4)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWBOLT02",Player4)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWBOLT02",Player5)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWBOLT02",Player5)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWBOLT02",Player6)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWBOLT02",Player6)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWBOLT03",Player1)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWBOLT03",Player1)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWBOLT03",Player2)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWBOLT03",Player2)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWBOLT03",Player3)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWBOLT03",Player3)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWBOLT03",Player4)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWBOLT03",Player4)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWBOLT03",Player5)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWBOLT03",Player5)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWBOLT03",Player6)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWBOLT03",Player6)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWPLAT01",Player1)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWPLAT01",Player1)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWPLAT01",Player2)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWPLAT01",Player2)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWPLAT01",Player3)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWPLAT01",Player3)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWPLAT01",Player4)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWPLAT01",Player4)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWPLAT01",Player5)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWPLAT01",Player5)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("DWPLAT01",Player6)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","DWPLAT01",Player6)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("MISC9W",Player1)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","MISC9W",Player1)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("MISC9W",Player2)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","MISC9W",Player2)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("MISC9W",Player3)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","MISC9W",Player3)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("MISC9W",Player4)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","MISC9W",Player4)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("MISC9W",Player5)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","MISC9W",Player5)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+  HasItem("MISC9W",Player6)
+THEN
+  RESPONSE #100
+    TakeItemReplace("DWDUST","MISC9W",Player6)
+END
+
+IF
+  Global("DrowItemCheck","AR4000",0)
+THEN
+  RESPONSE #100
+    SetInterrupt(TRUE)
+    SetGlobal("DrowItemCheck","AR4000",1)
+END

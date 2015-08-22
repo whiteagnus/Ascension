@@ -1,0 +1,13 @@
+IF
+  True()
+THEN
+  RESPONSE #100
+    CutSceneId(Player1)
+    MoveViewPoint([1166.1111],10)
+    Wait(1)
+    CreateVisualEffect("SPPORTAL",[1166.1111])
+    CreateCreature("finbodh",[1166.1111],SE)
+    Wait(4)
+    ActionOverride("finbodh",StartDialogNoSet(Player1))
+END
+

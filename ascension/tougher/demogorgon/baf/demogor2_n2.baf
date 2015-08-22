@@ -1,0 +1,37 @@
+IF
+  See(NearestEnemyOf(Myself))
+  CheckStatLT(Myself,1,STONESKINS)
+  !GlobalTimerNotExpired("DemoGorStone","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("DemoGorStone","LOCALS",10)
+    ForceSpellRES("melstone",Myself)
+END
+
+IF
+  Global("StoppedTime","LOCALS",2)
+  Detect(NearestEnemyOf(Myself))
+  !NumCreatureVsPartyGT([EVILCUTOFF.0.DEMONIC],0)
+  !GlobalTimerNotExpired("SumReinf","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("SumReinf","LOCALS",6)
+    DisplayStringHead(Myself,70998)
+    ForceSpell(Myself,DEMOGORGON_GATE)
+END
+
+IF
+  OR(6)
+  StateCheck(LastSeenBy(Myself),STATE_INVISIBLE)
+  StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  Gender(LastSeenBy(Myself),ILLUSIONARY)
+  SpellCast([PC],WIZARD_PROJECT_IMAGE)
+  SpellCast([PC],WIZARD_SIMULACRUM)
+  SpellCast([PC],WIZARD_MISLEAD)
+  !GlobalTimerNotExpired("TrueSight","LOCALS")
+  RandomNum(3,1)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("TrueSight","LOCALS",30)
+    ForceSpell(Myself,WIZARD_TRUE_SIGHT)
+END

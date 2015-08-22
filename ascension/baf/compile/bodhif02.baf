@@ -1,0 +1,17 @@
+IF
+  True()
+THEN
+  RESPONSE #100
+    CutSceneId(Player1)
+    Wait(1)
+    CreateVisualEffectObject("SPPOWWRD","finbodh")
+    ActionOverride("finbodh",Enemy())
+    ActionOverride("finbodh",FaceObject(Player1))
+    ActionOverride("finbodh",PlaySound("BODHIX41"))
+    Wait(1)
+    ForceSpellRES("SPWI055","finbodh")
+    Wait(7)
+    ActionOverride("finsol01",StartDialogNoSet(Player1))
+    EndCutSceneMode()
+END
+

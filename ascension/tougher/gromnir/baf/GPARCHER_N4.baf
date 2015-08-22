@@ -1,0 +1,82 @@
+IF
+  OR(2)
+  !Allegiance(LastSeenBy(Myself),GOODCUTOFF)
+  !See([GOODCUTOFF])
+  Range(Player1,20)
+THEN
+  RESPONSE #100
+    RandomWalkContinuous()
+END
+
+IF
+  OR(2)
+  !Allegiance(LastSeenBy(Myself),GOODCUTOFF)
+  !See([GOODCUTOFF])
+  !Range(Player1,20)
+THEN
+  RESPONSE #100
+    MoveToObject(Player1)
+END
+
+IF
+  ActionListEmpty()
+  !Range(LastSeenBy(Myself),10)
+  HaveSpellRES("SPCL121")
+  !GlobalTimerNotExpired("CalledShot","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CalledShot","LOCALS",12)
+    SpellRES("SPCL121",Myself)
+    EquipRanged()
+    AttackReevaluate(LastSeenBy(Myself),30)
+END
+
+IF
+  ActionListEmpty()
+  !Range(LastSeenBy(Myself),10)
+  GlobalTimerNotExpired("CalledShot","LOCALS")
+THEN
+  RESPONSE #100
+    EquipRanged()
+    AttackReevaluate(LastSeenBy(Myself),30)
+END
+
+IF
+  ActionListEmpty()
+  !Range(LastSeenBy(Myself),10)
+  !HaveSpellRES("SPCL121")
+THEN
+  RESPONSE #100
+    EquipRanged()
+    AttackReevaluate(LastSeenBy(Myself),30)
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  ActionListEmpty()
+  Range(LastSeenBy(Myself),10)
+  OR(2)
+  GlobalTimerNotExpired("CalledShot","LOCALS")
+  HaveSpellRES("SPCL121")
+THEN
+  RESPONSE #100
+    RunAwayFrom(LastSeenBy(Myself),30)
+  RESPONSE #100
+    AttackReevaluate(LastSeenBy(Myself),15)
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  ActionListEmpty()
+  OR(2)
+  StateCheck(Myself,STATE_INVISIBLE)
+  StateCheck(Myself,STATE_IMPROVEDINVISIBILITY)
+THEN
+  RESPONSE #100
+    EquipMostDamagingMelee()
+    MoveToObject(LastSeenBy(Myself))
+    AttackReevaluate(LastSeenBy(Myself),15)
+    RunAwayFrom(LastSeenBy(Myself),30)
+END

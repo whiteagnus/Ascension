@@ -1,0 +1,35 @@
+// PPGUY02 translation file
+@1   = ~Metti la mano nel vortice di energia nella fonte, ma il suo potere è ovviamente troppo per te. Non interrompi il flusso e, anzi, l'energia fuoriesce e ti danneggia.~
+@2   = ~Metti la mano nell'energia della fonte e porti l'essenza verso di te, deviandola da Melissan. Un potere infinito ti riempe brevemente, e sebbene il più scompaia una parte ti rigenera. Ora sei immune alla magia della morte e agli effetti vorpal, ed hai anche guadagnato l'abilità di liberare il potere che c'è in te come una breve vampata di potere distruttivo. L'energia ripristina anche le forze di tutti i presenti.~
+@3   = ~Nuovo potere acquisito: "Libera il Potere"
+
+L'abilità "Libera il Potere" rilascia la tua energia interiore su un bersaglio vicino a te, che viene colpito da 10d12 danni magici (metà se supera un tiro salvezza contro morte) e facendolo volare indietro e rendendolo forse inconsapevole per un breve periodo. Questa abilità può essere usata una volta ogni trenta secondi... in seguito il figlio di Bhaal sarà incredibilmente affaticato ed avrà il 25% di possibilità di fallire il lancio di magie per 2 round. A causa della quantità dell'essenza divina usata, la forma dell'Uccisore non sarà disponibile per trenta secondi.~ ~Nuovo potere acquisito: "Libera il Potere"
+
+L'abilità "Libera il Potere" rilascia la tua energia interiore su un bersaglio vicino a te, che viene colpito da 10d12 danni magici (metà se supera un tiro salvezza contro morte) e facendolo volare indietro e rendendolo forse inconsapevole per un breve periodo. Questa abilità può essere usata una volta ogni trenta secondi... in seguito la figlia di Bhaal sarà incredibilmente affaticata ed avrà il 25% di possibilità di fallire il lancio di magie per 2 round. A causa della quantità dell'essenza divina usata, la forma dell'Uccisore non sarà disponibile per trenta secondi.~
+@4   = ~Nuovo potere acquisito: "Libera il Potere"
+
+L'abilità "Libera il Potere" rilascia la tua energia interiore su un bersaglio vicino a te, che viene colpito da 10d12 danni magici (metà se supera un tiro salvezza contro morte) e facendolo volare indietro e rendendolo forse inconsapevole per un breve periodo. Questa abilità può essere usata una volta ogni trenta secondi... in seguito il figlio di Bhaal sarà incredibilmente affaticato ed avrà il 25% di possibilità di fallire il lancio di magie per 2 round. A causa della quantità dell'essenza divina usata, la forma dell'Uccisore non sarà disponibile per trenta secondi.~ ~Nuovo potere acquisito: "Libera il Potere"
+
+L'abilità "Libera il Potere" rilascia la tua energia interiore su un bersaglio vicino a te, che viene colpito da 10d12 danni magici (metà se supera un tiro salvezza contro morte) e facendolo volare indietro e rendendolo forse inconsapevole per un breve periodo. Questa abilità può essere usata una volta ogni trenta secondi... in seguito la figlia di Bhaal sarà incredibilmente affaticata ed avrà il 25% di possibilità di fallire il lancio di magie per 2 round. A causa della quantità dell'essenza divina usata, la forma dell'Uccisore non sarà disponibile per trenta secondi.~
+@5   = ~Metti la mano nell'energia della fonte e porti l'essenza verso di te, deviandola da Melissan. Un potere infinito ti riempe brevemente, e sebbene il più scompaia una parte dell'essenza di Bhaal ti è rimasta. Per il momento, hai guadagnato l'abilità di teletrasportarti liberamente attraverso lo spazio e anche di combattere per il controllo dei demoni dell'abisso che sono sotto il controllo di Melissan. Parte di questa abilità di teletrasporto significa anche che ora sei completamente immune alle magie Labirinto e Imprigionamento. L'energia ripristina anche le forze di tutti i presenti.~
+@6   = ~Nuovo potere acquisito: "Controlla Demone"
+
+Questa abilità permette alla progenie di Bhaal di tentare di strappare il controllo di un demone a Melissan e di renderlo un alleato. Il figlio di Bhaal ingaggia una battaglia mentale con il demone per 1 round, alla fine del quale il demone può diventare un alleato. Il demone non è comunque sotto il diretto controllo della progenie di Bhaal. Questa abilità può essere utilizzata una volta ogni 3 round.
+
+Nuovo potere acquisito: "Porta Dimensionale"
+
+Il figlio di Bhaal può ora muoversi liberamente attraverso lo spazio e i piani. Questo potere di teletrasporto è utilizzabile una volta ogni round.~ ~Nuovo potere acquisito: "Controlla Demone"
+
+Questa abilità permette alla progenie di Bhaal di tentare di strappare il controllo di un demone a Melissan e di renderlo un alleato. La figlia di Bhaal ingaggia una battaglia mentale con il demone per 1 round, alla fine del quale il demone può diventare un alleato. Il demone non è comunque sotto il diretto controllo della progenie di Bhaal. Questa abilità può essere utilizzata una volta ogni 3 round.
+
+Nuovo potere acquisito: "Porta Dimensionale"
+
+La figlia di Bhaal può ora muoversi liberamente attraverso lo spazio e i piani. Questo potere di teletrasporto è utilizzabile una volta ogni round.~
+@7   = ~Metti la mano nell'energia della fonte e porti l'essenza verso di te, deviandola da Melissan. Un potere infinito di riempe brevemente... e sebbene il più ti lasci e si scompaia nel cosmo, un parte rimane con te. Hai guadagnato l'abilità di focalizzare l'energia in te per proteggerti da magie come Fermare il Tempo, Disintegrazione e Pelle in Pietra per un breve periodo. L'energia ripristina anche le forze di tutti i presenti.~
+@9   = ~Nuovo potere acquisito: "Focalizza"
+
+Questa abilità permette alla progenie di Bhaal di focalizzare l'energia al suo interno per resistere all'esterno agli effetti di alcune magie. Per 30 secondi, il figlio di Bhaal diventa immune alle magie Carne in Pietra, Disintegrazione e Fermare il Tempo. Anche tutte le magie minori dal primo al terzo livello non avranno alcun effetto sulla progenie di Bhaal. Questa abilità è utilizzabile una volta ogni minuto.~ ~Nuovo potere acquisito: "Focalizza"
+
+Questa abilità permette alla progenie di Bhaal di focalizzare l'energia al suo interno per resistere all'esterno agli effetti di alcune magie. Per 30 secondi, la figlia di Bhaal diventa immune alle magie Carne in Pietra, Disintegrazione e Fermare il Tempo. Anche tutte le magie minori dal primo al terzo livello non avranno alcun effetto sulla progenie di Bhaal. Questa abilità è utilizzabile una volta ogni minuto.~
+@10  = ~L'ultima pozza è stata fermata. La luce della colonna d'energia ha iniziato a indebolirsi. Hai solo pochi istanti per prepararti per quello che certamente sarà il confronto finale...~
+@11  = ~Melissan inizia già a muoversi nel flusso di energia divina. Una volta che l'ultima pozza sarà fermata, passerà poco tempo prima della sua reazione.~

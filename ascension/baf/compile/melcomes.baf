@@ -1,0 +1,20 @@
+IF
+  True()
+THEN
+  RESPONSE #100
+    CutSceneId(Player1)
+    CreateCreature("CUTSPY",[1250.1200],S)
+    MoveViewPoint([1288.1131],10)
+    Wait(2)
+    CreateVisualEffect("SPFLAMES",[1288.1131])
+    SmallWait(6)
+    AmbientActivate("MMELSPIN",FALSE)
+    AmbientActivate("AM6200A",FALSE)
+    AmbientActivate("AM6200B",TRUE)
+    CreateVisualEffect("SPGFLSH1",[1288.1131])
+    SmallWait(6)
+    CreateCreature("FINMEL01",[1288.1131],S)
+    Wait(1)
+    ActionOverride("finmel01",StartDialogNoSet(Player1))
+END
+

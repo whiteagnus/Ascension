@@ -1,0 +1,84 @@
+IF
+	HPPercentLT(Myself,50)
+	!GlobalTimerNotExpired("DrankPotionTimer","LOCALS")
+	HasItem("POTN55",Myself) 
+THEN
+	RESPONSE #100
+		SetGlobalTimer("DrankPotionTimer","LOCALS",6)
+		DisplayStringHead(Myself,46150) 
+		UseItem("POTN55",Myself) 
+END
+
+IF
+	HPPercentLT(Myself,50)
+	!GlobalTimerNotExpired("DrankPotionTimer","LOCALS")
+	HasItem("POTN52",Myself) 
+THEN
+	RESPONSE #100
+		SetGlobalTimer("DrankPotionTimer","LOCALS",6)
+		DisplayStringHead(Myself,46150) 
+		UseItem("POTN52",Myself) 
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	OR(2)
+		Range(NearestMyGroupOfType,20)
+		See(NearestMyGroupOfType([0.0.0.CLERIC_ALL]))
+	HPPercentLT(Myself,35)
+	!GlobalTimerNotExpired("CalledForHealing","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("CalledForHealing","LOCALS",6)
+		DisplayStringHead(Myself,72808) 
+		Shout(HEALME)
+		Continue()
+END
+
+IF
+	Heard(NearestMyGroupOfType,HEALME)
+	!StateCheck(LastHeardBy(Myself),STATE_REALLY_DEAD)
+	HPPercentGT(Myself,75)
+	See(LastHeardBy(Myself))
+	Range(LastHeardBy(Myself),10)
+	!Range(NearestMyGroupOfType([0.0.0.CLERIC_ALL]),20)
+	!NumItemsGT("POTN55",LastHeardBy(Myself),0)
+	NumItemsGT("POTN55",Myself,1)
+	!GlobalTimerNotExpired("GaveAwayPotion","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("GaveAwayPotion","LOCALS",12)
+		DisplayStringHead(Myself,72809) 
+		GiveItem("POTN55",LastHeardBy(Myself)) 
+		SmallWait(2)
+		ActionOverride(LastHeardBy(Myself),DisplayStringHead(Myself,73896)) 
+		Continue()
+END
+
+IF
+	Allegiance(Myself,ENEMY)
+	Range(NearestEnemyOf(Myself),10)
+	!StateCheck(Myself,STATE_INVISIBLE)
+	!StateCheck(Myself,STATE_IMPROVEDINVISIBILITY)
+	!GlobalTimerNotExpired("DrankPotionTimer","LOCALS")
+	HasItem("POTN10",Myself) 
+THEN
+	RESPONSE #100
+		SetGlobalTimer("DrankPotionTimer","LOCALS",6)
+		DisplayStringHead(Myself,46150) 
+		UseItem("POTN10",Myself) 
+END
+
+IF
+	Allegiance(Myself,ENEMY)
+	Range(NearestEnemyOf(Myself),10)
+	!StateCheck(Myself,STATE_INVISIBLE)
+	!StateCheck(Myself,STATE_IMPROVEDINVISIBILITY)
+	!GlobalTimerNotExpired("RingTimer","LOCALS")
+	HasItem("RING05",Myself) 
+THEN
+	RESPONSE #100
+		SetGlobalTimer("RingTimer","LOCALS",6)
+		DisplayStringHead(Myself,46150) 
+		UseItem("RING05",Myself) 
+END

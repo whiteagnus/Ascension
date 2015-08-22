@@ -1,0 +1,80 @@
+IF
+  Die()
+THEN
+  RESPONSE #100
+    CreateVisualEffectObject("SPROTECT",Myself)
+    ApplySpellRES("SPWI055",Myself)
+END
+
+IF
+  Dead("finiren")
+  OR(2)
+  Dead("finbodh")
+  Global("BodhiFights","GLOBAL",1)
+  Dead("finsolar")
+  Global("ImoenBackToHuman","GLOBAL",0)
+  GlobalTimerNotExpired("ImoenChangeBack","GLOBAL")
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobal("ImoenBackToHuman","GLOBAL",1)
+    ClearActions(Myself)
+    ActionOverride("Imoen2",ReallyForceSpellRES("imoslay2",Myself))
+    ActionOverride("Imoen2",ChangeEnemyAlly("Imoen2",NEUTRAL))
+    ActionOverride("Imoen2",DialogueInterrupt(TRUE))
+    ActionOverride("Imoen2",ChangeAIScript("imoe25",OVERRIDE))
+    ActionOverride("Imoen2",ChangeAIScript("",SPECIFICS))
+    ActionOverride("Imoen2",ChangeAIScript("",CLASS))
+    ActionOverride("Imoen2",ChangeAIScript("",RACE))
+    ActionOverride("Imoen2",ChangeAIScript("",GENERAL))
+    ActionOverride("Imoen2",ChangeAIScript("",DEFAULT))
+    SetInterrupt(TRUE)
+END
+
+IF
+  Global("ImoenBackToHuman","GLOBAL",0)
+  GlobalTimerExpired("ImoenChangeBack","GLOBAL")
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobal("ImoenBackToHuman","GLOBAL",1)
+    ClearActions(Myself)
+    ActionOverride("Imoen2",ReallyForceSpellRES("imoslay2",Myself))
+    ActionOverride("Imoen2",ChangeEnemyAlly(Myself,NEUTRAL))
+    ActionOverride("Imoen2",DialogueInterrupt(TRUE))
+    ActionOverride("Imoen2",ChangeAIScript("imoe25",OVERRIDE))
+    ActionOverride("Imoen2",ChangeAIScript("",SPECIFICS))
+    ActionOverride("Imoen2",ChangeAIScript("",CLASS))
+    ActionOverride("Imoen2",ChangeAIScript("",RACE))
+    ActionOverride("Imoen2",ChangeAIScript("",GENERAL))
+    ActionOverride("Imoen2",ChangeAIScript("",DEFAULT))
+    SetInterrupt(TRUE)
+END
+
+IF
+  Allegiance(Myself,ENEMY)
+  See(NearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),EVILCUTOFF)
+THEN
+  RESPONSE #100
+    AttackReevaluate(LastSeenBy(Myself),45)
+END
+
+IF
+  Allegiance(Myself,ENEMY)
+  !See(NearestEnemyOf(Myself))
+  !Range(Player1,15)
+THEN
+  RESPONSE #100
+    MoveToObject(Player1)
+END
+
+IF
+  Allegiance(Myself,ENEMY)
+  !See(NearestEnemyOf(Myself))
+  Range(Player1,15)
+THEN
+  RESPONSE #100
+    RandomWalkContinuous()
+END
+

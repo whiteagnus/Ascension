@@ -1,0 +1,143 @@
+[ These epilogues are provided for the benefit of the interested reader who
+  would like to see how these things progressed over time. ] 
+
+Subject: Ascension Bodhi epilogue
+
+Thought I'd send you this post I put together on PBG once.  Feel free
+to use it, or dispose of it as you see fit.
+
+Quitch
+
+******
+
+This covers all the major epilogue revisions.  The first one was
+written before the expanded epilogues were put in place, while two and
+three were put out to get an idea from the testers on what they were
+looking for from the epilogue.  Number four was a disaster (an army of
+vampires... what was I thinking?), while I was finally content with
+number five.  The Ascension copy is the result of much polish and
+fiddling.
+
+Epilogue 1:
+
+After her experience with <CHARNAME>, Bodhi realised the power that it
+was possible for beings to hold. Driven further into hatred and
+bitterness after the portion of soul granted to her by <CHARNAME>
+failed to restore her to her elven state; it became an obsession for
+her to obtain such power for herself. Gathering the remaining Vampires
+from Saradush, she moved to Athkathla in an attempt to recreate her
+glory days. Having had enough experiences with Vampire nests, and
+forewarned by the Shadow Thieves, the city was prepared, and she was
+swiftly driven off. She had greater success at Baldur's Gate, where the
+chaos of recent events allowed her to slip in unseen and unsuspected.
+Striking from the extensive network of sewers she terrorised the
+citizens of Baldur's Gate and brought new Vampires to her cause, until
+not even the Flaming Fist would walk the streets at night. Her reign of
+terror was brought to an abrupt end by a unknown Cleric from the local
+temple of Helm, who died as he drove a stake through her still black
+heart.
+
+Epilogue 2:
+
+Without her brothers focus to guide her, Bodhi wandered. She found that
+news of her allegiance with an enemy of her people had spread, and she
+was driven off everywhere she went. She had the power she always wanted
+granted through the soul of <CHARNAME>, but reviled by good and
+rejected by evil, she never had anywhere to wield it. It is believed
+she perished somewhere in the North, a cleric of Helm finally
+committing the shame of the elves to the grave. Whether death finally
+brought peace or eternal torment to her twisted soul, may never be
+known.
+
+Epilogue 3:
+
+Soon after the prophecy of Aludeno came to pass, Bodhi went on a
+crusade of terror, bringing death to the Sword Coast once again. At
+first a few villagers went missing, then people from the city slums.
+Soon though, several nobles disappeared and Bodhi came into the open.
+Uniting vampires from places such as Saradush and Athkalta, she wielded
+the power she had always desired and directed it against those that had
+been instrumental in her curse. Many vampires and elves died before the
+undead were finally destroyed. To this day the fate of Bodhi is
+unknown, but villagers in the surrounding area have once again been
+reporting disappearances...
+
+Epilogue 4:
+
+After her experiences with <CHARNAME>, Bodhi realised just how much
+power one being could wield. Having tasted power through the piece of
+<CHARNAME>'s soul, she began to desire more. Slipping further into
+bitter hatred as the last vestiges of this power faded, it became an
+obsession for her to reach such heights again. Without her brother
+though, Bodhi lacked focus and spent much time wandering. Time passed,
+but Bodhi had not forgotten what had been done to her, nor had she
+forgiven. She sank to new depths of cunning as she plotted her revenge,
+and slowly, she gained power, bringing terror to the villages and towns
+of the Sword Coast as she sustained herself with the blood of the
+innocent. Slowly, an army of vampires arose and she moved openly on
+Suldanesselar. General Elhan was sent to oppose her and in the chaos
+that followed both the general and Bodhi disappeared. It was assumed
+that both had perished. Bodhi was not to be so easily stopped however,
+and had converted the general to her cause. He led her through the
+trees to Suldanesselar where she thought to finish the plan she had
+started so long ago, and so claim the power she craved. As she tried to
+reach the Tree of Life one last time, Ellesime met her in the grand
+hall of the elves, drawn by the sole bond they shared. The need for
+revenge. It was here that Bodhi, curse of the elves and bane of
+Joneleth, finally met her end. A curse on the elves left her lips as a
+cry for a lost love greeted the act of the stake piercing her still
+black heart. As Ellesime wept, what remained of Bodhi's twisted soul
+departed, though whether she finally found peace, or only eternal
+torment, we may never know.
+
+Epilogue 5:
+
+After her experiences with <CHARNAME>, Bodhi realised just how much
+power one being could wield. Having tasted it through the piece of
+<CHARNAME>'s soul, she began to desire more. Slipping further into
+bitter hatred as the last vestiges of this power faded; it became her
+obsession to reach such heights again. People up and down the Sword
+Coast came to know fear as Bodhi bathed in their blood as she sated her
+thirst for chaos and death. Many villages to this day continue the
+tradition of leaving a victim bound on the road every new moon, as an
+offering to the things that stalk the night. She became a byword for
+terror, with temples far and wide taking it upon themselves to hunt her
+down. Many a mighty cleric was later found drained of blood, with agony
+etched across their pallid features. There are darker rumours yet, that
+some clerics returned to their temple, to stain them with the blood of
+their brothers. Over time Bodhi felt the icy grip of her curse once
+more. Desperation mixed with fear clawed at the very fibre of her
+being. Her desire for chaos faded and ambition stirred once more. The
+call which had once prompted her to whisper dreams of power into the
+ear of her brother, now brought her back to the place she had long ago
+called home, Suldanessellar. It is said the Ellesime met her at the
+gates, where Bodhi danced one last time. No one knows exactly what came
+to pass, but revenge burned bright in both of them, and it called for
+blood. The Tree of Life drove Bodhi on, and the memory of Joneleth
+cried out to Ellesime. The two embraced, and it was revenge that was
+destined to be the victor, even as a stake pierced the still black
+heart of Bodhi, one who was as damned in life as she was in death.
+
+Ascension Epilogue:
+
+Bodhi had tasted godlike power in the form of <CHARNAME>'s soul.  As
+the last vestiges of it faded with time, she began to desire more,
+slipping into bitter hatred as it became her obsession to reach such
+heights again.  People up and down the Sword Coast came to know fear as
+Bodhi bathed in their blood, sating her thirst for chaos and death. 
+Villages began to leave people bound by the road as an offering to the
+thing that stalked the night.  Her name became a byword for terror,
+with temples far and wide trying in vain to hunt her down.  Many a
+mighty cleric was later found drained of blood, agony etched across
+their pallid features.  Over time Bodhi felt the icy grip of the curse
+tighten its hold on her.  Desperation mixed with fear clawed at the
+very fibre of her being.  Desire for chaos faded and she fought to
+survive once more.  Ambiton, which had once prompted her to whisper
+dreams of power into the ear of her brother, now brought her back to
+the place she had long ago called home, Suldanessellar.  It was at the
+gates that Ellesime met her.  At the gates that Bodhi danced one last
+time.  Revenge burned bright in both of them, and it called out for
+blood.  The power of the Tree of Life drove Bodhi on, and the memory of
+Joneleth cried out to Ellesime.  The two embraced, and it was revenge
+that was destined to be the victor, even as a stake pierced the still
+black heart of Bodhi, one who was as damned in life as she was in death.

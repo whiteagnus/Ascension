@@ -1,0 +1,20 @@
+IF
+  ActionListEmpty()
+  Heard([EVILCUTOFF],ALERT)
+  !Allegiance(Myself,ENEMY)
+THEN
+  RESPONSE #100
+    Enemy()
+    Continue()
+END
+
+IF
+  ActionListEmpty()
+  !See([GOODCUTOFF])
+  Allegiance(Myself,ENEMY)
+  Heard([EVILCUTOFF],ALERT)
+  See(LastHeardBy(Myself))
+THEN
+  RESPONSE #100
+    MoveToObject(LastHeardBy(Myself))
+END

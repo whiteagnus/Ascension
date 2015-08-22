@@ -1,0 +1,29 @@
+IF
+  Dead("finmel01")
+THEN
+  RESPONSE #100
+    DestroySelf()
+END
+
+IF
+  !Range([GOODCUTOFF],30)
+  !Range("finmel01",30)
+THEN
+  RESPONSE #100
+    RandomWalk()
+END
+
+IF
+  Range([GOODCUTOFF],30)
+THEN
+  RESPONSE #100
+    RandomWalkContinuous()
+END
+
+IF
+  Range("finmel01",30)
+THEN
+  RESPONSE #100
+    RandomWalkContinuous()
+END
+
