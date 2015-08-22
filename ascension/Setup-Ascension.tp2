@@ -485,7 +485,7 @@ COPY_EXISTING ~ar6005.are~ ~override~
 	READ_SHORT 0x58  "actors_num"
 
 	FOR( cnt=0; cnt<"%actors_num%"; cnt=cnt+1 ) BEGIN  //actors loop
-		READ_ASCII ("%actors_offset%"+0x110*cnt)       "actor_name" (13)
+		READ_ASCII ("%actors_offset%"+0x110*cnt)       "actor_name" (8)
 		PATCH_IF (("%actor_name%" STRING_COMPARE_CASE "Abazigal")=1) BEGIN
 			SET offset = ("%actors_offset%"+0x110*cnt)
 			WRITE_SHORT (offset+0x20) 1912         //X
@@ -564,7 +564,22 @@ COPY ~ascension/tougher/gromnir/cre~ ~override~
 COPY ~ascension/tougher/gromnir/itm~ ~override~
 COPY ~ascension/tougher/gromnir/spl~ ~override~
 
-//check the area!
+//Begin JediMindTrix Shennanigans
+
+COPY_EXISTING ~ar5002.are~ ~override~
+READ_LONG  0x54  "actors_offset"
+READ_SHORT 0x58  "actors_num"
+
+FOR( cnt=0; cnt<"%actors_num%"; cnt=cnt+1 ) BEGIN  //actors loop
+ READ_ASCII ("%actors_offset%"+0x110*cnt)       "actor_name" (15)
+ PATCH_IF (("%actor_name%" STRING_COMPARE_CASE "Gromnir Il-Khan")=1) BEGIN
+ 	SET offset = ("%actors_offset%"+0x110*cnt)
+ 	WRITE_SHORT (offset+0x20) 344         //X
+ 	WRITE_SHORT (offset+0x22) 648         //Y
+ 	WRITE_SHORT (offset+0x24) 344         //destination X
+ 	WRITE_SHORT (offset+0x26) 648         //destination Y
+ 	END
+END
 
 BEGIN @6 // Illasera
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
