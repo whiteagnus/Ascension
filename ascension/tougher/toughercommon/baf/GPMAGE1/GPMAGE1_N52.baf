@@ -1,0 +1,10 @@
+IF
+  ActionListEmpty()
+  HaveSpell(WIZARD_SLOW)
+  !StateCheck(LastSeenBy(Myself),STATE_SLOWED)
+  !Range(LastSeenBy(Myself),10)
+  RandomNum(3,1)
+THEN
+  RESPONSE #100
+    Spell(LastSeenBy(Myself),WIZARD_SLOW)
+END

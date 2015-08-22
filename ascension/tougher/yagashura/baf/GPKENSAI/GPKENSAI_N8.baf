@@ -1,0 +1,15 @@
+IF
+  ActionListEmpty()
+  Allegiance(Myself,ENEMY)
+  RandomNum(2,1)
+  Range(NearestEnemyOf(Myself),10)
+  !StateCheck(Myself,STATE_HASTED)
+  !CheckStatGT(Myself,4,NUMBEROFATTACKS)
+  !GlobalTimerNotExpired("DrankPotionTimer","LOCALS")
+  HasItem("POTN14",Myself)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("DrankPotionTimer","LOCALS",6)
+    DisplayStringHead(Myself,46150)
+    UseItem("POTN14",Myself)
+END

@@ -1,0 +1,11 @@
+IF
+  ActionListEmpty()
+  !HasBounceEffects(LastSeenBy(Myself))
+  HaveSpell(WIZARD_CHAOS)
+  !StateCheck(LastSeenBy(Myself),STATE_CONFUSED)
+  RandomNum(2,1)
+  !Range(LastSeenBy(Myself),10)
+THEN
+  RESPONSE #100
+    Spell(LastSeenBy(Myself),WIZARD_CHAOS)
+END

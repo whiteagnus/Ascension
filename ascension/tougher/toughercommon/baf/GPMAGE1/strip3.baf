@@ -1,0 +1,7 @@
+IF
+  GlobalTimerExpired("FireShield_On","LOCALS")
+THEN
+  RESPONSE #100
+    IncrementGlobal("NumDefenses","LOCALS",-1)
+    Continue()
+END

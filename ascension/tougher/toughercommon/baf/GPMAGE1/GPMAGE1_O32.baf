@@ -1,0 +1,9 @@
+IF
+  HaveSpell(WIZARD_SPHERE_OF_CHAOS)
+  Range(Lastseenby(Myself),10)
+  !StateCheck(Lastseenby(Myself),STATE_CONFUSED)
+  RandomNum(2,1)
+THEN
+  RESPONSE #100
+    Spell(Myself,WIZARD_SPHERE_OF_CHAOS)
+END

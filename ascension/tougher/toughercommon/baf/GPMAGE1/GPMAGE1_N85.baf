@@ -1,0 +1,10 @@
+IF
+  ActionListEmpty()
+  CheckStatLT(LastSeenBy(Myself),50,RESISTMAGIC)
+  CheckStatLT(LastSeenBy(Myself),50,RESISTMAGICFIRE)
+  HaveSpell(WIZARD_AGANNAZAR_SCORCHER)
+  RandomNum(3,1)
+THEN
+  RESPONSE #100
+    Spell(LastSeenBy(Myself),WIZARD_AGANNAZAR_SCORCHER)
+END

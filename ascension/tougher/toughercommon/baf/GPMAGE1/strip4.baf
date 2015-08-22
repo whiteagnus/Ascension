@@ -1,0 +1,28 @@
+IF
+  OR(10)
+    SpellCastOnMe([GOODCUTOFF],WIZARD_REMOVE_MAGIC)
+    SpellCastOnMe([GOODCUTOFF],WIZARD_TRUE_DISPEL_MAGIC)
+    SpellCastOnMe([GOODCUTOFF],CLERIC_DISPEL_MAGIC)
+    SpellCastOnMe([GOODCUTOFF],WIZARD_BREACH)
+    SpellCastOnMe([GOODCUTOFF],WIZARD_PIERCE_MAGIC)
+    SpellCastOnMe([GOODCUTOFF],WIZARD_REMOVE_MAGIC)
+    SpellCastOnMe([GOODCUTOFF],WIZARD_KHELBENS_WARDING_WHIP)
+    SpellCastOnMe([GOODCUTOFF],WIZARD_RUBY_RAY_OF_REVERSAL)
+    SpellCastOnMe([GOODCUTOFF],WIZARD_SPELL_STRIKE)
+    SpellCastOnMe([GOODCUTOFF],INQUIS_DISPEL_MAGIC)
+  OR(6)
+    GlobalTimerNotExpired("SpecialDefenseUp","LOCALS")
+    GlobalTimerNotExpired("SpellDefense1_On","LOCALS")
+    GlobalTimerNotExpired("WeaponDefense_On","LOCALS")
+    GlobalTimerNotExpired("FireShield_On","LOCALS")
+    GlobalTimerNotExpired("Shield_On","LOCALS")
+    GlobalGT("NumDefenses","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("NumDefenses","LOCALS",0)
+    SetGlobalTimer("SpecialDefenseUp","LOCALS",0)
+    SetGlobalTimer("SpellDefense1_On","LOCALS",0)
+    SetGlobalTimer("WeaponDefense_On","LOCALS",0)
+    SetGlobalTimer("FireShield_On","LOCALS",0)
+    SetGlobalTimer("Shield_On","LOCALS",0)
+END

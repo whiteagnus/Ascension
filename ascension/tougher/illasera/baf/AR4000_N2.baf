@@ -1,0 +1,10 @@
+IF
+  GlobalTimerExpired("IllaseraSpawnTimer","GLOBAL")
+  Global("IllaseraSpawn","GLOBAL",0)
+THEN
+  RESPONSE #100
+    ClearAllActions()
+    SetGlobal("IllaseraSpawn","GLOBAL",1)
+    StartCutSceneMode()
+    StartCutScene("CUT204F")
+END

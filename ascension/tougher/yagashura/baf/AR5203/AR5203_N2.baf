@@ -1,0 +1,30 @@
+IF
+  Global("SpawnStart","AR5203",1)
+  GlobalLT("MaxSpawn","AR5203",60)
+  !Dead("Yaga01")
+  GlobalLT("EXTRACOUNT2","MYAREA",4)
+  !Global("YagaShuraSpawn","AR5203",1)
+  ActionListEmpty()
+  InActiveArea(Myself)
+THEN
+  RESPONSE #100
+    IncrementGlobal("MaxSpawn","AR5203",1)
+    CreateCreatureObjectOffScreen("YSSOLD03",Player1,0,0,0)
+    IncrementGlobal("EXTRACOUNT2","MYAREA",1)
+	Continue()
+  RESPONSE #100
+    IncrementGlobal("MaxSpawn","AR5203",1)
+    CreateCreatureObjectOffScreen("YSMAGE01",Player1,0,0,0)
+    IncrementGlobal("EXTRACOUNT2","MYAREA",1)
+	Continue()
+  RESPONSE #100
+    IncrementGlobal("MaxSpawn","AR5203",1)
+    CreateCreatureObjectOffScreen("YSCLER01",Player1,0,0,0)
+    IncrementGlobal("EXTRACOUNT2","MYAREA",1)
+	Continue()
+  RESPONSE #100
+    IncrementGlobal("MaxSpawn","AR5203",1)
+    CreateCreatureObjectOffScreen("YSFIRE01",Player1,0,0,0)
+    IncrementGlobal("EXTRACOUNT2","MYAREA",1)
+    Continue()
+END

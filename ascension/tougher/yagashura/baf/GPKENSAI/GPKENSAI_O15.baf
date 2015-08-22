@@ -1,0 +1,7 @@
+IF
+  True()
+THEN
+  RESPONSE #100
+    EquipMostDamagingMelee()
+    AttackReevaluate(Lastseenby(Myself),45)
+END

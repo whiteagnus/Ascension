@@ -1,0 +1,9 @@
+IF
+  ActionListEmpty()
+  HaveSpell(WIZARD_ABI_DALZIMS_HORRID_WILTING)
+  !Range(LastSeenBy(Myself),10)
+  RandomNum(2,1)
+THEN
+  RESPONSE #100
+    Spell(LastSeenBy(Myself),WIZARD_ABI_DALZIMS_HORRID_WILTING)
+END

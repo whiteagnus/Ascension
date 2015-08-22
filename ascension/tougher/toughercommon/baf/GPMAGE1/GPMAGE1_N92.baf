@@ -1,0 +1,13 @@
+IF
+  ActionListEmpty()
+  HaveSpell(WIZARD_BLACK_BLADE_OF_DISASTER)
+  Range(LastSeenBy(Myself),5)
+  !HasItem("BLAKBLAD",Myself)
+  !HasItem("PHANBLAD",Myself)
+  !HasItem("MELFMET",Myself)
+  RandomNum(2,1)
+THEN
+  RESPONSE #100
+    Spell(Myself,WIZARD_BLACK_BLADE_OF_DISASTER)
+    AttackReevaluate(LastSeenBy(Myself),30)
+END

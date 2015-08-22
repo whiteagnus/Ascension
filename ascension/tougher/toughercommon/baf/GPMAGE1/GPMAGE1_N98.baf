@@ -1,0 +1,16 @@
+IF
+  ActionListEmpty()
+  Range(NearestEnemyOf(Myself),10)
+  RandomNum(2,1)
+THEN
+  RESPONSE #100
+    RunAwayFrom(LastSeenBy(Myself),45)
+END
+
+IF
+  ActionListEmpty()
+THEN
+  RESPONSE #100
+    EquipMostDamagingMelee()
+    AttackReevaluate(LastSeenBy(Myself),30)
+END

@@ -1,0 +1,8 @@
+IF
+  ActionListEmpty()
+  HaveSpell(WIZARD_ENERGY_DRAIN)
+  RandomNum(3,1)
+THEN
+  RESPONSE #100
+    Spell(LastSeenBy(Myself),WIZARD_ENERGY_DRAIN)
+END

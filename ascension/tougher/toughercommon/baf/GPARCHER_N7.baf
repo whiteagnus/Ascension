@@ -1,0 +1,14 @@
+IF
+  ActionListEmpty()
+  Allegiance(Myself,ENEMY)
+  Range(NearestEnemyOf(Myself),10)
+  !StateCheck(Myself,STATE_INVISIBLE)
+  !StateCheck(Myself,STATE_IMPROVEDINVISIBILITY)
+  !GlobalTimerNotExpired("DrankPotionTimer","LOCALS")
+  HasItem("POTN10",Myself)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("DrankPotionTimer","LOCALS",6)
+    DisplayStringHead(Myself,46150)
+    UseItem("POTN10",Myself)
+END

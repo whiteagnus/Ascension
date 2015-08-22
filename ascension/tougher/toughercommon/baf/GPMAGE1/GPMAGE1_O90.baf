@@ -1,0 +1,8 @@
+IF
+  !HasBounceEffects(Lastseenby(Myself))
+  HaveSpell(WIZARD_CHROMATIC_ORB)
+  RandomNum(2,1)
+THEN
+  RESPONSE #100
+    Spell(Lastseenby(Myself),WIZARD_CHROMATIC_ORB)
+END

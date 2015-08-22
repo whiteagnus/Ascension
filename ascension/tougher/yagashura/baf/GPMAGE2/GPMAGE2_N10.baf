@@ -1,0 +1,21 @@
+IF
+  ActionListEmpty()
+  HaveSpell(WIZARD_GLOBE_OF_INVULNERABILITY)
+  !GlobalTimerNotExpired("SpellDefense1_On","LOCALS")
+  GlobalLT("NumDefenses","LOCALS",2)
+  OR(5)
+    See(NearestEnemyOfType([0.0.0.DRUID_ALL]))
+    See(NearestEnemyOfType([0.0.0.BARD_ALL]))
+    See(NearestEnemyOfType([0.0.0.CLERIC_ALL]))
+    See(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+    See(NearestEnemyOfType([0.0.0.SORCERER]))
+    !CheckStatGT(Myself,0,MINORGLOBE)
+  !HasBounceEffects(Myself)
+  !HasImmunityEffects(Myself)
+  RandomNum(2,1)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("SpellDefense1_On","LOCALS",30)
+    IncrementGlobal("NumDefenses","LOCALS",1)
+    Spell(Myself,WIZARD_GLOBE_OF_INVULNERABILITY)
+END

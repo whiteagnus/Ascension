@@ -1,0 +1,7 @@
+IF
+  Range(Lastseenby(Myself),6)
+  GlobalTimerNotExpired("KaiAttack","LOCALS")
+THEN
+  RESPONSE #100
+    AttackReevaluate(Lastseenby(Myself),30)
+END

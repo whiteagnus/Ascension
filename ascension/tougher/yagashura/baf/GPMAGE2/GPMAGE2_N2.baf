@@ -1,0 +1,10 @@
+IF
+  ActionListEmpty()
+  !See([GOODCUTOFF])
+  Allegiance(Myself,ENEMY)
+  Heard([EVILCUTOFF],ALERT)
+  See(LastHeardBy(Myself))
+THEN
+  RESPONSE #100
+    MoveToObject(LastHeardBy(Myself))
+END

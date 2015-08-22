@@ -1,0 +1,14 @@
+IF
+  ActionListEmpty()
+  Range(LastSeenBy(Myself),5)
+  !HasItem("BLAKBLAD",Myself)
+  !HasItem("PHANBLAD",Myself)
+  !CheckStatLT(Myself,10,THAC0)
+  !CheckStatLT(Myself,0,ARMORCLASS)
+  HaveAnySpells()
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    RunAwayFrom(LastSeenBy(Myself),45)
+    SetInterrupt(TRUE)
+END
