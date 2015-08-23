@@ -386,7 +386,7 @@ COPY ~ascension/spl/melspl10.SPL~ ~override/melspl10.SPL~ SAY 8 @1024
 COPY ~ascension/spl/melspl11.SPL~ ~override/melspl11.SPL~ SAY 8 @1025
 COPY ~ascension/spl/melspl12.SPL~ ~override/melspl12.SPL~ SAY 8 @1026
 COPY ~ascension/spl/nabpara.SPL~ ~override/nabpara.SPL~ SAY 8 @1027
-COPY ~ascension/spl/yaga01.SPL~ ~override/yaga01.SPL~ SAY 8 @1029
+//COPY ~ascension/spl/yaga01.SPL~ ~override/yaga01.SPL~ SAY 8 @1029
 COPY ~ascension/spl/Spwi545.spl~ ~override/Spwi545.spl~ SAY 8 @1031
 COPY ~ascension/spl/overwrite/balth03.spl~ ~override/balth03.spl~ SAY 8 #72915
 COPY ~ascension/spl/overwrite/balth04.spl~ ~override/balth04.spl~ SAY 8 #72916
@@ -562,7 +562,7 @@ R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O12.baf~ ~ascension/tougher/to
 
 //Remove Extraneous Code
 R_B_B ~ascension/tougher/toughercommon/baf/strip2.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
-ACTION_IF !FILE_EXISTS ~override/asc_yagashura.flag~
+ACTION_IF !FILE_EXISTS ~override/asc_yagashura.flag~ BEGIN
 COPY_EXISTING ~GPHEALER.bcs~ ~override~
 R_B_B ~ascension/tougher/toughercommon/baf/GPHEALER_O1.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N3.baf~
 R_B_B ~ascension/tougher/toughercommon/baf/GPHEALER_O2.baf~ ~ascension/tougher/toughercommon/baf/GPHEALER_N2.baf~
@@ -745,7 +745,7 @@ COPY_EXISTING ~sw1h01.itm~ ~override/asc_illasera.flag~
 COMPILE ~ascension/tougher/illasera/baf/overwrite~
 
 //ILLGRP Extension, following gromnir example
-EXTEND_BOTTOM ~ILLAGRP.bcs~ ~ascension/tougher/illasera/BAF/ILALGRP_Bottom.baf~
+EXTEND_BOTTOM ~ILLAGRP.bcs~ ~ascension/tougher/illasera/BAF/ILLAGRP_Bottom.baf~
 COMPILE ~ascension/tougher/illasera/d~
 
 //Area Script - Note that EE appears to handle Drow Item disintegration on it's own
@@ -1164,7 +1164,7 @@ R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI_O14.baf~ ~ascension/tougher/yaga
 R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI_O15.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI_N15.baf~
 R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI_O16.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N1.baf~
 
-ACTION_IF !FILE_EXISTS ~override/asc_gromnir.flag~
+ACTION_IF !FILE_EXISTS ~override/asc_gromnir.flag~ BEGIN
 COPY_EXISTING ~GPHEALER.bcs~ ~override~
 R_B_B ~ascension/tougher/toughercommon/baf/GPHEALER_O1.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N3.baf~
 R_B_B ~ascension/tougher/toughercommon/baf/GPHEALER_O2.baf~ ~ascension/tougher/toughercommon/baf/GPHEALER_N2.baf~
@@ -1390,7 +1390,7 @@ R_B_B ~ascension/tougher/yagashura/baf/AR5203/AR5203_O2.baf~ ~ascension/tougher/
 R_B_B ~ascension/tougher/yagashura/baf/AR5203/AR5203_O3.baf~ ~ascension/tougher/yagashura/baf/AR5203/AR5203_N3.baf~
 
 //AR5203 Changes
-COPY_EXTEND ~ar5203.are~ ~override~
+COPY_EXISTING ~ar5203.are~ ~override~
 	READ_LONG  0x54  "actors_offset"
 	READ_SHORT 0x58  "actors_num"
 
