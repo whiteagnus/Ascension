@@ -1,9 +1,0 @@
-IF
-  ActionListEmpty()
-  HaveSpell(WIZARD_METEOR_SWARM)
-  !Range(LastSeenBy(Myself),15)
-  RandomNum(2,1)
-THEN
-  RESPONSE #100
-    Spell(LastSeenBy(Myself),WIZARD_METEOR_SWARM)
-END

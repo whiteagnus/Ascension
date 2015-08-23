@@ -1,9 +1,0 @@
-IF
-  HaveSpell(WIZARD_WAIL_OF_THE_BANSHEE)
-  Range(Lastseenby(Myself),3)
-  NumCreatureVsPartyLT([ENEMY],0)
-  RandomNum(2,1)
-THEN
-  RESPONSE #100
-    Spell(Myself,WIZARD_WAIL_OF_THE_BANSHEE)
-END

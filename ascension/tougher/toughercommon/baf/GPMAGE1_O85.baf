@@ -1,9 +1,0 @@
-IF
-  CheckStatLT(Lastseenby(Myself),50,RESISTMAGIC)
-  CheckStatLT(Lastseenby(Myself),50,RESISTMAGICFIRE)
-  HaveSpell(WIZARD_AGANNAZAR_SCORCHER)
-  RandomNum(3,1)
-THEN
-  RESPONSE #100
-    Spell(Lastseenby(Myself),WIZARD_AGANNAZAR_SCORCHER)
-END

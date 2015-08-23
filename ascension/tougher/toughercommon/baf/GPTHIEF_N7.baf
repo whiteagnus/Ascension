@@ -1,0 +1,13 @@
+IF
+  ActionListEmpty()
+  Range(LastSeenBy(Myself),10)
+  HPPercentLT(Myself,20)
+  OR(2)
+  HasItem("POTN55",Myself)
+  Range(NearestMyGroupOfType,25)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+    RunAwayFrom(LastSeenBy(Myself),45)
+		SetInterrupt(TRUE)
+END

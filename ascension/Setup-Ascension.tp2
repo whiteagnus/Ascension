@@ -1147,22 +1147,22 @@ COMPILE ~ascension/tougher/yagashura/BAF/UniqueCompile~ ~override~
 
 //GPKENSAI
 COPY_EXISTING ~GPKENSAI.bcs~ ~override~
-R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI_O1.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI_N1.baf~
-R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI_O2.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI_N2.baf~
-R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI_O3.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI_N3.baf~
-R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI_O4.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI_N4.baf~
-R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI_O5.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI_N5.baf~
-R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI_O6.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI_N6.baf~
-R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI_O7.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI_N7.baf~
-R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI_O8.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI_N8.baf~
-R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI_O9.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI_N9.baf~
-R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI_O10.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI_N10.baf~
-R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI_O11.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI_N11.baf~
-R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI_O12.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI_N12.baf~
-R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI_O13.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI_N13.baf~
-R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI_O14.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI_N14.baf~
-R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI_O15.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI_N15.baf~
-R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI_O16.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N1.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O1.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N1.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O2.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N2.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O3.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N3.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O4.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N4.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O5.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N5.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O6.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N6.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O7.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N7.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O8.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N8.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O9.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N9.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O10.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N10.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O11.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N11.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O12.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N12.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O13.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N13.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O14.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N14.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O15.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N15.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O16.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N1.baf~
 
 ACTION_IF !FILE_EXISTS ~override/asc_gromnir.flag~ BEGIN
 COPY_EXISTING ~GPHEALER.bcs~ ~override~

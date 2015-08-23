@@ -1,9 +1,0 @@
-IF
-  ActionListEmpty()
-  HaveSpell(WIZARD_IMPRISONMENT)
-  !InPartySlot(LastSeenBy(Myself),0)
-  RandomNum(2,1)
-THEN
-  RESPONSE #100
-    Spell(LastSeenBy(Myself),WIZARD_IMPRISONMENT)
-END

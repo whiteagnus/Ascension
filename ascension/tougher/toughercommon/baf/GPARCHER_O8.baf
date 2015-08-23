@@ -1,0 +1,13 @@
+IF
+	Allegiance(Myself,ENEMY)
+	Range(NearestEnemyOf(Myself),10)
+	!StateCheck(Myself,STATE_INVISIBLE)
+	!StateCheck(Myself,STATE_IMPROVEDINVISIBILITY)
+	!GlobalTimerNotExpired("RingTimer","LOCALS")
+	HasItem("RING05",Myself) 
+THEN
+	RESPONSE #100
+		SetGlobalTimer("RingTimer","LOCALS",6)
+		DisplayStringHead(Myself,46150) 
+		UseItem("RING05",Myself) 
+END

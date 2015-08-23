@@ -1,7 +1,9 @@
 IF
-  GlobalTimerExpired("SpellDefense1_On","LOCALS")
+	OR(2)
+		!Allegiance(LastSeenBy(Myself),GOODCUTOFF)
+		!See([GOODCUTOFF])
+	!Range(Player1,40)
 THEN
-  RESPONSE #100
-    IncrementGlobal("NumDefenses","LOCALS",-1)
-    Continue()
+	RESPONSE #100
+		NoAction()
 END

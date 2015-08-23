@@ -1,9 +1,0 @@
-IF
-  HPGT(Lastseenby(Myself),50)
-  !HasBounceEffects(Lastseenby(Myself))
-  HaveSpell(WIZARD_MAZE)
-  RandomNum(2,1)
-THEN
-  RESPONSE #100
-    Spell(Lastseenby(Myself),WIZARD_MAZE)
-END

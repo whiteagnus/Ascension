@@ -1,7 +1,0 @@
-IF
-  StateCheck(Myself,STATE_SILENCED)
-  HaveSpell(WIZARD_VOCALIZE)
-THEN
-  RESPONSE #100
-    Spell(Myself,WIZARD_VOCALIZE)
-END

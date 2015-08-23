@@ -1,0 +1,12 @@
+IF
+	HaveSpellRES("SPCL913") 
+	!GlobalTimerNotExpired("DrankPotionTimer","LOCALS")
+	Allegiance(Myself,ENEMY)
+	See(NearestEnemyOf(Myself))
+	!GlobalTimerNotExpired("Evasion","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("Evasion","LOCALS",18)
+		SetGlobalTimer("DrankPotionTimer","LOCALS",6)
+		SpellRES("SPCL913",Myself) 
+END

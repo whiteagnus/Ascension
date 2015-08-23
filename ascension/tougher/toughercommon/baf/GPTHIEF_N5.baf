@@ -1,0 +1,9 @@
+IF
+  !Range(LastSeenBy(Myself),6)
+  OR(2)
+  StateCheck(Myself,STATE_INVISIBLE)
+  StateCheck(Myself,STATE_IMPROVEDINVISIBILITY)
+THEN
+  RESPONSE #100
+    MoveToObject(LastSeenBy(Myself))
+END

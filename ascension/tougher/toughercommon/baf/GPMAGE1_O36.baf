@@ -1,9 +1,0 @@
-IF
-  HaveSpell(WIZARD_POWER_WORD_BLIND)
-  !StateCheck(Lastseenby(Myself),STATE_HELPLESS)
-  !HasBounceEffects(Lastseenby(Myself))
-  RandomNum(2,1)
-THEN
-  RESPONSE #100
-    Spell(Lastseenby(Myself),WIZARD_POWER_WORD_BLIND)
-END

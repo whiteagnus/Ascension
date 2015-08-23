@@ -1,8 +1,0 @@
-IF
-  CheckStatLT(Lastseenby(Myself),50,RESISTMAGIC)
-  HaveSpell(WIZARD_FLAME_ARROW)
-  RandomNum(2,1)
-THEN
-  RESPONSE #100
-    Spell(Lastseenby(Myself),WIZARD_FLAME_ARROW)
-END

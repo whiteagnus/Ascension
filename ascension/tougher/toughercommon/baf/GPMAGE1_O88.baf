@@ -1,9 +1,0 @@
-IF
-  CheckStatLT(Lastseenby(Myself),50,RESISTMAGIC)
-  HaveSpell(WIZARD_POLYMORPH_OTHER)
-  HPGT(Lastseenby(Myself),40)
-  RandomNum(3,1)
-THEN
-  RESPONSE #100
-    Spell(Lastseenby(Myself),WIZARD_POLYMORPH_OTHER)
-END

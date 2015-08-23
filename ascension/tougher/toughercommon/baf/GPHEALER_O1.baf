@@ -2,8 +2,8 @@ IF
 	OR(2)
 		!Allegiance(LastSeenBy(Myself),GOODCUTOFF)
 		!See([EVILCUTOFF])
-	!Range(Player1,40)
+	Range(Player1,40)
 THEN
 	RESPONSE #100
-		NoAction()
+		MoveToObject(Player1)
 END

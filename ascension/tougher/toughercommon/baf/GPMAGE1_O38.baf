@@ -1,7 +1,0 @@
-IF
-  HaveSpell(WIZARD_IMPRISONMENT)
-  RandomNum(2,1)
-THEN
-  RESPONSE #100
-    Spell(Lastseenby(Myself),WIZARD_IMPRISONMENT)
-END

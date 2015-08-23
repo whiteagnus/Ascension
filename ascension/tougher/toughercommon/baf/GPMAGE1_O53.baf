@@ -1,9 +1,0 @@
-IF
-  HaveSpell(WIZARD_RAY_OF_ENFEEBLEMENT)
-  !Range(Lastseenby(Myself),10)
-  !HasBounceEffects(Lastseenby(Myself))
-  RandomNum(2,1)
-THEN
-  RESPONSE #100
-    Spell(Lastseenby(Myself),WIZARD_RAY_OF_ENFEEBLEMENT)
-END

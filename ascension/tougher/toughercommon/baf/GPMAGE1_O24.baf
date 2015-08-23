@@ -1,8 +1,0 @@
-IF
-  See(Nearestenemyof(Myself))
-  HaveSpell(WIZARD_STONE_SKIN)
-  CheckStatLT(Myself,1,STONESKINS)
-THEN
-  RESPONSE #100
-    Spell(Myself,WIZARD_STONE_SKIN)
-END

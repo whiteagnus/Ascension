@@ -1,9 +1,0 @@
-IF
-  HaveSpell(WIZARD_CHAIN_LIGHTNING)
-  !HasBounceEffects(Lastseenby(Myself))
-  !Range(Lastseenby(Myself),10)
-  RandomNum(2,1)
-THEN
-  RESPONSE #100
-    Spell(Lastseenby(Myself),WIZARD_CHAIN_LIGHTNING)
-END
