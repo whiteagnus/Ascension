@@ -455,7 +455,7 @@ IF
   !GlobalTimerNotExpired("TigerStrike","LOCALS")
   !StateCheck(Myself,STATE_INVISIBLE)
   Range(LastSeenBy(Myself),4)
-  !CheckStatGT(LastSeenBy(Myself),0,DMWW_SLOT_185)
+  !CheckStatGT(LastSeenBy(Myself),0,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
   !CheckStatGT(LastSeenBy(Myself),3,STONESKINS)
 THEN
   RESPONSE #100

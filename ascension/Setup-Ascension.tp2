@@ -10,7 +10,7 @@ BACKUP ~ascension/backup~ // where should we put backup files?
 //AUTHOR "weimer@cs.berkeley.edu (http://weidu.org/)"
 AUTHOR "Nobody, this version is for modders only"
 
-VERSION ~v1.5~
+VERSION ~v1.5b_20150823~
 
 AUTO_TRA "ascension/tra/autotra/%s"//%"
 
@@ -108,6 +108,17 @@ BEGIN @1
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
 
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_main.flag~
+
+///////////////////////////////////////////////////////////////////////
+// Detectable Spells v3
+///////////////////////////////////////////////////////////////////////
+
+OUTER_SPRINT path ~ascension/ds~ // change it to your mod folder
+INCLUDE ~%path%/ds.tph~
+
+LAF detectable_spells_setup STR_VAR path = EVALUATE_BUFFER ~%path%~ END
+LAF detectable_spells STR_VAR table = ~cddetect.2da~ END
+
 
 ///////////////////////////////////////////////////////////////////////
 // ARE files
@@ -441,7 +452,7 @@ COPY ~ascension/epilogues~       ~override~
 
 BEGIN @3 // Abazigal
 //WA: Not tested, maybe some files will be overwritten...
-REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
+REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ AND FILE_EXISTS ~override/asc_main.flag~ @2 // ToB sanity check
 
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_abazigal.flag~
 
@@ -505,7 +516,7 @@ BUT_ONLY
 
 BEGIN @4 // Demogorgon
 //WA: Not tested, maybe some files will be overwritten...
-REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
+REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ AND FILE_EXISTS ~override/asc_main.flag~ @2 // ToB sanity check
 
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_demogorgon.flag~
 
@@ -521,7 +532,7 @@ COPY ~ascension/tougher/demogorgon/spl~ ~override~
 //WA: These components are not down now...
 
 BEGIN @5 // Gromnir
-REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
+REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ AND FILE_EXISTS ~override/asc_main.flag~ @2 // ToB sanity check
 
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_gromnir.flag~
 
@@ -535,175 +546,11 @@ REPLACE_TEXTUALLY ~OR(3)~ ~OR(5)~
 END
 
 //Creatures
-COPY_EXISTING ~GPTHIEF.bcs~ ~override~
-R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O1.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N1.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O2.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N2.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O3.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N3.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O4.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N4.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O5.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N5.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O6.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N6.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O7.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N7.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O8.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N8.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O9.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N1.baf~
 
-COPY_EXISTING ~GPMERC.bcs~ ~override~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O1.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N1.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O2.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N2.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O3.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N3.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O4.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N4.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O5.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N5.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O6.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N6.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O7.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N7.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O8.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N8.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O9.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N9.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O10.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N10.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O11.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N11.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O12.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N1.baf~
-
-//Remove Extraneous Code
-R_B_B ~ascension/tougher/toughercommon/baf/strip2.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
 ACTION_IF !FILE_EXISTS ~override/asc_yagashura.flag~ BEGIN
-COPY_EXISTING ~GPHEALER.bcs~ ~override~
-R_B_B ~ascension/tougher/toughercommon/baf/GPHEALER_O1.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N3.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPHEALER_O2.baf~ ~ascension/tougher/toughercommon/baf/GPHEALER_N2.baf~
-
-//Remove Extraneous Code
-R_B_B ~ascension/tougher/toughercommon/baf/strip1.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
-
-COPY_EXISTING ~GPARCHER.bcs~ ~override~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O1.baf~ ~ascension/tougher/toughercommon/baf/GPARCHER_N1.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O2.baf~ ~ascension/tougher/toughercommon/baf/GPARCHER_N2.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O3.baf~ ~ascension/tougher/toughercommon/baf/GPARCHER_N3.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O4.baf~ ~ascension/tougher/toughercommon/baf/GPARCHER_N4.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O5.baf~ ~ascension/tougher/toughercommon/baf/GPARCHER_N5.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O6.baf~ ~ascension/tougher/toughercommon/baf/GPARCHER_N6.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O7.baf~ ~ascension/tougher/toughercommon/baf/GPARCHER_N7.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O8.baf~ ~ascension/tougher/toughercommon/baf/GPARCHER_N8.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O9.baf~ ~ascension/tougher/toughercommon/baf/GPARCHER_N9.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O10.baf~ ~ascension/tougher/toughercommon/baf/GPARCHER_N10.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O11.baf~ ~ascension/tougher/toughercommon/baf/GPARCHER_N11.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O12.baf~ ~ascension/tougher/toughercommon/baf/GPARCHER_N12.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O13.baf~ ~ascension/tougher/toughercommon/baf/GPARCHER_N13.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O14.baf~ ~ascension/tougher/toughercommon/baf/GPARCHER_N14.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O15.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N1.baf~
-
-EXTEND_BOTTOM ~GPARCHER.bcs~ ~ascension/tougher/toughercommon/baf/GPARCHER_Bottom.baf~
-
-//GPMAGE1 - FYI, Doing this sucked xD
-COPY_EXISTING ~GPMAGE1.bcs~ ~override~
-
-//First, remove the extraneous code (otherwise we will double up IF-THENS and potentially break it)
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/strip1.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/strip2.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/strip3.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/strip4.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/strip5.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/strip6.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/strip7.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/strip8.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/strip9.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/strip10.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
-
-//Begin Regular R_B_B
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O1.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N1.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O2.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N2.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O3.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N3.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O4.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N4.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O5.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N5.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O6.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N6.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O7.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N7.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O8.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N8.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O9.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N9.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O10.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N10.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O11.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N11.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O12.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N12.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O13.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N13.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O14.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N14.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O15.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N15.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O16.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N16.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O17.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N17.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O18.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N18.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O19.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N19.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O20.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N20.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O21.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N21.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O22.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N22.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O23.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N23.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O24.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N24.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O25.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N25.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O26.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N26.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O27.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N27.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O28.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N28.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O29.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N29.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O30.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N30.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O31.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N31.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O32.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N32.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O33.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N33.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O34.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N34.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O35.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N35.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O36.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N36.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O37.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N37.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O38.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N38.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O39.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N39.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O40.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N40.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O41.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N41.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O42.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N42.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O43.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N43.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O44.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N44.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O45.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N45.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O46.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N46.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O47.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N47.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O48.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N48.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O49.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N49.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O50.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N50.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O51.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N51.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O52.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N52.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O53.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N53.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O54.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N54.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O55.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N55.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O56.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N56.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O57.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N57.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O58.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N58.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O59.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N59.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O60.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N60.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O61.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N61.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O62.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N62.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O63.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N63.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O64.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N64.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O65.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N65.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O66.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N66.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O67.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N67.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O68.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N68.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O69.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N69.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O70.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N70.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O71.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N71.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O72.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N72.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O73.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N73.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O74.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N74.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O75.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N75.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O76.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N76.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O77.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N77.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O78.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N78.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O79.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N79.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O80.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N80.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O81.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N81.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O82.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N82.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O83.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N83.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O84.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N84.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O85.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N85.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O86.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N86.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O87.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N87.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O88.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N88.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O89.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N89.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O90.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N90.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O91.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N91.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O92.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N92.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O93.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N93.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O94.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N94.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O95.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N95.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O96.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N96.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O97.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N97.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O98.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N98.baf~
+	INCLUDE ~ascension/lib/toughercommon.tpa~
 END
+
 //Area Script
 COPY_EXISTING ~AR5002.bcs~ ~override~
 DECOMPILE_AND_PATCH BEGIN
@@ -737,7 +584,7 @@ FOR( cnt=0; cnt<"%actors_num%"; cnt=cnt+1 ) BEGIN  //actors loop
 END
 
 BEGIN @6 // Illasera
-REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
+REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ AND FILE_EXISTS ~override/asc_main.flag~ @2 // ToB sanity check
 
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_illasera.flag~
 
@@ -1129,7 +976,7 @@ COPY ~ascension/tougher/illasera/itm~ ~override~
 COPY ~ascension/tougher/illasera/spl~ ~override~
 
 BEGIN @7 // Yaga-Shura
-REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
+REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ AND FILE_EXISTS ~override/asc_main.flag~ @2 // ToB sanity check
 
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_yagashura.flag~
 
@@ -1165,175 +1012,8 @@ R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O15.baf~ ~ascension/tou
 R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O16.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N1.baf~
 
 ACTION_IF !FILE_EXISTS ~override/asc_gromnir.flag~ BEGIN
-COPY_EXISTING ~GPHEALER.bcs~ ~override~
-R_B_B ~ascension/tougher/toughercommon/baf/GPHEALER_O1.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N3.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPHEALER_O2.baf~ ~ascension/tougher/toughercommon/baf/GPHEALER_N2.baf~
-
-//Remove Extraneous Code
-R_B_B ~ascension/tougher/toughercommon/baf/strip1.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
-
-COPY_EXISTING ~GPARCHER.bcs~ ~override~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O1.baf~ ~ascension/tougher/toughercommon/baf/GPARCHER_N1.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O2.baf~ ~ascension/tougher/toughercommon/baf/GPARCHER_N2.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O3.baf~ ~ascension/tougher/toughercommon/baf/GPARCHER_N3.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O4.baf~ ~ascension/tougher/toughercommon/baf/GPARCHER_N4.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O5.baf~ ~ascension/tougher/toughercommon/baf/GPARCHER_N5.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O6.baf~ ~ascension/tougher/toughercommon/baf/GPARCHER_N6.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O7.baf~ ~ascension/tougher/toughercommon/baf/GPARCHER_N7.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O8.baf~ ~ascension/tougher/toughercommon/baf/GPARCHER_N8.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O9.baf~ ~ascension/tougher/toughercommon/baf/GPARCHER_N9.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O10.baf~ ~ascension/tougher/toughercommon/baf/GPARCHER_N10.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O11.baf~ ~ascension/tougher/toughercommon/baf/GPARCHER_N11.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O12.baf~ ~ascension/tougher/toughercommon/baf/GPARCHER_N12.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O13.baf~ ~ascension/tougher/toughercommon/baf/GPARCHER_N13.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O14.baf~ ~ascension/tougher/toughercommon/baf/GPARCHER_N14.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O15.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N1.baf~
-
-EXTEND_BOTTOM ~GPARCHER.bcs~ ~ascension/tougher/toughercommon/baf/GPARCHER_Bottom.baf~
-
-//GPMAGE1 - FYI, Doing this sucked xD
-COPY_EXISTING ~GPMAGE1.bcs~ ~override~
-
-//First, remove the extraneous code (otherwise we will double up IF-THENS and potentially break it)
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/strip1.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/strip2.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/strip3.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/strip4.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/strip5.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/strip6.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/strip7.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/strip8.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/strip9.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/strip10.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
-
-//Begin Regular R_B_B
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O1.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N1.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O2.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N2.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O3.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N3.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O4.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N4.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O5.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N5.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O6.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N6.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O7.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N7.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O8.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N8.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O9.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N9.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O10.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N10.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O11.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N11.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O12.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N12.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O13.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N13.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O14.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N14.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O15.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N15.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O16.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N16.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O17.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N17.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O18.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N18.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O19.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N19.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O20.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N20.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O21.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N21.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O22.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N22.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O23.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N23.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O24.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N24.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O25.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N25.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O26.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N26.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O27.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N27.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O28.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N28.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O29.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N29.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O30.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N30.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O31.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N31.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O32.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N32.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O33.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N33.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O34.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N34.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O35.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N35.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O36.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N36.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O37.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N37.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O38.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N38.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O39.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N39.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O40.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N40.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O41.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N41.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O42.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N42.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O43.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N43.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O44.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N44.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O45.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N45.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O46.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N46.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O47.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N47.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O48.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N48.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O49.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N49.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O50.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N50.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O51.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N51.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O52.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N52.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O53.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N53.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O54.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N54.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O55.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N55.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O56.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N56.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O57.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N57.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O58.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N58.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O59.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N59.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O60.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N60.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O61.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N61.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O62.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N62.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O63.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N63.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O64.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N64.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O65.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N65.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O66.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N66.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O67.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N67.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O68.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N68.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O69.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N69.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O70.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N70.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O71.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N71.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O72.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N72.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O73.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N73.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O74.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N74.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O75.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N75.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O76.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N76.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O77.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N77.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O78.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N78.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O79.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N79.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O80.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N80.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O81.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N81.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O82.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N82.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O83.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N83.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O84.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N84.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O85.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N85.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O86.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N86.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O87.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N87.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O88.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N88.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O89.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N89.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O90.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N90.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O91.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N91.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O92.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N92.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O93.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N93.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O94.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N94.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O95.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N95.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O96.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N96.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O97.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N97.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O98.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N98.baf~
+	INCLUDE ~ascension/lib/toughercommon.tpa~
 END
-
-COPY_EXISTING ~GPMERC.bcs~ ~override~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O1.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N1.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O2.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N2.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O3.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N3.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O4.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N4.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O5.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N5.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O6.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N6.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O7.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N7.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O8.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N8.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O9.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N9.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O10.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N10.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O11.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N11.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O12.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N1.baf~
-
-//Remove Extraneous Code
-R_B_B ~ascension/tougher/toughercommon/baf/strip2.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
-
-COPY_EXISTING ~GPTHIEF.bcs~ ~override~
-R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O1.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N1.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O2.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N2.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O3.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N3.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O4.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N4.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O5.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N5.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O6.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N6.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O7.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N7.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O8.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N8.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O9.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N1.baf~
 
 //GPMAGE2
 COPY_EXISTING ~GPMAGE2.bcs~ ~override~
@@ -1406,14 +1086,3 @@ COPY_EXISTING ~ar5203.are~ ~override~
 	END
 
 //End JediMindTrix Shennanigans
-
-//WA: Install DS_v3..
-BEGIN ~Detectable Spells v3~
-INSTALL_BY_DEFAULT
-REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~finbodhi.bcs~ ~Install Ascension before~
-
-OUTER_SPRINT path ~ascension/ds~ // change it to your mod folder
-INCLUDE ~%path%/ds.tph~
-
-LAF detectable_spells_setup STR_VAR path = EVALUATE_BUFFER ~%path%~ END
-LAF detectable_spells STR_VAR table = ~cddetect.2da~ END

@@ -3,7 +3,7 @@ IF
   Heard(NearestMyGroupOfType,ASSIST)
   See(LastHeardBy(Myself))
   !See(LastAttackerOf(LastHeardBy(Myself)))
-  !StateCheck(Lastheardby(Myself),STATE_REALLY_DEAD
+  !StateCheck(Lastheardby(Myself),STATE_REALLY_DEAD)
   !StateCheck(LastAttackerOf(LastHeardBy(Myself)),STATE_INVISIBLE)
   !StateCheck(LastAttackerOf(LastHeardBy(Myself)),STATE_IMPROVEDINVISIBILITY)
   !StateCheck(LastAttackerOf(LastHeardBy(Myself)),STATE_CHARMED)
