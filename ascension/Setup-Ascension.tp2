@@ -107,6 +107,8 @@ LANGUAGE ~Italian (Al17, Alessandro, Max, M.Inxes, Rahar and Stefano)~
 BEGIN @1
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
 
+COPY_EXISTING ~sw1h01.itm~ ~override/asc_main.flag~
+
 ///////////////////////////////////////////////////////////////////////
 // ARE files
 //
@@ -440,6 +442,9 @@ COPY ~ascension/epilogues~       ~override~
 BEGIN @3 // Abazigal
 //WA: Not tested, maybe some files will be overwritten...
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
+
+COPY_EXISTING ~sw1h01.itm~ ~override/asc_abazigal.flag~
+
 COPY ~ascension/tougher/abazigal/cre~ ~override~
 COPY ~ascension/tougher/abazigal/itm~ ~override~
 COPY ~ascension/tougher/abazigal/spl~ ~override~
@@ -501,6 +506,9 @@ BUT_ONLY
 BEGIN @4 // Demogorgon
 //WA: Not tested, maybe some files will be overwritten...
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
+
+COPY_EXISTING ~sw1h01.itm~ ~override/asc_demogorgon.flag~
+
 COPY_EXISTING ~demogor2.bcs~ ~override~
 R_B_B ~ascension/tougher/demogorgon/baf/demogor2_o1.baf~ ~ascension/tougher/demogorgon/baf/demogor2_n1.baf~
 R_B_B ~ascension/tougher/demogorgon/baf/demogor2_o2.baf~ ~ascension/tougher/demogorgon/baf/demogor2_n2.baf~
@@ -514,6 +522,8 @@ COPY ~ascension/tougher/demogorgon/spl~ ~override~
 
 BEGIN @5 // Gromnir
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
+
+COPY_EXISTING ~sw1h01.itm~ ~override/asc_gromnir.flag~
 
 //DIALOG SECTION
 COMPILE ~ascension/tougher/gromnir/d~
@@ -552,7 +562,7 @@ R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O12.baf~ ~ascension/tougher/to
 
 //Remove Extraneous Code
 R_B_B ~ascension/tougher/toughercommon/baf/strip2.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
-
+ACTION_IF !FILE_EXISTS ~override/asc_yagashura.flag~
 COPY_EXISTING ~GPHEALER.bcs~ ~override~
 R_B_B ~ascension/tougher/toughercommon/baf/GPHEALER_O1.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N3.baf~
 R_B_B ~ascension/tougher/toughercommon/baf/GPHEALER_O2.baf~ ~ascension/tougher/toughercommon/baf/GPHEALER_N2.baf~
@@ -693,7 +703,7 @@ R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O95.baf~ ~ascension/t
 R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O96.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N96.baf~
 R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O97.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N97.baf~
 R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O98.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N98.baf~
-
+END
 //Area Script
 COPY_EXISTING ~AR5002.bcs~ ~override~
 DECOMPILE_AND_PATCH BEGIN
@@ -728,6 +738,8 @@ END
 
 BEGIN @6 // Illasera
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
+
+COPY_EXISTING ~sw1h01.itm~ ~override/asc_illasera.flag~
 
 //Here we overwrite Illasera's script, because it's significantly more complex.
 COMPILE ~ascension/tougher/illasera/baf/overwrite~
@@ -1119,6 +1131,8 @@ COPY ~ascension/tougher/illasera/spl~ ~override~
 BEGIN @7 // Yaga-Shura
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
 
+COPY_EXISTING ~sw1h01.itm~ ~override/asc_yagashura.flag~
+
 //Dialog Compile
 COMPILE ~ascension/tougher/yagashura/D~
 
@@ -1150,6 +1164,7 @@ R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI_O14.baf~ ~ascension/tougher/yaga
 R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI_O15.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI_N15.baf~
 R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI_O16.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N1.baf~
 
+ACTION_IF !FILE_EXISTS ~override/asc_gromnir.flag~
 COPY_EXISTING ~GPHEALER.bcs~ ~override~
 R_B_B ~ascension/tougher/toughercommon/baf/GPHEALER_O1.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N3.baf~
 R_B_B ~ascension/tougher/toughercommon/baf/GPHEALER_O2.baf~ ~ascension/tougher/toughercommon/baf/GPHEALER_N2.baf~
@@ -1175,34 +1190,6 @@ R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O14.baf~ ~ascension/tougher/
 R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O15.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N1.baf~
 
 EXTEND_BOTTOM ~GPARCHER.bcs~ ~ascension/tougher/toughercommon/baf/GPARCHER_Bottom.baf~
-
-COPY_EXISTING ~GPMERC.bcs~ ~override~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O1.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N1.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O2.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N2.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O3.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N3.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O4.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N4.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O5.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N5.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O6.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N6.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O7.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N7.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O8.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N8.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O9.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N9.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O10.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N10.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O11.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N11.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O12.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N1.baf~
-
-//Remove Extraneous Code
-R_B_B ~ascension/tougher/toughercommon/baf/strip2.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
-
-COPY_EXISTING ~GPTHIEF.bcs~ ~override~
-R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O1.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N1.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O2.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N2.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O3.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N3.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O4.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N4.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O5.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N5.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O6.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N6.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O7.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N7.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O8.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N8.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O9.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N1.baf~
 
 //GPMAGE1 - FYI, Doing this sucked xD
 COPY_EXISTING ~GPMAGE1.bcs~ ~override~
@@ -1318,6 +1305,35 @@ R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O95.baf~ ~ascension/t
 R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O96.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N96.baf~
 R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O97.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N97.baf~
 R_B_B ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_O98.baf~ ~ascension/tougher/toughercommon/baf/GPMAGE1/GPMAGE1_N98.baf~
+END
+
+COPY_EXISTING ~GPMERC.bcs~ ~override~
+R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O1.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N1.baf~
+R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O2.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N2.baf~
+R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O3.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N3.baf~
+R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O4.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N4.baf~
+R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O5.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N5.baf~
+R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O6.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N6.baf~
+R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O7.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N7.baf~
+R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O8.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N8.baf~
+R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O9.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N9.baf~
+R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O10.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N10.baf~
+R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O11.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N11.baf~
+R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O12.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N1.baf~
+
+//Remove Extraneous Code
+R_B_B ~ascension/tougher/toughercommon/baf/strip2.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
+
+COPY_EXISTING ~GPTHIEF.bcs~ ~override~
+R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O1.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N1.baf~
+R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O2.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N2.baf~
+R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O3.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N3.baf~
+R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O4.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N4.baf~
+R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O5.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N5.baf~
+R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O6.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N6.baf~
+R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O7.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N7.baf~
+R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O8.baf~ ~ascension/tougher/toughercommon/baf/GPTHIEF_N8.baf~
+R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O9.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N1.baf~
 
 //GPMAGE2
 COPY_EXISTING ~GPMAGE2.bcs~ ~override~
