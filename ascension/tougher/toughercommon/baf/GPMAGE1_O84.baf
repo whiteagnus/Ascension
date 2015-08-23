@@ -1,0 +1,9 @@
+IF
+  !HasBounceEffects(Lastseenby(Myself))
+  Range(Lastseenby(Myself),5)
+  HaveSpell(WIZARD_BURNING_HANDS)
+  RandomNum(3,1)
+THEN
+  RESPONSE #100
+    Spell(Lastseenby(Myself),WIZARD_BURNING_HANDS)
+END

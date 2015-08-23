@@ -1,0 +1,7 @@
+IF
+  Gender(Lastseenby(Myself),SUMMONED)
+  HaveSpell(WIZARD_DEATH_SPELL)
+THEN
+  RESPONSE #100
+    Spell(Lastseenby(Myself),WIZARD_DEATH_SPELL)
+END

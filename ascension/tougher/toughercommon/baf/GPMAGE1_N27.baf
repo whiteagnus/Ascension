@@ -1,0 +1,10 @@
+IF
+  ActionListEmpty()
+  Gender(LastSeenBy(Myself),SUMMONED)
+  LevelLT(LastSeenBy(Myself),12)
+  RandomNum(2,1)
+  HaveSpell(WIZARD_DEATH_SPELL)
+THEN
+  RESPONSE #100
+    Spell(LastSeenBy(Myself),WIZARD_DEATH_SPELL)
+END

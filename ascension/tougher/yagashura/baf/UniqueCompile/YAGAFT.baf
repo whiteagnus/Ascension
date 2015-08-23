@@ -96,7 +96,7 @@ END
 IF
   ActionListEmpty()
   Heard(NearestMyGroupOfType,HEALME)
-  !Dead("astHeardBy(Myself))")
+  !StateCheck(LastHeardBy(Myself),STATE_DEAD)
   HPPercentGT(Myself,75)
   See(LastHeardBy(Myself))
   Range(LastHeardBy(Myself),10)
@@ -217,7 +217,7 @@ END
 
 IF
   Heard(NearestMyGroupOfType(Myself),ASSIST)
-  !Dead("astHeardBy(Myself))")
+  !StateCheck(LastHeardBy(Myself),STATE_DEAD)
   !StateCheck(LastAttackerOf(LastHeardBy(Myself)),STATE_INVISIBLE)
   !StateCheck(LastAttackerOf(LastHeardBy(Myself)),STATE_IMPROVEDINVISIBILITY)
   !StateCheck(LastAttackerOf(LastHeardBy(Myself)),STATE_CHARMED)

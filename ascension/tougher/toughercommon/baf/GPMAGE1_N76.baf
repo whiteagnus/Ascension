@@ -1,0 +1,11 @@
+IF
+  ActionListEmpty()
+  HaveSpell(WIZARD_ICE_STORM)
+  !Range(LastSeenBy(Myself),15)
+  NumCreatureGT([GOODCUTOFF],4)
+  !HasBounceEffects(LastSeenBy(Myself))
+  RandomNum(2,1)
+THEN
+  RESPONSE #100
+    Spell(LastSeenBy(Myself),WIZARD_ICE_STORM)
+END

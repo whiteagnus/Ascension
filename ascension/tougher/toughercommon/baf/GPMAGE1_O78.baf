@@ -1,0 +1,8 @@
+IF
+  HaveSpell(WIZARD_METEOR_SWARM)
+  !Range(Lastseenby(Myself),15)
+  RandomNum(2,1)
+THEN
+  RESPONSE #100
+    Spell(Lastseenby(Myself),WIZARD_METEOR_SWARM)
+END

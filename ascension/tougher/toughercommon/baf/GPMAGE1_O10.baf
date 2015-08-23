@@ -1,0 +1,19 @@
+IF
+  HaveSpell(WIZARD_SPELL_TURNING)
+  !GlobalTimerNotExpired("SpellDefense1_On","LOCALS")
+  GlobalLT("NumDefenses","LOCALS",2)
+  OR(5)
+    See(Nearestenemyoftype([ANYONE.GENERAL_ITEM.0.DRUID_ALL]))
+    See(Nearestenemyoftype([ANYONE.GENERAL_ITEM.0.BARD_ALL]))
+    See(Nearestenemyoftype([ANYONE.GENERAL_ITEM.0.CLERIC_ALL]))
+    See(Nearestenemyoftype([ANYONE.GENERAL_ITEM.0.LONG_BOW]))
+    See(Nearestenemyoftype([ANYONE.GENERAL_ITEM.0.SORCERER]))
+  !CheckStatGT(Myself,0,MINORGLOBE)
+  !HasBounceEffects(Myself)
+  !HasImmunityEffects(Myself)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("SpellDefense1_On","LOCALS",30)
+    IncrementGlobal("NumDefenses","LOCALS",1)
+    Spell(Myself,WIZARD_SPELL_TURNING)
+END

@@ -1,0 +1,9 @@
+IF
+  HaveSpell(WIZARD_FLESH_TO_STONE)
+  !HasBounceEffects(Lastseenby(Myself))
+  !Range(Lastseenby(Myself),5)
+  RandomNum(3,1)
+THEN
+  RESPONSE #100
+    Spell(Lastseenby(Myself),WIZARD_FLESH_TO_STONE)
+END

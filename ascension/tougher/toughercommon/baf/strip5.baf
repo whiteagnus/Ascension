@@ -1,0 +1,10 @@
+IF
+  SpellCastOnMe([GOODCUTOFF],WIZARD_TRUE_SIGHT)
+  SpellCastOnMe([GOODCUTOFF],CLERIC_TRUE_SIGHT)
+  SpellCastOnMe([GOODCUTOFF],INQUIS_TRUE_SIGHT)
+  GlobalTimerNotExpired("SpecialDefenseUp","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("SpecialDefenseUp","LOCALS",0)
+    IncrementGlobal("NumDefenses","LOCALS",-1)
+END
