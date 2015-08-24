@@ -42,6 +42,16 @@ ACTION_IF !FILE_EXISTS ~ascension/reinstall.mrk~ BEGIN
 		
 	LOAD_TRA ~ascension/tra/autotra/%LANGUAGE%/Setup.tra~
 
+///////////////////////////////////////////////////////////////////////
+// Detectable Spells v3
+///////////////////////////////////////////////////////////////////////
+
+OUTER_SPRINT path ~ascension/ds~ // change it to your mod folder
+INCLUDE ~%path%/ds.tph~
+
+LAF detectable_spells_setup STR_VAR path = EVALUATE_BUFFER ~%path%~ END
+LAF detectable_spells STR_VAR table = ~cddetect.2da~ END
+
 COPY_EXISTING ~sw1h01.itm~ ~ascension/reinstall.mrk~
 
 END	
@@ -108,17 +118,6 @@ BEGIN @1
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
 
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_main.flag~
-
-///////////////////////////////////////////////////////////////////////
-// Detectable Spells v3
-///////////////////////////////////////////////////////////////////////
-
-OUTER_SPRINT path ~ascension/ds~ // change it to your mod folder
-INCLUDE ~%path%/ds.tph~
-
-LAF detectable_spells_setup STR_VAR path = EVALUATE_BUFFER ~%path%~ END
-LAF detectable_spells STR_VAR table = ~cddetect.2da~ END
-
 
 ///////////////////////////////////////////////////////////////////////
 // ARE files
@@ -444,6 +443,12 @@ COPY ~ascension/epilogues~       ~override~
   REPLACE ~82712~ @82712
   REPLACE ~82713~ @82713
   
+///////////////////////////////////////////////////////////////////////
+// EE Journal Update
+///////////////////////////////////////////////////////////////////////
+
+ADD_JOURNAL @2000 @2001 @2002 @2003 @2004 @2005 @2006 @2007
+  
 //AT_INTERACTIVE_EXIT ~VIEW ascension\Ascension-WeiDU.txt~
 
 ///////////////////////////////////////////////////////////////////////
@@ -451,8 +456,7 @@ COPY ~ascension/epilogues~       ~override~
 ///////////////////////////////////////////////////////////////////////
 
 BEGIN @3 // TOUGHER ABAZIGAL
-//WA: Not tested, maybe some files will be overwritten...
-REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ AND FILE_EXISTS ~override/asc_main.flag~ @2 // ToB sanity check
+REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
 
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_abazigal.flag~
 
@@ -514,8 +518,7 @@ BUT_ONLY
 //WA: Maybe set the Icesalamander locations...
 
 BEGIN @4 // TOUGHER DEMOGORGON
-//WA: Not tested, maybe some files will be overwritten...
-REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ AND FILE_EXISTS ~override/asc_main.flag~ @2 // ToB sanity check
+REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
 
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_demogorgon.flag~
 
@@ -528,9 +531,8 @@ COPY ~ascension/tougher/demogorgon/cre~ ~override~
 COPY ~ascension/tougher/demogorgon/eff~ ~override~
 COPY ~ascension/tougher/demogorgon/spl~ ~override~
 
-//WA: These components are not down now...
 BEGIN @5 // TOUGHER GROMNIR
-REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ AND FILE_EXISTS ~override/asc_main.flag~ @2 // ToB sanity check
+REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_gromnir.flag~ //Set Install Flag
 
 //COMPILE Section
@@ -572,7 +574,7 @@ FOR( cnt=0; cnt<"%actors_num%"; cnt=cnt+1 ) BEGIN  //actors loop
 END
 
 BEGIN @6 // TOUGHER ILLASERA
-REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ AND FILE_EXISTS ~override/asc_main.flag~ @2 // ToB sanity check
+REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
 
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_illasera.flag~
 
@@ -599,7 +601,7 @@ COPY ~ascension/tougher/illasera/itm~ ~override~
 COPY ~ascension/tougher/illasera/spl~ ~override~
 
 BEGIN @7 // TOUGHER YAGA-SHURA
-REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ AND FILE_EXISTS ~override/asc_main.flag~ @2 // ToB sanity check
+REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_yagashura.flag~ //Creates install "flag"
 
 //Copy uniques and overwrites - as with all the 'toughers', the majority of the CRE's are extensively changed from their originals and thus it is more cost-effective (for my time) to overwrite rather than patch them into something unrecognizable from their original forms
@@ -610,7 +612,7 @@ COPY ~ascension/tougher/yagashura/cre~ ~override~
 INCLUDE ~ascension/lib/toughyagacre.tpa~
 
 //COMPILE Section
-COMPILE ~ascension/tougher/yagashura/BAF/UniqueCompile~ ~override~ //Compile Unique Scripts
+COMPILE ~ascension/tougher/yagashura/BAF/UniqueCompile~ //Compile Unique Scripts
 COMPILE ~ascension/tougher/yagashura/D~ //Compile .d File
 INCLUDE ~ascension/lib/toughyagabaf.tpa~ //Compile the mass of Yaga-shura specific R_B_B's
 
