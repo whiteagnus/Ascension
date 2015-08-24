@@ -1,0 +1,12 @@
+IF
+	See([PC])
+	Allegiance(Myself,ENEMY)
+	CheckStatLT(Myself,1,STONESKINS)
+	Global("Contingency1","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Contingency1","LOCALS",1)
+		FaceObject(LastSeenBy(Myself))
+		DisplayString(Myself,73139) // Contingency—Fired
+		ReallyForceSpell(Myself,WIZARD_STONE_SKIN) // SPWI408.SPL (Stoneskin)
+END

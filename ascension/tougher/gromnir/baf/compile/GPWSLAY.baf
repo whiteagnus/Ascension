@@ -227,7 +227,7 @@ IF
   OR(2)
   !Allegiance(LastSeenBy(Myself),GOODCUTOFF)
   !See([GOODCUTOFF])
-  Range(Player1,20)
+  !Range(Player1,20)
 THEN
   RESPONSE #100
     RandomWalkContinuous()
@@ -237,7 +237,7 @@ IF
   OR(2)
   !Allegiance(LastSeenBy(Myself),GOODCUTOFF)
   !See([GOODCUTOFF])
-  !Range(Player1,20)
+  Range(Player1,20)
 THEN
   RESPONSE #100
     MoveToObject(Player1)
