@@ -41,7 +41,7 @@ COPY_EXISTING ~GROMG03.cre~ ~override~
   ADD_CRE_ITEM ~SW1H01~ #0 #0 #0 ~None~ ~WEAPON2~
 BUT_ONLY
 
-COPY_EXISTING ~GROMG03.CRE~ ~override~
+COPY_EXISTING ~GROMG05.CRE~ ~override~
  WRITE_LONG 0x28 25104    //Animation: MAGE_FEMALE_HUMAN
  WRITE_SHORT 0x46 5       //Natural AC
  WRITE_SHORT 0x48 5       //Effective AC

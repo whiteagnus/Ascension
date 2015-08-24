@@ -209,7 +209,6 @@ COPY_EXISTING ~YAGA03.CRE~ ~override~
  WRITE_BYTE 0x274 20      //Specifics
  WRITE_ASCII 0x248 ~None~ #8 //Override Script
  WRITE_ASCII 0x268 ~GPKENSAI~ #8 //Default Script
- //WRITE_LONG 0x2b4 3       //# Memorized
  ADD_KNOWN_SPELL ~SPCL900~ #0 ~innate~
  ADD_MEMORIZED_SPELL ~SPCL900~ #0 ~innate~ (3)
  REMOVE_CRE_EFFECTS
