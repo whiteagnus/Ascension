@@ -299,7 +299,7 @@ BUT_ONLY
  
 COPY_EXISTING ~YAGA05.CRE~ ~override~
  WRITE_LONG 0x1c 120      //GP Carried
- WRITE_LONG 0x28 21265    //Animation
+ WRITE_LONG 0x28 25361    //Animation: THIEF_FEMALE_ELF
  WRITE_BYTE 0x2d 63       //Minor Color
  WRITE_BYTE 0x2e 63       //Major Color
  WRITE_BYTE 0x2f 108      //Skin Color
@@ -486,7 +486,7 @@ BUT_ONLY
 
 COPY_EXISTING ~YSSOLD02.cre~ ~override~
  WRITE_LONG 0x14 650      //XP For Kill
- WRITE_LONG 0x28 59440    //Animation
+ WRITE_LONG 0x28 59440    //Animation: ORC_RANGE4
  WRITE_BYTE 0x6e 0        //Unused Large Prof
  WRITE_BYTE 0x6f 0        //Unused Small Prof
  WRITE_BYTE 0x70 0        //Unused Bow Prof

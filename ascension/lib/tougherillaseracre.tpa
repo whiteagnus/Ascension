@@ -2,7 +2,7 @@ COPY_EXISTING ~ILLASERA.CRE~ ~override~
 	WRITE_LONG 	0x1c	500 		//Gold
 	WRITE_SHORT 0x24	228 		//Current HP
 	WRITE_SHORT 0x26	228 		//Maxmimum HP
-	WRITE_LONG 	0x28	20752 		//Animation: FIGHTER_FEMALE_HUMAN_LOW 
+	WRITE_LONG 	0x28	25345 		//Animation: FIGHTER_FEMALE_HUMAN 
 	WRITE_BYTE 	0x52	2			//THAC0
 	WRITE_BYTE 	0x53	3			//# attacks
 	WRITE_BYTE 	0x54	7 			//Save vs. death
@@ -35,11 +35,11 @@ COPY_EXISTING ~ILLASERA.CRE~ ~override~
 	REMOVE_CRE_EFFECTS
 	LPF ADD_CRE_EFFECT INT_VAR opcode = 233 parameter1 = 2 parameter2 = 105 timing = 9 END //Shortbow proficiency
 	LPF ADD_CRE_EFFECT INT_VAR opcode = 233 parameter1 = 2 parameter2 = 96 timing = 9 END //Dagger proficiency
-	LPF ADD_CRE_EFFECT INT_VAR opcode = 126 parameter1 = 5 parameter2 = 0 timing = 1 END //Movement rate bonus
-	LPF ADD_CRE_EFFECT INT_VAR opcode = 173 parameter1 = 50 parameter2 = 0 timing = 1 END //Poison resistance bonus
-	LPF ADD_CRE_EFFECT INT_VAR opcode = 193 target = 1 parameter1 = 0 parameter2 = 2 timing = 1 END //Invisibility detection
+	LPF ADD_CRE_EFFECT INT_VAR opcode = 126 parameter1 = 5 parameter2 = 0 timing = 9 END //Movement rate bonus
+	LPF ADD_CRE_EFFECT INT_VAR opcode = 173 parameter1 = 50 parameter2 = 0 timing = 9 END //Poison resistance bonus
+	LPF ADD_CRE_EFFECT INT_VAR opcode = 193 target = 1 parameter1 = 0 parameter2 = 2 timing = 9 END //Invisibility detection
 	PATCH_FOR_EACH effct IN 5 13 19 24 39 45 55 134 135 211 238 BEGIN
-	LPF ADD_CRE_EFFECT INT_VAR opcode = 101 parameter1 = 0 parameter2 = effct timing = 1 END
+	LPF ADD_CRE_EFFECT INT_VAR opcode = 101 parameter1 = 0 parameter2 = effct timing = 9 END
 	END //Immunity to effect: Disintegrate, Imprisonment, Polymorph, Petrification, Slay, Stun, Sleep, Panic, Intelligence bonus, Kill target, Charm creature 
 	REMOVE_CRE_ITEM ~HELMNOAN~ ~POTN52~ ~CHAN14~ ~DAGG15~ ~BOOT01~
 	ADD_CRE_ITEM ~ILLAS04~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~
@@ -61,7 +61,7 @@ COPY_EXISTING ~ZILARC01.CRE~ ~override~
 	WRITE_LONG 	0x1c	200				//Gold
 	WRITE_SHORT 0x24	142  			//Current HP
 	WRITE_SHORT 0x26	142  			//Maxmimum HP
-	WRITE_LONG 	0x28	20481 			//Animation: CLERIC_MALE_ELF_LOW
+	WRITE_LONG 	0x28	24577 			//Animation: CLERIC_MALE_ELF
 	WRITE_BYTE 	0x2c 	29 				//Metal Colour Index
 	WRITE_BYTE 	0x2d 	46 				//Minor Colour Index
 	WRITE_BYTE 	0x2e 	66 				//Major Colour Index
@@ -210,8 +210,8 @@ COPY_EXISTING ~ZILFGT01.cre~ ~override~
 	REMOVE_CRE_EFFECTS
 	LPF ADD_CRE_EFFECT INT_VAR opcode = 233 parameter1 = 5 parameter2 = 98 timing = 9 END
 	LPF ADD_CRE_EFFECT INT_VAR opcode = 233 parameter1 = 3 parameter2 = 111 timing = 9 END
-	LPF ADD_CRE_EFFECT INT_VAR opcode = 126 target = 0 parameter1 = 3 parameter2 = 0 timing = 1 END
-	LPF ADD_CRE_EFFECT INT_VAR opcode = 31 target = 0 parameter1 = 50 parameter2 = 0 timing = 1 END
+	LPF ADD_CRE_EFFECT INT_VAR opcode = 126 target = 0 parameter1 = 3 parameter2 = 0 timing = 9 END
+	LPF ADD_CRE_EFFECT INT_VAR opcode = 31 target = 0 parameter1 = 50 parameter2 = 0 timing = 9 END
 	REMOVE_CRE_ITEM ~DAGG02~ ~SW1H22~
 	ADD_CRE_ITEM  ~HELM15~ #0 #0 #0 ~NONE~ ~HELMET~
 	ADD_CRE_ITEM  ~PLAT01~ #0 #0 #0 ~NONE~ ~ARMOR~

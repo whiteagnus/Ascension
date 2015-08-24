@@ -539,6 +539,7 @@ COMPILE ~ascension/tougher/gromnir/baf/compile~ //Compile unique scripts
 
 // INCLUDE creature library
 INCLUDE ~ascension/lib/toughergromcre.tpa~
+COPY ~ascension/tougher/gromnir/cre~ ~override~
 COPY ~ascension/tougher/gromnir/itm~ ~override~
 COPY ~ascension/tougher/gromnir/spl~ ~override~
 
@@ -605,6 +606,7 @@ COPY_EXISTING ~sw1h01.itm~ ~override/asc_yagashura.flag~ //Creates install "flag
 COPY ~ascension/tougher/yagashura/ITM~ ~override~
 COPY ~ascension/tougher/yagashura/SPL/YAGWEAK.SPL~ ~override~
 COPY ~ascension/tougher/yagashura/SPL/yaga01.SPL~ ~override~ SAY 8 @1029
+COPY ~ascension/tougher/yagashura/cre~ ~override~
 INCLUDE ~ascension/lib/toughyagacre.tpa~
 
 //COMPILE Section

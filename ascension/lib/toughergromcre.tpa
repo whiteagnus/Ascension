@@ -42,7 +42,7 @@ COPY_EXISTING ~GROMG03.cre~ ~override
 BUT_ONLY
 
 COPY_EXISTING ~GROMNIR05.CRE~ ~override~
- WRITE_LONG 0x28 21008    //Animation
+ WRITE_LONG 0x28 25104    //Animation: MAGE_FEMALE_HUMAN
  WRITE_SHORT 0x46 5       //Natural AC
  WRITE_SHORT 0x48 5       //Effective AC
  WRITE_BYTE 0x6e 0        //Unused Large Prof
@@ -248,7 +248,7 @@ COPY_EXISTING ~GROMG08.cre~ ~override~
 BUT_ONLY
 
 COPY_EXISTING ~GROMG09.cre~ ~override~
- WRITE_LONG 0x28 21249    //Animation
+ WRITE_LONG 0x28 25345    //Animation: THIEF_MALE_ELF
  WRITE_SHORT 0x46 7       //Nat AC
  WRITE_SHORT 0x48 7       //Effective AC
  WRITE_BYTE 0x2d 63       //Minor Color
