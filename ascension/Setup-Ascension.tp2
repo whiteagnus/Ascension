@@ -517,12 +517,7 @@ BUT_ONLY
 //WA: Maybe set the Icesalamander locations...
 
 BEGIN @4 // TOUGHER DEMOGORGON
-<<<<<<< HEAD
-REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ AND FILE_EXISTS ~override/asc_main.flag~ @2 // ToB sanity check
-COPY_EXISTING ~sw1h01.itm~ ~override/asc_demogorgon.flag~ //Set Install Flag
-=======
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
->>>>>>> origin/master
 
 INCLUDE ~ascension/lib/tougherdemo2.tpa~ //Creature and Script Patching Library
 COPY ~ascension/tougher/demogorgon/eff~ ~override~
