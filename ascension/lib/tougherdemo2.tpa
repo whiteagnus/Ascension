@@ -1,11 +1,12 @@
 //DEMOGORGON CREATURE PATCH
 COPY_EXISTING ~DEMOGOR2.CRE~
- WRITE_BYTE 0x5e 127      //Magic Fire Resist
- WRITE_BYTE 0x5f 50       //Magic Cold Resist
- WRITE_BYTE 0x60 99       //Slashing Resist
- WRITE_BYTE 0x61 99       //Crushing Resist
- WRITE_BYTE 0x62 99       //Piercing Resist
- WRITE_BYTE 0x63 99       //Resist Missile
+ WRITE_BYTE 0x6e 0        //Unused Large Prof
+ WRITE_BYTE 0x6f 0        //Unused Small Prof
+ WRITE_BYTE 0x70 0        //Unused Bow Prof
+ WRITE_BYTE 0x71 0        //Unused Spear Prof
+ WRITE_BYTE 0x72 0        //Unused Blunt Prof
+ WRITE_BYTE 0x73 0        //Unused Spiked Prof
+ WRITE_BYTE 0x74 0        //Unused Axe Prof 
  WRITE_BYTE 0x235 0       //Highest Level 2nd Class
  WRITE_BYTE 0x236 0       //Highest Level 3rd Class
  REMOVE_CRE_EFFECTS
@@ -75,7 +76,7 @@ COPY_EXISTING ~DEMOGOR2.CRE~
    timing = 9 
   END 
   
-//DEMOGOR2.BAF Patch
+//DEMOGOR2.BAF SCRIPT PATCHING
 COPY_EXISTING ~demogorg2.bcs~ ~override~
 R_B_B ~ascension/tougher/demogorgon/baf/strip1.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON2.baf~
 
@@ -87,6 +88,7 @@ R_B_B ~ascension/tougher/demogorgon/baf/demogorg2_o5.baf~ ~ascension/tougher/dem
 R_B_B ~ascension/tougher/demogorgon/baf/demogorg2_o6.baf~ ~ascension/tougher/demogorgon/baf/demogorg2_n6.baf~
 R_B_B ~ascension/tougher/demogorgon/baf/demogorg2_o7.baf~ ~ascension/tougher/demogorgon/baf/demogorg2_n7.baf~
 
+//DEMOGORGON SPELL PATCHING
 COPY_EXISTING ~BEGUILE.SPL~ ~override~ //Charm party member
 DELETE_SPELL_EFFECT
 INT_VAR
