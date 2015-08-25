@@ -249,8 +249,9 @@ BUT_ONLY
 
 COPY_EXISTING ~GROMG09.cre~ ~override~
  WRITE_LONG 0x28 25345    //Animation: THIEF_MALE_ELF
- WRITE_SHORT 0x46 7       //Nat AC
- WRITE_SHORT 0x48 7       //Effective AC
+ WRITE_LONG 0x244 16384   //Change Kit To True Class
+ WRITE_SHORT 0x46 6       //Nat AC
+ WRITE_SHORT 0x48 6       //Effective AC
  WRITE_BYTE 0x2d 63       //Minor Color
  WRITE_BYTE 0x2e 46       //Major Color
  WRITE_BYTE 0x2f 14       //Skin Color
@@ -379,8 +380,8 @@ COPY_EXISTING ~GROMNIR.cre~ ~override~
  WRITE_LONG 0x244 16385   //Kit Overwrite
  WRITE_SHORT 0x24 240     //Current HP
  WRITE_SHORT 0x26 240     //Maximum HP
- WRITE_SHORT 0x46 6       //Nat AC
- WRITE_SHORT 0x48 6       //Effective AC
+ WRITE_SHORT 0x46 8       //Nat AC
+ WRITE_SHORT 0x48 8       //Effective AC
  WRITE_BYTE 0x5d 25       //Magic Resist
  WRITE_BYTE 0x5e 50       //Magic Fire Resist
  WRITE_BYTE 0x5f 50       //Magic Cold Resist
