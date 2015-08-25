@@ -173,5 +173,6 @@ R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O11.baf~ ~ascension/tougher/to
 R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O12.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N1.baf~
 
 //SPSEQ12A
+COPY_EXISTING ~SPSEQ12A.bcs~ ~override~
 R_B_B ~ascension/tougher/toughercommon/baf/SPSEQ12A_O1.baf~ ~ascension/tougher/toughercommon/baf/SPSEQ12A_N1.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/SPSEQ12A_O1.baf~ ~ascension/tougher/toughercommon/baf/SPSEQ12A_N2.baf~
+R_B_B ~ascension/tougher/toughercommon/baf/SPSEQ12A_O2.baf~ ~ascension/tougher/toughercommon/baf/SPSEQ12A_N2.baf~
