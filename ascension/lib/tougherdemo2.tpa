@@ -16,7 +16,7 @@ COPY_EXISTING ~DEMOGOR2.CRE~
    target = 0 
    parameter1 = 0 
    parameter2 = 1 
-   timing = 1 
+   timing = 1
   END 
  LPF ADD_CRE_EFFECT INT_VAR //Invisibility detection
    opcode = 193 
@@ -45,7 +45,7 @@ COPY_EXISTING ~DEMOGOR2.CRE~
    target = 0 
    parameter1 = 10
    parameter2 = 2 
-   timing = 1 
+   timing = 1  
   END 
  LPF ADD_CRE_EFFECT INT_VAR //Casting Speed Mod
    opcode = 189 
@@ -96,76 +96,76 @@ opcode_to_delete = 177
 END
 
 COPY_EXISTING ~DEMOCHM.SPL~ ~override~ //Demogorgon Tanar'ri Charm
-LPF DELETE_SPELL_EFFECT //177
-INT_VAR
-opcode_to_delete = 177
-END
+ LPF DELETE_SPELL_EFFECT //177
+ INT_VAR
+  opcode_to_delete = 177
+ END
 
-LPF ADD_SPELL_EFFECT
-INT_VAR
-opcode = 177
-target = 2
-timing = 4
-parameter1 = 5
-parameter2 = 160
-resist_dispel = 2
-duration = 1
-probability1 = 100
-insert_point = 5
-resource = POOL1a10
-END
+ LPF ADD_SPELL_EFFECT
+ INT_VAR
+  opcode = 177
+  target = 2
+  timing = 4
+  parameter1 = 5
+  parameter2 = 160
+  resist_dispel = 2
+  duration = 1
+  probability1 = 100
+  insert_point = -1
+  resource = POOL1a10
+ END
 
 COPY_EXISTING ~SPIN548.SPL~ ~override~ //Demogorgon's Gate
-LPF DELETE_SPELL_EFFECT //177
-INT_VAR
-opcode_to_delete = 177
-END
+ LPF DELETE_SPELL_EFFECT //177
+ INT_VAR
+  opcode_to_delete = 177
+ END
+
+ LPF ADD_SPELL_EFFECT
+  opcode = 177
+  target = 1
+  parameter1 = 2
+  resist_dispel = 0
+  duration = 2400
+  probability1 = 50
+  resource = DLAB01
+  insert_point = 0
+ END
 
 LPF ADD_SPELL_EFFECT
-opcode = 177
-target = 1
-parameter1 = 2
-resist_dispel = 0
-duration = 2400
-probability1 = 50
-resource = DLAB01
-insert_point = 0
-END
+  opcode = 177
+  target = 1
+  parameter1 = 2
+  resist_dispel = 0
+  duration = 2400
+  probability1 = 50
+  resource = DLAB01
+  insert_point = 1
+ END
 
-LPF ADD_SPELL_EFFECT
-opcode = 177
-target = 1
-parameter1 = 2
-resist_dispel = 0
-duration = 2400
-probability1 = 50
-resource = DLAB01
-insert_point = 1
-END
+ LPF ADD_SPELL_EFFECT
+  opcode = 177
+  target = 1
+  parameter1 = 2
+  resist_dispel = 0
+  duration = 2400
+  probability1 = 80
+  probability2 = 51
+  resource = DEMOSUM1
+  insert_point = 2
+ END
 
-LPF ADD_SPELL_EFFECT
-opcode = 177
-target = 1
-parameter1 = 2
-resist_dispel = 0
-duration = 2400
-probability1 = 80
-probability2 = 51
-resource = DEMOSUM1
-insert_point = 2
-END
-
-LPF ADD_SPELL_EFFECT
-opcode = 177
-target = 1
-parameter1 = 2
-resist_dispel = 0
-duration = 2400
-probability1 = 100
-probability2 = 81
-resource = DEMOSUM2
-insert_point = 3
-END
+ LPF ADD_SPELL_EFFECT
+  opcode = 177
+  target = 1
+  parameter1 = 2
+  resist_dispel = 0
+  duration = 2400
+  probability1 = 100
+  probability2 = 81
+  resource = DEMOSUM2
+  insert_point = 3
+ END
 
 COPY_EXISTING ~SPIN549.SPL~ ~override~   //Summon the Infernal Host
 WRITE_LONG 0x08 Summon the Infernal Host //Spell name
@@ -173,105 +173,105 @@ WRITE_ASCII 0x10 ~CAS_M03~ #8            //Casting Sound
 WRITE_SHORT 0x18 0                       //Set spell flags to zero (none)
 WRITE_SHORT 0x22 22                      //Casting Graphics
 
-LPF ALTER_SPELL_HEADER                   //<----- WHITEAGNUS PLEASE LOOK AT THIS
-INT_VAR
-speed = 12
-END
+ LPF ALTER_SPELL_HEADER                   //<----- WHITEAGNUS PLEASE LOOK AT THIS
+ INT_VAR
+  speed = 12
+ END
 
-LPF ALTER_SPELL_EFFECT
-INT_VAR
-check_globals = 1
-match_opcode = 215
-parameter1 = 1
-duration = 4
-resource = SPSUMGTE
-END
+ LPF ALTER_SPELL_EFFECT
+ INT_VAR
+  check_globals = 1
+  match_opcode = 215
+  parameter1 = 1
+  duration = 4
+  resource = SPSUMGTE
+ END
 
-LPF ALTER_SPELl_EFFECT
-INT_VAR
-check_globals = 1
-match_opcode = 17
-new_opcode = 174
-target = 2
-parameter1 = 0
-parameter2 = 0
-timing = 0
-resist_dispel = 2
-duration = 4
-dicesize = 0
-resource = PRE_P06
-END
+ LPF ALTER_SPELl_EFFECT
+ INT_VAR
+  check_globals = 1
+  match_opcode = 17
+  new_opcode = 174
+  target = 2
+  parameter1 = 0
+  parameter2 = 0
+  timing = 0
+  resist_dispel = 2
+  duration = 4
+  dicesize = 0
+  resource = PRE_P06
+ END
 
-LPF ALTER_SPELL_EFFECT
-INT_VAR
-check_globals = 1
-match_opcode = 166
-new_opcode = 174
-target = 2
-parameter1 = 0
-parameter2 = 0
-timing = 5
-resist_dispel = 0
-duration = 4
-resource = EFF_P90
-END
+ LPF ALTER_SPELL_EFFECT
+ INT_VAR
+  check_globals = 1
+  match_opcode = 166
+  new_opcode = 174
+  target = 2
+  parameter1 = 0
+  parameter2 = 0
+  timing = 5
+  resist_dispel = 0
+  duration = 4
+  resource = EFF_P90
+ END
 
-LPF DELETE_SPELL_EFFECT
-INT_VAR
-opcode_to_delete = 177
-END
+ LPF DELETE_SPELL_EFFECT
+ INT_VAR
+  opcode_to_delete = 177
+ END
 
-LPF ADD_SPELL_EFFECT
-INT_VAR
-opcode = 177
-target = 1
-parameter1 = 2
-resist_dispel = 2
-duration = 2400
-probability1 = 100
-resource = DEMOSUM1
-END
+ LPF ADD_SPELL_EFFECT
+ INT_VAR
+  opcode = 177
+  target = 1
+  parameter1 = 2
+  resist_dispel = 2
+  duration = 2400
+  probability1 = 100
+  resource = DEMOSUM1
+ END
 
-LPF ADD_SPELL_EFFECT
-INT_VAR
-opcode = 177
-target = 1
-parameter1 = 2
-resist_dispel = 2
-duration = 2400
-probability1 = 100
-resource = DEMOSUM2
-END
+ LPF ADD_SPELL_EFFECT
+ INT_VAR
+  opcode = 177
+  target = 1
+  parameter1 = 2
+  resist_dispel = 2
+  duration = 2400
+  probability1 = 100
+  resource = DEMOSUM2
+ END
 
-LPF ADD_SPELL_EFFECT
-INT_VAR
-opcode = 177
-target = 1
-parameter1 = 2
-dispel_resist = 2
-duration = 2400
-probability1 = 100
-resource = DEMOSUM3
-END
+ LPF ADD_SPELL_EFFECT
+ INT_VAR
+  opcode = 177
+  target = 1
+  parameter1 = 2
+  dispel_resist = 2
+  duration = 2400
+  probability1 = 100
+  resource = DEMOSUM3
+ END
 
-LPF ADD_SPELL_EFFECT
-INT_VAR
-opcode = 177
-target = 1
-parameter1 = 2
-dispel_resist = 2
-duration = 2400
-probability = 100
-resource = DEMOSUM3
-END
+ LPF ADD_SPELL_EFFECT
+ INT_VAR
+  opcode = 177
+  target = 1
+  parameter1 = 2
+  dispel_resist = 2
+  duration = 2400
+  probability = 100
+  resource = DEMOSUM3
+ END
 
-LPF ADD_SPELL_EFFECT
-INT_VAR
-opcode = 177
-target = 1
-parameter1 = 2
-dispel_resist = 2
-duration = 2400
-probability1 = 100
-resource = DEMOSUM4
-END
+ LPF ADD_SPELL_EFFECT
+ INT_VAR
+  opcode = 177
+  target = 1
+  parameter1 = 2
+  dispel_resist = 2
+  duration = 2400
+  probability1 = 100
+  resource = DEMOSUM4
+ END
