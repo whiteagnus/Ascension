@@ -74,7 +74,8 @@ COPY_EXISTING ~DEMOGOR2.CRE~
    parameter1 = 0
    parameter2 = 0 
    timing = 9 
-  END 
+  END
+BUT_ONLY
   
 //DEMOGOR2.BAF SCRIPT PATCHING
 COPY_EXISTING ~demogorg2.bcs~ ~override~
@@ -90,10 +91,11 @@ R_B_B ~ascension/tougher/demogorgon/baf/demogorg2_o7.baf~ ~ascension/tougher/dem
 
 //DEMOGORGON SPELL PATCHING
 COPY_EXISTING ~BEGUILE.SPL~ ~override~ //Charm party member
-DELETE_SPELL_EFFECT
-INT_VAR
-opcode_to_delete = 177 
-END
+ DELETE_SPELL_EFFECT
+ INT_VAR
+  opcode_to_delete = 177 
+ END
+BUT_ONLY
 
 COPY_EXISTING ~DEMOCHM.SPL~ ~override~ //Demogorgon Tanar'ri Charm
  LPF DELETE_SPELL_EFFECT //177
@@ -114,6 +116,7 @@ COPY_EXISTING ~DEMOCHM.SPL~ ~override~ //Demogorgon Tanar'ri Charm
   insert_point = -1
   resource = POOL1a10
  END
+BUT_ONLY
 
 COPY_EXISTING ~SPIN548.SPL~ ~override~ //Demogorgon's Gate
  LPF DELETE_SPELL_EFFECT //177
@@ -166,12 +169,13 @@ LPF ADD_SPELL_EFFECT
   resource = DEMOSUM2
   insert_point = 3
  END
+BUT_ONLY
 
 COPY_EXISTING ~SPIN549.SPL~ ~override~   //Summon the Infernal Host
-WRITE_LONG 0x08 Summon the Infernal Host //Spell name
-WRITE_ASCII 0x10 ~CAS_M03~ #8            //Casting Sound
-WRITE_SHORT 0x18 0                       //Set spell flags to zero (none)
-WRITE_SHORT 0x22 22                      //Casting Graphics
+ WRITE_LONG 0x08 Summon the Infernal Host //Spell name
+ WRITE_ASCII 0x10 ~CAS_M03~ #8            //Casting Sound
+ WRITE_SHORT 0x18 0                       //Set spell flags to zero (none)
+ WRITE_SHORT 0x22 22                      //Casting Graphics
 
  LPF ALTER_SPELL_HEADER                   //<----- WHITEAGNUS PLEASE LOOK AT THIS
  INT_VAR
@@ -275,3 +279,4 @@ WRITE_SHORT 0x22 22                      //Casting Graphics
   probability1 = 100
   resource = DEMOSUM4
  END
+BUT_ONLY

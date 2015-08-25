@@ -462,41 +462,11 @@ COPY_EXISTING ~sw1h01.itm~ ~override/asc_abazigal.flag~
 COPY ~ascension/tougher/abazigal/cre~ ~override~
 COPY ~ascension/tougher/abazigal/itm~ ~override~
 COPY ~ascension/tougher/abazigal/spl~ ~override~
-COPY ~ascension/tougher/abazigal/spl/string/balortk2.spl~ ~override~
-  SAY 8 @1009
+COPY ~ascension/spl/balortk2.SPL~ ~override/balortk2.spl~ SAY 8 @1009
 COMPILE ~ascension/tougher/abazigal/baf/compile~
-				
-COPY_EXISTING ~abaz2.bcs~ ~override~
-DECOMPILE_AND_PATCH BEGIN
-REPLACE_TEXTUALLY ~!GlobalTimerNotExpired("Hardiness","LOCALS")~ ~See(NearestEnemyOf(Myself)) !GlobalTimerNotExpired("Hardiness","LOCALS")~
-REPLACE_TEXTUALLY ~See(LastAttackerOf(Myself))~ ~See(LastAttackerOf(Myself)) !CheckStatGT(LastSeenBy(Myself),25,INT) !Gender(LastSeenBy(Myself),ILLUSIONARY)~
-REPLACE_TEXTUALLY ~Range(NearestEnemyOf(Myself),4)[%TAB% %LNL%%MNL%%WNL%]+See(NearestEnemyOf(Myself))~ ~Range(NearestEnemyOf(Myself),4) See(NearestEnemyOf(Myself)) !CheckStatGT(LastSeenBy(Myself),25,INT) !Gender(LastSeenBy(Myself),ILLUSIONARY)~
-REPLACE_TEXTUALLY ~AttackReevaluate(LastSeenBy(Myself),45)~ ~~
-REPLACE_TEXTUALLY ~True()~ ~GlobalTimerNotExpired("KaiAttack","LOCALS") !HPPercentLT(Myself,50) RandomNum(2,1)~
-REPLACE_TEXTUALLY ~EquipMostDamagingMelee()~ ~~
-END
-R_B_B ~ascension/tougher/abazigal/baf/abaz2_o1.baf~ ~ascension/tougher/abazigal/baf/abaz2_n1.baf~
 
-EXTEND_BOTTOM ~abaz2.bcs~ ~ascension/tougher/abazigal/baf/abaz2_bottom.baf~
-
-COPY_EXISTING ~ABAZDRAG.bcs~ ~override~
-DECOMPILE_AND_PATCH BEGIN
-REPLACE_TEXTUALLY ~SetGlobalTimer("WINGBUFFET","LOCALS",8)[%TAB% %LNL%%MNL%%WNL%]+ForceSpell(NearestEnemyOf(Myself),DRAGON_WING_BUFFET)[%TAB% %LNL%%MNL%%WNL%]+Wait(1)~ ~SetGlobalTimer("WINGBUFFET","LOCALS",8) ForceSpell(NearestEnemyOf(Myself),DRAGON_WING_BUFFET) Wait(1) ApplySpell(Myself,0)~
-REPLACE_TEXTUALLY ~!CheckStatGT(Myself,0,STONESKINS)~ ~~
-REPLACE_TEXTUALLY ~True()~ ~ActionListEmpty() !HPPercentLT(Myself,40)~
-REPLACE_TEXTUALLY ~EquipMostDamagingMelee()~ ~~
-END
-R_B_B ~ascension/tougher/abazigal/baf/ABAZDRAG_o1.baf~ ~ascension/tougher/abazigal/baf/ABAZDRAG_n1.baf~
-R_B_B ~ascension/tougher/abazigal/baf/ABAZDRAG_o2.baf~ ~ascension/tougher/abazigal/baf/ABAZDRAG_n2.baf~
-
-EXTEND_BOTTOM ~ABAZDRAG.bcs~ ~ascension/tougher/abazigal/baf/ABAZDRAG_bottom.baf~
-
-COPY_EXISTING ~ar6005.bcs~ ~override~
-DECOMPILE_AND_PATCH BEGIN
-REPLACE_TEXTUALLY ~Dead("Abazigal")~ ~Dead("Abazigal") CombatCounter(0)~
-END
-
-EXTEND_TOP ~ar6005.bcs~ ~ascension/tougher/abazigal/baf/ar6005_Top.baf~
+//INCLUDE Abazigal Patching
+INCLUDE ~ascension/lib/tougherabazigal.tpa~
 
 COPY_EXISTING ~ar6005.are~ ~override~
 	READ_LONG  0x54  "actors_offset"
@@ -514,7 +484,6 @@ COPY_EXISTING ~ar6005.are~ ~override~
   	END
 	END
 BUT_ONLY
-//WA: Maybe set the Icesalamander locations...
 
 BEGIN @4 // TOUGHER DEMOGORGON
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check

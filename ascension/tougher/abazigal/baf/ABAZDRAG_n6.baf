@@ -1,0 +1,18 @@
+IF
+  ActionListEmpty()
+  RandomNum(3,1)
+  !GlobalTimerNotExpired("dbDispel","LOCALS")
+  !StateCheck(LastSeenBy(Myself),STATE_SILENCED)
+  !StateCheck(LastSeenBy(Myself),STATE_STUNNED)
+  !StateCheck(LastSeenBy(Myself),STATE_SLEEPING)
+  OR(5)
+    StateCheck(LastSeenBy(Myself),STATE_HASTED)
+    StateCheck(LastSeenBy(Myself),STATE_BLESS)
+    StateCheck(LastSeenBy(Myself),STATE_DRAWUPONHOLYMIGHT)
+    CheckStatGT(LastSeenBy(Myself),0,0)
+    CheckStatGT(LastSeenBy(Myself),0,0)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("dbDispel","LOCALS",60)
+    ForceSpell(LastSeenBy(Myself),WIZARD_DISPEL_MAGIC)
+END

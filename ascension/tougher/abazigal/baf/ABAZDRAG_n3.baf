@@ -1,0 +1,77 @@
+IF
+  CheckStatGT(LastSeenBy(Myself),4,NUMBEROFATTACKS)
+  !StateCheck(LastSeenBy(Myself),STATE_STUNNED)
+  !StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+  Range(LastSeenBy(Myself),10)
+  RandomNum(2,1)
+  !GlobalTimerNotExpired("SlowDown","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("SlowDown","LOCALS",12)
+    ForceSpell(LastSeenBy(Myself),WIZARD_MAZE)
+  RESPONSE #100
+    SetGlobalTimer("SlowDown","LOCALS",18)
+    ForceSpell(LastSeenBy(Myself),WIZARD_BIGBYS_CLENCHED_FIST)
+END
+
+IF
+  Gender(LastSeenBy(Myself),SUMMONED)
+  CheckStatGT(LastSeenBy(Myself),90,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),90,MAGICDAMAGERESISTANCE)
+  RandomNum(2,1)
+  !GlobalTimerNotExpired("Mordenkainen","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Mordenkainen","LOCALS",6)
+    ForceSpell(LastSeenBy(Myself),WIZARD_MAGIC_MISSILE)
+  RESPONSE #100
+    SetGlobalTimer("Mordenkainen","LOCALS",6)
+    ForceSpell(LastSeenBy(Myself),WIZARD_DISINTEGRATE)
+END
+
+IF
+  ActionListEmpty()
+  Gender(LastSeenBy(Myself),SUMMONED)
+  !CheckStatGT(LastSeenBy(Myself),25,INT)
+  !LevelGT(LastSeenBy(Myself),12)
+  RandomNum(2,1)
+  !GlobalTimerNotExpired("Death","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Death","LOCALS",30)
+    ForceSpell(LastSeenBy(Myself),WIZARD_DEATH_SPELL)
+END
+
+IF
+  ActionListEmpty()
+  OR(2)
+  StateCheck(LastSeenBy(Myself),STATE_HASTED)
+  CheckStatGT(LastSeenBy(Myself),4,NUMBEROFATTACKS)
+  CheckStatGT(LastSeenBy(Myself),17,STR)
+  HPPercentLT(Myself,100)
+  !StateCheck(LastSeenBy(Myself),STATE_STUNNED)
+  !StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+  Range(LastSeenBy(Myself),10)
+  Global("Imprison","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("Imprison","LOCALS",1)
+    ForceSpell(LastSeenBy(Myself),WIZARD_IMPRISONMENT)
+END
+
+IF
+  ActionListEmpty()
+  OR(6)
+  Gender(LastSeenBy(Myself),ILLUSIONARY)
+  SpellCast([PC],WIZARD_PROJECT_IMAGE)
+  SpellCast([PC],WIZARD_SIMULACRUM)
+  SpellCast([PC],WIZARD_MISLEAD)
+  StateCheck(LastSeenBy(Myself),STATE_BLUR)
+  StateCheck(LastSeenBy(Myself),STATE_MIRRORIMAGE)
+  !GlobalTimerNotExpired("TrueSight","LOCALS")
+  RandomNum(3,1)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("TrueSight","LOCALS",30)
+    ForceSpell(Myself,WIZARD_TRUE_SIGHT)
+END
