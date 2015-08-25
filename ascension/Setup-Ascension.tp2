@@ -1,0 +1,641 @@
+/*************************************************************************
+ * Ascension v1.4
+ *
+ * http://www.cs.berkeley.edu/~weimer/bgate
+ *
+ * Special Note: the last string index in ToB (pre Ascension) is #74107
+ *************************************************************************/
+BACKUP ~ascension/backup~ // where should we put backup files? 
+// where should tell the user to send email if something goes wrong? 
+//AUTHOR "weimer@cs.berkeley.edu (http://weidu.org/)"
+AUTHOR "Nobody, this version is for modders only"
+
+VERSION ~v1.5b_20150823~
+
+AUTO_TRA "ascension/tra/autotra/%s"//%"
+
+ALWAYS
+
+//WA: Added Autotra Workaround by jastey (thank you) and HANDLE_CHARSETS
+
+ACTION_IF !FILE_EXISTS ~ascension/reinstall.mrk~ BEGIN
+
+	DEFINE_ACTION_FUNCTION autotra_workaround BEGIN
+		COPY ~ascension/tra/%LANGUAGE%~ ~ascension/tra/autotra/%LANGUAGE%~
+	END
+
+	LAF autotra_workaround END
+
+
+	ACTION_DEFINE_ARRAY tra#reload BEGIN ascension END
+	ACTION_DEFINE_ARRAY tra#noconvert BEGIN END
+
+	LAF HANDLE_CHARSETS
+		INT_VAR
+			infer_charset = 1
+		STR_VAR
+			tra_path = EVAL ~ascension/tra/autotra~
+			noconvert_array = tra#noconvert
+			reload_array = tra#reload
+			iconv_path = ~ascension/tools/iconv~
+	END
+		
+	LOAD_TRA ~ascension/tra/autotra/%LANGUAGE%/Setup.tra~
+
+///////////////////////////////////////////////////////////////////////
+// Detectable Spells v3
+///////////////////////////////////////////////////////////////////////
+
+OUTER_SPRINT path ~ascension/ds~ // change it to your mod folder
+INCLUDE ~%path%/ds.tph~
+
+LAF detectable_spells_setup STR_VAR path = EVALUATE_BUFFER ~%path%~ END
+LAF detectable_spells STR_VAR table = ~cddetect.2da~ END
+
+COPY_EXISTING ~sw1h01.itm~ ~ascension/reinstall.mrk~
+
+END	
+
+END
+
+///////////////////////////////////////////////////////////////////////
+// Language Options
+//
+// This section is optional. If you list more than one language, the
+// user gets a choice. The first argument is the name of the language
+// as presented to the user, the second is the translation directory
+// name, and any others are translation files that should be loaded
+// immediately (e.g., because they contain the translated names of the
+// modules the user will install). 
+///////////////////////////////////////////////////////////////////////
+LANGUAGE ~American English~    
+         ~american~ 
+         ~ascension/tra/autotra/american/ascension.tra~
+
+LANGUAGE ~Deutsche Sprache (sbersetzung durch Dyara & Falk Swoboda)~
+         ~german~ 
+         ~ascension/tra/autotra/german/ascension.tra~
+
+LANGUAGE ~Francais (traduction de Ly Meng)~
+         ~french~ 
+         ~ascension/tra/autotra/french/ascension.tra~
+
+LANGUAGE ~Traducción al Español (hecha por Clan REO)~ 
+        ~spanish~
+        ~ascension/tra/autotra/spanish/ascension.tra~
+
+LANGUAGE ~Chinese Translation (by kalabaka)~ 
+        ~chinese~
+        ~ascension/tra/autotra/chinese/ascension.tra~
+
+LANGUAGE ~Traditional Chinese Translation (by kalabaka)~ 
+        ~chinese~
+        ~ascension/tra/autotra/Traditional Chinese/ascension.tra~
+
+LANGUAGE ~Polski je;zyk (Przet?umaczony przez Damian Staniszewski)~ 
+        ~polski~
+        ~ascension/tra/autotra/polski/ascension.tra~
+
+LANGUAGE ~Russian (Pilferer, Serdrick, Aerie.ru)~ 
+         ~russian~
+         ~ascension/tra/autotra/russian/ascension.tra~
+
+LANGUAGE ~Cesky jazyk (Landor, Pan Baca)~ 
+         ~czech~
+         ~ascension/tra/autotra/czech/ascension.tra~
+
+LANGUAGE ~Italian (Al17, Alessandro, Max, M.Inxes, Rahar and Stefano)~ 
+         ~italian~
+         ~ascension/tra/autotra/italian/ascension.tra~
+
+         
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+// The Ascension
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+BEGIN @1
+REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
+
+COPY_EXISTING ~sw1h01.itm~ ~override/asc_main.flag~
+
+///////////////////////////////////////////////////////////////////////
+// ARE files
+//
+// The changes to ar5505 can be expressed as patches (they just change
+// a few things around), but ar6200 is a complete rewrite. 
+///////////////////////////////////////////////////////////////////////
+//WA: Changed to area patching instead of overwriting
+COPY_EXISTING ~ar6200.are~ ~override~
+	READ_LONG  0x54  "actors_offset"
+	READ_SHORT 0x58  "actors_num"
+
+	FOR( cnt=0; cnt<"%actors_num%"; cnt=cnt+1 ) BEGIN  //actors loop
+		READ_ASCII ("%actors_offset%"+0x110*cnt)       "actor_name" (13)
+		PATCH_IF (("%actor_name%" STRING_COMPARE_CASE "Melissan")=1) BEGIN
+			SET offset = ("%actors_offset%"+0x110*cnt)
+			WRITE_SHORT (offset+0x20) 1286         //X
+			WRITE_SHORT (offset+0x22) 1068         //Y
+			WRITE_SHORT (offset+0x24) 1286         //destination X
+			WRITE_SHORT (offset+0x26) 1068         //destination Y
+  	END
+	END
+	
+  LPF fj_are_structure
+    INT_VAR
+    fj_type         = 1
+    fj_box_left     = 1307
+    fj_box_top      = 627
+    fj_box_right    = 1322
+    fj_box_bottom   = 657
+    fj_cursor_idx   = 0
+    fj_vertex_0     = 1317 + (627 << 16)
+    fj_vertex_1     = 1307 + (657 << 16)
+    fj_vertex_2     = 1322 + (656<< 16)
+    fj_loc_x				= 1300
+    fj_loc_y				= 788
+    STR_VAR
+    fj_structure_type 	= region
+    fj_name             = ThroneC
+  END
+	LPF fj_are_structure
+    INT_VAR
+    fj_type         = 1
+    fj_box_left     = 1589
+    fj_box_top      = 1103
+    fj_box_right    = 1607
+    fj_box_bottom   = 1130
+    fj_cursor_idx   = 0
+    fj_vertex_0     = 1589 + (1129 << 16)
+    fj_vertex_1     = 1600 + (1103 << 16)
+    fj_vertex_2     = 1607 + (1130<< 16)
+    fj_loc_x				= 1300
+    fj_loc_y				= 980
+    STR_VAR
+    fj_structure_type 	= region
+    fj_name             = ThroneR
+  END
+	LPF fj_are_structure
+    INT_VAR
+    fj_type         = 1
+    fj_box_left     = 854
+    fj_box_top      = 993
+    fj_box_right    = 873
+    fj_box_bottom   = 1017
+    fj_cursor_idx   = 0
+    fj_vertex_0     = 854 + (1016 << 16)
+    fj_vertex_1     = 865 + (993 << 16)
+    fj_vertex_2     = 873 + (1017 << 16)
+    fj_loc_x				= 1044
+    fj_loc_y				= 980
+    STR_VAR
+    fj_structure_type 	= region
+    fj_name             = ThroneL
+  END
+BUT_ONLY
+
+COPY_EXISTING ~ar5505.are~                  ~override/ar5505.are~
+ READ_SHORT 0x5a  "infotrig_num"
+ READ_LONG  0x5c  "infotrig_offset"
+ 
+	FOR( cnt=0; cnt<"%infotrig_num%"; cnt=cnt+1 ) BEGIN
+		READ_ASCII ("%infotrig_offset%"+0xc4*cnt)       "infotrig_name" (8)
+		PATCH_IF (("%infotrig_name%" STRING_EQUAL "Tran5500")=1) BEGIN
+			SET offset = ("%infotrig_offset%"+0xc4*cnt)
+			WRITE_BYTE (offset+0x60) 4
+			WRITE_BYTE (offset+0x61) 2
+		END
+		READ_ASCII ("%infotrig_offset%"+0xc4*cnt)       "infotrig_name" (7)
+		PATCH_IF (("%infotrig_name%" STRING_EQUAL "ThroneR")=1) BEGIN
+			SET offset = ("%infotrig_offset%"+0xc4*cnt)
+			WRITE_SHORT (offset+0x22) 1385
+			WRITE_SHORT (offset+0x24) 679
+			WRITE_SHORT (offset+0x26) 1417
+			WRITE_SHORT (offset+0x28) 703
+  	END
+  	PATCH_IF (("%infotrig_name%" STRING_EQUAL "ThroneL")=1) BEGIN
+			SET offset = ("%infotrig_offset%"+0xc4*cnt)
+			WRITE_SHORT (offset+0x22) 344
+			WRITE_SHORT (offset+0x24) 1000
+			WRITE_SHORT (offset+0x26) 375
+			WRITE_SHORT (offset+0x28) 1041
+  	END
+	END
+BUT_ONLY
+
+///////////////////////////////////////////////////////////////////////
+// BCS Scripts 
+// 
+// Most of these are entirely new scripts. 
+// 
+// Wherever possible, however, modifictions to old scripts are presented as
+// EXTEND rather than COPY. This is especially true of AR4500 (the pocket
+// plane) and AR6200. Ascension does change the final fight in AR6200, but
+// you need to modify that script to add ToB Epilogues, so it should
+// be done in a friendly manner. 
+///////////////////////////////////////////////////////////////////////
+//WA: Changed overwriting files to R_B_B and REPLACE_TEXTUALLY instead, finsol04.bcs will be overwriten, to many changes...
+EXTEND_TOP ~ar4500.bcs~ 		~ascension/baf/ar4500.baf~
+EXTEND_TOP ~ar5505.bcs~         ~ascension/baf/ar5505.baf~
+EXTEND_TOP ~ar6200.bcs~         ~ascension/baf/ar6200.baf~
+EXTEND_TOP ~imoe25.bcs~         ~ascension/baf/imoe25.baf~
+EXTEND_TOP ~itpplane.bcs~       ~ascension/baf/itpplane.baf~
+EXTEND_TOP ~Sarev25.bcs~		~ascension/baf/Sarev25_Top.baf~
+EXTEND_BOTTOM ~Sarev25.bcs~		~ascension/baf/Sarev25_Bottom.baf~
+
+COPY_EXISTING ~ITfpool1.bcs~ ~override~
+R_B_B ~ascension/baf/ITfpool1_o.baf~ ~ascension/baf/ITfpool1_n.baf~
+
+COPY_EXISTING ~ITfpool2.bcs~ ~override~
+R_B_B ~ascension/baf/ITfpool2_o.baf~ ~ascension/baf/ITfpool2_n.baf~
+
+COPY_EXISTING ~ITfpool3.bcs~ ~override~
+R_B_B ~ascension/baf/ITfpool3_o.baf~ ~ascension/baf/ITfpool3_n.baf~
+
+COPY_EXISTING ~cut233g.bcs~ ~override~
+DECOMPILE_AND_PATCH BEGIN
+	REPLACE_TEXTUALLY ~SetGlobal("FinalFight","AR6200",8)[^!]*FadeToColor(\[20.0\],0)~ ~SetGlobal("FinalFight","AR6200",9) ActionOverride("finmel01",PlayDead(45)) Wait(2) FadeToColor([20.0],0)~
+	REPLACE_TEXTUALLY ~ReallyForceSpellRES("jwdeath",Player1)~ ~ReallyForceSpellRES("jwdeath",Player1) ApplySpell("finmel01",WIZARD_PIERCE_SHIELD) ApplySpell("finmel01",WIZARD_BREACH)~
+END
+
+COPY_EXISTING ~cut233h.bcs~ ~override~
+DECOMPILE_AND_PATCH BEGIN
+	REPLACE_TEXTUALLY ~ActionOverride("finmel01",PlayDeadInterruptible(500000))~ ~ActionOverride("finmel01",ChangeAlignment(Myself,NONE)) ActionOverride("finmel01",ChangeAIScript("",DEFAULT)) ActionOverride("finmel01",SetGlobal("DRAW","LOCALS",1)) Wait(1)	ActionOverride("finmel01",PlayDeadInterruptable(500000))~
+END
+
+COPY_EXISTING ~finmel01.bcs~ ~override~
+R_B_B ~ascension/baf/Finmel01_o.baf~ ~ascension/baf/Finmel01_n.baf~
+DECOMPILE_AND_PATCH BEGIN
+	REPLACE_TEXTUALLY ~Global("FinalFight","AR6200",7)~ ~Global("FinalFight","AR6200",8) Global("allfive","GLOBAL",1) Global("BalthazarFights","GLOBAL",0) Global("BodhiFights","GLOBAL",0)~
+	REPLACE_TEXTUALLY ~ClearAllActions()~ ~SetGlobal("allfive","GLOBAL",2) ClearAllActions()~
+END
+
+EXTEND_BOTTOM ~finmel01.bcs~		~ascension/baf/finmel01_Bottom.baf~
+
+COMPILE ~ascension/baf/compile~
+COMPILE ~ascension/baf/overwrite~
+
+///////////////////////////////////////////////////////////////////////
+// BMP 
+// 
+// By definition, these bitmaps do not involve dialog.tlk. Copy them
+// directly. 
+///////////////////////////////////////////////////////////////////////
+//WA: Maybe find a better Portrait for Balthazar
+COPY ~ascension/bmp~            ~override~
+
+///////////////////////////////////////////////////////////////////////
+// Creatures 
+// 
+// None of these have names that are new in Ascension, so most can
+// all be copied directly. 
+//
+// However, four creatures want the name Babau. 
+///////////////////////////////////////////////////////////////////////
+//WA: Some files are overwriten, have to investigate...
+
+COPY ~ascension/cre/copy~         ~override~
+COPY ~ascension/cre/copy/overwrite~         ~override~
+COPY ~ascension/cre/finbabau.cre~ ~override/finbabau.cre~
+  SAY NAME1 @500 SAY NAME2 @500
+
+///////////////////////////////////////////////////////////////////////
+// Dialogues 
+// 
+// Many of these just extend existing game dialogue, but a few of them
+// (e.g., ppguy02) are created from scratch. 
+//
+// They are all part of the same compile block because they share
+// labels via EXTERNs. The TRA files are loaded automatically from the
+// language directory (e.g., "american").
+///////////////////////////////////////////////////////////////////////
+//WA: Updated the dialogue files to modern standard
+COMPILE ~ascension/d~
+
+///////////////////////////////////////////////////////////////////////
+// Effects 
+// 
+// Effects do not have names and none of these use the Display String
+// opcode. 
+///////////////////////////////////////////////////////////////////////
+COPY ~ascension/eff~            ~override~
+
+COPY ~ascension/eff/bh3b1.eff~  ~override/bh3b2.eff~
+  WRITE_ASCII   0x30 "BH3B2" #8
+COPY ~ascension/eff/bh3b1.eff~  ~override/bh3b3.eff~
+  WRITE_ASCII   0x30 "BH3B3" #8
+COPY ~ascension/eff/bh3b1.eff~  ~override/bh3b4.eff~
+  WRITE_ASCII   0x30 "BH3B4" #8
+COPY ~ascension/eff/bh3b1.eff~  ~override/bh3b5.eff~
+  WRITE_ASCII   0x30 "BH3B5" #8
+COPY ~ascension/eff/bh3b1.eff~  ~override/balth01a.eff~
+  WRITE_ASCII   0x30 "BALTH01A" #8
+
+///////////////////////////////////////////////////////////////////////
+// IDS files
+// 
+// Again, nothing exciting here.
+///////////////////////////////////////////////////////////////////////
+//WA: DS_v3 patches the ids files
+//COPY ~ascension/ids~            ~override~
+
+///////////////////////////////////////////////////////////////////////
+// Items 
+// 
+// The items introduce no new strings into the game: either you can never
+// pick them up or they never have "Display String" effects that use new
+// string references.
+//
+// The exceptions are Sarevok's chaos blade and Sendai's potion.
+///////////////////////////////////////////////////////////////////////
+//WA: Some files are overwriten, have to investigate...
+COPY ~ascension/itm/copy~       ~override~
+COPY ~ascension/itm/copy/overwrite~       ~override~
+COPY_EXISTING ~SWORD01.cre~ ~override~
+WRITE_BYTE	0x6e   ~0~
+LPF ADD_CRE_EFFECT INT_VAR opcode = 233 parameter1 = 3 parameter2 = 90 timing = 9 END
+BUT_ONLY
+COPY ~ascension/itm/finsarev.itm~ ~override/finsarev.itm~
+  SAY NAME2 @3000 SAY DESC @3001
+COPY ~ascension/itm/send01.itm~ ~override/send01.itm~
+  SAY NAME2 @3002 SAY DESC @3003
+
+///////////////////////////////////////////////////////////////////////
+// Spells 
+// 
+// Most of the spells do not need to be patched at all, but quite a 
+// few of them do. 
+///////////////////////////////////////////////////////////////////////
+//WA: Some files are overwriten, have to investigate...
+COPY ~ascension/spl/copy~       ~override~
+COPY ~ascension/spl/copy/overwrite~       ~override~
+
+COPY ~ascension/spl/SPINKRBT.SPL~ ~override/SPINKRBT.SPL~ SAY 8 @1003
+COPY ~ascension/spl/SPINKRVA.SPL~ ~override/SPINKRVA.SPL~ SAY 8 #57971
+COPY ~ascension/spl/abaz01.SPL~ ~override/abaz01.SPL~ SAY 8 @1006
+COPY ~ascension/spl/abaz02.SPL~ ~override/abaz02.SPL~ SAY 8 @1007
+COPY ~ascension/spl/balortk1.spl~ ~override/balortk1.spl~ SAY 8 @1009
+COPY ~ascension/spl/balortk2.SPL~ ~override/balortk2.spl~ SAY 8 @1009
+COPY ~ascension/spl/overwrite/balth02.SPL~ ~override/balth02.SPL~ SAY 8 #72908
+COPY ~ascension/spl/overwrite/balth08.SPL~ ~override/balth08.SPL~ SAY 8 #73941
+COPY ~ascension/spl/balth11.SPL~ ~override/balth11.SPL~ SAY 8 @1012
+COPY ~ascension/spl/ctrldem.SPL~ ~override/ctrldem.SPL~ SAY 8 @1013
+COPY ~ascension/spl/focus.SPL~ ~override/focus.SPL~ SAY 8 @1014
+COPY ~ascension/spl/overwrite/melis01.SPL~ ~override/melis01.SPL~ SAY 8 #73232
+COPY ~ascension/spl/melspl01.SPL~ ~override/melspl01.SPL~ SAY 8 @1016
+COPY ~ascension/spl/melspl02.SPL~ ~override/melspl02.SPL~ SAY 8 @1017
+COPY ~ascension/spl/melspl03.SPL~ ~override/melspl03.SPL~ SAY 8 @1018
+COPY ~ascension/spl/melspl05.SPL~ ~override/melspl05.SPL~ SAY 8 @1019
+COPY ~ascension/spl/melspl06.SPL~ ~override/melspl06.SPL~ SAY 8 @1020
+COPY ~ascension/spl/melspl07.SPL~ ~override/melspl07.SPL~ SAY 8 #73235
+COPY ~ascension/spl/melspl08.SPL~ ~override/melspl08.SPL~ 
+     ~ascension/spl/melspl09.SPL~ ~override/melspl09.SPL~
+     ~ascension/spl/unleash.SPL~ ~override/unleash.SPL~
+        SAY 8 @1022
+COPY ~ascension/spl/melspl10.SPL~ ~override/melspl10.SPL~ SAY 8 @1024
+COPY ~ascension/spl/melspl11.SPL~ ~override/melspl11.SPL~ SAY 8 @1025
+COPY ~ascension/spl/melspl12.SPL~ ~override/melspl12.SPL~ SAY 8 @1026
+COPY ~ascension/spl/nabpara.SPL~ ~override/nabpara.SPL~ SAY 8 @1027
+//COPY ~ascension/spl/yaga01.SPL~ ~override/yaga01.SPL~ SAY 8 @1029
+COPY ~ascension/spl/Spwi545.spl~ ~override/Spwi545.spl~ SAY 8 @1031
+COPY ~ascension/spl/overwrite/balth03.spl~ ~override/balth03.spl~ SAY 8 #72915
+COPY ~ascension/spl/overwrite/balth04.spl~ ~override/balth04.spl~ SAY 8 #72916
+COPY ~ascension/spl/overwrite/balth05.spl~ ~override/balth05.spl~ SAY 8 #71989
+COPY ~ascension/spl/overwrite/balth10.spl~ ~override/balth10.spl~ SAY 8 #73943
+COPY ~ascension/spl/slayer4.spl~ ~override/slayer4.spl~ SAY 8 @1037
+COPY ~ascension/spl/melspl5a.spl~ ~override/melspl5a.spl~
+  SAY 0x12e @1038 // Patch DisplayString opcode inside SPL!
+
+///////////////////////////////////////////////////////////////////////
+// Epilogues (including Balthazars)
+//
+// Each epilogue.2da file contains a reference to the string 71020
+// and one other string. The second string is the dialogue for the
+// character.
+///////////////////////////////////////////////////////////////////////
+//WA: Need new epilogues for BG2:EE NPCs...
+COPY ~ascension/epilogues~       ~override~
+  REPLACE ~82714~ @82714
+  REPLACE ~82715~ @82715
+  REPLACE ~82716~ @82716
+  REPLACE ~82717~ @82717
+  REPLACE ~82718~ @82718
+  REPLACE ~82720~ @82720
+  REPLACE ~82721~ @82721
+  REPLACE ~82722~ @82722
+  REPLACE ~82723~ @82723
+  REPLACE ~82724~ @82724
+  REPLACE ~82725~ @82725
+  REPLACE ~82726~ @82726
+  REPLACE ~82727~ @82727
+  REPLACE ~82728~ @82728
+  REPLACE ~82729~ @82729
+  REPLACE ~82731~ @82731
+  REPLACE ~82732~ @82732
+  REPLACE ~82760~ @82760
+  REPLACE ~82785~ @82785
+  // Female Epilogues for German Translation
+  REPLACE ~82710~ @82710
+  REPLACE ~82734~ @82734
+  REPLACE ~82730~ @82730
+  REPLACE ~82719~ @82719
+  REPLACE ~82711~ @82711
+  REPLACE ~82712~ @82712
+  REPLACE ~82713~ @82713
+  
+///////////////////////////////////////////////////////////////////////
+// EE Journal Update
+///////////////////////////////////////////////////////////////////////
+
+ADD_JOURNAL @2000 @2001 @2002 @2003 @2004 @2005 @2006 @2007
+  
+//AT_INTERACTIVE_EXIT ~VIEW ascension\Ascension-WeiDU.txt~
+
+///////////////////////////////////////////////////////////////////////
+// Tougher Foes
+///////////////////////////////////////////////////////////////////////
+BEGIN @3 // TOUGHER ABAZIGAL
+REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
+
+COPY_EXISTING ~sw1h01.itm~ ~override/asc_abazigal.flag~
+
+COPY ~ascension/tougher/abazigal/cre~ ~override~
+COPY ~ascension/tougher/abazigal/itm~ ~override~
+COPY ~ascension/tougher/abazigal/spl~ ~override~
+COPY ~ascension/tougher/abazigal/spl/string/balortk2.spl~ ~override~
+  SAY 8 @1009
+COMPILE ~ascension/tougher/abazigal/baf/compile~
+				
+COPY_EXISTING ~abaz2.bcs~ ~override~
+DECOMPILE_AND_PATCH BEGIN
+REPLACE_TEXTUALLY ~!GlobalTimerNotExpired("Hardiness","LOCALS")~ ~See(NearestEnemyOf(Myself)) !GlobalTimerNotExpired("Hardiness","LOCALS")~
+REPLACE_TEXTUALLY ~See(LastAttackerOf(Myself))~ ~See(LastAttackerOf(Myself)) !CheckStatGT(LastSeenBy(Myself),25,INT) !Gender(LastSeenBy(Myself),ILLUSIONARY)~
+REPLACE_TEXTUALLY ~Range(NearestEnemyOf(Myself),4)[%TAB% %LNL%%MNL%%WNL%]+See(NearestEnemyOf(Myself))~ ~Range(NearestEnemyOf(Myself),4) See(NearestEnemyOf(Myself)) !CheckStatGT(LastSeenBy(Myself),25,INT) !Gender(LastSeenBy(Myself),ILLUSIONARY)~
+REPLACE_TEXTUALLY ~AttackReevaluate(LastSeenBy(Myself),45)~ ~~
+REPLACE_TEXTUALLY ~True()~ ~GlobalTimerNotExpired("KaiAttack","LOCALS") !HPPercentLT(Myself,50) RandomNum(2,1)~
+REPLACE_TEXTUALLY ~EquipMostDamagingMelee()~ ~~
+END
+R_B_B ~ascension/tougher/abazigal/baf/abaz2_o1.baf~ ~ascension/tougher/abazigal/baf/abaz2_n1.baf~
+
+EXTEND_BOTTOM ~abaz2.bcs~ ~ascension/tougher/abazigal/baf/abaz2_bottom.baf~
+
+COPY_EXISTING ~ABAZDRAG.bcs~ ~override~
+DECOMPILE_AND_PATCH BEGIN
+REPLACE_TEXTUALLY ~SetGlobalTimer("WINGBUFFET","LOCALS",8)[%TAB% %LNL%%MNL%%WNL%]+ForceSpell(NearestEnemyOf(Myself),DRAGON_WING_BUFFET)[%TAB% %LNL%%MNL%%WNL%]+Wait(1)~ ~SetGlobalTimer("WINGBUFFET","LOCALS",8) ForceSpell(NearestEnemyOf(Myself),DRAGON_WING_BUFFET) Wait(1) ApplySpell(Myself,0)~
+REPLACE_TEXTUALLY ~!CheckStatGT(Myself,0,STONESKINS)~ ~~
+REPLACE_TEXTUALLY ~True()~ ~ActionListEmpty() !HPPercentLT(Myself,40)~
+REPLACE_TEXTUALLY ~EquipMostDamagingMelee()~ ~~
+END
+R_B_B ~ascension/tougher/abazigal/baf/ABAZDRAG_o1.baf~ ~ascension/tougher/abazigal/baf/ABAZDRAG_n1.baf~
+R_B_B ~ascension/tougher/abazigal/baf/ABAZDRAG_o2.baf~ ~ascension/tougher/abazigal/baf/ABAZDRAG_n2.baf~
+
+EXTEND_BOTTOM ~ABAZDRAG.bcs~ ~ascension/tougher/abazigal/baf/ABAZDRAG_bottom.baf~
+
+COPY_EXISTING ~ar6005.bcs~ ~override~
+DECOMPILE_AND_PATCH BEGIN
+REPLACE_TEXTUALLY ~Dead("Abazigal")~ ~Dead("Abazigal") CombatCounter(0)~
+END
+
+EXTEND_TOP ~ar6005.bcs~ ~ascension/tougher/abazigal/baf/ar6005_Top.baf~
+
+COPY_EXISTING ~ar6005.are~ ~override~
+	READ_LONG  0x54  "actors_offset"
+	READ_SHORT 0x58  "actors_num"
+
+	FOR( cnt=0; cnt<"%actors_num%"; cnt=cnt+1 ) BEGIN  //actors loop
+		READ_ASCII ("%actors_offset%"+0x110*cnt)       "actor_name" (8)
+		PATCH_IF (("%actor_name%" STRING_COMPARE_CASE "Abazigal")=0) BEGIN
+			SET offset = ("%actors_offset%"+0x110*cnt)
+			WRITE_SHORT (offset+0x20) 1912         //X
+			WRITE_SHORT (offset+0x22) 1207         //Y
+			WRITE_SHORT (offset+0x24) 1912         //destination X
+			WRITE_SHORT (offset+0x26) 1207         //destination Y
+			WRITE_SHORT (offset+0x34) 6
+  	END
+	END
+BUT_ONLY
+//WA: Maybe set the Icesalamander locations...
+
+BEGIN @4 // TOUGHER DEMOGORGON
+<<<<<<< HEAD
+REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ AND FILE_EXISTS ~override/asc_main.flag~ @2 // ToB sanity check
+COPY_EXISTING ~sw1h01.itm~ ~override/asc_demogorgon.flag~ //Set Install Flag
+=======
+REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
+>>>>>>> origin/master
+
+INCLUDE ~ascension/lib/tougherdemo2.tpa~ //Creature and Script Patching Library
+COPY ~ascension/tougher/demogorgon/eff~ ~override~
+COPY ~ascension/tougher/demogorgon/spl~ ~override~
+
+BEGIN @5 // TOUGHER GROMNIR
+REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
+COPY_EXISTING ~sw1h01.itm~ ~override/asc_gromnir.flag~ //Set Install Flag
+
+//COMPILE Section
+COMPILE ~ascension/tougher/gromnir/d~ //Compile .d file
+COMPILE ~ascension/tougher/gromnir/baf/compile~ //Compile unique scripts
+
+// INCLUDE creature library
+INCLUDE ~ascension/lib/toughergromcre.tpa~
+COPY ~ascension/tougher/gromnir/cre~ ~override~
+COPY ~ascension/tougher/gromnir/itm~ ~override~
+COPY ~ascension/tougher/gromnir/spl~ ~override~
+
+//Compile if Tougher Yaga-Shura is not installed.
+ACTION_IF !FILE_EXISTS ~override/asc_yagashura.flag~ BEGIN
+	INCLUDE ~ascension/lib/toughercommon.tpa~
+END
+
+//Area Script
+COPY_EXISTING ~AR5002.bcs~ ~override~
+DECOMPILE_AND_PATCH BEGIN
+REPLACE_TEXTUALLY ~SetGlobal("EnteredArea","AR5002",1)~ ~SetGlobal("EnteredArea","AR5002",1) CreateCreature("ramaz",[369.616],14)~
+END
+EXTEND_BOTTOM ~AR5002.bcs~ ~ascension/tougher/gromnir/baf/AR5002_Bottom.baf~ //Applies script to the bottom of the existing file.
+
+//Begin Area Patching
+COPY_EXISTING ~ar5002.are~ ~override~
+READ_LONG  0x54  "actors_offset"
+READ_SHORT 0x58  "actors_num"
+
+FOR( cnt=0; cnt<"%actors_num%"; cnt=cnt+1 ) BEGIN  //actors loop
+ READ_ASCII ("%actors_offset%"+0x110*cnt)       "actor_name" (15)
+ PATCH_IF (("%actor_name%" STRING_COMPARE_CASE "Gromnir Il-Khan")=0) BEGIN
+ 	SET offset = ("%actors_offset%"+0x110*cnt)
+ 	WRITE_SHORT (offset+0x20) 344         //X
+ 	WRITE_SHORT (offset+0x22) 648         //Y
+ 	WRITE_SHORT (offset+0x24) 344         //destination X
+ 	WRITE_SHORT (offset+0x26) 648         //destination Y
+ 	END
+END
+
+BEGIN @6 // TOUGHER ILLASERA
+REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
+
+COPY_EXISTING ~sw1h01.itm~ ~override/asc_illasera.flag~
+
+//Here we overwrite Illasera's script, because it's significantly more complex.
+COMPILE ~ascension/tougher/illasera/baf/overwrite~
+
+//ILLGRP Extension, following gromnir example
+EXTEND_BOTTOM ~ILLAGRP.bcs~ ~ascension/tougher/illasera/BAF/ILLAGRP_Bottom.baf~
+COMPILE ~ascension/tougher/illasera/d~
+
+//Area Script - Note that EE appears to handle Drow Item disintegration on it's own
+//so this is not patched into the relevant script. Also note that installing Tougher
+//Illasera will mean that you will always receive the toughest encounter regardless
+//of level or party size.
+COPY_EXISTING ~AR4000.bcs~ ~override~
+R_B_B ~ascension/tougher/illasera/BAF/AR4000_O1.baf~ ~ascension/tougher/illasera/BAF/AR4000_N1.baf~
+R_B_B ~ascension/tougher/illasera/BAF/AR4000_O2.baf~ ~ascension/tougher/illasera/BAF/AR4000_N2.baf~
+
+//Patch Tougher Illasera CRE's
+INCLUDE ~ascension/lib/tougherillaseracre.tpa~
+
+//Copy Tougher Illasera unique .spl and .itms
+COPY ~ascension/tougher/illasera/itm~ ~override~
+COPY ~ascension/tougher/illasera/spl~ ~override~
+
+BEGIN @7 // TOUGHER YAGA-SHURA
+REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
+COPY_EXISTING ~sw1h01.itm~ ~override/asc_yagashura.flag~ //Creates install "flag"
+
+//Copy uniques and overwrites - as with all the 'toughers', the majority of the CRE's are extensively changed from their originals and thus it is more cost-effective (for my time) to overwrite rather than patch them into something unrecognizable from their original forms
+COPY ~ascension/tougher/yagashura/ITM~ ~override~
+COPY ~ascension/tougher/yagashura/SPL/YAGWEAK.SPL~ ~override~
+COPY ~ascension/tougher/yagashura/SPL/yaga01.SPL~ ~override~ SAY 8 @1029
+COPY ~ascension/tougher/yagashura/cre~ ~override~
+INCLUDE ~ascension/lib/toughyagacre.tpa~
+
+//COMPILE Section
+COMPILE ~ascension/tougher/yagashura/BAF/UniqueCompile~ //Compile Unique Scripts
+COMPILE ~ascension/tougher/yagashura/D~ //Compile .d File
+INCLUDE ~ascension/lib/toughyagabaf.tpa~ //Compile the mass of Yaga-shura specific R_B_B's
+
+//Compile common scripts, if Tougher Gromnir hasn't been installed already
+ACTION_IF !FILE_EXISTS ~override/asc_gromnir.flag~ BEGIN
+	INCLUDE ~ascension/lib/toughercommon.tpa~
+END
+
+//AR5203 script
+COPY_EXISTING ~AR5203.bcs~ ~override~
+R_B_B ~ascension/tougher/yagashura/baf/AR5203/AR5203_O1.baf~ ~ascension/tougher/yagashura/baf/AR5203/AR5203_N1.baf~
+R_B_B ~ascension/tougher/yagashura/baf/AR5203/AR5203_O2.baf~ ~ascension/tougher/yagashura/baf/AR5203/AR5203_N2.baf~
+R_B_B ~ascension/tougher/yagashura/baf/AR5203/AR5203_O3.baf~ ~ascension/tougher/yagashura/baf/AR5203/AR5203_N3.baf~
+
+//Begin Area Patching
+COPY_EXISTING ~ar5203.are~ ~override~
+	READ_LONG  0x54  "actors_offset"
+	READ_SHORT 0x58  "actors_num"
+
+	FOR( cnt=0; cnt<"%actors_num%"; cnt=cnt+1 ) BEGIN  //actors loop
+		READ_ASCII ("%actors_offset%"+0x110*cnt)       "actor_name" (9)
+		PATCH_IF (("%actor_name%" STRING_COMPARE_CASE "Yaga-Shura")=0) BEGIN
+			SET offset = ("%actors_offset%"+0x110*cnt)
+			WRITE_SHORT (offset+0x20) 905         //X
+			WRITE_SHORT (offset+0x22) 1965         //Y
+			WRITE_SHORT (offset+0x24) 905         //destination X
+			WRITE_SHORT (offset+0x26) 1965         //destination Y
+  	END
+	END
