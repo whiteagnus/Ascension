@@ -40,73 +40,73 @@ COPY_EXISTING ~YAGA01.cre~ ~override~
  LPF ADD_CRE_EFFECT INT_VAR //Invis Detect by Script
    opcode = 193 
    target = 0 
-   parameter 1 = 0 
-   parameter 2 = 1 
+   parameter1 = 0 
+   parameter2 = 1 
    timing = 1 
   END 
  LPF ADD_CRE_EFFECT INT_VAR //Play 3D Effect
    opcode = 215 
    target = 0 
-   parameter 1 = 0 
-   parameter 2 = 1 
+   parameter1 = 0 
+   parameter2 = 1 
    timing = 9 
    sourceslot = AMYAG_A 
   END
  LPF ADD_CRE_EFFECT INT_VAR //Play 3D Effect
    opcode = 215 
    target = 0 
-   parameter 1 = 0 
-   parameter 2 = 1 
+   parameter1 = 0 
+   parameter2 = 1 
    timing = 9 
    sourceslot = AMYAG_B 
   END 
  LPF ADD_CRE_EFFECT INT_VAR //Set MDamage Resist 
    opcode = 31 
    target = 0 
-   parameter 1 = 99 
-   parameter 2 = 1 
+   parameter1 = 99 
+   parameter2 = 1 
    timing = 9 
   END 
  LPF ADD_CRE_EFFECT INT_VAR //Regeneration
    opcode = 98 
    target = 0 
-   parameter 1 = 7 
-   parameter 2 = 2 
+   parameter1 = 7 
+   parameter2 = 2 
    timing = 1 
   END 
  LPF ADD_CRE_EFFECT INT_VAR //Casting Speed Mod
    opcode = 189 
    target = 0 
-   parameter 1 = 2 
-   parameter 2 = 0 
+   parameter1 = 2 
+   parameter2 = 0 
    timing = 1 
   END 
  LPF ADD_CRE_EFFECT INT_VAR //Movemod
    opcode = 126 
    target = 0 
-   parameter 1 = 0 
-   parameter 2 = 1 
+   parameter1 = 0 
+   parameter2 = 1 
    timing = 1 
   END 
  LPF ADD_CRE_EFFECT INT_VAR //Immunity to Effect AKA Protection from opcode
    opcode = 101 
    target = 0 
-   parameter 1 = 0 
-   parameter 2 = 19 
+   parameter1 = 0 
+   parameter2 = 19 
    timing = 1 
   END 
  LPF ADD_CRE_EFFECT INT_VAR //Proficiency dual-wield
    opcode = 233 
    target = 1 
-   parameter 1 = 3 
-   parameter 2 = 114 
+   parameter1 = 3 
+   parameter2 = 114 
    timing = 9 
   END 
  LPF ADD_CRE_EFFECT INT_VAR //Warhammer Prof
    opcode = 233 
    target = 1 
-   parameter 1 = 5 
-   parameter 2 = 97 
+   parameter1 = 5 
+   parameter2 = 97 
    timing = 9 
   END 
   REMOVE_CRE_ITEM ~GIAFIR~ ~HELMNOAN~ ~POTN52~
@@ -180,8 +180,8 @@ COPY_EXISTING ~YAGA02.CRE~ ~override~
  LPF ADD_CRE_EFFECT INT_VAR //Increase casting Speed
    opcode = 189 
    target = 0 
-   parameter 1 = 2 
-   parameter 2 = 0 
+   parameter1 = 2 
+   parameter2 = 0 
    timing = 1 
   END   
   REMOVE_CRE_ITEM ~HELMNOAN~
@@ -213,22 +213,22 @@ COPY_EXISTING ~YAGA03.CRE~ ~override~
  REMOVE_CRE_EFFECTS
  LPF ADD_CRE_EFFECT INT_VAR
   opcode = 233
-  parameter 1 = 3
-  parameter 2 = 94
+  parameter1 = 3
+  parameter2 = 94
   target = 1
   timing = 1
   END
  LPF ADD_CRE_EFFECT INT_VAR
   opcode = 233
-  parameter 1 = 3
-  parameter 2 = 114
+  parameter1 = 3
+  parameter2 = 114
   target = 1
   timing = 1
   END
  LPF ADD_CRE_EFFECT INT_VAR
   opcode = 233
-  parameter 1 = 3
-  parameter 2 = 91
+  parameter1 = 3
+  parameter2 = 91
   target = 1
   timing = 1
   END
@@ -368,8 +368,8 @@ COPY_EXISTING ~YSFIRE01~ ~override~
  LPF ADD_CRE_EFFECT INT_VAR
   opcode = 233
   target = 0
-  parameter 1 = 2
-  parameter 2 = 97
+  parameter1 = 2
+  parameter2 = 97
   timing = 9
   END
  REMOVE_CRE_ITEM ~GIAFIR2~
@@ -402,8 +402,8 @@ COPY_EXISTING ~YSFIRE02~ ~override~
   LPF ADD_CRE_EFFECT INT_VAR
   opcode = 233
   target = 0
-  parameter 1 = 2
-  parameter 2 = 92
+  parameter1 = 2
+  parameter2 = 92
   timing = 9
   END
  REMOVE_CRE_ITEM ~AX1H03~
@@ -471,15 +471,15 @@ COPY_EXISTING ~YSSOLD01.cre~ ~override~
  LPF ADD_CRE_EFFECT INT_VAR
   opcode = 233
   target = 0
-  parameter 1 = 2
-  parameter 2 = 112
+  parameter1 = 2
+  parameter2 = 112
   timing = 9
   END
  LPF ADD_CRE_EFFECT INT_VAR
   opcode = 233
   target = 0
-  parameter 1 = 3
-  parameter 2 = 90
+  parameter1 = 3
+  parameter2 = 90
   timing = 9
   END
 BUT_ONLY
@@ -513,22 +513,22 @@ COPY_EXISTING ~YSSOLD02.cre~ ~override~
  LPF ADD_CRE_EFFECT INT_VAR
   opcode = 233
   target = 0
-  parameter 1 = 3
-  parameter 2 = 104
+  parameter1 = 3
+  parameter2 = 104
   timing = 9
   END
  LPF ADD_CRE_EFFECT INT_VAR
   opcode = 233
   target = 0
-  parameter 1 = 1
-  parameter 2 = 90
+  parameter1 = 1
+  parameter2 = 90
   timing = 9
   END
  LPF ADD_CRE_EFFECT INT_VAR
   opcode = 233
   target = 0
-  parameter 1 = 1
-  parameter 2 = 113
+  parameter1 = 1
+  parameter2 = 113
   timing = 9
   END
 BUT_ONLY
@@ -564,15 +564,15 @@ COPY_EXISTING ~YSSOLD03.cre~ ~override~
  LPF ADD_CRE_EFFECT INT_VAR
   opcode = 233
   target = 0
-  parameter 1 = 5
-  parameter 2 = 93
+  parameter1 = 5
+  parameter2 = 93
   timing = 9
   END
  LPF ADD_CRE_EFFECT INT_VAR
   opcode = 233
   target = 0
-  parameter 1 = 2
-  parameter 2 = 111
+  parameter1 = 2
+  parameter2 = 111
   timing = 9
   END
 BUT_ONLY

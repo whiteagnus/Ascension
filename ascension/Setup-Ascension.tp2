@@ -449,7 +449,6 @@ COPY ~ascension/epilogues~       ~override~
 ///////////////////////////////////////////////////////////////////////
 // Tougher Foes
 ///////////////////////////////////////////////////////////////////////
-
 BEGIN @3 // TOUGHER ABAZIGAL
 //WA: Not tested, maybe some files will be overwritten...
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ AND FILE_EXISTS ~override/asc_main.flag~ @2 // ToB sanity check
@@ -514,17 +513,10 @@ BUT_ONLY
 //WA: Maybe set the Icesalamander locations...
 
 BEGIN @4 // TOUGHER DEMOGORGON
-//WA: Not tested, maybe some files will be overwritten...
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ AND FILE_EXISTS ~override/asc_main.flag~ @2 // ToB sanity check
+COPY_EXISTING ~sw1h01.itm~ ~override/asc_demogorgon.flag~ //Set Install Flag
 
-COPY_EXISTING ~sw1h01.itm~ ~override/asc_demogorgon.flag~
-
-COPY_EXISTING ~demogor2.bcs~ ~override~
-R_B_B ~ascension/tougher/demogorgon/baf/demogor2_o1.baf~ ~ascension/tougher/demogorgon/baf/demogor2_n1.baf~
-R_B_B ~ascension/tougher/demogorgon/baf/demogor2_o2.baf~ ~ascension/tougher/demogorgon/baf/demogor2_n2.baf~
-R_B_B ~ascension/tougher/demogorgon/baf/demogor2_o3.baf~ ~ascension/tougher/demogorgon/baf/demogor2_n3.baf~
-
-COPY ~ascension/tougher/demogorgon/cre~ ~override~
+INCLUDE ~ascension/lib/tougherdemo2.tpa~ //Creature and Script Patching Library
 COPY ~ascension/tougher/demogorgon/eff~ ~override~
 COPY ~ascension/tougher/demogorgon/spl~ ~override~
 

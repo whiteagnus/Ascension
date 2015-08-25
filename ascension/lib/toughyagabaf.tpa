@@ -17,7 +17,6 @@ R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O14.baf~ ~ascension/tou
 R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O15.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N15.baf~
 R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O16.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N1.baf~
 
-
 //GPMAGE2 and Apply Randomwalk Fix
 COPY_EXISTING ~GPMAGE2.bcs~ ~override~
 R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/strip1.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N1.baf~

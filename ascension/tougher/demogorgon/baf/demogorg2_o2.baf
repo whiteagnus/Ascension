@@ -1,0 +1,12 @@
+IF
+  Global("StoppedTime","LOCALS",2)
+  Detect(Nearestenemyof(Myself))
+  NumDead("demosum1",2)
+  !NumCreatureVsPartyGT("demosum3",0)
+  !GlobalTimerNotExpired("SumReinf","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("SumReinf","LOCALS",6)
+    DisplayStringHead(Myself,70998)
+    ForceSpell(Myself,DEMOGORGON_GATE)
+END

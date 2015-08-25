@@ -1,0 +1,11 @@
+IF
+  Global("StoppedTime","LOCALS",2)
+  !GlobalTimerNotExpired("firestorm","LOCALS")
+  RandomNum(2,1)
+  See(NearestEnemyOf(Myself))
+THEN
+  RESPONSE #100
+    SetGlobalTimer("firestorm","LOCALS",1000)
+    IncrementGlobal("demospell","LOCALS",1)
+    ForceSpell(NearestEnemyOf(Myself),CLERIC_STORM_OF_VENGEANCE)
+END

@@ -1,9 +1,9 @@
 COPY_EXISTING ~GPHEALER.bcs~ ~override~
-R_B_B ~ascension/tougher/toughercommon/baf/GPHEALER_O1.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N3.baf~
-R_B_B ~ascension/tougher/toughercommon/baf/GPHEALER_O2.baf~ ~ascension/tougher/toughercommon/baf/GPHEALER_N2.baf~
-
 //Remove Extraneous Code
 R_B_B ~ascension/tougher/toughercommon/baf/strip1.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
+
+R_B_B ~ascension/tougher/toughercommon/baf/GPHEALER_O1.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N3.baf~
+R_B_B ~ascension/tougher/toughercommon/baf/GPHEALER_O2.baf~ ~ascension/tougher/toughercommon/baf/GPHEALER_N2.baf~
 
 COPY_EXISTING ~GPARCHER.bcs~ ~override~
 R_B_B ~ascension/tougher/toughercommon/baf/GPARCHER_O1.baf~ ~ascension/tougher/toughercommon/baf/GPARCHER_N1.baf~
@@ -156,6 +156,9 @@ R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O8.baf~ ~ascension/tougher/to
 R_B_B ~ascension/tougher/toughercommon/baf/GPTHIEF_O9.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N1.baf~
 
 COPY_EXISTING ~GPMERC.bcs~ ~override~
+//Remove Extraneous Code
+R_B_B ~ascension/tougher/toughercommon/baf/strip2.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
+
 R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O1.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N1.baf~
 R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O2.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N2.baf~
 R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O3.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N3.baf~
@@ -168,9 +171,6 @@ R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O9.baf~ ~ascension/tougher/tou
 R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O10.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N10.baf~
 R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O11.baf~ ~ascension/tougher/toughercommon/baf/GPMERC_N11.baf~
 R_B_B ~ascension/tougher/toughercommon/baf/GPMERC_O12.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N1.baf~
-
-//Remove Extraneous Code
-R_B_B ~ascension/tougher/toughercommon/baf/strip2.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
 
 //SPSEQ12A
 R_B_B ~ascension/tougher/toughercommon/baf/SPSEQ12A_O1.baf~ ~ascension/tougher/toughercommon/baf/SPSEQ12A_N1.baf~

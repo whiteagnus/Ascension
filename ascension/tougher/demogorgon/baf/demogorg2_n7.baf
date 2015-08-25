@@ -1,0 +1,37 @@
+IF
+  Global("StoppedTime","LOCALS",2)
+  !GlobalTimerNotExpired("quake","LOCALS")
+  RandomNum(4,3)
+  See(NearestEnemyOf(Myself))
+THEN
+  RESPONSE #100
+    SetGlobalTimer("quake","LOCALS",60)
+    IncrementGlobal("demospell","LOCALS",1)
+    ForceSpell(Myself,CLERIC_EARTHQUAKE)
+END
+
+IF
+  Global("StoppedTime","LOCALS",2)
+  GlobalTimerNotExpired("harm","LOCALS")
+  RandomNum(4,4)
+  OR(2)
+  See(NearestEnemyOf(Myself))
+  See(LeastDamagedOf(Myself))
+  Range(LastSeenBy(Myself),10)
+  CheckStatLT(LastSeenBy(Myself),50,RESISTMAGIC)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("harm","LOCALS",20)
+    IncrementGlobal("demospell","LOCALS",1)
+    ForceSpell(LastSeenBy(Myself),ENEMY_CLERIC_HARM)
+END
+
+IF
+  !NumCreatureVsPartyLT([ENEMY.0.DEMONIC],0)
+  Range(NearestEnemyOf(Myself),4)
+THEN
+  RESPONSE #100
+    RunAwayFrom(NearestEnemyOf(Myself),30)
+  RESPONSE #50
+    AttackReevaluate(NearestEnemyOf(Myself),30)
+END

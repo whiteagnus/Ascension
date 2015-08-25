@@ -1,0 +1,15 @@
+IF
+  Global("StoppedTime","LOCALS",2)
+  GlobalTimerNotExpired("harm","LOCALS")
+  RandomNum(3,1)
+  OR(2)
+    See(Nearestenemyof(Myself))
+    See(Leastdamagedof(Myself))
+  Range(Lastseenby(Myself),10)
+  CheckStatLT(Lastseenby(Myself),50,RESISTMAGIC)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("harm","LOCALS",20)
+    IncrementGlobal("demospell","LOCALS",1)
+    ForceSpell(Lastseenby(Myself),ENEMY_CLERIC_HARM)
+END
