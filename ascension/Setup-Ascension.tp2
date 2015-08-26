@@ -26,7 +26,6 @@ ACTION_IF !FILE_EXISTS ~ascension/reinstall.mrk~ BEGIN
 
 	LAF autotra_workaround END
 
-
 	ACTION_DEFINE_ARRAY tra#reload BEGIN ascension END
 	ACTION_DEFINE_ARRAY tra#noconvert BEGIN END
 

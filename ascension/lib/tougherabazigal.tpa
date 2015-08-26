@@ -178,6 +178,7 @@ OPEN_EXISTING ~DRAKBLUE.ITM~ ~override~
   savingthrow = 2
   insert_point = -1
  END
+BUT_ONLY
 
 //SPL PATCHING
 COPY_EXISTING ~SPIN695.SPL~ ~override~

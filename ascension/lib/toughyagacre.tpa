@@ -301,8 +301,6 @@ BUT_ONLY
 COPY_EXISTING ~YAGA05.CRE~ ~override~
  WRITE_LONG 0x1c 120      //GP Carried
  WRITE_LONG 0x28 25361    //Animation: THIEF_FEMALE_ELF
- WRITE_SHORT 0x46 6       //Nat AC
- WRITE_SHORT 0x48 6       //Effective AC
  WRITE_BYTE 0x2d 63       //Minor Color
  WRITE_BYTE 0x2e 63       //Major Color
  WRITE_BYTE 0x2f 108      //Skin Color
@@ -417,8 +415,6 @@ BUT_ONLY
 COPY_EXISTING ~YSMAGE01.cre~ ~override~
  WRITE_SHORT 0x24 33      //Current HP
  WRITE_SHORT 0x26 33      //Max HP
- WRITE_SHORT 0x46 9       //Nat AC
- WRITE_SHORT 0x48 9       //Effective AC
  WRITE_BYTE 0x2f 87       //Skin Color
  WRITE_BYTE 0x32 0        //Hair Color
  WRITE_BYTE 0x235 0       //Level Second Class
@@ -451,7 +447,7 @@ COPY_EXISTING ~YSMAGE01.cre~ ~override~
 BUT_ONLY
 
 COPY_EXISTING ~YSSOLD01.cre~ ~override~
- WRITE_LONG 0x14 650     //XP For Kill
+ WRITE_LONG 0x14 650      //XP For Kill
  WRITE_BYTE 0x6e 0        //Unused Large Prof
  WRITE_BYTE 0x6f 0        //Unused Small Prof
  WRITE_BYTE 0x70 0        //Unused Bow Prof
@@ -492,8 +488,6 @@ BUT_ONLY
 COPY_EXISTING ~YSSOLD02.cre~ ~override~
  WRITE_LONG 0x14 650      //XP For Kill
  WRITE_LONG 0x28 59440    //Animation: ORC_RANGE4
- WRITE_SHORT 0x46 8       //Nat AC
- WRITE_SHORT 0x48 8       //Effective AC
  WRITE_BYTE 0x6e 0        //Unused Large Prof
  WRITE_BYTE 0x6f 0        //Unused Small Prof
  WRITE_BYTE 0x70 0        //Unused Bow Prof
@@ -542,8 +536,6 @@ BUT_ONLY
 
 COPY_EXISTING ~YSSOLD03.cre~ ~override~
  WRITE_LONG 0x14 1400     //XP For Kill
- WRITE_SHORT 0x46 7       //Nat AC
- WRITE_SHORT 0x48 7       //Effective AC
  WRITE_BYTE 0x6e 0        //Unused Large Prof
  WRITE_BYTE 0x6f 0        //Unused Small Prof
  WRITE_BYTE 0x70 0        //Unused Bow Prof

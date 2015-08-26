@@ -250,8 +250,8 @@ BUT_ONLY
 COPY_EXISTING ~GROMG09.cre~ ~override~
  WRITE_LONG 0x28 25345    //Animation: THIEF_MALE_ELF
  WRITE_LONG 0x244 16384   //Change Kit To True Class
- WRITE_SHORT 0x46 6       //Nat AC
- WRITE_SHORT 0x48 6       //Effective AC
+ WRITE_SHORT 0x46 7       //Nat AC
+ WRITE_SHORT 0x48 7       //Effective AC
  WRITE_BYTE 0x2d 63       //Minor Color
  WRITE_BYTE 0x2e 46       //Major Color
  WRITE_BYTE 0x2f 14       //Skin Color
