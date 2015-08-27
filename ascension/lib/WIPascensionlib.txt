@@ -1,0 +1,904 @@
+//INCLUDE Ardanis' add/clone header function
+ALWAYS
+INCLUDE ~ascension/lib/headercode.tpa~
+END
+
+//CRE PATCHING
+COPY_EXISTING ~BALTH.cre~ ~override~ //Balthazar from the Monastery
+ WRITE_SHORT 0x24 300      //Current HP
+ WRITE_SHORT 0x26 300      //Maximum HP
+ WRITE_BYTE 0x52 (0 - 5)   //THAC0
+ WRITE_BYTE 0x53 4         //# of Attacks
+ WRITE_BYTE 0x60 10        //Resist Slashing
+ WRITE_BYTE 0x61 10        //Resist Crushing
+ WRITE_BYTE 0x62 10        //Resist Piercing
+ WRITE_BYTE 0x63 10        //Resist Missile
+ WRITE_BYTE 0x6d 5         //Luck
+ WRITE_BYTE 0x6e 0        //Unused Large Prof
+ WRITE_BYTE 0x6f 0        //Unused Small Prof
+ WRITE_BYTE 0x70 0        //Unused Bow Prof
+ WRITE_BYTE 0x71 0        //Unused Spear Prof
+ WRITE_BYTE 0x72 0        //Unused Blunt Prof
+ WRITE_BYTE 0x73 0        //Unused Spiked Prof
+ WRITE_BYTE 0x74 0        //Unused Axe Prof
+ WRITE_BYTE 0x75 0        //Unused Missile Prof
+ WRITE_BYTE 0x238 19      //STR Score
+ WRITE_BYTE 0x239 0       //STR Percent
+ WRITE_BYTE 0x23b 16      //WIS Score
+ WRITE_BYTE 0x242 20      //Morale Recovery
+ REMOVE_MEMORIZED_SPELL ~SPCL811~ //Stunning Blow
+ ADD_MEMORIZED_SPELL ~SPCL811~ #0 ~innate~ (5)
+ REMOVE_CRE_EFFECTS  //From 40+ to 12 
+ LPF ADD_CRE_EFFECT  //Movement Rate
+ INT_VAR
+  opcode = 126
+  parameter1 = 6
+  timing = 9
+  probability1 = 100
+ END
+ 
+ LPF ADD_CRE_EFFECT  //Increase attack speed
+ INT_VAR
+  opcode = 190
+  parameter1 = 3
+  timing = 9
+  probability1 = 100
+ END
+ 
+ LPF ADD_CRE_EFFECT //Collision Behavior
+ INT_VAR
+  opcode = 300
+  timing = 9
+  probability 1 = 100
+ END
+ 
+ LPF ADD_CRE_EFFECT //Regen
+ INT_VAR
+  opcode = 98
+  parameter1 = 8
+  parameter2 = 2
+  timing = 9
+  probability1 = 100
+ END
+ 
+ LPF ADD_CRE_EFFECT //Magic Damage Resistance
+ INT_VAR
+  opcode = 31
+  parameter1 = 90
+  timing = 9
+  probability1 = 100
+ END
+ 
+ LPF ADD_CRE_EFFECT //Haste
+ INT_VAR
+  opcode = 16
+  parameter2 = 1
+  timing = 9
+  probability1 = 100
+ END
+ 
+ LPF ADD_CRE_EFFECT //Charm Immune
+ INT_VAR
+  opcode = 101
+  parameter2 = 5
+  timing = 9
+  probability1 = 100
+ END
+ 
+ LPF ADD_CRE_EFFECT //Int Drain Immune
+ INT_VAR
+  opcode = 101
+  parameter2 = 19
+  timing = 9
+  probability1 = 100
+ END
+ 
+ LPF ADD_CRE_EFFECT //Panic Immune
+ INT_VAR
+  opcode = 101
+  parameter2 = 24
+  timing = 9
+  probability1 = 100
+ END
+ 
+ LPF ADD_CRE_EFFECT //Polymorph Immune
+ INT_VAR
+  opcode = 101
+  parameter2 = 135
+  timing = 9
+  probability1 = 100
+ END
+
+ LPF ADD_CRE_EFFECT //Slow Immune
+ INT_VAR
+  opcode = 101
+  parameter2 = 40
+  timing = 9
+  probability1 = 100
+ END
+
+ LPF ADD_CRE_EFFECT //Poison Resistance
+ INT_VAR
+  opcode = 173
+  parameter1 = 100
+  timing = 9
+  probability1 = 100
+ END
+ 
+ LPF ADD_CRE_EFFECT //Poison Immune (already immune, idk why)
+ INT_VAR
+  opcode = 101
+  parameter2 = 25
+  timing = 9
+  probability1 = 100
+ END
+ 
+ REMOVE_CRE_ITEM ~HELMNOAN~
+ ADD_CRE_ITEM ~MFIST8~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP
+ ADD_CRE_ITEM ~STAF20~ #0 #0 #0 ~None~ ~WEAPON2~
+BUT_ONLY
+
+OPEN_EXISTING ~FINMEL01.cre~ ~override~
+ WRITE_SHORT 0x14 150000     //XP Value
+ WRITE_SHORT 0x24 500        //Current HP
+ WRITE_SHORT 0x26 500        //Maximum HP
+ WRITE_SHORT 0x46 (0 - 10)   //Natural AC
+ WRITE_SHORT 0x48 (0 - 10)   //Effective AC
+ WRITE_BYTE 0x53 4           //# attacks
+ WRITE_BYTE 0x54 2           //Save vs Death
+ WRITE_BYTE 0x55 3           //Save vs Wand
+ WRITE_BYTE 0x56 4           //Save vs Poly
+ WRITE_BYTE 0x57 4           //Save vs Breath
+ WRITE_BYTE 0x58 0           //Save vs Spell
+ WRITE_BYTE 0x59 50          //Resist fire
+ WRITE_BYTE 0x5a 50          //Resist cold
+ WRITE_BYTE 0x5b 50          //Resist electricity
+ WRITE_BYTE 0x5c 50          //Resist acid
+ WRITE_BYTE 0x5d 70          //Resist magic
+ WRITE_BYTE 0x5e 50          //Resist magic fire
+ WRITE_BYTE 0x5f 50          //Resist magic cold
+ WRITE_BYTE 0x60 75          //Resist Slashing
+ WRITE_BYTE 0x61 75          //Resist Crushing
+ WRITE_BYTE 0x62 75          //Resist Piecing
+ WRITE_BYTE 0x63 75          //Resist Missile
+ WRITE_ASCII 0x268 ~FINMEL~ #8 //Default script
+ 
+ LPF DELETE_EFFECT //Spell Protection
+ INT_VAR
+  match_opcode = 292
+ END
+
+ LPF DELETE_EFFECT //Backstab Immunity
+ INT_VAR
+  match_opcode = 206
+ END
+
+ LPF DELETE_EFFECT //Display String
+ INT_VAR
+  match_opcode = 267
+ END
+ 
+ LPF DELETE_EFFECT //Immunity to Effect
+ INT_VAR
+  match_opcode = 101
+ END
+ 
+ LPF ALTER_EFFECT //Proficiency Spear
+ INT_VAR
+  match_opcode = 273
+  match_parameter1 = 3
+  match_parameter2 = 98
+  parameter1 = 1
+  parameter2 = 98
+ END
+
+ LPF ALTER_EFFECT //Proficiency Dart
+ INT_VAR
+  match_opcode = 273
+  match_parameter1 = 3
+  match_parameter2 = 106
+  parameter1 = 1
+ END
+
+ LPF ALTER_EFFECT //Invisibility
+ INT_VAR
+  match_opcode = 193
+  timing = 9
+ END
+
+ LPF ALTER_EFFECT //Casting Speed
+ INT_VAR
+  match_opcode = 189
+  parameter1 = 6
+ END
+
+ LPF ALTER_EFFECT //Attack Speed
+ INT_VAR
+  match_opcode = 190
+  timing = 9
+ END
+
+ LPF ADD_CRE_EFFECT //Magic Damage Resist
+ INT_VAR
+  opcode = 31
+  parameter1 = 50
+  timing = 9
+  probability1 = 100
+ END
+ 
+ LPF ADD_CRE_EFFECT //Poison Resistance
+ INT_VAR
+  opcode = 173
+  parameter1 = 100
+  timing = 9
+  probability1 = 100
+ END
+ 
+ LPF ADD_CRE_EFFECT //Poison Immune (already immune, idk why)
+ INT_VAR
+  opcode = 101
+  parameter2 = 25
+  timing = 9
+  probability1 = 100
+ END
+ 
+ LPF ADD_CRE_EFFECT //Haste, Movement Rate only
+ INT_VAR
+  opcode = 16
+  parameter2 = 2
+  timing = 9
+  probability1 = 100
+ END
+ 
+ LPF ADD_CRE_EFFECT //Immune to Casting Failure
+ INT_VAR
+  opcode = 101
+  parameter2 = 60
+  timing = 9
+  probability1 = 100
+ END
+
+  REMOVE_CRE_ITEM ~HELMNOAN~ ~IMMUNE3~ ~SAREVIMM~
+  ADD_CRE_ITEM ~FINILLA~ #0 #0 #0 ~None~ ~BELT~
+  ADD_CRE_ITEM ~FINYAGA~ #0 #0 #0 ~None~ ~BOOTS~
+  ADD_CRE_ITEM ~FINABAZ~ #0 #0 #0 ~None~ ~RRING~
+  ADD_CRE_ITEM ~FINSEND~ #0 #0 #0 ~None~ ~GLOVES~
+  ADD_CRE_ITEM ~FINBALTH~ #0 #0 #0 ~None~ ~HELMET~
+  ADD_CRE_ITEM ~ALLFIVE~ #0 #0 #0 ~None~ ~LRING~
+ BUT_ONLY
+ 
+//DART MEL
+COPY_EXISTING ~meldart.itm~ ~override~
+ WRITE_BYTE 0x38 40           //Maximum in Stack
+ WRITE_BYTE 0x80 20           //Range feet
+ 
+ LPF ALTER_EFFECT //Stun
+ INT_VAR
+  check_globals = 0
+  match_opcode = 45
+  match_duration = 30
+  match_probability1 = 100
+  duration = 15
+  probability1 = 50
+ END
+
+ LPF ALTER_EFFECT //Display Portrait Icon
+ INT_VAR
+  check_globals = 0
+  match_opcode = 142
+  match_duration = 30
+  match_probability1 = 100
+  duration = 15
+  probability1 = 50
+ END
+
+ LPF ALTER_EFFECT //Disease DMG
+ INT_VAR
+  check_globals = 0
+  match_opcode = 78
+  match_duration = 30
+  match_probability1 = 100
+  duration = 15
+  power = 8
+  probability1 = 100
+  probability2 = 51
+  savingthrow = 2
+  savebonus = (0 - 4)
+ END
+ 
+ LPF CLONE_EFFECT //Disease
+ INT_VAR
+  check_globals = 0
+  match_opcode = 78
+  parameter2 = 6
+  duration = 30
+  probability1 = 100
+  probability2 = 76
+ END
+ 
+ LPF ALTER_EFFECT //Display portrait icon
+ INT_VAR
+  check_globals = 0
+  match_opcode = 142
+  duration = 15
+  power = 8
+  probability1 = 100
+  probability2 = 51
+  savingthrow = 2
+  savebonus = (0 - 4)
+ END
+
+ LPF CLONE_EFFECT //Display Portrait Icon
+ INT_VAR
+  check_globals = 0
+  match_opcode = 142
+  duration = 30
+  probability1 = 100
+  probability2 = 76
+ END
+BUT_ONLY
+
+COPY_EXISTING ~DEMSUC01.itm~ ~override~ //Succubus weapon?
+ SAY 0x08 Fists        //General Name
+ WRITE_SHORT 0x18 BIT3 //Displayable Flag
+ WRITE_BYTE 0x1c 28    //Category
+ WRITE_BYTE 0x60 0     //Enchantment of Weapon
+ WRITE_BYTE 0x7e 0     //Target
+ WRITE_BYTE 0x84 1     //Speed
+ LPF DELETE_EFFECT     //Immunity to Effect
+ INT_VAR               //Protection from Spell
+  match_opcode = 101
+ END
+ 
+ LPF DELETE_EFFECT
+ INT_VAR               //Display string
+  check_globals = 0
+  match_opcode = 101
+ END
+ 
+ LPF DELETE_EFFECT
+ INT_VAR               //Lightning Effects
+  check_globals = 0
+  match_opcode = 141
+ END
+ 
+ LPF DELETE_EFFECT
+ INT_VAR               //Constitution Bonus
+  check_globals = 0
+  match_opcode = 10
+ END
+ 
+ LPF DELETE_EFFECT
+ INT_VAR               //Dexterity Bonus
+  check_globals = 0
+  match_opcode = 15
+ END
+ 
+ LPF DELETE_EFFECT
+ INT_VAR               //Save vs Death Bonus
+  check_globals = 0
+  match_opcode = 33
+ END
+ 
+ LPF DELETE_EFFECT
+ INT_VAR               //Save vs Wand Bonus
+  check_globals = 0
+  match_opcode = 34
+ END
+ 
+ LPF DELETE_EFFECT
+ INT_VAR               //Save vs Poly Bonus
+  check_globals = 0
+  match_opcode = 35
+ END
+ 
+ LPF DELETE_EFFECT
+ INT_VAR               //Save vs Breath Bonus
+  check_globals = 0
+  match_opcode = 36
+ END
+ 
+ LPF DELETE_EFFECT
+ INT_VAR               //Save vs Spell Bonus
+  check_globals = 0
+  match_opcode = 37
+ END
+ 
+ LPF DELETE_EFFECT
+ INT_VAR               //Character Color Pulse
+  check_globals = 0
+  match_opcode = 50
+ END
+ 
+ LPF DELETE_EFFECT
+ INT_VAR               //Max HP
+  check_globals = 0
+  match_opcode = 18
+ END
+
+ LPF ALTER_EFFECT      //Display portrait icon
+ INT_VAR
+  check_globals = 0
+  match_opcode = 216
+  power = 9
+  probability1 = 80
+  resist_dispel = 80
+ END
+ 
+COPY_EXISTING ~FINMEL01.itm~ ~override~ //Melissan Abilities
+ WRITE_SHORT 0x18 BIT6 //Magical Flag
+ 
+ LPF DELETE_EFFECT
+ INT_VAR               //Protection from Effects
+  check_globals = 1
+  match_opcode = 101
+ END
+
+ LPF DELETE_EFFECT
+ INT_VAR               //Display Strings
+  check_globals = 1
+  match_opcode = 267
+ END
+ 
+ LPF DELETE_EFFECT
+ INT_VAR               //Protection from Spell
+  check_globals = 1
+  match_opcode = 206
+ END
+ 
+ LPF DELETE_EFFECT
+ INT_VAR               //Poison Resistance Bonus
+  check_globals = 1
+  match_opcode = 173
+ END
+ 
+ LPF DELETE_EFFECT
+ INT_VAR               //Remove Fear
+  check_globals = 1
+  match_opcode = 161
+ END
+ 
+ LPF DELETE_EFFECT
+ INT_VAR               //Morale Break
+  check_globals = 1
+  match_opcode = 106
+ END
+ 
+ LPF DELETE_EFFECT
+ INT_VAR               //Morale Break
+  check_globals = 1
+  match_opcode = 196
+ END
+ 
+ LPF DELETE_EFFECT
+ INT_VAR               //Immunity to Animation
+  check_globals = 1
+  match_opcode = 296
+ END
+ 
+ LPF DELETE_EFFECT
+ INT_VAR               //Reset Morale
+  check_globals = 1
+  match_opcode = 23
+ END
+ 
+ LPF DELETE_EFFECT
+ INT_VAR               //Min HP
+  check_globals = 1
+  match_opcode = 208
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT    //Immunity to Charm
+ INT_VAR
+  opcode = 101
+  target = 1
+  parameter2 = 5
+  timing = 2
+  resist_dispel = 2
+  probability1 = 100
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT     //Immunity to Panic
+ INT_VAR
+  opcode = 101
+  target = 1
+  parameter2 = 24
+  timing = 2
+  resist_dispel = 2
+  probability1 = 100
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT     //Immunity to Slay
+ INT_VAR
+  opcode = 101
+  target = 1
+  parameter2 = 55
+  timing = 2
+  resist_dispel = 2
+  probability1 = 100
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT     //Immunity to Feeblemind
+ INT_VAR
+  opcode = 101
+  target = 1
+  parameter2 = 76
+  timing = 2
+  resist_dispel = 2
+  probability1 = 100
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT     //Immunity to Disease
+ INT_VAR
+  opcode = 101
+  target = 1
+  parameter2 = 78
+  timing = 2
+  resist_dispel = 2
+  probability1 = 100
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT     //Immunity to Confusion
+ INT_VAR
+  opcode = 101
+  target = 1
+  parameter2 = 128
+  timing = 2
+  resist_dispel = 2
+  probability1 = 100
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT     //Immunity to Petrification
+ INT_VAR
+  opcode = 101
+  target = 1
+  parameter2 = 134
+  timing = 2
+  resist_dispel = 2
+  probability1 = 100
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT     //Immunity to Polymorph
+ INT_VAR
+  opcode = 101
+  target = 1
+  parameter2 = 135
+  timing = 2
+  resist_dispel = 2
+  probability1 = 100
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT     //Immunity to Power word, Kill
+ INT_VAR
+  opcode = 101
+  target = 1
+  parameter2 = 209
+  timing = 2
+  resist_dispel = 2
+  probability1 = 100
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT     //Immunity to Imprisonment
+ INT_VAR
+  opcode = 101
+  target = 1
+  parameter2 = 211
+  timing = 2
+  resist_dispel = 2
+  probability1 = 100
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT     //Immunity to Maze
+ INT_VAR
+  opcode = 101
+  target = 1
+  parameter2 = 213
+  timing = 2
+  resist_dispel = 2
+  probability1 = 100
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT     //Immunity to Level Drain
+ INT_VAR
+  opcode = 101
+  target = 1
+  parameter2 = 216
+  timing = 2
+  resist_dispel = 2
+  probability1 = 100
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT     //Immunity to Teleport Field
+ INT_VAR
+  opcode = 101
+  target = 1
+  parameter2 = 222
+  timing = 2
+  resist_dispel = 2
+  probability1 = 100
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT     //Immunity to Wingbuffet
+ INT_VAR
+  opcode = 101
+  target = 1
+  parameter2 = 235
+  timing = 2
+  resist_dispel = 2
+  probability1 = 100
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT     //Immunity to Disintegrate
+ INT_VAR
+  opcode = 101
+  target = 1
+  parameter2 = 238
+  timing = 2
+  resist_dispel = 2
+  probability1 = 100
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT    //Power Word Sleep
+ INT_VAR
+  opcode = 101
+  target = 1
+  parameter2 = 217
+  timing = 2
+  resist_dispel = 2
+  probability1 = 100
+ END
+
+ LPF ADD_ITEM_EQEFFECT    //Immunity to CTRL-Y
+ INT_VAR
+  opcode = 101
+  target = 1
+  parameter2 = 13
+  timing = 2
+  resist_dispel = 2
+  probability1 = 100
+ END
+
+ LPF ADD_ITEM_EQEFFECT     //Immunity to Berserk
+ INT_VAR
+  opcode = 101
+  target = 1
+  parameter2 = 3
+  timing = 2
+  resist_dispel = 2
+  probability1 = 100
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT     //Immunity to Sleep
+ INT_VAR
+  opcode = 101
+  target = 1
+  parameter2 = 39
+  timing = 2
+  resist_dispel = 2
+  probability1 = 100
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT     //Immunity to Silence
+ INT_VAR
+  opcode = 101
+  target = 1
+  parameter2 = 38
+  timing = 2
+  resist_dispel = 2
+  probability1 = 100
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT     //Immunity to Entangle
+ INT_VAR
+  opcode = 101
+  target = 1
+  parameter2 = 154
+  timing = 2
+  resist_dispel = 2
+  probability1 = 100
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT     //Immunity to Web
+ INT_VAR
+  opcode = 101
+  target = 1
+  parameter2 = 157
+  timing = 2
+  resist_dispel = 2
+  probability1 = 100
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT     //Immunity to Grease
+ INT_VAR
+  opcode = 101
+  target = 1
+  parameter2 = 158
+  timing = 2
+  resist_dispel = 2
+  probability1 = 100
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT    //Immunity to Non-Magic Weapons
+ INT_VAR
+  opcode = 120
+  target = 1
+  parameter2 = 2
+  timing = 2
+  resist_dispel = 2
+  probability1 = 100
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT     //No collision detection
+ INT_VAR
+  opcode = 184
+  target = 1
+  parameter2 = 1
+  timing = 2
+  probability1 = 100
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT     //Immunity to +1
+ INT_VAR
+  opcode = 120
+  target = 1
+  parameter1 = 1
+  timing = 2
+  resist_dispel = 2
+  probability1 = 100
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT     //Immunity to +2
+ INT_VAR
+  opcode = 120
+  target = 1
+  parameter2 = 2
+  timing = 2
+  resist_dispel = 2
+  probability1 = 100
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT     //Immunity to +3
+ INT_VAR
+  opcode = 120
+  target = 1
+  parameter1 = 3
+  timing = 2
+  resist_dispel = 2
+  probability1 = 100
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT     //Disable Display String
+ INT_VAR
+  opcode = 267
+  target = 1
+  parameter1 = Petrified
+  timing = 2
+  probability1 = 100
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT     //Disable Display String
+ INT_VAR
+  opcode = 267
+  target = 1
+  parameter1 = One Level Drained
+  timing = 2
+  probability1 = 100
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT     //Protection from SPWI545
+ INT_VAR
+  opcode = 206
+  target = 1
+  timing = 1
+  resist_dispel = 2
+  probability1 = 100
+  resource = SPWI545
+ END
+ 
+ LPF ADD_ITEM_EQEFFECT     //Protection from MELSPL04
+ INT_VAR
+  opcode = 206
+  target = 1
+  timing = 1
+  resist_dispel = 2
+  probability1 = 100
+  resource = MELSPL04
+ END 
+
+ LPF ADD_ITEM_EQEFFECT     //Protection from MELSPL04
+ INT_VAR
+  opcode = 206
+  target = 1
+  timing = 1
+  resist_dispel = 2
+  probability1 = 100
+  resource = MELSPL07
+ END 
+
+ LPF ADD_ITEM_HEADER    //Ability #1
+ INT_VAR
+   type=0
+   location=1
+   target=1
+   range=1
+   speed=2
+   thaco=4
+   dicesize=6
+   dicenumber=1
+   damage=5
+   damage_type=2
+   charges=0
+   depletion=1
+   flags=BIT0
+   projectile=1
+   overhand=50
+   backhand=50
+  END
+  
+ LPF ADD_ITEM_EFFECT //Header Disease
+ INT_VAR
+   opcode = 78
+   target = 2
+   parameter1 = 2
+   parameter2 = 2
+   duration = 18
+   probability1 = 100
+   header = 1
+   type = 0
+ END
+
+ LPF ADD_ITEM_EFFECT //Level Drain
+ INT_VAR
+   opcode = 216
+   target = 2
+   power = 1
+   parameter1 = 2
+   timing = 9
+   duration = 18
+   probability1 = 100
+   resist_dispel = 2
+   savingthrow = BIT0
+   savebonus = (0 - 4)
+   header = 1
+   type = 0
+ END
+  
+ LPF ADD_ITEM_EFFECT //Display Disease Icon
+ INT_VAR
+   opcode = 142
+   target = 2
+   power = 1
+   parameter2 = 7
+   timing = 0
+   duration = 18
+   probability1 = 100
+   header = 1
+   type = 0
+ END
+  
+ LPF ADD_ITEM_EFFECT //Display Level Drain Icon
+ INT_VAR
+   opcode = 142
+   target = 2
+   power = 1
+   parameter2 = 59
+   timing = 9
+   probability1 = 100
+   resist_dispel = 2
+   savingthrow = BIT0
+   savebonus = (0 - 4)
+   header = 1
+   type = 0
+ END
+BUT_ONLY
+
+COPY_EXISTING ~
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
