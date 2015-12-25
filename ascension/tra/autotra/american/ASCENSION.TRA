@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////////////
 // Setup Options
 /////////////////////////////////////////////////////////////////////////
-@1 = ~Ascension v1.41 (requires ToB)~
+@1 = ~Ascension v1.51 BETA)~
 
 @2 = ~
 I cannot find [Data/25Dialog.bif], which leads me to believe that you do
@@ -11,11 +11,12 @@ installed to use install the Ascension mod.
 If you do have it installed and you are receiving this message in error,
 please contact the module maintainer.~
 
-@3 = ~Tougher Abazigal (optional, requires ToB)~
-@4 = ~Original Tougher Demogorgon (optional, requires ToB)~
-@5 = ~Tougher Gromnir (optional, requires ToB)~
-@6 = ~Tougher Illasera (optional, requires ToB)~
-@7 = ~Tougher Yaga-Shura (optional, requires ToB)~
+@3 = ~Tougher Abazigal~
+@4 = ~Original Tougher Demogorgon~
+@5 = ~Tougher Gromnir~
+@6 = ~Tougher Illasera~
+@7 = ~Tougher Yaga-Shura~
+@8 = ~Restored Bhaalspawn Powers~
 
 /////////////////////////////////////////////////////////////////////////
 // Creatures
@@ -99,12 +100,12 @@ Area of Effect: 1 creature
 Saving Throw: Negates
 
 Through this spell, the Bhaalspawn can expel the taint of <PRO_HISHER> evil sire onto a victim, poisoning those who fail their save vs. death.  The effects depend upon the caster's level and are detailed below:
-7-9th level:  2d8  +  2/round, slow for 12 seconds, save at -2
-10-12th level:  3d8  + 3/round, slow for 12 seconds, save at -2
-13-14th level:  4d8  +  4/round, slow for 12 seconds, save at -2
-15-16th level:  6d8  +  5/round, slow for 24 seconds, save at -2
-17-21st level:  8d8  +  6/round, slow for 24 seconds, save at -4
-25th level: 8d8 + 6/round, slow for 36 seconds, save at -4, affects group of targets~
+7-9th level:  2d8 + an additional 2/round, slow for 12 seconds, save at -2
+10-12th level:  3d8 + an additional 3/round, slow for 12 seconds, save at -2
+13-14th level:  4d8 + an additional 4/round, slow for 12 seconds, save at -2
+15-16th level:  6d8 + an additional 5/round, slow for 24 seconds, save at -2
+17-21st level:  8d8 + an additional 6/round, slow for 24 seconds, save at -4
+25th level: 8d8 + an additional 6/round, slow for 36 seconds, save at -4, affects group of targets~
 @2004 = ~Bhaalspawn Powers
 
 <CHARNAME> has gained permanent negative plane protection (i.e., <CHARNAME> cannot be level-drained) and 5% magic resistance.~
@@ -118,7 +119,7 @@ Duration: 1 rounds/5 levels
 Casting Time: 1
 Saving Throw: none 
 
-When this power is called upon by the Bhaalspawn, <PRO_HESHE> immediately does extra damage with each hit to <PRO_HISHER> target with any melee weapon desired (whether it be fist or sword). <PRO_HISHER> dark energies travel through <PRO_HISHER> weapon and assaulting <PRO_HISHER> victim...and absorb that damage as healing for <PRO_HIMHER>self.
+When this power is called upon by the Bhaalspawn, <PRO_HESHE> immediately does extra damage with each hit to <PRO_HISHER> target with any melee weapon desired (whether it be fist or sword). <PRO_HISHER> dark energies travel through <PRO_HISHER> weapon and assaulting <PRO_HISHER> victim... and absorb that damage as healing for <PRO_HIMHER>self.
 The effects vary by level as follows:
 10th: 2 rounds, 4 hp extra damage, 4 hp healed
 15th: 3 rounds, 6 hp extra damage, 6 hp healed

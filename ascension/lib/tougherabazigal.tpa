@@ -60,7 +60,7 @@ COPY_EXISTING ~ABAZIGAL.CRE~ ~override~      //Abazigal >:)>
  END
 BUT_ONLY
 
-COPY_EXISTING ~DRAGBLUE.CRE~ ~override~   //Blue Dragon
+COPY_EXISTING ~DRAGBLUE.CRE~ ~override~   //Abazigal
  WRITE_LONG 0x14 78000      //XP Value
  WRITE_SHORT 0x24 500       //Current HP
  WRITE_SHORT 0x26 500       //Max HP
@@ -95,9 +95,10 @@ COPY_EXISTING ~DRAGBLUE.CRE~ ~override~   //Blue Dragon
  
  LPF ADD_CRE_EFFECT //protection from spell
  INT_VAR
-  opcode = 201
+  opcode = 206
   timing = 1
   probability1 = 100
+  STR_VAR
   resource = ABAZDG02
  END
  
@@ -139,7 +140,7 @@ COPY_EXISTING ~SALGRICE.CRE~ ~override~  //Salamander
 
 //ITM PATCHING
 
-OPEN_EXISTING ~DRAKBLUE.ITM~ ~override~
+COPY_EXISTING ~DRAGBLUE.ITM~ ~override~
  LPF ADD_ITEM_EFFECT //wingbuffet
  INT_VAR
   opcode = 235
@@ -148,10 +149,9 @@ OPEN_EXISTING ~DRAKBLUE.ITM~ ~override~
   parameter2 = 2
   dispel_resist = 2
   duration = 1
-  probability = 40
-  savingthrow = 2
+  probability1 = 40
+  savingthrow = BIT2
   savebonus = (0 - 4)
-  insert_point = -1
  END
  
  LPF ADD_ITEM_EFFECT  //sleep
@@ -161,8 +161,7 @@ OPEN_EXISTING ~DRAKBLUE.ITM~ ~override~
   dispel_resist = 2
   duration = 2
   probability1 = 40
-  savingthrow = 2
-  insert_point = -1
+  savingthrow = BIT2
  END
  
  LPF ADD_ITEM_EFFECT //damage
@@ -172,11 +171,10 @@ OPEN_EXISTING ~DRAKBLUE.ITM~ ~override~
   timing = 4
   dispel_resist = 2
   duration = 1
-  probability 1 = 40
+  probability1 = 40
   dicenumber = 1
   dicesize = 6
-  savingthrow = 2
-  insert_point = -1
+  savingthrow = BIT2
  END
 BUT_ONLY
 

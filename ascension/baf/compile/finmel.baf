@@ -1277,11 +1277,11 @@ THEN
   RESPONSE #30
     SetGlobalTimer("Spell","LOCALS",6)
     SetGlobalTimer("SymbolSlow","LOCALS",30)
-    SpellNoDecRES("SPWI545",LastSeenBy(Myself))
+    SpellNoDecRES("MELS545",LastSeenBy(Myself))
   RESPONSE #70
     SetGlobalTimer("Spell","LOCALS",6)
     SetGlobalTimer("SymbolSlow","LOCALS",30)
-    ForceSpellRES("SPWI545",LastSeenBy(Myself))
+    ForceSpellRES("MELS545",LastSeenBy(Myself))
   RESPONSE #100
     Continue()
 END

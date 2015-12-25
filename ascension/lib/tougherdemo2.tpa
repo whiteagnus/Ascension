@@ -1,5 +1,5 @@
 //DEMOGORGON CREATURE PATCH
-COPY_EXISTING ~DEMOGOR2.CRE~
+COPY_EXISTING ~DEMOGOR2.CRE~ ~override~
  WRITE_BYTE 0x6e 0        //Unused Large Prof
  WRITE_BYTE 0x6f 0        //Unused Small Prof
  WRITE_BYTE 0x70 0        //Unused Bow Prof
@@ -10,7 +10,7 @@ COPY_EXISTING ~DEMOGOR2.CRE~
  WRITE_BYTE 0x235 0       //Highest Level 2nd Class
  WRITE_BYTE 0x236 0       //Highest Level 3rd Class
  REMOVE_CRE_EFFECTS
- LPF ADD_CRE_EFFECT INT_VAR
+
  LPF ADD_CRE_EFFECT INT_VAR //Immunity to Backstab
    opcode = 292
    target = 0 
@@ -31,7 +31,8 @@ COPY_EXISTING ~DEMOGOR2.CRE~
    parameter1 = 0 
    parameter2 = 1 
    timing = 9 
-   sourceslot = AMYAG_B 
+   STR_VAR
+   resource = AMYAG_B
   END 
  LPF ADD_CRE_EFFECT INT_VAR //Set MDamage Resist 
    opcode = 31 
@@ -78,8 +79,8 @@ COPY_EXISTING ~DEMOGOR2.CRE~
 BUT_ONLY
   
 //DEMOGOR2.BAF SCRIPT PATCHING
-COPY_EXISTING ~demogorg2.bcs~ ~override~
-R_B_B ~ascension/tougher/demogorgon/baf/strip1.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON2.baf~
+COPY_EXISTING ~demogor2.bcs~ ~override~
+R_B_B ~ascension/tougher/demogorgon/baf/strip1.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N2.baf~
 
 R_B_B ~ascension/tougher/demogorgon/baf/demogorg2_o1.baf~ ~ascension/tougher/demogorgon/baf/demogorg2_n1.baf~
 R_B_B ~ascension/tougher/demogorgon/baf/demogorg2_o2.baf~ ~ascension/tougher/demogorgon/baf/demogorg2_n2.baf~
@@ -91,7 +92,7 @@ R_B_B ~ascension/tougher/demogorgon/baf/demogorg2_o7.baf~ ~ascension/tougher/dem
 
 //DEMOGORGON SPELL PATCHING
 COPY_EXISTING ~BEGUILE.SPL~ ~override~ //Charm party member
- DELETE_SPELL_EFFECT
+ LPF DELETE_SPELL_EFFECT 
  INT_VAR
   opcode_to_delete = 177 
  END
@@ -113,7 +114,7 @@ COPY_EXISTING ~DEMOCHM.SPL~ ~override~ //Demogorgon Tanar'ri Charm
   resist_dispel = 2
   duration = 1
   probability1 = 100
-  insert_point = -1
+  STR_VAR
   resource = POOL1a10
  END
 BUT_ONLY
@@ -125,28 +126,33 @@ COPY_EXISTING ~SPIN548.SPL~ ~override~ //Demogorgon's Gate
  END
 
  LPF ADD_SPELL_EFFECT
+  INT_VAR
   opcode = 177
   target = 1
   parameter1 = 2
   resist_dispel = 0
   duration = 2400
   probability1 = 50
+  STR_VAR
   resource = DLAB01
   insert_point = 0
  END
 
 LPF ADD_SPELL_EFFECT
+  INT_VAR
   opcode = 177
   target = 1
   parameter1 = 2
   resist_dispel = 0
   duration = 2400
   probability1 = 50
+  STR_VAR
   resource = DLAB01
   insert_point = 1
  END
 
  LPF ADD_SPELL_EFFECT
+  INT_VAR
   opcode = 177
   target = 1
   parameter1 = 2
@@ -154,11 +160,13 @@ LPF ADD_SPELL_EFFECT
   duration = 2400
   probability1 = 80
   probability2 = 51
+  STR_VAR
   resource = DEMOSUM1
   insert_point = 2
  END
 
  LPF ADD_SPELL_EFFECT
+  INT_VAR
   opcode = 177
   target = 1
   parameter1 = 2
@@ -166,21 +174,13 @@ LPF ADD_SPELL_EFFECT
   duration = 2400
   probability1 = 100
   probability2 = 81
+  STR_VAR
   resource = DEMOSUM2
   insert_point = 3
  END
 BUT_ONLY
 
-COPY_EXISTING ~SPIN549.SPL~ ~override~   //Summon the Infernal Host
- WRITE_LONG 0x08 Summon the Infernal Host //Spell name
- WRITE_ASCII 0x10 ~CAS_M03~ #8            //Casting Sound
- WRITE_SHORT 0x18 0                       //Set spell flags to zero (none)
- WRITE_SHORT 0x22 22                      //Casting Graphics
-
- LPF ALTER_SPELL_HEADER                   //<----- WHITEAGNUS PLEASE LOOK AT THIS
- INT_VAR
-  speed = 12
- END
+COPY_EXISTING ~SPIN549.SPL~ ~override~    //Summon the Infernal Host
 
  LPF ALTER_SPELL_EFFECT
  INT_VAR
@@ -188,10 +188,11 @@ COPY_EXISTING ~SPIN549.SPL~ ~override~   //Summon the Infernal Host
   match_opcode = 215
   parameter1 = 1
   duration = 4
+  STR_VAR
   resource = SPSUMGTE
  END
 
- LPF ALTER_SPELl_EFFECT
+ LPF ALTER_SPELL_EFFECT
  INT_VAR
   check_globals = 1
   match_opcode = 17
@@ -203,6 +204,7 @@ COPY_EXISTING ~SPIN549.SPL~ ~override~   //Summon the Infernal Host
   resist_dispel = 2
   duration = 4
   dicesize = 0
+  STR_VAR
   resource = PRE_P06
  END
 
@@ -217,6 +219,7 @@ COPY_EXISTING ~SPIN549.SPL~ ~override~   //Summon the Infernal Host
   timing = 5
   resist_dispel = 0
   duration = 4
+  STR_VAR
   resource = EFF_P90
  END
 
@@ -233,6 +236,7 @@ COPY_EXISTING ~SPIN549.SPL~ ~override~   //Summon the Infernal Host
   resist_dispel = 2
   duration = 2400
   probability1 = 100
+  STR_VAR
   resource = DEMOSUM1
  END
 
@@ -244,6 +248,7 @@ COPY_EXISTING ~SPIN549.SPL~ ~override~   //Summon the Infernal Host
   resist_dispel = 2
   duration = 2400
   probability1 = 100
+  STR_VAR
   resource = DEMOSUM2
  END
 
@@ -255,6 +260,7 @@ COPY_EXISTING ~SPIN549.SPL~ ~override~   //Summon the Infernal Host
   dispel_resist = 2
   duration = 2400
   probability1 = 100
+  STR_VAR
   resource = DEMOSUM3
  END
 
@@ -266,6 +272,7 @@ COPY_EXISTING ~SPIN549.SPL~ ~override~   //Summon the Infernal Host
   dispel_resist = 2
   duration = 2400
   probability = 100
+  STR_VAR
   resource = DEMOSUM3
  END
 
@@ -277,6 +284,7 @@ COPY_EXISTING ~SPIN549.SPL~ ~override~   //Summon the Infernal Host
   dispel_resist = 2
   duration = 2400
   probability1 = 100
+  STR_VAR
   resource = DEMOSUM4
  END
 BUT_ONLY

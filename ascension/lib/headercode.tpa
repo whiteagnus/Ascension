@@ -47,9 +47,9 @@ END
 PATCH_IF (SOURCE_SIZE > (0x72 + (hs * hc) + (0x30 * fc))) BEGIN
  DELETE_BYTES (0x72 + (hs * hc) + (0x30 * fc)) (SOURCE_SIZE - (0x72 + (hs * hc) + (0x30 * fc)))
 END
-
-// added by Ardanis
+// added by Ardanis - added by JediMindTrix
 WRITE_SHORT 0x6e 0
+END //added by JediMindTrix
 
 DEFINE_PATCH_FUNCTION ~ADD_ITEM_HEADER~
  INT_VAR

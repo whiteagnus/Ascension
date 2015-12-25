@@ -114,7 +114,7 @@ LANGUAGE ~Italian (Al17, Alessandro, Max, M.Inxes, Rahar and Stefano)~
 ///////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////
 BEGIN @1
-REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
+REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // EE sanity check
 
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_main.flag~
 
@@ -234,7 +234,6 @@ BUT_ONLY
 // be done in a friendly manner. 
 ///////////////////////////////////////////////////////////////////////
 //WA: Changed overwriting files to R_B_B and REPLACE_TEXTUALLY instead, finsol04.bcs will be overwriten, to many changes...
-EXTEND_TOP ~ar4500.bcs~ 		~ascension/baf/ar4500.baf~
 EXTEND_TOP ~ar5505.bcs~         ~ascension/baf/ar5505.baf~
 EXTEND_TOP ~ar6200.bcs~         ~ascension/baf/ar6200.baf~
 EXTEND_TOP ~imoe25.bcs~         ~ascension/baf/imoe25.baf~
@@ -260,13 +259,14 @@ END
 COPY_EXISTING ~cut233h.bcs~ ~override~
 DECOMPILE_AND_PATCH BEGIN
 	REPLACE_TEXTUALLY ~ActionOverride("finmel01",PlayDeadInterruptible(500000))~ ~ActionOverride("finmel01",ChangeAlignment(Myself,NONE)) ActionOverride("finmel01",ChangeAIScript("",DEFAULT)) ActionOverride("finmel01",SetGlobal("DRAW","LOCALS",1)) Wait(1)	ActionOverride("finmel01",PlayDeadInterruptable(500000))~
-END
+END 
 
 COPY_EXISTING ~finmel01.bcs~ ~override~
 R_B_B ~ascension/baf/Finmel01_o.baf~ ~ascension/baf/Finmel01_n.baf~
 DECOMPILE_AND_PATCH BEGIN
 	REPLACE_TEXTUALLY ~Global("FinalFight","AR6200",7)~ ~Global("FinalFight","AR6200",8) Global("allfive","GLOBAL",1) Global("BalthazarFights","GLOBAL",0) Global("BodhiFights","GLOBAL",0)~
 	REPLACE_TEXTUALLY ~ClearAllActions()~ ~SetGlobal("allfive","GLOBAL",2) ClearAllActions()~
+	REPLACE_TEXTUALLY ~SPWI545~ ~MELS545~
 END
 
 EXTEND_BOTTOM ~finmel01.bcs~		~ascension/baf/finmel01_Bottom.baf~
@@ -283,6 +283,10 @@ COMPILE ~ascension/baf/overwrite~
 //WA: Maybe find a better Portrait for Balthazar
 COPY ~ascension/bmp~            ~override~
 
+
+//WIP ZONE - LIBRARY INCLUSION AREA
+INCLUDE ~ascension/lib/ascensioncreitm.tpa~ //Creature and Item Patching
+
 ///////////////////////////////////////////////////////////////////////
 // Creatures 
 // 
@@ -294,7 +298,6 @@ COPY ~ascension/bmp~            ~override~
 //WA: Some files are overwriten, have to investigate...
 
 COPY ~ascension/cre/copy~         ~override~
-COPY ~ascension/cre/copy/overwrite~         ~override~
 COPY ~ascension/cre/finbabau.cre~ ~override/finbabau.cre~
   SAY NAME1 @500 SAY NAME2 @500
 
@@ -319,24 +322,7 @@ COMPILE ~ascension/d~
 ///////////////////////////////////////////////////////////////////////
 COPY ~ascension/eff~            ~override~
 
-COPY ~ascension/eff/bh3b1.eff~  ~override/bh3b2.eff~
-  WRITE_ASCII   0x30 "BH3B2" #8
-COPY ~ascension/eff/bh3b1.eff~  ~override/bh3b3.eff~
-  WRITE_ASCII   0x30 "BH3B3" #8
-COPY ~ascension/eff/bh3b1.eff~  ~override/bh3b4.eff~
-  WRITE_ASCII   0x30 "BH3B4" #8
-COPY ~ascension/eff/bh3b1.eff~  ~override/bh3b5.eff~
-  WRITE_ASCII   0x30 "BH3B5" #8
-COPY ~ascension/eff/bh3b1.eff~  ~override/balth01a.eff~
-  WRITE_ASCII   0x30 "BALTH01A" #8
 
-///////////////////////////////////////////////////////////////////////
-// IDS files
-// 
-// Again, nothing exciting here.
-///////////////////////////////////////////////////////////////////////
-//WA: DS_v3 patches the ids files
-//COPY ~ascension/ids~            ~override~
 
 ///////////////////////////////////////////////////////////////////////
 // Items 
@@ -349,7 +335,6 @@ COPY ~ascension/eff/bh3b1.eff~  ~override/balth01a.eff~
 ///////////////////////////////////////////////////////////////////////
 //WA: Some files are overwriten, have to investigate...
 COPY ~ascension/itm/copy~       ~override~
-COPY ~ascension/itm/copy/overwrite~       ~override~
 COPY_EXISTING ~SWORD01.cre~ ~override~
 WRITE_BYTE	0x6e   ~0~
 LPF ADD_CRE_EFFECT INT_VAR opcode = 233 parameter1 = 3 parameter2 = 90 timing = 9 END
@@ -395,8 +380,8 @@ COPY ~ascension/spl/melspl10.SPL~ ~override/melspl10.SPL~ SAY 8 @1024
 COPY ~ascension/spl/melspl11.SPL~ ~override/melspl11.SPL~ SAY 8 @1025
 COPY ~ascension/spl/melspl12.SPL~ ~override/melspl12.SPL~ SAY 8 @1026
 COPY ~ascension/spl/nabpara.SPL~ ~override/nabpara.SPL~ SAY 8 @1027
-//COPY ~ascension/spl/yaga01.SPL~ ~override/yaga01.SPL~ SAY 8 @1029
-COPY ~ascension/spl/Spwi545.spl~ ~override/Spwi545.spl~ SAY 8 @1031
+COPY ~ascension/spl/yaga01.SPL~ ~ascension\tougher\yagashura\SPL\yaga01.SPL~ SAY 8 @1029 //This could potentially be copied twice, but since it's a unique spell identical in both components, we won't add any checks for it's presence.
+COPY ~ascension/spl/Spwi545.spl~ ~override/mels545.spl~ SAY 8 @1031
 COPY ~ascension/spl/overwrite/balth03.spl~ ~override/balth03.spl~ SAY 8 #72915
 COPY ~ascension/spl/overwrite/balth04.spl~ ~override/balth04.spl~ SAY 8 #72916
 COPY ~ascension/spl/overwrite/balth05.spl~ ~override/balth05.spl~ SAY 8 #71989
@@ -442,30 +427,31 @@ COPY ~ascension/epilogues~       ~override~
   REPLACE ~82712~ @82712
   REPLACE ~82713~ @82713
   
-///////////////////////////////////////////////////////////////////////
-// EE Journal Update
-///////////////////////////////////////////////////////////////////////
-
+////////////////////////////////////////////////
+// Restored Bhaalspawn Powers by David Gaider //	
+////////////////////////////////////////////////
+BEGIN ~Restored Bhaalspawn Powers by David Gaider~
+INCLUDE ~ascension/lib/bhaalspawnpower.tpa~ //Patching Library
 ADD_JOURNAL @2000 @2001 @2002 @2003 @2004 @2005 @2006 @2007
-  
-//AT_INTERACTIVE_EXIT ~VIEW ascension\Ascension-WeiDU.txt~
 
 ///////////////////////////////////////////////////////////////////////
 // Tougher Foes
 ///////////////////////////////////////////////////////////////////////
-BEGIN @3 // TOUGHER ABAZIGAL
-REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
 
+///////////////////////////////////////////////////////////////////////
+// Tougher Abazigal
+///////////////////////////////////////////////////////////////////////
+
+BEGIN @3
+REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_abazigal.flag~
 
 COPY ~ascension/tougher/abazigal/cre~ ~override~
 COPY ~ascension/tougher/abazigal/itm~ ~override~
 COPY ~ascension/tougher/abazigal/spl~ ~override~
+INCLUDE ~ascension/lib/tougherabazigal.tpa~ //Patching Library
 COPY ~ascension/spl/balortk2.SPL~ ~override/balortk2.spl~ SAY 8 @1009
 COMPILE ~ascension/tougher/abazigal/baf/compile~
-
-//INCLUDE Abazigal Patching
-INCLUDE ~ascension/lib/tougherabazigal.tpa~
 
 COPY_EXISTING ~ar6005.are~ ~override~
 	READ_LONG  0x54  "actors_offset"
@@ -480,18 +466,25 @@ COPY_EXISTING ~ar6005.are~ ~override~
 			WRITE_SHORT (offset+0x24) 1912         //destination X
 			WRITE_SHORT (offset+0x26) 1207         //destination Y
 			WRITE_SHORT (offset+0x34) 6
-  	END
+  	END	
 	END
 BUT_ONLY
+
+////////////////////////
+// Tougher Demogorgon //
+////////////////////////
 
 BEGIN @4 // TOUGHER DEMOGORGON
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
 
-INCLUDE ~ascension/lib/tougherdemo2.tpa~ //Creature and Script Patching Library
+INCLUDE ~ascension/lib/tougherdemo2.tpa~ //Patching Library
 COPY ~ascension/tougher/demogorgon/eff~ ~override~
-COPY ~ascension/tougher/demogorgon/spl~ ~override~
 
-BEGIN @5 // TOUGHER GROMNIR
+/////////////////////
+// Tougher Gromnir //
+/////////////////////
+
+BEGIN @5
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_gromnir.flag~ //Set Install Flag
 
@@ -533,7 +526,11 @@ FOR( cnt=0; cnt<"%actors_num%"; cnt=cnt+1 ) BEGIN  //actors loop
  	END
 END
 
-BEGIN @6 // TOUGHER ILLASERA
+//////////////////////
+// Tougher Illasera //
+//////////////////////
+
+BEGIN @6
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
 
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_illasera.flag~
@@ -560,7 +557,11 @@ INCLUDE ~ascension/lib/tougherillaseracre.tpa~
 COPY ~ascension/tougher/illasera/itm~ ~override~
 COPY ~ascension/tougher/illasera/spl~ ~override~
 
-BEGIN @7 // TOUGHER YAGA-SHURA
+////////////////////////
+// Tougher Yaga-Shura //
+////////////////////////
+
+BEGIN @7
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_yagashura.flag~ //Creates install "flag"
 
@@ -602,3 +603,5 @@ COPY_EXISTING ~ar5203.are~ ~override~
 			WRITE_SHORT (offset+0x26) 1965         //destination Y
   	END
 	END
+
+//AT_INTERACTIVE_EXIT ~VIEW ascension\Ascension-WeiDU.txt~
