@@ -1,3 +1,27 @@
+//Copy and Compile
+COPY ~ascension/tougher/yagashura/ITM~ ~override~
+COPY ~ascension/tougher/yagashura/SPL/YAGWEAK.SPL~ ~override~
+COPY ~ascension/tougher/yagashura/SPL/yaga01.SPL~ ~override~ SAY 8 @1029
+COPY ~ascension/tougher/yagashura/cre~ ~override~
+COMPILE ~ascension/tougher/yagashura/BAF/UniqueCompile~ //Compile Unique Scripts
+COMPILE ~ascension/tougher/yagashura/D~ //Compile .d File
+
+//Begin Area Patching
+COPY_EXISTING ~ar5203.are~ ~override~
+	READ_LONG  0x54  "actors_offset"
+	READ_SHORT 0x58  "actors_num"
+
+	FOR( cnt=0; cnt<"%actors_num%"; cnt=cnt+1 ) BEGIN  //actors loop
+		READ_ASCII ("%actors_offset%"+0x110*cnt)       "actor_name" (9)
+		PATCH_IF (("%actor_name%" STRING_COMPARE_CASE "Yaga-Shura")=0) BEGIN
+			SET offset = ("%actors_offset%"+0x110*cnt)
+			WRITE_SHORT (offset+0x20) 905         //X
+			WRITE_SHORT (offset+0x22) 1965         //Y
+			WRITE_SHORT (offset+0x24) 905         //destination X
+			WRITE_SHORT (offset+0x26) 1965         //destination Y
+  	END
+	END
+
 //Begin Patching Creatures
 COPY_EXISTING ~YAGA01.cre~ ~override~
  WRITE_LONG  0x14 45000   //XP For Kill
@@ -596,3 +620,73 @@ COPY_EXISTING ~YSSOLD04.cre~ ~override~
  ADD_CRE_ITEM ~RNDTRE05~ #0 #0 #0 ~None~ ~QITEM1~
  ADD_CRE_ITEM ~RNDTRE04~ #0 #0 #0 ~None~ ~QITEM2~
 BUT_ONLY
+
+//Begin patching scripts
+//GPKENSAI
+COPY_EXISTING ~GPKENSAI.bcs~ ~override~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O1.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N1.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O2.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N2.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O3.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N3.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O4.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N4.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O5.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N5.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O6.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N6.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O7.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N7.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O8.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N8.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O9.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N9.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O10.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N10.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O11.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N11.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O12.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N12.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O13.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N13.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O14.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N14.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O15.baf~ ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_N15.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPKENSAI/GPKENSAI_O16.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N1.baf~
+
+//GPMAGE2 and Apply Randomwalk Fix
+COPY_EXISTING ~GPMAGE2.bcs~ ~override~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/strip1.baf~ ~ascension/tougher/toughercommon/baf/TxCOMMON_N1.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O1.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N1.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O2.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N2.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O3.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N3.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O4.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N4.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O5.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N5.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O6.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N6.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O7.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N7.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O8.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N8.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O9.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N9.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O10.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N10.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O11.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N11.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O12.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N12.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O13.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N13.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O14.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N14.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O15.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N15.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O16.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N16.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O17.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N17.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O18.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N18.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O19.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N19.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O20.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N20.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O21.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N21.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O22.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N22.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O23.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N23.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O24.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N24.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O25.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N25.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O26.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N26.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O27.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N27.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O28.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N28.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O29.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N29.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O30.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N30.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O31.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N31.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O32.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N32.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O33.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N33.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O34.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N34.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O35.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N35.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O36.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N36.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O37.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N37.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O38.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N38.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O39.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N39.baf~
+R_B_B ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_O40.baf~ ~ascension/tougher/yagashura/baf/GPMAGE2/GPMAGE2_N40.baf~
+
+COPY_EXISTING ~AR5203.bcs~ ~override~
+R_B_B ~ascension/tougher/yagashura/baf/AR5203/AR5203_O1.baf~ ~ascension/tougher/yagashura/baf/AR5203/AR5203_N1.baf~
+R_B_B ~ascension/tougher/yagashura/baf/AR5203/AR5203_O2.baf~ ~ascension/tougher/yagashura/baf/AR5203/AR5203_N2.baf~
+R_B_B ~ascension/tougher/yagashura/baf/AR5203/AR5203_O3.baf~ ~ascension/tougher/yagashura/baf/AR5203/AR5203_N3.baf~
+	

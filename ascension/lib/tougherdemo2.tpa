@@ -1,3 +1,6 @@
+//Copy
+COPY ~ascension/tougher/demogorgon/eff~ ~override~
+
 //DEMOGORGON CREATURE PATCH
 COPY_EXISTING ~DEMOGOR2.CRE~ ~override~
  WRITE_BYTE 0x6e 0        //Unused Large Prof

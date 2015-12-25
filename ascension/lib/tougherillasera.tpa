@@ -1,3 +1,15 @@
+//Copy and Compile
+COPY ~ascension/tougher/illasera/itm~ ~override~
+COPY ~ascension/tougher/illasera/spl~ ~override~
+
+//Here we overwrite Illasera's script, because it's significantly more complex.
+COMPILE ~ascension/tougher/illasera/baf/overwrite~
+
+//ILLGRP Extension, following gromnir example
+EXTEND_BOTTOM ~ILLAGRP.bcs~ ~ascension/tougher/illasera/BAF/ILLAGRP_Bottom.baf~
+COMPILE ~ascension/tougher/illasera/d~
+
+//Creature Patching
 COPY_EXISTING ~ILLASERA.CRE~ ~override~
 	WRITE_LONG 	0x1c	500 		//Gold
 	WRITE_SHORT 0x24	228 		//Current HP
@@ -366,3 +378,20 @@ COPY_EXISTING ~ZILMAG01.cre~ ~override~
 	ADD_CRE_ITEM ~RNDTRE05~ #0 #0 #0 ~NONE~ ~QITEM2~
 	ADD_CRE_ITEM ~CLCK14~ #0 #0 #0 ~UNSTEALABLE~ ~INV~
 BUT_ONLY
+
+//Script Patching
+
+//Area Script - Note that EE appears to handle Drow Item disintegration on it's own
+//so this is not patched into the relevant script. Also note that installing Tougher
+//Illasera will mean that you will always receive the toughest encounter regardless
+//of level or party size.
+COPY_EXISTING ~AR4000.bcs~ ~override~
+R_B_B ~ascension/tougher/illasera/BAF/AR4000_O1.baf~ ~ascension/tougher/illasera/BAF/AR4000_N1.baf~
+R_B_B ~ascension/tougher/illasera/BAF/AR4000_O2.baf~ ~ascension/tougher/illasera/BAF/AR4000_N2.baf~
+
+//Here we overwrite Illasera's script, because it's significantly more complex.
+COMPILE ~ascension/tougher/illasera/baf/overwrite~
+
+//ILLGRP Extension, following gromnir example
+EXTEND_BOTTOM ~ILLAGRP.bcs~ ~ascension/tougher/illasera/BAF/ILLAGRP_Bottom.baf~
+COMPILE ~ascension/tougher/illasera/d~

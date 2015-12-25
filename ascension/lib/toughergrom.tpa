@@ -1,3 +1,27 @@
+//Copy and Compile
+COMPILE ~ascension/tougher/gromnir/d~ //Compile .d file
+COMPILE ~ascension/tougher/gromnir/baf/compile~ //Compile unique scripts
+COPY ~ascension/tougher/gromnir/cre~ ~override~
+COPY ~ascension/tougher/gromnir/itm~ ~override~
+COPY ~ascension/tougher/gromnir/spl~ ~override~
+
+//Area Patching
+COPY_EXISTING ~ar5002.are~ ~override~
+READ_LONG  0x54  "actors_offset"
+READ_SHORT 0x58  "actors_num"
+
+FOR( cnt=0; cnt<"%actors_num%"; cnt=cnt+1 ) BEGIN  //actors loop
+ READ_ASCII ("%actors_offset%"+0x110*cnt)       "actor_name" (15)
+ PATCH_IF (("%actor_name%" STRING_COMPARE_CASE "Gromnir Il-Khan")=0) BEGIN
+ 	SET offset = ("%actors_offset%"+0x110*cnt)
+ 	WRITE_SHORT (offset+0x20) 344         //X
+ 	WRITE_SHORT (offset+0x22) 648         //Y
+ 	WRITE_SHORT (offset+0x24) 344         //destination X
+ 	WRITE_SHORT (offset+0x26) 648         //destination Y
+ 	END
+END
+
+//Creature Patching
 COPY_EXISTING ~GROMG03.cre~ ~override~	
  WRITE_BYTE 0x6e 0        //Unused Large Prof
  WRITE_BYTE 0x6f 0        //Unused Small Prof
@@ -456,3 +480,10 @@ COPY_EXISTING ~GROMNIR.cre~ ~override~
  ADD_CRE_ITEM ~GROMNIR~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP
  ADD_CRE_ITEM ~BLUN34~ #0 #0 #0 ~None~ ~WEAPON2~
 BUT_ONLY
+
+//Script Patching
+COPY_EXISTING ~AR5002.bcs~ ~override~
+DECOMPILE_AND_PATCH BEGIN
+REPLACE_TEXTUALLY ~SetGlobal("EnteredArea","AR5002",1)~ ~SetGlobal("EnteredArea","AR5002",1) CreateCreature("ramaz",[369.616],14)~
+END
+EXTEND_BOTTOM ~AR5002.bcs~ ~ascension/tougher/gromnir/baf/AR5002_Bottom.baf~ //Applies script to the bottom of the existing file.

@@ -1,3 +1,28 @@
+//Copy and Compile
+COPY ~ascension/tougher/abazigal/cre~ ~override~
+COPY ~ascension/tougher/abazigal/itm~ ~override~
+COPY ~ascension/tougher/abazigal/spl~ ~override~
+COPY ~ascension/spl/balortk2.SPL~ ~override/balortk2.spl~ SAY 8 @1009
+COMPILE ~ascension/tougher/abazigal/baf/compile~
+
+//Area Patching
+COPY_EXISTING ~ar6005.are~ ~override~
+	READ_LONG  0x54  "actors_offset"
+	READ_SHORT 0x58  "actors_num"
+
+	FOR( cnt=0; cnt<"%actors_num%"; cnt=cnt+1 ) BEGIN  //actors loop
+		READ_ASCII ("%actors_offset%"+0x110*cnt)       "actor_name" (8)
+		PATCH_IF (("%actor_name%" STRING_COMPARE_CASE "Abazigal")=0) BEGIN
+			SET offset = ("%actors_offset%"+0x110*cnt)
+			WRITE_SHORT (offset+0x20) 1912         //X
+			WRITE_SHORT (offset+0x22) 1207         //Y
+			WRITE_SHORT (offset+0x24) 1912         //destination X
+			WRITE_SHORT (offset+0x26) 1207         //destination Y
+			WRITE_SHORT (offset+0x34) 6
+  	END	
+	END
+BUT_ONLY
+
 //TOUGHER ABAZIGAL CRE PATCHING
 COPY_EXISTING ~ABAZIGAL.CRE~ ~override~      //Abazigal >:)>
  WRITE_BYTE 0x6e 0        //Unused Large Prof
