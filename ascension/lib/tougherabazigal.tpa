@@ -2,7 +2,7 @@
 COPY ~ascension/tougher/abazigal/cre~ ~override~
 COPY ~ascension/tougher/abazigal/itm~ ~override~
 COPY ~ascension/tougher/abazigal/spl~ ~override~
-COPY ~ascension/spl/balortk2.SPL~ ~override/balortk2.spl~ SAY 8 @1009
+COPY ~ascension/ascensionmain/spl/balortk2.SPL~ ~override/balortk2.spl~ SAY 8 @1009
 COMPILE ~ascension/tougher/abazigal/baf/compile~
 
 //Area Patching

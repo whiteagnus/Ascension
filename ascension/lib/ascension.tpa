@@ -1,0 +1,1331 @@
+//This code is almost entirely from the Cuv/Turumbar/Miloch build.
+INCLUDE ~ascension/lib/always.tpa~
+
+COPY_EXISTING ~CUT242A.bcs~ ~override~
+DECOMPILE_AND_PATCH BEGIN
+REPLACE_TEXTUALLY ~CreateCreature("BALELITE",[866.468],SE)~ ~CreateCreature("BALELIT1",[866.468],SE))~
+REPLACE_TEXTUALLY ~CreateCreature("BALELITE",[614.559],SE)~ ~CreateCreature("BALELIT2",[614.559],SE)~
+REPLACE_TEXTUALLY ~CreateCreature("BALELITE",[441.794],NE)~ ~CreateCreature("BALELIT3",[441.794],NE)~
+REPLACE_TEXTUALLY ~CreateCreature("BALELITE",[1218.558],W)~ ~CreateCreature("BALELIT4",[1218.558],W)~
+END
+
+//Copy and Compile
+COPY ~ascension/ascensionmain/itm/copy~ ~override~
+COPY ~ascension/ascensionmain/cre/copy~ ~override~
+COPY ~ascension/ascensionmain/eff~ ~override~
+COPY ~ascension/ascensionmain/spl/copy~ ~override~
+COMPILE ~ascension/ascensionmain/d~
+COMPILE ~ascension/ascensionmain/baf/compile~
+
+//Copy and Alter Strings
+COPY ~ascension/ascensionmain/itm/finsarev.itm~ ~override~
+  SAY NAME2 @3000
+  SAY DESC @3001
+
+COPY ~ascension/ascensionmain/itm/send01.itm~ ~override~
+  SAY NAME2 @3002
+  SAY DESC @3003
+
+COPY ~ascension/ascensionmain/cre/finbabau.cre~ ~override~
+  SAY NAME1 @500
+  SAY NAME2 @500
+
+COPY ~ascension/ascensionmain/spl/SPINKRBT.SPL~ ~override/SPINKRBT.SPL~ SAY 8 @1003
+COPY ~ascension/ascensionmain/spl/SPINKRVA.SPL~ ~override/SPINKRVA.SPL~ SAY 8 #57971
+COPY ~ascension/ascensionmain/spl/abaz01.SPL~ ~override/abaz01.SPL~ SAY 8 @1006
+COPY ~ascension/ascensionmain/spl/abaz02.SPL~ ~override/abaz02.SPL~ SAY 8 @1007
+COPY ~ascension/ascensionmain/spl/balortk1.spl~ ~override/balortk1.spl~ SAY 8 @1009
+COPY ~ascension/ascensionmain/spl/balortk2.SPL~ ~override/balortk2.spl~ SAY 8 @1009
+COPY ~ascension/ascensionmain/spl/balth11.SPL~ ~override/balth11.SPL~ SAY 8 @1012
+COPY ~ascension/ascensionmain/spl/ctrldem.SPL~ ~override/ctrldem.SPL~ SAY 8 @1013
+COPY ~ascension/ascensionmain/spl/focus.SPL~ ~override/focus.SPL~ SAY 8 @1014
+COPY ~ascension/ascensionmain/spl/melspl01.SPL~ ~override/melspl01.SPL~ SAY 8 @1016
+COPY ~ascension/ascensionmain/spl/melspl02.SPL~ ~override/melspl02.SPL~ SAY 8 @1017
+COPY ~ascension/ascensionmain/spl/melspl03.SPL~ ~override/melspl03.SPL~ SAY 8 @1018
+COPY ~ascension/ascensionmain/spl/melspl05.SPL~ ~override/melspl05.SPL~ SAY 8 @1019
+COPY ~ascension/ascensionmain/spl/melspl5a.spl~ ~override~
+  SAY 0x12e @1038 // Patch DisplayString opcode inside .spl
+COPY ~ascension/ascensionmain/spl/melspl06.SPL~ ~override/melspl06.SPL~ SAY 8 @1020
+COPY ~ascension/ascensionmain/spl/melspl07.SPL~ ~override/melspl07.SPL~ SAY 8 #73235
+COPY ~ascension/ascensionmain/spl/melspl08.SPL~ ~override/melspl08.SPL~ 
+     ~ascension/ascensionmain/spl/melspl09.SPL~ ~override/melspl09.SPL~
+     ~ascension/ascensionmain/spl/unleash.SPL~ ~override/unleash.SPL~
+        SAY 8 @1022
+COPY ~ascension/ascensionmain/spl/melspl10.SPL~ ~override/melspl10.SPL~ SAY 8 @1024
+COPY ~ascension/ascensionmain/spl/melspl11.SPL~ ~override/melspl11.SPL~ SAY 8 @1025
+COPY ~ascension/ascensionmain/spl/melspl12.SPL~ ~override/melspl12.SPL~ SAY 8 @1026
+COPY ~ascension/ascensionmain/spl/nabpara.SPL~ ~override/nabpara.SPL~ SAY 8 @1027
+COPY ~ascension/tougher/yagashura/spl/yaga01.SPL~ ~ascension\tougher\yagashura\SPL\yaga01.SPL~ SAY 8 @1029
+COPY ~ascension/ascensionmain/spl/MELS545.spl~ ~override/mels545.spl~ SAY 8 @1031
+COPY ~ascension/ascensionmain/spl/slayer4.spl~ ~override/slayer4.spl~ SAY 8 @1037
+
+//Area Patching
+//Fixed bug in vertex offsets (was writing old instead of new coordinates)
+COPY_EXISTING ~ar5505.are~ ~override~
+  READ_SHORT 0x5a reg_cnt //Regions count
+  READ_LONG 0x5c reg_off //Regions offset
+  READ_LONG 0x7c vert_off //Vertices offset
+  FOR (i = 0; i < reg_cnt; i += 1) BEGIN //Cycle through regions
+    READ_ASCII (reg_off + (i * 0xc4)) reg_nm (32) NULL //Region name
+    PATCH_IF (~%reg_nm%~ STRING_EQUAL_CASE ~ThroneR~ = 1) BEGIN
+      WRITE_SHORT (reg_off + (i * 0xc4) + 0x22) 1385 //Bounding box left (was 1010)
+      WRITE_SHORT (reg_off + (i * 0xc4) + 0x24) 679 //Bounding box top (was 386)
+      WRITE_SHORT (reg_off + (i * 0xc4) + 0x26) 1417 //Bounding box right (was 1010)
+      WRITE_SHORT (reg_off + (i * 0xc4) + 0x28) 703 //Bounding box bottom (was 424)
+      READ_LONG (reg_off + (i * 0xc4) + 0x2c) vertr //First vertex index
+      WRITE_SHORT (vert_off + (vertr * 4)) 1385      //Vertex 0 X (was 1022)
+      WRITE_SHORT (vert_off + (vertr * 4) + 2) 703   //Vertex 0 Y (was 386)
+      WRITE_SHORT (vert_off + (vertr * 4) + 4) 1405  //Vertex 1 X (was 1010)
+      WRITE_SHORT (vert_off + (vertr * 4) + 6) 679   //Vertex 1 Y (was 424)
+      WRITE_SHORT (vert_off + (vertr * 4) + 8) 1417  //Vertex 2 X (was 1043)
+      WRITE_SHORT (vert_off + (vertr * 4) + 0xa) 700 //Vertex 2 Y (was 402)
+    END
+    PATCH_IF (~%reg_nm%~ STRING_EQUAL_CASE ~ThroneL~ = 1) BEGIN
+      WRITE_SHORT (reg_off + (i * 0xc4) + 0x22) 344 //Bounding box left (was 434)
+      WRITE_SHORT (reg_off + (i * 0xc4) + 0x24) 1000 //Bounding box top (was 603)
+      WRITE_SHORT (reg_off + (i * 0xc4) + 0x26) 375 //Bounding box right (was 461)
+      WRITE_SHORT (reg_off + (i * 0xc4) + 0x28) 1041 //Bounding box bottom (was 648)
+      READ_LONG (reg_off + (i * 0xc4) + 0x2c) vertl  //First vertex index
+      WRITE_SHORT (vert_off + (vertl * 4)) 344        //Vertex 0 X (was 434)
+      WRITE_SHORT (vert_off + (vertl * 4) + 2) 1041   //Vertex 0 Y (was 645)
+      WRITE_SHORT (vert_off + (vertl * 4) + 4) 361    //Vertex 1 X (was 454)
+      WRITE_SHORT (vert_off + (vertl * 4) + 6) 1000   //Vertex 1 Y (was 603)
+      WRITE_SHORT (vert_off + (vertl * 4) + 8) 375    //Vertex 2 X (was 461)
+      WRITE_SHORT (vert_off + (vertl * 4) + 0xa) 1023 //Vertex 2 Y (was 648)
+    END
+  END
+BUT_ONLY
+
+COPY_EXISTING ~ar6200.are~ ~override~
+  READ_LONG 0x54 act_off //Actors offset
+  READ_SHORT 0x58 act_cnt //Actors count
+  FOR (i = 0; i < act_cnt; i += 1) BEGIN //Cycle through actors
+    READ_ASCII (act_off + (i * 0x110) + 0x80) act_cre //Actor CRE file
+    PATCH_IF (~%act_cre%~ STRING_EQUAL_CASE ~finmel01~ = 1) BEGIN //If Melissan
+      WRITE_SHORT (act_off + (i * 0x110) + 0x20) 1286 //Current X coordinate (was 1280)
+      WRITE_SHORT (act_off + (i * 0x110) + 0x22) 1068 //Current Y coordinate (was 1127)
+      WRITE_SHORT (act_off + (i * 0x110) + 0x24) 1286 //Destination X coordinate (was 1280)
+      WRITE_SHORT (act_off + (i * 0x110) + 0x26) 1068 //Destination Y coordinate (was 1127)
+      i = act_cnt
+    END
+  END
+  LPF fj_are_structure
+    INT_VAR
+    fj_type         = 1    //info
+    fj_box_left     = 1307
+    fj_box_top      = 627
+    fj_box_right    = 1322
+    fj_box_bottom   = 657
+    fj_cursor_idx   = 0   //gauntlet
+    fj_loc_x        = 1300
+    fj_loc_y        = 788
+    fj_vertex_0     = 1317 + (627 << 16)
+    fj_vertex_1     = 1307 + (657 << 16)
+    fj_vertex_2     = 1322 + (656 << 16)
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = ThroneC
+  END
+  LPF fj_are_structure
+    INT_VAR
+    fj_type         = 1    //info
+    fj_box_left     = 1589
+    fj_box_top      = 1103
+    fj_box_right    = 1607
+    fj_box_bottom   = 1130
+    fj_cursor_idx   = 0   //gauntlet
+    fj_loc_x        = 1300
+    fj_loc_y        = 980
+    fj_vertex_0     = 1589 + (1129 << 16)
+    fj_vertex_1     = 1600 + (1103 << 16)
+    fj_vertex_2     = 1607 + (1130 << 16)
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = ThroneR
+  END
+  LPF fj_are_structure
+    INT_VAR
+    fj_type         = 1    //info
+    fj_box_left     = 854
+    fj_box_top      = 993
+    fj_box_right    = 873
+    fj_box_bottom   = 1017
+    fj_cursor_idx   = 0   //gauntlet
+    fj_loc_x        = 1044
+    fj_loc_y        = 980
+    fj_vertex_0     = 854 + (1016 << 16)
+    fj_vertex_1     = 865 + (993 << 16)
+    fj_vertex_2     = 873 + (1017 << 16)
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = ThroneL
+  END
+BUT_ONLY
+
+//Creature Patching
+COPY_EXISTING ~balth.cre~ ~override~
+  LAUNCH_PATCH_FUNCTION FJ_CRE_VALIDITY END
+  WRITE_SHORT 0x24 300 //Current HP (was 280)
+  WRITE_SHORT 0x26 300 //Maximum HP (was 280)
+  WRITE_BYTE 0x52 ~-10~ //THAC0 (was -5)
+  WRITE_BYTE 0x53 4 //Attacks per round (was 5)
+  WRITE_BYTE 0x60 10 //Resist slashing (was 0)
+  WRITE_BYTE 0x61 10 //Resist crushing (was 0)
+  WRITE_BYTE 0x62 10 //Resist piercing (was 0)
+  WRITE_BYTE 0x63 10 //Resist missile (was 0)
+  WRITE_BYTE 0x6d 5 //Luck (was 0)
+  WRITE_BYTE 0x6e 0 //Large swords (was 2)
+  WRITE_BYTE 0x6f 0 //Small swords (was 2)
+  WRITE_BYTE 0x70 0 //Bows (was 2)
+  WRITE_BYTE 0x71 0 //Spears (was 2)
+  WRITE_BYTE 0x73 0 //Spiked weapons (was 2)
+  WRITE_BYTE 0x74 0 //Axes (was 2)
+  WRITE_BYTE 0x75 0 //Missile weapons (was 2)
+  WRITE_BYTE 0x238 19 //Strength (was 22)
+  WRITE_BYTE 0x239 0 //Strength bonus (was 95)
+  WRITE_BYTE 0x23b 16 //Wisdom (was 15)
+  WRITE_SHORT 0x242 20 //Morale recovery (was 60)
+  WRITE_ASCII 0x268 ~balthft2~ #8 //Default script (was balthft)
+  WRITE_BYTE 0x27b 17 //Alignment (lawful_good, was 18 lawful_neutral)
+  REMOVE_MEMORIZED_SPELL ~spcl811~ ~spcl815~ ~spcl820~
+  ADD_MEMORIZED_SPELL ~spcl811~ #0 ~innate~ (5)
+  ADD_MEMORIZED_SPELL ~spcl815~ #0 ~innate~ (4)
+  ADD_MEMORIZED_SPELL ~spcl820~ #0 ~innate~ (1)
+  REMOVE_CRE_ITEM  ~helmnoan~
+  REPLACE_CRE_ITEM ~mfist8~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~
+  ADD_CRE_ITEM     ~staf20~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON2~ EQUIP TWOHANDED
+  PATCH_FOR_EACH pcd IN 1 16 31 98 101 102 126 173 176 193 206 248 292 BEGIN
+    LAUNCH_PATCH_FUNCTION DELETE_CRE_EFFECT
+      INT_VAR opcode_to_delete = pcd
+    END
+  END
+  LAUNCH_PATCH_FUNCTION ADD_CRE_EFFECT
+    INT_VAR opcode = 31 //Magic damage resistance modifier
+    timing = 1 //Permanent
+    parameter1 = 90 //Modifier
+  END
+  LAUNCH_PATCH_FUNCTION ADD_CRE_EFFECT
+    INT_VAR opcode = 98 //Regeneration
+    timing = 1 //Permanent
+    parameter1 = 8 //Amount
+    parameter2 = 2 //Type (Restore x HP per second)
+  END
+  PATCH_FOR_EACH par2 IN 5 19 24 25 40 135 BEGIN
+    LAUNCH_PATCH_FUNCTION ADD_CRE_EFFECT
+      INT_VAR opcode = 101 //Protection from opcode
+      timing = 9 //Permanent after death
+      parameter2 = par2 //Opcode
+    END
+  END
+  LAUNCH_PATCH_FUNCTION ADD_CRE_EFFECT
+    INT_VAR opcode = 173 //Poison resistance modifier
+    timing = 9 //Permanent after death
+    parameter1 = 100 //Modifier
+  END
+  LAUNCH_PATCH_FUNCTION ADD_CRE_EFFECT
+    INT_VAR opcode = 176 //Movement modifier II
+    timing = 9 //Permanent after death
+    parameter1 = 6 //Modifier
+  END
+  LAUNCH_PATCH_FUNCTION ADD_CRE_EFFECT
+    INT_VAR opcode = 16 //Haste
+    timing = 1 //Permanent
+    parameter2 = 1 //Improved Haste
+  END
+BUT_ONLY
+
+COPY_EXISTING ~finmel01.cre~ ~override~ //Melissan
+  LAUNCH_PATCH_FUNCTION FJ_CRE_VALIDITY END
+  WRITE_LONG 0x14 150000 //XP value (was 91000)
+  WRITE_SHORT 0x24 500 //Current HP (was 250)
+  WRITE_SHORT 0x26 500 //Maximum HP (was 250)
+  WRITE_SHORT 0x46 ~-10~ //Natural AC (was -8)
+  WRITE_SHORT 0x48 ~-10~ //Effective AC (was -8)
+  WRITE_BYTE 0x53 4 //Attacks per round (was 5)
+  WRITE_BYTE 0x54 2 //Save vs death (was 4)
+  WRITE_BYTE 0x56 4 //Save vs polymorph (was 2)
+  WRITE_BYTE 0x57 4 //Save vs breath (was 3)
+  WRITE_BYTE 0x58 0 //Save vs spells (was 4)
+  WRITE_BYTE 0x59 50 //Resist fire (was 100)
+  WRITE_BYTE 0x5a 50 //Resist cold (was 100)
+  WRITE_BYTE 0x5b 50 //Resist electricity (was 100)
+  WRITE_BYTE 0x5c 50 //Resist acid (was 100)
+  WRITE_BYTE 0x5d 70 //Resist magic (was 90)
+  WRITE_BYTE 0x60 75 //Resist slashing (was 50)
+  WRITE_BYTE 0x61 75 //Resist crushing (was 50)
+  WRITE_BYTE 0x62 75 //Resist piercing (was 50)
+  WRITE_BYTE 0x63 75 //Resist missile (was 50)
+  WRITE_ASCII 0x268 ~finmel~ #8 //Default script (was meliss01)
+  WRITE_BYTE 0x274 99 //Specific (was 0)
+  REPLACE_CRE_ITEM ~finbalth~ #0 #0 #0 ~NONE~ ~HELMET~ //Was helmnoan
+  ADD_CRE_ITEM     ~finsend~  #0 #0 #0 ~NONE~ ~GLOVES~
+  REPLACE_CRE_ITEM ~allfive~  #0 #0 #0 ~NONE~ ~LRING~ //Was immune3
+  ADD_CRE_ITEM     ~finabaz~  #0 #0 #0 ~NONE~ ~RRING~
+  REPLACE_CRE_ITEM ~finilla~  #0 #0 #0 ~NONE~ ~BELT~ //Was sarevimm
+  ADD_CRE_ITEM     ~finyaga~  #0 #0 #0 ~NONE~ ~BOOTS~
+  PATCH_FOR_EACH pcd IN 16 31 101 126 173 176 189 292 BEGIN
+    LAUNCH_PATCH_FUNCTION DELETE_CRE_EFFECT
+      INT_VAR opcode_to_delete = pcd
+    END
+  END
+  LAUNCH_PATCH_FUNCTION ADD_CRE_EFFECT
+    INT_VAR opcode = 31 //Magic damage resistance modifier
+    timing = 1 //Permanent
+    parameter1 = 50 //Modifier
+  END
+  PATCH_FOR_EACH par2 IN 25 60 BEGIN
+    LAUNCH_PATCH_FUNCTION ADD_CRE_EFFECT
+      INT_VAR opcode = 101 //Protection from opcode
+      timing = 9 //Permanent after death
+      parameter2 = par2 //Opcode
+    END
+  END
+  LAUNCH_PATCH_FUNCTION ADD_CRE_EFFECT
+    INT_VAR opcode = 173 //Poison resistance modifier
+    timing = 9 //Permanent after death
+    parameter1 = 100 //Modifier
+  END
+  LAUNCH_PATCH_FUNCTION ADD_CRE_EFFECT
+    INT_VAR opcode = 176 //Movement modifier II
+    timing = 9 //Permanent after death
+    parameter1 = 4 //Modifier
+  END
+  LAUNCH_PATCH_FUNCTION ADD_CRE_EFFECT
+    INT_VAR opcode = 16 //Haste
+    timing = 1 //Permanent
+    parameter2 = 2 //Speed Haste
+  END
+  LAUNCH_PATCH_FUNCTION ADD_CRE_EFFECT
+    INT_VAR opcode = 189 //Casting time modifier
+    timing = 9 //Permanent after death
+    parameter1 = 6 //Modifier
+  END
+  SET_BG2_PROFICIENCY ~PROFICIENCYSPEAR~ 1
+  SET_BG2_PROFICIENCY ~PROFICIENCYDART~ 1
+  SET_BG2_PROFICIENCY ~PROFICIENCY2HANDED~ 2
+BUT_ONLY
+
+//Epilogue Patching
+///////////////////////////////////////////////////////////////////////
+// Rewrite Epilogues & include Balthazar's & Bodhi's
+//
+// Each epilogue.2da file contains a reference to the string 71020
+// and one other string. The second string is the dialogue for the
+// character.
+///////////////////////////////////////////////////////////////////////
+COPY ~ascension/ascensionmain/epilogue~  ~override~
+
+COPY_EXISTING ~aeriend1.2da~ ~override/aerifnd1.2da~
+  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Aerie_Epi~
+  REPLACE ~EA_Asc_Aerie_Epi~ @82710
+
+COPY_EXISTING ~aeriend1.2da~ ~override~
+  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Aerie_Epi~
+  REPLACE ~EA_Asc_Aerie_Epi~ @82714
+BUT_ONLY
+
+COPY_EXISTING ~aeriend2.2da~ ~override~
+  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Aerie_Epi~
+  REPLACE ~EA_Asc_Aerie_Epi~ @82715
+BUT_ONLY
+
+COPY_EXISTING ~anomend1.2da~ ~override~
+  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Anomen_Epi~
+  REPLACE ~EA_Asc_Anomen_Epi~ @82716
+BUT_ONLY
+
+COPY_EXISTING ~anomend2.2da~ ~override~
+  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Anomen_Epi~
+  REPLACE ~EA_Asc_Anomen_Epi~ @82717
+BUT_ONLY
+
+COPY_EXISTING ~balthand.2da~  ~override/balthfnd.2da~
+  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Balthazar_Epi~
+  REPLACE ~EA_Asc_Balthazar_Epi~ @82734
+
+COPY_EXISTING ~balthand.2da~  ~override~
+  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Balthazar_Epi~
+  REPLACE ~EA_Asc_Balthazar_Epi~ @82760
+BUT_ONLY
+
+COPY_EXISTING ~bodhind.2da~  ~override~
+  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Bodhi_Epi~
+  REPLACE ~EA_Asc_Bodhi_Epi~ @82785
+BUT_ONLY
+
+COPY_EXISTING ~cerndnd.2da~  ~override~
+  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Cernd_Epi~
+  REPLACE ~EA_Asc_Cernd_Epi~ @82718
+BUT_ONLY
+
+COPY_EXISTING ~haernd.2da~   ~override~
+  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Haerdalis_Epi~
+  REPLACE ~EA_Asc_Haerdalis_Epi~ @82720
+BUT_ONLY
+
+COPY_EXISTING ~imoennd.2da~  ~override/imoenfnd.2da~
+  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Imoen_Epi~
+  REPLACE ~EA_Asc_Imoen_Epi~ @82730
+
+COPY_EXISTING ~imoennd.2da~  ~override~
+  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Imoen_Epi~
+  REPLACE ~EA_Asc_Imoen_Epi~ @82731
+BUT_ONLY
+
+COPY_EXISTING ~jaheind1.2da~ ~override~
+  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Jaheira_Epi~
+  REPLACE ~EA_Asc_Jaheira_Epi~ @82721
+BUT_ONLY
+
+COPY_EXISTING ~jaheind2.2da~ ~override~
+  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Jaheira_Epi~
+  REPLACE ~EA_Asc_Jaheira_Epi~ @82722
+BUT_ONLY
+
+COPY_EXISTING ~mazzynd.2da~  ~override/mazzyfnd.2da~
+  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Mazzy_Epi~
+  REPLACE ~EA_Asc_Mazzy_Epi~ @82719
+
+COPY_EXISTING ~mazzynd.2da~  ~override~
+  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Mazzy_Epi~
+  REPLACE ~EA_Asc_Mazzy_Epi~ @82723
+BUT_ONLY
+
+COPY_EXISTING ~naliand.2da~  ~override~
+  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Nalia_Epi~
+  REPLACE ~EA_Asc_Nalia_Epi~ @82724
+BUT_ONLY
+
+COPY_EXISTING ~sarevnd.2da~  ~override/sarevfnd.2da~
+  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Sarevok_Epi~
+  REPLACE ~EA_Asc_Sarevok_Epi~ @82711
+
+COPY_EXISTING ~sarevnd.2da~  ~override/sarevnd2.2da~
+  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Sarevok_Epi~
+  REPLACE ~EA_Asc_Sarevok_Epi~ @82726
+
+COPY_EXISTING ~sarevnd.2da~  ~override~
+  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Sarevok_Epi~
+  REPLACE ~EA_Asc_Sarevok_Epi~ @82725
+BUT_ONLY
+
+COPY_EXISTING ~valygnd.2da~  ~override/valygfnd.2da~
+  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Valygar_Epi~
+  REPLACE ~EA_Asc_Valygar_Epi~ @82712
+
+COPY_EXISTING ~valygnd.2da~  ~override~
+  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Valygar_Epi~
+  REPLACE ~EA_Asc_Valygar_Epi~ @82727
+BUT_ONLY
+
+COPY_EXISTING ~viconnd1.2da~ ~override/vicofnd3.2da~
+  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Viconia_Epi~
+  REPLACE ~EA_Asc_Viconia_Epi~ @82713
+
+COPY_EXISTING ~viconnd1.2da~  ~override/viconnd3.2da~
+  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Viconia_Epi~
+  REPLACE ~EA_Asc_Viconia_Epi~ @82729
+
+COPY_EXISTING ~viconnd1.2da~  ~override~
+  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Viconia_Epi~
+  REPLACE ~EA_Asc_Viconia_Epi~ @82728
+BUT_ONLY
+
+COPY_EXISTING ~viconnd2.2da~  ~override~
+  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Viconia_Epi~
+  REPLACE ~EA_Asc_Viconia_Epi~ @82732
+BUT_ONLY
+
+
+//Item Patching
+COPY_EXISTING ~dartmel.itm~ ~override~
+  READ_LONG 0x64 hf //Extended header offset
+  READ_SHORT 0x68 hc //Extended header count
+  FOR (i1 = 0; i1 < hc; i1 += 1) BEGIN //Cycle through headers
+    READ_BYTE (0x38 * i1 + hf) pt //Attack type
+    PATCH_IF pt = 1 BEGIN //If melee
+      WRITE_SHORT (0x38 * i1 + hf + 0xe) 20 //Range (was 40)
+    END
+  END
+  PATCH_FOR_EACH pcd IN 45 78 142 BEGIN
+    LAUNCH_PATCH_FUNCTION DELETE_ITEM_EFFECT
+      INT_VAR opcode_to_delete = pcd
+    END
+  END
+  LAUNCH_PATCH_FUNCTION ADD_ITEM_EFFECT
+    INT_VAR opcode = 45 //Stun
+    target = 2 //Pre-target
+    power = 8
+    duration = 15
+    probability1 = 50
+    savingthrow = 16 //Polymorph
+    savebonus = (0 - 2)
+    resist_dispel = 1 //Dispel/no bypass
+    type = 2 //Header type (Projectile)
+  END
+  LAUNCH_PATCH_FUNCTION ADD_ITEM_EFFECT
+    INT_VAR opcode = 142 //Display icon
+    target = 2 //Pre-target
+    power = 8
+    duration = 15
+    parameter2 = 55 //Icon (Stun)
+    probability1 = 50
+    savingthrow = 16 //Polymorph
+    savebonus = (0 - 2)
+    resist_dispel = 1 //Dispel/no bypass
+    type = 2 //Header type (Projectile)
+  END
+  LAUNCH_PATCH_FUNCTION ADD_ITEM_EFFECT
+    INT_VAR opcode = 78 //Disease
+    target = 2 //Pre-target
+    power = 8
+    parameter1 = 1 //Damage
+    parameter2 = 2 //Type (HP per second)
+    duration = 15
+    probability2 = 51
+    savingthrow = 4 //Death/poison
+    savebonus = (0 - 4)
+    resist_dispel = 1 //Dispel_no_bypass
+    type = 2 //Header type (Projectile)
+  END
+  LAUNCH_PATCH_FUNCTION ADD_ITEM_EFFECT
+    INT_VAR opcode = 78 //Disease
+    target = 2 //Pre-target
+    power = 8
+    parameter1 = 1 //Damage
+    parameter2 = 6 //Type (Constitution penalty)
+    duration = 30
+    probability2 = 76
+    savingthrow = 4 //Death/poison
+    savebonus = (0 - 4)
+    resist_dispel = 1 //Dispel_no_bypass
+    type = 2 //Header type (Projectile)
+  END
+  LAUNCH_PATCH_FUNCTION ADD_ITEM_EFFECT
+    INT_VAR opcode = 142 //Display icon
+    target = 2 //Pre-target
+    power = 8
+    duration = 15
+    parameter2 = 7 //Icon (Nauseated)
+    probability1 = 75
+    probability2 = 51
+    savingthrow = 4 //Death/poison
+    savebonus = (0 - 4)
+    resist_dispel = 1 //Dispel/no bypass
+    type = 2 //Header type (Projectile)
+  END
+  LAUNCH_PATCH_FUNCTION ADD_ITEM_EFFECT
+    INT_VAR opcode = 142 //Display icon
+    target = 2 //Pre-target
+    power = 8
+    duration = 30
+    parameter2 = 7 //Icon (Nauseated)
+    probability2 = 76
+    savingthrow = 4 //Death/poison
+    savebonus = (0 - 4)
+    resist_dispel = 1 //Dispel/no bypass
+    type = 2 //Header type (Projectile)
+  END
+BUT_ONLY
+
+COPY_EXISTING ~demsuc01.itm~ ~override~
+  WRITE_LONG 0x8 213 //Unidentified name (Fists, was none)
+  WRITE_SHORT 0x1c 0x1c //Item type (hand-to-hand, was 0 misc.)
+  WRITE_LONG 0x60 0 //Magic level (was 2)
+  READ_LONG 0x64 hf //Extended header offset
+  READ_SHORT 0x68 hc //Extended header count
+  FOR (i1 = 0; i1 < hc; i1 += 1) BEGIN //Cycle through headers
+    READ_BYTE (0x38 * i1 + hf) pt //Attack type
+    PATCH_IF pt = 1 BEGIN //If melee
+      WRITE_BYTE (0x38 * i1 + hf + 0x12) 1 //Speed (was 0)
+    END
+  END
+  LAUNCH_PATCH_FUNCTION DELETE_ITEM_EQEFFECT
+    INT_VAR opcode_to_delete = 206 //Protection from spell
+  END
+  PATCH_FOR_EACH pcd IN 10 15 18 33 34 35 36 37 50 139 141 216 BEGIN
+    LAUNCH_PATCH_FUNCTION DELETE_ITEM_EFFECT
+      INT_VAR opcode_to_delete = pcd
+    END
+  END
+  LAUNCH_PATCH_FUNCTION ADD_ITEM_EFFECT
+    INT_VAR opcode = 216 //Level drain
+    target = 2 //Pre-target
+    power = 9
+    parameter1 = 1 //Amount
+    timing = 1 //Permanent
+    probability1 = 80
+    type = 1 //Header type (Melee)
+  END
+BUT_ONLY
+
+COPY_EXISTING ~finmel01.itm~ ~override~
+  WRITE_BYTE 0x18 (THIS BOR 0b01000000) //Magical
+  WRITE_ASCII 0x3a ~iamul13~ #8 //Inventory icon
+  WRITE_ASCII 0x44 ~gamul02~ #8 //Ground icon
+  WRITE_ASCII 0x58 ~camul10~ #8 //Description icon
+  LAUNCH_PATCH_FUNCTION DELETE_ITEM_EFFECT
+    INT_VAR opcode_to_delete = (0 - 1)
+  END
+  READ_LONG 0x64 abil_off
+  READ_SHORT 0x68 num_abil
+  FOR (w = 0; w < num_abil; w += 1) BEGIN //Cycle through headers
+    READ_BYTE (0x38 * w + abil_off) pt //Attack type
+    PATCH_IF pt = 0 BEGIN //If none
+      DELETE_BYTES (0x38 * w + abil_off) 0x38
+      WRITE_SHORT 0x68 (num_abil - 1)
+      WRITE_LONG 0x6a (THIS - 0x38) //Feature offset
+    END
+  END
+  PATCH_FOR_EACH pcd IN 101 120 184 206 208 267 BEGIN
+    LAUNCH_PATCH_FUNCTION DELETE_ITEM_EQEFFECT
+      INT_VAR opcode_to_delete = pcd
+    END
+  END
+  PATCH_FOR_EACH par2 IN 3 5 13 24 38 39 55 76 78 128 134 135 154 157 158 209 211 213 216 217 222 235 238 BEGIN
+    LAUNCH_PATCH_FUNCTION ADD_ITEM_EQEFFECT
+      INT_VAR opcode = 101 //Protection from opcode
+      target = 1 //Self
+      timing = 2 //While equipped
+      parameter2 = par2
+      resist_dispel = 2 //No dispel/bypass
+    END
+  END
+  LAUNCH_PATCH_FUNCTION ADD_ITEM_EQEFFECT
+    INT_VAR opcode = 120 //Protection from melee weapons
+    target = 1 //Self
+    timing = 2 //While equipped
+    parameter2 = 2 //Type (Non-magical weapons)
+    resist_dispel = 2 //No dispel/bypass
+  END
+  PATCH_FOR_EACH par1 IN 1 2 3 BEGIN
+    LAUNCH_PATCH_FUNCTION ADD_ITEM_EQEFFECT
+      INT_VAR opcode = 120 //Protection from melee weapons
+      target = 1 //Self
+      timing = 2 //While equipped
+      parameter1 = par1 //Enchantment
+      resist_dispel = 2 //No dispel/bypass
+    END
+  END
+  LAUNCH_PATCH_FUNCTION ADD_ITEM_EQEFFECT
+    INT_VAR opcode = 184 //Passwall
+    target = 1 //Self
+    timing = 2 //While equipped
+    parameter2 = 1 //Don't jump
+    resist_dispel = 2 //No dispel/bypass
+  END
+  PATCH_FOR_EACH res IN ~mels545~ ~melspl04~ ~melspl07~ BEGIN
+    LAUNCH_PATCH_FUNCTION ADD_ITEM_EQEFFECT
+      INT_VAR opcode = 206 //Protection from spell
+      target = 1 //Self
+      timing = 2 //While equipped
+      resist_dispel = 2 //No dispel/bypass
+      STR_VAR resource = EVALUATE_BUFFER ~%res%~
+    END
+  END
+  PATCH_FOR_EACH par1 IN 14665 41495 BEGIN
+    LAUNCH_PATCH_FUNCTION ADD_ITEM_EQEFFECT
+      INT_VAR opcode = 267 //Protection from string
+      target = 1 //Self
+      timing = 2 //While equipped
+      parameter1 = par1 //String reference
+      resist_dispel = 2 //No dispel/bypass
+    END
+  END
+BUT_ONLY
+
+COPY_EXISTING ~mfist7.itm~ ~override~
+              ~mfist8.itm~ ~override~
+  LAUNCH_PATCH_FUNCTION ADD_ITEM_EQEFFECT
+    INT_VAR opcode = 101 //Protection from opcode
+    target = 1 //Self
+    timing = 2 //While equipped
+    parameter2 = 78 //Opcode (Disease)
+    resist_dispel = 2 //No dispel/bypass
+  END
+  LAUNCH_PATCH_FUNCTION ADD_ITEM_EQEFFECT
+    INT_VAR opcode = 169 //Immunity to icon
+    target = 1 //Self
+    timing = 2 //While equipped
+    parameter2 = 7 //Icon (Nauseated)
+    resist_dispel = 2 //No dispel/bypass
+  END
+BUT_ONLY
+
+COPY_EXISTING ~spermel.itm~ ~override~
+  READ_LONG 0x64 hf //Extended header offset
+  READ_SHORT 0x68 hc //Extended header count
+  FOR (i1 = 0; i1 < hc; i1 += 1) BEGIN //Cycle through headers
+    READ_BYTE (0x38 * i1 + hf) pt //Attack type
+    PATCH_IF pt = 1 BEGIN //If melee
+      READ_SHORT (0x38 * i1 + hf + 0x12) sd
+      PATCH_IF sd < 3 BEGIN
+        WRITE_BYTE (0x38 * i1 + hf + 0x12) 3 //Speed (was 0)
+      END
+      WRITE_SHORT (0x38 * i1 + hf + 0x1c) 3 //Damage type (slashing, was piercing)
+    END
+  END
+  PATCH_FOR_EACH pcd IN 12 40 45 142 166 177 BEGIN
+    LAUNCH_PATCH_FUNCTION DELETE_ITEM_EFFECT
+      INT_VAR opcode_to_delete = pcd
+    END
+  END
+  LAUNCH_PATCH_FUNCTION ADD_ITEM_EFFECT
+    INT_VAR opcode = 12 //HP damage
+    target = 2 //Pre-target
+    timing = 1 //Permanent
+    parameter2 = 131072 //Type (cold)
+    dicenumber = 1
+    dicesize   = 10
+    savingthrow = 1 //Spells
+    savebonus = (0 - 4)
+    type = 1 //Header type (Melee)
+  END
+  LAUNCH_PATCH_FUNCTION ADD_ITEM_EFFECT
+    INT_VAR opcode = 12 //HP damage
+    target = 2 //Pre-target
+    timing = 1 //Permanent
+    parameter2 = 131072 //Type (cold)
+    dicenumber = 1
+    dicesize   = 10
+  END
+  LAUNCH_PATCH_FUNCTION ADD_ITEM_EFFECT
+    INT_VAR opcode = 45 //Stun
+    target = 2 //Pre-target
+    duration = 15
+    probability1 = 15
+    savingthrow = 16 //Polymorph
+    savebonus = (0 - 2)
+    resist_dispel = 1 //Dispel_no_bypass
+    type = 1 //Header type (Melee)
+  END
+  LAUNCH_PATCH_FUNCTION ADD_ITEM_EFFECT
+    INT_VAR opcode = 142 //Display icon
+    target = 2 //Pre-target
+    duration = 15
+    parameter2 = 55 //Icon (Stun)
+    probability1 = 15
+    savingthrow = 16 //Polymorph
+    savebonus = (0 - 2)
+    resist_dispel = 1 //Dispel/no bypass
+    type = 1 //Header type (Melee)
+  END
+  LAUNCH_PATCH_FUNCTION ADD_ITEM_EFFECT
+    INT_VAR opcode = 177 //Use EFF file
+    target = 2 //Pre-target
+    timing = 9 //Permanent after death
+    parameter1 = 4 //IDS entry (undead)
+    parameter2 = 3 //IDS file (general.ids)
+    dicenumber = 8 //Level limit
+    savingthrow = 4 //Death/poison
+    resist_dispel = 2 //Not dispel/bypass
+    type = 1 //Header type (Melee)
+    STR_VAR resource = death
+  END
+  LAUNCH_PATCH_FUNCTION ADD_ITEM_EFFECT
+    INT_VAR opcode = 177 //Use EFF file
+    target = 2 //Pre-target
+    timing = 9 //Permanent after death
+    parameter1 = 7 //IDS entry (illusionary)
+    parameter2 = 7 //IDS file (gender.ids)
+    resist_dispel = 2 //Not dispel/bypass
+    type = 1 //Header type (Melee)
+    STR_VAR resource = destself
+  END
+  LAUNCH_PATCH_FUNCTION ADD_ITEM_EFFECT
+    INT_VAR opcode = 177 //Use EFF file
+    target = 2 //Pre-target
+    timing = 1 //Permanent
+    parameter1 = 121 //IDS entry (demonic)
+    parameter2 = 4 //IDS file (race.ids)
+    resist_dispel = 2 //Not dispel/bypass
+    type = 1 //Header type (Melee)
+    STR_VAR resource = yagaund
+  END
+BUT_ONLY
+
+//Spell Patching
+
+COPY_EXISTING ~balth02.spl~ ~override~ //Lunar Stance
+  WRITE_BYTE 0x27 2 //Secondary type (specific protections, was none)
+  WRITE_LONG 0x34 1 //Level
+  READ_LONG 0x64 abil_off
+  READ_LONG 0x6a ef_off
+  READ_SHORT (abil_off + 0x1e) ef_count
+  FOR (v = 0; v < ef_count; v += 1) BEGIN //Cycle through effects
+    READ_LONG (0x30 * v + ef_off + 0xe) dur //Duration
+    PATCH_IF dur = 30 BEGIN
+      WRITE_LONG (0x30 * v + ef_off + 0xe) 24
+    END
+  END
+  PATCH_FOR_EACH pcd IN 18 22 41 142 165 282 BEGIN
+    LAUNCH_PATCH_FUNCTION DELETE_SPELL_EFFECT
+      INT_VAR opcode_to_delete = pcd
+    END
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 22 //Luck modifier
+    target = 1 //Self
+    parameter1 = 2 //Modifier
+    duration = 24
+    resist_dispel = 2 //Not dispel/bypass
+  END
+  PATCH_FOR_EACH par2 IN 1 2 BEGIN
+    LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+      INT_VAR opcode = 41 //Sparkle
+      target = 1 //Self
+      parameter1 = 10 //Color
+      parameter2 = par2 //Type
+      duration = 3
+      resist_dispel = 2 //Not dispel/bypass
+    END
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 165 //Pause target
+    target = 1 //Self
+    duration = 2
+    resist_dispel = 2 //Not dispel/bypass
+  END
+  PATCH_FOR_EACH par2 IN 1 2 BEGIN
+    LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+      INT_VAR opcode = 282 //Script state modifier
+      target = 1 //Self
+      parameter1 = 1 //Value
+      parameter2 = par2 //State
+      duration = 24
+      resist_dispel = 2 //Not dispel/bypass
+    END
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 282 //Script state modifier
+    target = 1 //Self
+    parameter1 = 5 //Value
+    duration = 24
+    resist_dispel = 2 //Not dispel/bypass
+  END
+BUT_ONLY
+
+COPY_EXISTING ~balth03.spl~ ~override~ //Dragon Fist
+  WRITE_LONG 0x34 1 //Level
+  READ_LONG 0x64 abil_off
+  READ_LONG 0x6a ef_off
+  READ_SHORT (abil_off + 0x1e) ef_count
+  FOR (v = 0; v < ef_count; v += 1) BEGIN //Cycle through effects
+    READ_BYTE (0x30 * v + ef_off + 0xc) tmd //Timing
+    READ_LONG (0x30 * v + ef_off + 0xe) dur //Duration
+    PATCH_IF (tmd = 1) AND (dur > 0) BEGIN
+      WRITE_LONG (0x30 * v + ef_off + 0xe) 0
+    END
+    PATCH_IF (tmd = 0) AND (dur = 0) BEGIN
+      WRITE_LONG (0x30 * v + ef_off + 0xe) 3
+    END
+  END
+  PATCH_FOR_EACH pcd IN 40 142 174 230 240 248 BEGIN
+    LAUNCH_PATCH_FUNCTION DELETE_SPELL_EFFECT
+      INT_VAR opcode_to_delete = pcd
+    END
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 215 //Play 3D effect
+    target = 2 //Pre-target
+    parameter2 = 1 //State (Play over target)
+    duration = 3
+    resist_dispel = 2 //Not dispel/bypass
+    STR_VAR resource = spdispma
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 40 //Slow
+    target = 2 //Pre-target
+    duration = 12
+    resist_dispel = 2 //Not dispel/bypass
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 142 //Display icon
+    target = 2 //Pre-target
+    parameter2 = 41 //Icon (Slow)
+    duration = 12
+    resist_dispel = 2 //Not dispel/bypass
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 174 //Play sound effect
+    target = 1 //Self
+    timing = 1 //Instantaneous
+    resist_dispel = 2 //Not dispel/bypass
+    STR_VAR resource = eff_p97
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 230 //Remove one secondary type
+    target = 2 //Pre-target
+    parameter1 = 8 //Max level
+    parameter2 = 1 //Type (Spell protections)
+    timing = 1 //Permanent
+    probability2 = 25
+    resist_dispel = 2 //Not dispel/bypass
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 230 //Remove one secondary type
+    target = 2 //Pre-target
+    parameter1 = 8 //Max level
+    parameter2 = 2 //Type (Specific protections)
+    timing = 1 //Permanent
+    probability1 = 75
+    resist_dispel = 2 //Not dispel/bypass
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 240 //Remove icon
+    target = 2 //Pre-target
+    parameter2 = 28 //Icon (Protection from magic)
+    timing = 1 //Permanent
+    resist_dispel = 2 //Not dispel/bypass
+  END
+BUT_ONLY
+
+COPY_EXISTING ~balth04.spl~ ~override~ //Tiger Strike
+  WRITE_LONG 0x34 1 //Level
+  READ_LONG 0x64 abil_off
+  READ_LONG 0x6a ef_off
+  READ_SHORT (abil_off + 0x1e) ef_count
+  FOR (v = 0; v < ef_count; v += 1) BEGIN //Cycle through effects
+    READ_SHORT (0x30 * v + ef_off) pcd //Opcode
+    READ_BYTE (0x30 * v + ef_off + 0xc) tmd //Timing
+    READ_LONG (0x30 * v + ef_off + 0xe) dur //Duration
+    PATCH_IF (pcd = 301) BEGIN //Critical hit modifier
+      WRITE_LONG (0x30 * v + ef_off + 4) 10 //Parameter1 (was 20)
+    END
+    PATCH_IF (tmd = 0) AND (dur = 0) BEGIN
+      WRITE_LONG (0x30 * v + ef_off + 0xe) 3
+    END
+  END
+BUT_ONLY
+
+COPY_EXISTING ~balth05.spl~ ~override~ //Hand of Murder
+  WRITE_LONG 0x34 1 //Level
+  READ_LONG 0x64 abil_off
+  READ_LONG 0x6a ef_off
+  READ_SHORT (abil_off + 0x1e) ef_count
+  FOR (v = 0; v < ef_count; v += 1) BEGIN //Cycle through effects
+    READ_BYTE (0x30 * v + ef_off + 3) pwr //Power
+    READ_BYTE (0x30 * v + ef_off + 0xc) tmd //Timing
+    READ_LONG (0x30 * v + ef_off + 0xe) dur //Duration
+    PATCH_IF (pwr = 1) BEGIN
+      WRITE_BYTE (0x30 * v + ef_off + 3) 0
+    END
+    PATCH_IF (tmd = 1) AND (dur > 0) BEGIN
+      WRITE_BYTE (0x30 * v + ef_off + 0xc) 0
+    END
+  END
+  PATCH_FOR_EACH res IN ~spcl820~ ~quivvis~ BEGIN
+    LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+      INT_VAR opcode = 248 //Set melee effect
+      target = 2 //Pre-target
+      duration = 3
+      resist_dispel = 2 //Not dispel/bypass
+      STR_VAR resource = EVALUATE_BUFFER ~%res%~
+    END
+  END
+BUT_ONLY
+
+COPY_EXISTING ~balth07.spl~ ~override~ //Greater Malison
+  WRITE_BYTE 0x19 (THIS BOR 0b00001000) //No LOS needed
+  WRITE_LONG 0x34 1 //Level
+  READ_LONG 0x64 abil_off
+  WRITE_SHORT (abil_off + 0x26) 159 //Projectile (Instant area)
+  PATCH_FOR_EACH pcd IN 40 50 215 BEGIN
+    LAUNCH_PATCH_FUNCTION DELETE_SPELL_EFFECT
+      INT_VAR opcode_to_delete = pcd
+    END
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 206 //Protection from spell
+    target = 2 //Pre-target
+    power = 4
+    duration = 240
+    resist_dispel = 1 //Dispel/not bypass
+    STR_VAR resource = balth07
+  END
+BUT_ONLY
+
+COPY_EXISTING ~balth08.spl~ ~override~ //Faster Than the Eye
+  WRITE_LONG 0x34 1 //Level
+  READ_LONG 0x64 abil_off
+  READ_LONG 0x6a ef_off
+  WRITE_SHORT (abil_off + 0xe) 30 //Range
+  READ_SHORT (abil_off + 0x1e) ef_count
+  FOR (v = 0; v < ef_count; v += 1) BEGIN //Cycle through effects
+    READ_SHORT (0x30 * v + ef_off) pcd //Opcode
+    READ_BYTE (0x30 * v + ef_off + 0xc) tmd //Timing
+    READ_LONG (0x30 * v + ef_off + 0xe) dur //Duration
+    PATCH_IF (pcd = 124) BEGIN //Teleport
+      WRITE_BYTE (0x30 * v + ef_off + 0xc) 1 //Permanent (was Delayed)
+      WRITE_LONG (0x30 * v + ef_off + 0xe) 0
+    END
+    PATCH_IF (pcd = 215) BEGIN //Play 3D effect
+      WRITE_ASCII (0x30 * v + ef_off + 0x14) ~spfleshs~ #8 //Resource
+    END
+    PATCH_IF (tmd = 0) AND (dur = 0) BEGIN
+      WRITE_BYTE (0x30 * v + ef_off + 0xc) 1
+    END
+  END
+BUT_ONLY
+
+COPY_EXISTING ~balth10.spl~ ~override~ //Shadow Stance
+  WRITE_LONG 0x34 1 //Level
+  READ_LONG 0x64 abil_off
+  READ_LONG 0x6a ef_off
+  READ_SHORT (abil_off + 0x1e) ef_count
+  FOR (v = 0; v < ef_count; v += 1) BEGIN //Cycle through effects
+    READ_SHORT (0x30 * v + ef_off) pcd //Opcode
+    READ_BYTE (0x30 * v + ef_off + 0xc) tmd //Timing
+    READ_LONG (0x30 * v + ef_off + 0xe) dur //Duration
+    PATCH_IF (pcd = 0) AND (dur = 15) BEGIN
+      WRITE_LONG (0x30 * v + ef_off + 0xe) 30
+    END
+    PATCH_IF (dur = 60) BEGIN
+      WRITE_LONG (0x30 * v + ef_off + 0xe) 15
+    END
+  END
+BUT_ONLY
+
+COPY_EXISTING ~dgwhirl.spl~ ~override~ //Unnamed
+              ~spwi929.spl~ ~override~ //Charm Person
+              ~spwi930.spl~ ~override~ //Charm Person
+  WRITE_LONG 0x34 1 //Level
+  READ_LONG 0x64 abil_off
+  READ_SHORT 0x68 num_abil
+  FOR (w = 0; w < num_abil; w += 1) BEGIN //Cycle through headers
+    READ_SHORT (0x28 * w + abil_off + 0xe) rg //Range
+    PATCH_IF (rg > 30) BEGIN
+      WRITE_SHORT (abil_off + 0xe) 30
+    END
+  END
+BUT_ONLY
+
+COPY_EXISTING ~melis01.spl~ ~override~ //Bone Blades
+  WRITE_BYTE 0x19 (THIS BOR 0b00000100) //Hostile spell
+  WRITE_SHORT 0x1c 2 //Type (cleric, was innate)
+  READ_LONG 0x64 abil_off
+  READ_LONG 0x6a ef_off
+  WRITE_BYTE (abil_off + 2) 2 //Location (spell, was innate)
+  WRITE_BYTE (abil_off + 0xc) 1 //Target (creature, was self)
+  WRITE_SHORT (abil_off + 0xe) 30 //Range
+  WRITE_LONG (abil_off + 0x12) 7 //Speed
+  READ_SHORT (abil_off + 0x1e) ef_count
+  FOR (v = 0; v < ef_count; v += 1) BEGIN //Cycle through effects
+    READ_BYTE (0x30 * v + ef_off + 3) pwr //Power
+    PATCH_IF (pwr < 8) BEGIN
+      WRITE_BYTE (0x30 * v + ef_off + 3) 8
+    END
+  END
+  LAUNCH_PATCH_FUNCTION DELETE_SPELL_EFFECT
+    INT_VAR opcode_to_delete = 215
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 142 //Display icon
+    target = 2 //Pre-target
+    power = 8
+    parameter2 = 41 //Icon (Slow)
+    duration = 6
+    savingthrow = 4 //Death/poison
+    savebonus = (0 - 2)
+    resist_dispel = 1 //Dispel/not bypass
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 165 //Pause target
+    target = 2 //Pre-target
+    power = 8
+    duration = 3
+    savingthrow = 16 //Polymorph
+    savebonus = (0 - 4)
+    resist_dispel = 2 //Not dispel/bypass
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 215 //Play 3D effect
+    target = 2 //Pre-target
+    power = 8
+    parameter2 = 1 //State (Play over target)
+    duration = 3
+    resist_dispel = 2 //Not dispel/bypass
+    STR_VAR resource = spglbbld
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 215 //Play 3D effect
+    target = 1 //Self
+    power = 8
+    duration = 2
+    resist_dispel = 2 //Not dispel/bypass
+    STR_VAR resource = firecold
+  END
+BUT_ONLY
+
+COPY_EXISTING ~melis02.spl~ ~override~ //Blade Barrier
+  WRITE_SHORT 0x1c 2 //Type (cleric, was innate)
+  READ_LONG 0x64 abil_off
+  READ_LONG 0x6a ef_off
+  WRITE_BYTE (abil_off + 2) 2 //Location (spell, was innate)
+  READ_SHORT (abil_off + 0x1e) ef_count
+  FOR (v = 0; v < ef_count; v += 1) BEGIN //Cycle through effects
+    READ_SHORT (0x30 * v + ef_off) pcd //Opcode
+    PATCH_IF (pcd = 282) BEGIN //Script state modifier
+      WRITE_LONG (0x30 * v + ef_off + 8) 1 //Parameter2 (was 9)
+    END
+    READ_BYTE (0x30 * v + ef_off + 3) pwr //Power
+    PATCH_IF (pwr < 8) BEGIN
+      WRITE_BYTE (0x30 * v + ef_off + 3) 8
+    END
+  END
+BUT_ONLY
+
+COPY_EXISTING ~melis02b.spl~ ~override~ //Blade Barrier
+  READ_LONG 0x64 abil_off
+  READ_LONG 0x6a ef_off
+  READ_SHORT (abil_off + 0x1e) ef_count
+  FOR (v = 0; v < ef_count; v += 1) BEGIN //Cycle through effects
+    READ_LONG (0x30 * v + ef_off + 0x24) svt //Save type
+    PATCH_IF (svt = 1) BEGIN //If Spells
+      WRITE_LONG (0x30 * v + ef_off + 0x24) 4 //Death/poison
+      WRITE_LONG (0x30 * v + ef_off + 0x28) (0 - 2) //Save bonus
+    END
+    READ_BYTE (0x30 * v + ef_off + 3) pwr //Power
+    PATCH_IF (pwr < 8) BEGIN
+      WRITE_BYTE (0x30 * v + ef_off + 3) 8
+    END
+  END
+BUT_ONLY
+
+COPY_EXISTING ~spin718.spl~ ~override~ //End Slayer Change
+  READ_LONG 0x64 abil_off
+  WRITE_SHORT (abil_off + 0xe) 30 //Range
+  PATCH_FOR_EACH pcd IN 17 93 BEGIN
+    LAUNCH_PATCH_FUNCTION DELETE_SPELL_EFFECT
+      INT_VAR opcode_to_delete = pcd
+    END
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 17 //Current HP modifier
+    target = 1 //Self
+    parameter1 = 95 //Modifier
+    parameter2 = 2 //Type (Percentage)
+    timing = 4 //Delayed
+    duration = 2
+    resist_dispel = 2 //No dispel/bypass
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 93 //Fatigue modifier
+    target = 1 //Self
+    parameter1 = 5 //Modifier
+    timing = 1 //Instantaneous
+    probability1 = 50
+    resist_dispel = 2 //No dispel/bypass
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 93 //Fatigue modifier
+    target = 1 //Self
+    parameter1 = 6 //Modifier
+    timing = 1 //Instantaneous
+    probability1 = 75
+    probability2 = 51
+    resist_dispel = 2 //No dispel/bypass
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 93 //Fatigue modifier
+    target = 1 //Self
+    parameter1 = 7 //Modifier
+    timing = 1 //Instantaneous
+    probability1 = 85
+    probability2 = 76
+    resist_dispel = 2 //No dispel/bypass
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 93 //Fatigue modifier
+    target = 1 //Self
+    parameter1 = 8 //Modifier
+    timing = 1 //Instantaneous
+    probability1 = 95
+    probability2 = 86
+    resist_dispel = 2 //No dispel/bypass
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 93 //Fatigue modifier
+    target = 1 //Self
+    parameter1 = 10 //Modifier
+    timing = 1 //Instantaneous
+    probability2 = 96
+    resist_dispel = 2 //No dispel/bypass
+  END
+  PATCH_FOR_EACH res IN ~slaywp2~ ~slaywp3~ ~slaywp4~ BEGIN
+    LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+      INT_VAR opcode = 112 //Remove item
+      target = 1 //Self
+      timing = 1 //Instantaneous
+      resist_dispel = 2 //Not dispel/bypass
+      STR_VAR resource = EVALUATE_BUFFER ~%res%~
+    END
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 206 //Protection from spell
+    target = 1 //Self
+    duration = 50
+    resist_dispel = 2 //No dispel/bypass
+    STR_VAR resource = berserk
+  END
+BUT_ONLY
+
+COPY_EXISTING ~spin823.spl~ ~override~ //Slayer Change
+  READ_LONG 0x64 abil_off
+  READ_LONG 0x6a ef_off
+  READ_SHORT (abil_off + 0x1e) ef_count
+  FOR (v = 0; v < ef_count; v += 1) BEGIN //Cycle through effects
+    READ_BYTE (0x30 * v + ef_off + 0xc) tmd //Timing
+    READ_LONG (0x30 * v + ef_off + 0xe) dur //Duration
+    PATCH_IF (tmd = 1) AND (dur > 0) BEGIN
+      WRITE_LONG (0x30 * v + ef_off + 0xe) 0
+    END
+    READ_LONG (0x30 * v + ef_off + 0x20) dsz //Dice size
+    PATCH_IF (dsz > 10) BEGIN
+      WRITE_LONG (0x30 * v + ef_off + 0x20) 0
+    END
+  END
+  PATCH_FOR_EACH pcd IN 101 169 BEGIN
+    LAUNCH_PATCH_FUNCTION DELETE_SPELL_EFFECT
+      INT_VAR opcode_to_delete = pcd
+    END
+  END
+  PATCH_FOR_EACH par2 IN 5 39 128 BEGIN
+    LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+      INT_VAR opcode = 101 //Protection from opcode
+      target = 1 //Self
+      parameter2 = par2
+      duration = 44
+      resist_dispel = 2 //No dispel/bypass
+    END
+  END
+  PATCH_FOR_EACH par2 IN 0 3 14 BEGIN
+    LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+      INT_VAR opcode = 169 //Immunity to icon
+      target = 1 //Self
+      parameter2 = par2
+      duration = 44
+      resist_dispel = 2 //No dispel/bypass
+    END
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 172 //Remove spell
+    target = 1 //Self
+    duration = 44
+    resist_dispel = 2 //No dispel/bypass
+    STR_VAR resource = unleash
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 146 //Cast spell at target
+    target = 1 //Self
+    parameter1 = 1 //Casting level
+    timing = 4 //Delayed
+    duration = 36
+    probability1 = 70
+    resist_dispel = 2 //No dispel/bypass
+    STR_VAR resource = berserk
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 146 //Cast spell at target
+    target = 1 //Self
+    parameter1 = 1 //Casting level
+    timing = 4 //Delayed
+    duration = 30
+    probability1 = 60
+    resist_dispel = 2 //No dispel/bypass
+    STR_VAR resource = berserk
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 146 //Cast spell at target
+    target = 1 //Self
+    parameter1 = 1 //Casting level
+    timing = 4 //Delayed
+    duration = 24
+    probability1 = 50
+    resist_dispel = 2 //No dispel/bypass
+    STR_VAR resource = berserk
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 146 //Cast spell at target
+    target = 1 //Self
+    parameter1 = 1 //Casting level
+    timing = 4 //Delayed
+    duration = 18
+    probability1 = 40
+    resist_dispel = 2 //No dispel/bypass
+    STR_VAR resource = berserk
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 146 //Cast spell at target
+    target = 1 //Self
+    parameter1 = 1 //Casting level
+    timing = 4 //Delayed
+    duration = 12
+    probability1 = 30
+    resist_dispel = 2 //No dispel/bypass
+    STR_VAR resource = berserk
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 146 //Cast spell at target
+    target = 1 //Self
+    parameter1 = 1 //Casting level
+    timing = 4 //Delayed
+    duration = 6
+    probability1 = 20
+    resist_dispel = 2 //No dispel/bypass
+    STR_VAR resource = berserk
+  END
+  LAUNCH_PATCH_FUNCTION ADD_SPELL_EFFECT
+    INT_VAR opcode = 146 //Cast spell at target
+    target = 1 //Self
+    parameter1 = 1 //Casting level
+    timing = 4 //Delayed
+    duration = 32
+    probability1 = 10
+    resist_dispel = 2 //No dispel/bypass
+    STR_VAR resource = berserk
+  END
+BUT_ONLY
+
+//Script Patching
+EXTEND_TOP ~ar5505.bcs~   ~ascension/ascensionmain/baf/ar5505.baf~
+EXTEND_TOP ~ar6200.bcs~   ~ascension/ascensionmain/baf/ar6200.baf~
+EXTEND_TOP ~imoe25.bcs~   ~ascension/ascensionmain/baf/imoe25.baf~
+EXTEND_TOP ~itpplane.bcs~ ~ascension/ascensionmain/baf/itpplane.baf~
+EXTEND_BOTTOM ~finmel01.bcs~ ~ascension/ascensionmain/baf/xfinmel01.baf~
+EXTEND_TOP    ~sarev25.bcs~ ~ascension/ascensionmain/baf/xsarev25.baf~
+EXTEND_BOTTOM ~sarev25.bcs~ ~ascension/ascensionmain/baf/ysarev25.baf~
+
+COPY_EXISTING ~cut233g.bcs~  ~override~
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~SetGlobal("FinalFight","AR6200",8)~ ~SetGlobal("FinalFight","AR6200",9)~
+    REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~ReallyForceSpellRES("jwsleep","finmel01")~ ~ActionOverride("finmel01",PlayDead(45))~
+    REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~ApplySpell(Player2,CLERIC_RESURRECTION)~ ~ApplySpell("finmel01",WIZARD_PIERCE_SHIELD) ApplySpell("finmel01",WIZARD_BREACH) ApplySpell(Player2,CLERIC_RESURRECTION)~
+  END
+BUT_ONLY
+
+COPY_EXISTING ~cut233h.bcs~  ~override~
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~ActionOverride("finmel01",PlayDeadInterruptable(500000))~ ~ActionOverride("finmel01",ChangeAlignment(Myself,NONE)) ActionOverride("finmel01",ChangeAIScript("",DEFAULT)) ActionOverride("finmel01",SetGlobal("DRAW","LOCALS",1)) Wait(1) ActionOverride("finmel01",PlayDeadInterruptable(500000))~
+  END
+BUT_ONLY
+
+COPY_EXISTING ~finmel01.bcs~  ~override~
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY CASE_INSENSITIVE ~Global("FinalFight","AR6200",7)[%MNL%%LNL%%TAB% ]+HPLT(Myself,20)~ ~Global("feedback","LOCALS",1)~
+    REPLACE_TEXTUALLY CASE_INSENSITIVE ~ClearAllActions()[%MNL%%LNL%%TAB% ]+StartCutSceneMode()[%MNL%%LNL%%TAB% ]+StartCutScene("cut233g")~ ~SetGlobal("feedback","LOCALS",0) SetInterrupt(FALSE) ClearActions(Myself) PlayDead(90) SetInterrupt(TRUE)~
+    REPLACE_TEXTUALLY CASE_INSENSITIVE ~Global("FinalFight","AR6200",5)[%MNL%%LNL%%TAB% ]+Global("ChangeScript1","LOCALS",0)~ ~Global("MelissanSpeaksFirst","LOCALS",0) Global("BalthazarFights","GLOBAL",0)~
+    REPLACE_TEXTUALLY CASE_INSENSITIVE ~SetGlobal("ChangeScript1","LOCALS",1)[%MNL%%LNL%%TAB% ]+ChangeAIScript("meliss02",DEFAULT)~ ~SetGlobal("MelissanSpeaksFirst","LOCALS",1) StartDialogNoSet(Player1)~
+    REPLACE_TEXTUALLY CASE_INSENSITIVE ~Global("FinalFight","AR6200",7)[%MNL%%LNL%%TAB% ]+Global("ChangeScript1","LOCALS",1)~ ~Global("MelissanSpeaksFirst","LOCALS",0) Global("BalthazarFights","GLOBAL",1) Global("SpawnBalthAlly","AR6200",1)~
+    REPLACE_TEXTUALLY CASE_INSENSITIVE ~SetGlobal("ChangeScript1","LOCALS",2)[%MNL%%LNL%%TAB% ]+ChangeAIScript("meliss03",DEFAULT)~ ~SetGlobal("MelissanSpeaksFirst","LOCALS",1) StartDialogNoSet(Player1)~
+    REPLACE_TEXTUALLY CASE_INSENSITIVE ~\bGlobal("EnteredArea","AR6200",0)~ ~Global("allfive","GLOBAL",1) Global("MelissanIsMortal","LOCALS",0)~
+    REPLACE_TEXTUALLY CASE_INSENSITIVE ~SetGlobal("EnteredArea","AR6200",1)~ ~SetGlobal("MelissanIsMortal","LOCALS",1) SetInterrupt(FALSE) ClearActions(Myself) ApplySpell(Myself,HEAL_NO_VISUAL)~
+    REPLACE_TEXTUALLY CASE_INSENSITIVE ~Global("FinalFight","AR6200",1)[%MNL%%LNL%%TAB% ]+HPPercentLT(Myself,50)~ ~Global("FinalFight","AR6200",8) Global("allfive","GLOBAL",1) Global("BalthazarFights","GLOBAL",0) Global("BodhiFights","GLOBAL",0) HPLT(Myself,20)~
+    REPLACE_TEXTUALLY CASE_INSENSITIVE ~ClearAllActions()[%MNL%%LNL%%TAB% ]+SetGlobal("FinalFight","AR6200",2)[%MNL%%LNL%%TAB% ]+StartDialogu?e?NoSet(Player1)~ ~SetGlobal("allfive","GLOBAL",2) ClearAllActions() StartCutSceneMode() StartCutScene("cut233g")~
+    REPLACE_TEXTUALLY CASE_INSENSITIVE ~Global("FinalFight","AR6200",3)[%MNL%%LNL%%TAB% ]+HPLT(Myself,20)~ ~Global("FinalFight","AR6200",8) Global("allfive","GLOBAL",1) Global("BalthazarFights","GLOBAL",1) HPLT(Myself,20)~
+    REPLACE_TEXTUALLY CASE_INSENSITIVE ~ClearAllActions()[%MNL%%LNL%%TAB% ]+SetGlobal("FinalFight","AR6200",4)[%MNL%%LNL%%TAB% ]+StartDialogu?e?NoSet(Player1)~ ~SetGlobal("allfive","GLOBAL",2) ClearAllActions() StartCutSceneMode() StartCutScene("cut233ga")~
+    REPLACE_TEXTUALLY CASE_INSENSITIVE ~Global("FinalFight","AR6200",5)[%MNL%%LNL%%TAB% ]+HPLT(Myself,20)~ ~Global("FinalFight","AR6200",8) Global("allfive","GLOBAL",1) Global("BodhiFights","GLOBAL",1) HPLT(Myself,20)~
+    REPLACE_TEXTUALLY CASE_INSENSITIVE ~ClearAllActions()[%MNL%%LNL%%TAB% ]+StartCutSceneMode()[%MNL%%LNL%%TAB% ]+StartCutScene("cut233f")~ ~SetGlobal("allfive","GLOBAL",2) ClearAllActions() StartCutSceneMode() StartCutScene("cut233gb")~
+  END
+BUT_ONLY
+

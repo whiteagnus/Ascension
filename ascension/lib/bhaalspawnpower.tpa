@@ -1,22 +1,74 @@
 //Script Extension
 EXTEND_TOP ~ar4500.bcs~ ~ascension/bhlspwnpwr/ar4500.baf~
 
-//SPL Patching - Dark Taint and Hand of Murder fixes
+/* commented out until Weidu 239 is released.
+//SPL Patching - Dark Taint
 COPY_EXISTING ~BHAAL2B.spl~ ~override~ //Dark Taint Fixes 
  LPF ALTER_EFFECT    //Level 1 - 9 slow
  INT_VAR
   check_globals = 0
   check_headers = 1
+  header_type = 1
   header = 1
+  multi_match = 1
+  verbose = 1
   match_opcode = 40
+  match_target = 2
+  match_power = 6
+  match_parameter1 = 0
+  match_parameter2 = 0
+  match_timing = 0
+  match_resist_dispel = 1
+  match_duration = 12
+  match_probability1 = 100
+  match_probability2 = 0
+  match_dicenumber = 0
+  match_dicesize = 0
+  match_savingthrow = 2
+  match_savebonus = 0
+  match_special = 0
+  opcode = 40
+  target = 2
+  power = 6
+  parameter1 = 0
+  parameter2 = 0
+  timing = 0
+  resist_dispel = 1
+  duration = 12
+  probability1 = 100
+  probability2 = 0
+  dicenumber = 0
+  dicesize = 0
+  savingthrow = 0
   savebonus = (0 - 2)
+  special = 0
  END
 
  LPF ALTER_EFFECT    //Level 10 - 12 slow
  INT_VAR
   check_globals = 0
   check_headers = 1
+  header_type = 1
   header = 2
+  multi_match = 1
+  verbose = 1
+  match_opcode = 40
+  match_opcode = 40
+  match_target = 2
+  match_power = 6
+  match_parameter1 = 0
+  match_parameter2 = 0
+  match_timing = 0
+  match_resist_dispel = 1
+  match_duration = 12
+  match_probability1 = 100
+  match_probability2 = 0
+  match_dicenumber = 0
+  match_dicesize = 0
+  match_savingthrow = 2
+  match_savebonus = 0
+  match_special = 0
+  match_resource = 0
   match_opcode = 40
   savebonus = (0 - 2)
  END
@@ -25,7 +77,27 @@ COPY_EXISTING ~BHAAL2B.spl~ ~override~ //Dark Taint Fixes
  INT_VAR
   check_globals = 0
   check_headers = 1
+  header_type = 1
   header = 3
+  multi_match = 1
+  verbose = 1
+  match_opcode = 40
+  match_opcode = 40
+  match_target = 2
+  match_power = 6
+  match_parameter1 = 0
+  match_parameter2 = 0
+  match_timing = 0
+  match_resist_dispel = 1
+  match_duration = 12
+  match_probability1 = 100
+  match_probability2 = 0
+  match_dicenumber = 0
+  match_dicesize = 0
+  match_savingthrow = 2
+  match_savebonus = 0
+  match_special = 0
+  match_resource = 0
   match_opcode = 40
   savebonus = (0 - 2)
  END
@@ -34,8 +106,27 @@ COPY_EXISTING ~BHAAL2B.spl~ ~override~ //Dark Taint Fixes
  INT_VAR
   check_globals = 0
   check_headers = 1
+  header_type = 1
   header = 4
   match_opcode = 40
+  multi_match = 1
+  verbose = 1
+  match_opcode = 40
+  match_target = 2
+  match_power = 6
+  match_parameter1 = 0
+  match_parameter2 = 0
+  match_timing = 0
+  match_resist_dispel = 1
+  match_duration = 24
+  match_probability1 = 100
+  match_probability2 = 0
+  match_dicenumber = 0
+  match_dicesize = 0
+  match_savingthrow = 2
+  match_savebonus = 0
+  match_special = 0
+  match_resource = 0
   savebonus = (0 - 2)
  END
  
@@ -43,8 +134,27 @@ COPY_EXISTING ~BHAAL2B.spl~ ~override~ //Dark Taint Fixes
  INT_VAR
   check_globals = 0
   check_headers = 1
+  header_type = 1
   header = 5
   match_opcode = 40
+  multi_match = 1
+  verbose = 1
+  match_opcode = 40
+  match_target = 2
+  match_power = 6
+  match_parameter1 = 0
+  match_parameter2 = 0
+  match_timing = 0
+  match_resist_dispel = 1
+  match_duration = 24
+  match_probability1 = 100
+  match_probability2 = 0
+  match_dicenumber = 0
+  match_dicesize = 0
+  match_savingthrow = 2
+  match_savebonus = 0
+  match_special = 0
+  match_resource = 0
   savebonus = (0 - 2)
  END
  
@@ -52,8 +162,27 @@ COPY_EXISTING ~BHAAL2B.spl~ ~override~ //Dark Taint Fixes
  INT_VAR
   check_globals = 0
   check_headers = 1
+  header_type = 1
   header = 8
   match_opcode = 40
+  multi_match = 1
+  verbose = 1
+  match_opcode = 40
+  match_target = 2
+  match_power = 6
+  match_parameter1 = 0
+  match_parameter2 = 0
+  match_timing = 0
+  match_resist_dispel = 1
+  match_duration = 24
+  match_probability1 = 100
+  match_probability2 = 0
+  match_dicenumber = 0
+  match_dicesize = 0
+  match_savingthrow = 2
+  match_savebonus = 0
+  match_special = 0
+  match_resource = 0
   savebonus = (0 - 4)
  END
  
@@ -71,8 +200,9 @@ COPY_EXISTING ~BHAAL2B.spl~ ~override~ //Dark Taint Fixes
   min_level = 19
  END
 BUT_ONLY
+*/
 
-//COPY FILES - Hand of Murder Installation
+//COPY FILES - Hand of Murder Installation, original Ascension NOTE: For time's sake, the original effect was copied and namechanged to match references from the vanilla implementation of Hand of Murder, rather than patching the Hand of Murder spell headers to all use the original effect. Laziness, basically, but harmless laziness.
 COPY ~ascension/bhlspwnpwr/bh3b1.eff~  ~override/bh3b2.eff~
   WRITE_ASCII   0x30 "BH3B2" #8
 COPY ~ascension/bhlspwnpwr/bh3b1.eff~  ~override/bh3b3.eff~
@@ -83,3 +213,5 @@ COPY ~ascension/bhlspwnpwr/bh3b1.eff~  ~override/bh3b5.eff~
   WRITE_ASCII   0x30 "BH3B5" #8
 COPY ~ascension/bhlspwnpwr/bh3b1.eff~  ~override/balth01a.eff~ //Balthazar can now have Hand of Murder?
   WRITE_ASCII   0x30 "BALTH01A" #8
+
+COPY ~ascension/bhlspwnpwr/spl~ ~override~

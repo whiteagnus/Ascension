@@ -1,0 +1,23 @@
+IF
+  True()
+THEN
+  RESPONSE #100
+    CutSceneId(Player1)
+    MoveViewPoint([616.1432],INSTANT)
+    ActionOverride("ppguy02",DestroySelf())
+    TriggerActivation("ManaPool1",FALSE)
+    Wait(2)
+    CreateVisualEffect("ICFIRSDI",[616.1432])
+    AmbientActivate("AMB_Pool1",FALSE)
+    SmallWait(8)
+    CreateVisualEffect("SPDISPMA",[853.1289])
+    AmbientActivate("AMB_Stream1",FALSE)
+    SoundActivate("Bridge3",FALSE)
+    Wait(1)
+    ReallyForceSpell(Player1,CLERIC_RESTORATION)
+    ReallyForceSpell("balth2",CLERIC_RESTORATION)
+    ReallyForceSpell("finbodh",CLERIC_RESTORATION)
+    ReallyForceSpellRES("bhaal1a",Player1)  // ~Mass Healing~
+    EndCutSceneMode()
+END
+

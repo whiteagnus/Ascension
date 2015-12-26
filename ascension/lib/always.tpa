@@ -1,0 +1,169 @@
+///////////////////////////////////////////
+//          LIBRARY OF FUNCTIONS         //
+//    Accessible from every component    //
+///////////////////////////////////////////
+
+/*
+This function adds many (simple enough) effects to a bunch of creatures, checking if they already have such an effect and, in that case, replacing it instead of adding a second instance.
+It just requires an array called many, whose elements have the shape:
+many_[RESOURCE NAME of cre]_[REPLACE option]_[parameter 1]_[parameter 2]=>[opcode]
+Each of them will add an effect, with the specified parameters, to the specified creature.
+replace==0 means just add effect
+replace!=0 means: look for effects with same opcode and par_2 and in that case only update par_%replace% (IE, 1 or 2) with the provided value; otherwise, add the effect from scratch
+*/
+DEFINE_ACTION_MACRO add_many_cre_effects BEGIN
+// With MODDER MISSING_EVAL, this function raises many warnings: WARNING: possible missing EVALUATE_BUFFER in [array name at $"TU_MANY_{some stuff}]
+// They can usually be ignored, and give extra info on which values of the array PHP_EACH has looped through
+	LOCAL_SET opcode=0
+	LOCAL_SET valid=0
+	LOCAL_SET found=0
+	LOCAL_SET cnt=0
+	LOCAL_SET effects_offset=0
+	LOCAL_SET effects_num=0
+	LOCAL_SPRINT cre ~~
+	LOCAL_SPRINT array ~~
+	ACTION_PHP_EACH many AS cre => opcode BEGIN //separate effects per creature, to reduce disk access
+		ACTION_DEFINE_ASSOCIATIVE_ARRAY TU_MANY BEGIN ~%cre%~ => ~TU_MANY_%cre%~ END //array containing index of creatures to be treated
+		ACTION_DEFINE_ASSOCIATIVE_ARRAY EVAL ~TU_MANY_%cre%~ BEGIN ~%cre_1%~ , ~%cre_2%~ , ~%cre_3%~ => ~%opcode%~ END //one array per creature, with effects list
+	END
+	ACTION_PHP_EACH TU_MANY AS cre => array BEGIN //loop through creatures
+		COPY_EXISTING ~%cre%.cre~ ~override~
+			LPF FJ_CRE_VALIDITY RET valid=valid END
+			PATCH_IF %valid% BEGIN
+				PHP_EACH ~%array%~ AS par => opcode BEGIN
+					READ_LONG  0x2c4  effects_offset
+					READ_LONG  0x2c8  effects_num
+					SET found = par //skip next loop if replace is 0
+					FOR( cnt=0; cnt<"%effects_num%" AND found; ++cnt ) BEGIN //if effect exists already replace its value only
+						PATCH_IF (LONG_AT (%effects_offset%+%cnt%*0x108+8))=%opcode% BEGIN
+							PATCH_IF (LONG_AT (%effects_offset%+%cnt%*0x108+24))= %par_2% BEGIN
+								SET found=0
+								PATCH_IF par==1 BEGIN
+									WRITE_LONG (%effects_offset%+%cnt%*0x108+20) %par_1%
+								END
+							END
+						END
+					END //effect already exists?
+					PATCH_IF (par=0) OR found BEGIN //still missing or to be added anyway
+						LPF ADD_CRE_EFFECT
+							INT_VAR
+								opcode=EVAL ~%opcode%~
+								target=1				//self
+								parameter1= EVAL ~%par_1%~
+								timing=9				//permanent
+								parameter2= EVAL ~%par_2%~		//mod_type
+						END
+					END //still missing
+				END
+			END ELSE BEGIN //valid
+				PATCH_WARN ~%par%.cre is corrupt, SKIPPING!~
+			END
+		BUT_ONLY
+		ACTION_CLEAR_ARRAY ~%array%~ // clear all specific-creature effect arrays
+	END //loop through creatures
+	ACTION_CLEAR_ARRAY TU_MANY // creature index
+END //DEFINE
+
+// Use following function, instead of the previous one, to be sure no information remains for the next time many is used
+DEFINE_ACTION_MACRO add_many_cre_effects_and_clear BEGIN
+LAM add_many_cre_effects
+ACTION_CLEAR_ARRAY many
+END
+
+OUTER_SPRINT TU_NONCHAR ~[^a-zA-Z0-9]*~
+OUTER_SPRINT ANL ~[\%MNL%\%LNL%]~
+
+// /*  new functions
+
+DEFINE_PATCH_FUNCTION TU_MODIFY_BLOCK STR_VAR blockid=~.~ forbid=~[^.]~ search=~~ replace=~~ BEGIN
+PATCH_IF (~%blockid%~ STRING_EQUAL ~.~ AND ~%forbid%~ STRING_EQUAL ~[^.]~) OR (~%search%~ STRING_EQUAL ~~) BEGIN
+	PATCH_WARN ~TU_MODIFY_BLOCK: invalid arguments; SKIPPING!~
+END ELSE BEGIN //STR_VAR sanity check
+	//in case script is compiled, decompile it first
+	READ_ASCII 0 test (2)
+	PATCH_IF ~%test%~ STRING_EQUAL_CASE ~SC~ BEGIN //BCS
+		DECOMPILE_BCS_TO_BAF
+		recompile=1
+	END ELSE BEGIN //BAF
+		recompile=0
+	END
+	// identify single blocks
+	FOR (i=2;i>1;i=INDEX_BUFFER(CASE_SENSITIVE EVALUATE_REGEXP ~^%TU_NONCHAR%IF%TU_NONCHAR%$~ i)+2) BEGIN
+		j=INDEX_BUFFER(CASE_SENSITIVE EVALUATE_REGEXP ~^%TU_NONCHAR%END%TU_NONCHAR%$~ i)
+		PATCH_IF NOT (j+1) BEGIN
+			PATCH_FAIL ~Unterminated script block in %SOURCE_RES%~
+		END
+		ln=j - i
+		READ_ASCII i snip (ln)
+		INNER_PATCH ~%snip%~ BEGIN //does the block contain the "keyword" (blockid)?
+			COUNT_REGEXP_INSTANCES CASE_INSENSITIVE EVALUATE_REGEXP ~%blockid%~ modify
+			COUNT_REGEXP_INSTANCES CASE_INSENSITIVE EVALUATE_REGEXP ~%forbid%~ nomodify
+		END
+		PATCH_IF %modify% AND NOT %nomodify% BEGIN // blockid appears in this block
+			DELETE_BYTES i ln
+			INNER_PATCH_SAVE snip ~%snip%~ BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE EVALUATE_REGEXP ~%search%~ ~%replace%~
+				ln=BUFFER_LENGTH
+			END
+			INSERT_BYTES i ln
+			WRITE_ASCIIE i ~%snip%~ (ln)
+		END
+	END // loop over all blocks
+	// recompile if it was originally a BCS, only
+	PATCH_IF %recompile% BEGIN
+		COMPILE_BAF_TO_BCS
+	END
+END //STR_VAR sanity check
+END //DEFINE
+
+DEFINE_PATCH_FUNCTION TU_MODIFY_BLOCK_CONTAINING STR_VAR blockid=~~ search=~~ replace=~~ BEGIN
+PATCH_IF (~%blockid%~ STRING_EQUAL ~~) OR (~%search%~ STRING_EQUAL ~~) BEGIN
+	PATCH_WARN ~TU_MODIFY_BLOCK_CONTAINING: invalid arguments; SKIPPING!~
+END ELSE BEGIN //STR_VAR sanity check
+	LPF TU_MODIFY_BLOCK STR_VAR blockid=EVAL ~%blockid%~ search=EVAL ~%search%~ replace=EVAL ~%replace%~ END
+END //STR_VAR sanity check
+END //DEFINE
+
+// */
+/*backing up
+DEFINE_PATCH_FUNCTION TU_MODIFY_BLOCK_CONTAINING STR_VAR blockid=~~ search=~~ replace=~~ BEGIN
+PATCH_IF (~%blockid%~ STRING_EQUAL ~~) OR (~%search%~ STRING_EQUAL ~~) BEGIN
+	PATCH_WARN ~TU_MODIFY_BLOCK_CONTAINING: invalid arguments; SKIPPING!~
+END ELSE BEGIN //STR_VAR sanity check
+	//in case script is compiled, decompile it first
+	READ_ASCII 0 test (2)
+	PATCH_IF ~%test%~ STRING_EQUAL_CASE ~SC~ BEGIN //BCS
+		DECOMPILE_BCS_TO_BAF
+		recompile=1
+	END ELSE BEGIN //BAF
+		recompile=0
+	END
+	// identify single blocks
+	FOR (i=2;i>1;i=INDEX_BUFFER(CASE_SENSITIVE EVALUATE_REGEXP ~^%TU_NONCHAR%IF%TU_NONCHAR%$~ i)+2) BEGIN
+		j=INDEX_BUFFER(CASE_SENSITIVE EVALUATE_REGEXP ~^%TU_NONCHAR%END%TU_NONCHAR%$~ i)
+		PATCH_IF NOT (j+1) BEGIN
+			PATCH_FAIL ~Unterminated script block in %SOURCE_RES%~
+		END
+		ln=j - i
+		READ_ASCII i snip (ln)
+		INNER_PATCH ~%snip%~ BEGIN //does the block contain the "keyword" (blockid)?
+			COUNT_REGEXP_INSTANCES CASE_INSENSITIVE EVALUATE_REGEXP ~%blockid%~ modify
+		END
+		PATCH_IF %modify% BEGIN // blockid appears in this block
+			DELETE_BYTES i ln
+			INNER_PATCH_SAVE snip ~%snip%~ BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE EVALUATE_REGEXP ~%search%~ ~%replace%~
+				ln=BUFFER_LENGTH
+			END
+			INSERT_BYTES i ln
+			WRITE_ASCIIE i ~%snip%~ (ln)
+		END
+	END // loop over all blocks
+	// recompile if it was originally a BCS, only
+	PATCH_IF %recompile% BEGIN
+		COMPILE_BAF_TO_BCS
+	END
+END //STR_VAR sanity check
+
+
+*/
