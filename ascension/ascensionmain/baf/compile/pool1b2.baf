@@ -14,10 +14,11 @@ THEN
     AmbientActivate("AMB_Stream1",FALSE)
     SoundActivate("Bridge3",FALSE)
     Wait(1)
+	ReallyForceSpellRES("SPWISH16",Player1)
     ReallyForceSpell(Player1,CLERIC_RESTORATION)
     ReallyForceSpell("balth2",CLERIC_RESTORATION)
     ReallyForceSpell("finbodh",CLERIC_RESTORATION)
-    ReallyForceSpellRES("bhaal1a",Player1)  // ~Mass Healing~
+    ReallyForceSpellRES("bhaal1a",Player1)
     EndCutSceneMode()
 END
 
