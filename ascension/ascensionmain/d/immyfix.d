@@ -1,8 +1,3 @@
-// This fix written by Jason Compton 
-
-/* Imoen has a bunch of dialogue in TOB that nobody ever sees because
- * Bioware forgot that she's called "Imoen2" once you get her back from
- * Spellhold. Big ooooooooooops. Let's fix that, shall we? */
 REPLACE_TRIGGER_TEXT ~aerie25j~ ~("Imoen")~ ~("Imoen2")~
 REPLACE_TRIGGER_TEXT ~hgwra01~ ~("Imoen")~ ~("Imoen2")~
 REPLACE_TRIGGER_TEXT ~vicon25j~ ~("Imoen")~ ~("Imoen2")~

@@ -1,12 +1,6 @@
-///////////////////////////////////////////////////////////////////////
-// Ascension : IMOEN25J 
-///////////////////////////////////////////////////////////////////////
-// (1) appends one state
-///////////////////////////////////////////////////////////////////////
-
 APPEND IMOEN25J
-  IF ~~ THEN BEGIN a34 // from: FINMEL01:24.0 FINMEL01:19.0
-    SAY @476 /* ~I'm not going anywhere with you!  And nobody's touching my soul!  Not again!!~ #74283 */
+  IF ~~ THEN a34
+    SAY @476
     IF ~~ THEN EXTERN ~FINMEL01~ a23
   END
 END
