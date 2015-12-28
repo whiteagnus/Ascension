@@ -1,0 +1,27 @@
+//Added Autotra Workaround by jastey (thank you) and HANDLE_CHARSETS
+ACTION_IF !FILE_EXISTS ~ascension/charsets.mrk~ BEGIN
+
+DEFINE_ACTION_FUNCTION autotra_workaround BEGIN
+		COPY ~ascension/tra/%LANGUAGE%~ ~ascension/tra/autotra/%LANGUAGE%~
+END
+
+LAF autotra_workaround END
+
+ACTION_DEFINE_ARRAY tra#reload BEGIN ascension END
+ACTION_DEFINE_ARRAY tra#noconvert BEGIN END
+
+LAF HANDLE_CHARSETS
+	INT_VAR
+		infer_charset = 1
+	STR_VAR
+		tra_path = EVAL ~ascension/tra/autotra~
+		noconvert_array = tra#noconvert
+		reload_array = tra#reload
+		iconv_path = ~ascension/tools/iconv~
+END
+		
+LOAD_TRA ~ascension/tra/autotra/%LANGUAGE%/Setup.tra~
+
+COPY_EXISTING ~sw1h01.itm~ ~ascension/charsets.mrk~
+
+END

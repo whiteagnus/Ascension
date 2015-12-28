@@ -15,30 +15,8 @@ AUTO_TRA "ascension/tra/autotra/%s"//%"
 
 ALWAYS
 INCLUDE ~ascension/lib/always.tpa~ //library with functions and macros common to all components
-//WA: Added Autotra Workaround by jastey (thank you) and HANDLE_CHARSETS
 
 ACTION_IF !FILE_EXISTS ~ascension/reinstall.mrk~ BEGIN
-
-	DEFINE_ACTION_FUNCTION autotra_workaround BEGIN
-		COPY ~ascension/tra/%LANGUAGE%~ ~ascension/tra/autotra/%LANGUAGE%~
-	END
-
-	LAF autotra_workaround END
-
-	ACTION_DEFINE_ARRAY tra#reload BEGIN ascension END
-	ACTION_DEFINE_ARRAY tra#noconvert BEGIN END
-
-	LAF HANDLE_CHARSETS
-		INT_VAR
-			infer_charset = 1
-		STR_VAR
-			tra_path = EVAL ~ascension/tra/autotra~
-			noconvert_array = tra#noconvert
-			reload_array = tra#reload
-			iconv_path = ~ascension/tools/iconv~
-	END
-		
-	LOAD_TRA ~ascension/tra/autotra/%LANGUAGE%/Setup.tra~
 
 ///////////////////////////////////////////////////////////////////////
 // Detectable Spells v3
@@ -104,7 +82,7 @@ LANGUAGE ~Italian (Al17, Alessandro, Max, M.Inxes, Rahar and Stefano)~
          ~ascension/tra/autotra/italian/ascension.tra~
 
 //Initialize to prevent silliness
-BEGIN ~Initialize AutoTRA and Detectable Spells~
+BEGIN ~Initialize Detectable Spells~
 COPY_EXISTING ~sw1h01.itm~ ~ascension/reinstall.mrk~		 
          
 /////////////////////////////////////////////////
@@ -116,6 +94,7 @@ COPY_EXISTING ~sw1h01.itm~ ~ascension/reinstall.mrk~
 BEGIN @1
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // EE sanity check
 REQUIRE_COMPONENT "Setup-Ascension.tp2" "0" "Cannot install without initializing!"
+INCLUDE ~ascension/lib/charset.tpa~
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_main.flag~
 INCLUDE ~ascension/lib/ascension.tpa~ //Installation Library
 
@@ -148,6 +127,7 @@ BUT_ONLY
 ////////////////////////////////////////////////
 
 BEGIN ~Restored Bhaalspawn Powers by David Gaider~
+INCLUDE ~ascension/lib/charset.tpa~
 INCLUDE ~ascension/lib/bhaalspawnpower.tpa~ //Patching Library
 ADD_JOURNAL @2000 @2001 @2002 @2003 @2004 @2005 @2006 @2007
 
@@ -158,7 +138,8 @@ ADD_JOURNAL @2000 @2001 @2002 @2003 @2004 @2005 @2006 @2007
 BEGIN @3
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
 REQUIRE_COMPONENT "Setup-Ascension.tp2" "0" "Cannot install without initializing!"
- COPY_EXISTING ~sw1h01.itm~ ~override/asc_abazigal.flag~
+INCLUDE ~ascension/lib/charset.tpa~
+COPY_EXISTING ~sw1h01.itm~ ~override/asc_abazigal.flag~
 INCLUDE ~ascension/lib/tougherabazigal.tpa~ //Patching Library
 
 ////////////////////////
@@ -203,6 +184,7 @@ INCLUDE ~ascension/lib/tougherillasera.tpa~  //Install library
 BEGIN @7
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
 REQUIRE_COMPONENT "Setup-Ascension.tp2" "0" "Cannot install without initializing!"
+INCLUDE ~ascension/lib/charset.tpa~
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_yagashura.flag~ //Creates install "flag"
 INCLUDE ~ascension/lib/tougheryaga.tpa~ //Install Library
 
