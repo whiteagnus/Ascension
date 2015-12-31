@@ -80,40 +80,6 @@ INCLUDE ~ascension/lib/ds.tpa~
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_main.flag~
 INCLUDE ~ascension/lib/ascension.tpa~ //Installation Library
 
-/////////////////////////////////
-// Ascension Portraits - Bodhi //	
-/////////////////////////////////
-
-BEGIN ~Ascension Portraits - Bodhi~
-REQUIRE_COMPONENT "Setup-Ascension.tp2" "1" "Cannot install without Ascension!"
-COPY ~ascension/ascports/altbodhi~ ~override~
-COPY_EXISTING ~FINBODH.CRE~ ~override~
- WRITE_ASCII 0x34 ~ABODHIS~ //Portrait Swap
- WRITE_ASCII 0x3a ~ABODHIL~ //Portrait Swap
-BUT_ONLY
-
-//////////////////////////////////////////////////////
-// Ascension Portraits - Alternate Balthazar by Cuv //	
-//////////////////////////////////////////////////////
-
-BEGIN ~Ascension Portraits - Original Balthazar by Cuv~
-REQUIRE_COMPONENT "Setup-Ascension.tp2" "1" "Cannot install without Ascension!"
-COPY ~ascension/ascports/cuvbalth~ ~override~
-COPY_EXISTING ~BALTH.CRE~ ~override~ ~balth2.CRE~ ~override~ ~finbalth.cre~ ~override~
- WRITE_ASCII 0x34 ~CBALTHAS~ //Portrait Swap
- WRITE_ASCII 0x3a ~CBALTHAL~ //Portrait Swap
-BUT_ONLY
-
-////////////////////////////////////////////////
-// Restored Bhaalspawn Powers by David Gaider //	
-////////////////////////////////////////////////
-
-BEGIN ~Restored Bhaalspawn Powers by David Gaider~
-INCLUDE ~ascension/lib/charset.tpa~
-INCLUDE ~ascension/lib/ds.tpa~
-INCLUDE ~ascension/lib/bhaalspawnpower.tpa~ //Patching Library
-ADD_JOURNAL @2000 @2001 @2002 @2003 @2004 @2005 @2006 @2007
-
 ///////////////////////////////////////////////////////////////////////
 // Tougher Abazigal
 ///////////////////////////////////////////////////////////////////////
@@ -175,3 +141,37 @@ INCLUDE ~ascension/lib/tougheryaga.tpa~ //Install Library
 ACTION_IF !FILE_EXISTS ~override/asc_gromnir.flag~ BEGIN
 	INCLUDE ~ascension/lib/toughercommon.tpa~
 END
+
+/////////////////////////////////
+// Ascension Portraits - Bodhi //	
+/////////////////////////////////
+
+BEGIN ~Ascension Portraits - Bodhi~
+REQUIRE_COMPONENT "Setup-Ascension.tp2" "1" "Cannot install without Ascension!"
+COPY ~ascension/ascports/altbodhi~ ~override~
+COPY_EXISTING ~FINBODH.CRE~ ~override~
+ WRITE_ASCII 0x34 ~ABODHIS~ //Portrait Swap
+ WRITE_ASCII 0x3a ~ABODHIL~ //Portrait Swap
+BUT_ONLY
+
+//////////////////////////////////////////////////////
+// Ascension Portraits - Alternate Balthazar by Cuv //	
+//////////////////////////////////////////////////////
+
+BEGIN ~Ascension Portraits - Original Balthazar by Cuv~
+REQUIRE_COMPONENT "Setup-Ascension.tp2" "1" "Cannot install without Ascension!"
+COPY ~ascension/ascports/cuvbalth~ ~override~
+COPY_EXISTING ~BALTH.CRE~ ~override~ ~balth2.CRE~ ~override~ ~finbalth.cre~ ~override~
+ WRITE_ASCII 0x34 ~CBALTHAS~ //Portrait Swap
+ WRITE_ASCII 0x3a ~CBALTHAL~ //Portrait Swap
+BUT_ONLY
+
+////////////////////////////////////////////////
+// Restored Bhaalspawn Powers by David Gaider //	
+////////////////////////////////////////////////
+
+BEGIN ~Restored Bhaalspawn Powers by David Gaider~
+INCLUDE ~ascension/lib/charset.tpa~
+INCLUDE ~ascension/lib/ds.tpa~
+INCLUDE ~ascension/lib/bhaalspawnpower.tpa~ //Patching Library
+ADD_JOURNAL @2000 @2001 @2002 @2003 @2004 @2005 @2006 @2007
