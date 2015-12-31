@@ -73,7 +73,7 @@ LANGUAGE ~Italian (Al17, Alessandro, Max, M.Inxes, Rahar and Stefano)~
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 
-BEGIN @1
+BEGIN @1 DESIGNATED 0
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // EE sanity check
 INCLUDE ~ascension/lib/charset.tpa~
 INCLUDE ~ascension/lib/ds.tpa~
@@ -84,7 +84,7 @@ INCLUDE ~ascension/lib/ascension.tpa~ //Installation Library
 // Tougher Abazigal
 ///////////////////////////////////////////////////////////////////////
 
-BEGIN @3
+BEGIN @3 DESIGNATED 1
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
 INCLUDE ~ascension/lib/charset.tpa~
 INCLUDE ~ascension/lib/ds.tpa~
@@ -95,7 +95,7 @@ INCLUDE ~ascension/lib/tougherabazigal.tpa~ //Patching Library
 // Tougher Demogorgon //
 ////////////////////////
 
-BEGIN @4 // TOUGHER DEMOGORGON
+BEGIN @4 DESIGNATED 2
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
 INCLUDE ~ascension/lib/ds.tpa~
 INCLUDE ~ascension/lib/tougherdemo2.tpa~ //Patching Library
@@ -104,7 +104,7 @@ INCLUDE ~ascension/lib/tougherdemo2.tpa~ //Patching Library
 // Tougher Gromnir //
 /////////////////////
 
-BEGIN @5
+BEGIN @5 DESIGNATED 3
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
 INCLUDE ~ascension/lib/ds.tpa~
  COPY_EXISTING ~sw1h01.itm~ ~override/asc_gromnir.flag~ //Set Install Flag
@@ -119,7 +119,7 @@ END
 // Tougher Illasera //
 //////////////////////
 
-BEGIN @6
+BEGIN @6 DESIGNATED 4
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
 INCLUDE ~ascension/lib/ds.tpa~
  COPY_EXISTING ~sw1h01.itm~ ~override/asc_illasera.flag~
@@ -130,7 +130,7 @@ INCLUDE ~ascension/lib/tougherillasera.tpa~  //Install library
 // Tougher Yaga-Shura //
 ////////////////////////
 
-BEGIN @7
+BEGIN @7 DESIGNATED 5
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
 INCLUDE ~ascension/lib/charset.tpa~
 INCLUDE ~ascension/lib/ds.tpa~
@@ -146,7 +146,7 @@ END
 // Ascension Portraits - Bodhi //	
 /////////////////////////////////
 
-BEGIN ~Ascension Portraits - Bodhi~
+BEGIN ~Ascension Portraits - Bodhi~ DESIGNATED 101
 REQUIRE_COMPONENT "Setup-Ascension.tp2" "1" "Cannot install without Ascension!"
 COPY ~ascension/ascports/altbodhi~ ~override~
 COPY_EXISTING ~FINBODH.CRE~ ~override~
@@ -158,7 +158,7 @@ BUT_ONLY
 // Ascension Portraits - Alternate Balthazar by Cuv //	
 //////////////////////////////////////////////////////
 
-BEGIN ~Ascension Portraits - Original Balthazar by Cuv~
+BEGIN ~Ascension Portraits - Original Balthazar by Cuv~ DESIGNATED 102
 REQUIRE_COMPONENT "Setup-Ascension.tp2" "1" "Cannot install without Ascension!"
 COPY ~ascension/ascports/cuvbalth~ ~override~
 COPY_EXISTING ~BALTH.CRE~ ~override~ ~balth2.CRE~ ~override~ ~finbalth.cre~ ~override~
@@ -170,7 +170,7 @@ BUT_ONLY
 // Restored Bhaalspawn Powers by David Gaider //	
 ////////////////////////////////////////////////
 
-BEGIN ~Restored Bhaalspawn Powers by David Gaider~
+BEGIN ~Restored Bhaalspawn Powers by David Gaider~ DESIGNATED 103
 INCLUDE ~ascension/lib/charset.tpa~
 INCLUDE ~ascension/lib/ds.tpa~
 INCLUDE ~ascension/lib/bhaalspawnpower.tpa~ //Patching Library
