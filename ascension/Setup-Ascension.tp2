@@ -15,20 +15,6 @@ AUTO_TRA "ascension/tra/autotra/%s"//%"
 
 ALWAYS
 INCLUDE ~ascension/lib/always.tpa~ //library with functions and macros common to all components
-
-ACTION_IF !FILE_EXISTS ~ascension/reinstall.mrk~ BEGIN
-
-///////////////////////////////////////////////////////////////////////
-// Detectable Spells v3
-///////////////////////////////////////////////////////////////////////
-
-OUTER_SPRINT path ~ascension/ds~ // change it to your mod folder
-INCLUDE ~%path%/ds.tph~
-
-LAF detectable_spells_setup STR_VAR path = EVALUATE_BUFFER ~%path%~ END
-LAF detectable_spells STR_VAR table = ~cddetect.2da~ END
-END	
-
 END
 
 ///////////////////////////////////////////////////////////////////////
@@ -81,10 +67,6 @@ LANGUAGE ~Italian (Al17, Alessandro, Max, M.Inxes, Rahar and Stefano)~
          ~italian~
          ~ascension/tra/autotra/italian/ascension.tra~
 
-//Initialize to prevent silliness
-BEGIN ~Initialize Detectable Spells~
-COPY_EXISTING ~sw1h01.itm~ ~ascension/reinstall.mrk~		 
-         
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // The Ascension (Cuv/Turumbar/Miloch version) //
@@ -93,8 +75,8 @@ COPY_EXISTING ~sw1h01.itm~ ~ascension/reinstall.mrk~
 
 BEGIN @1
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // EE sanity check
-REQUIRE_COMPONENT "Setup-Ascension.tp2" "0" "Cannot install without initializing!"
 INCLUDE ~ascension/lib/charset.tpa~
+INCLUDE ~ascension/lib/ds.tpa~
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_main.flag~
 INCLUDE ~ascension/lib/ascension.tpa~ //Installation Library
 
@@ -128,6 +110,7 @@ BUT_ONLY
 
 BEGIN ~Restored Bhaalspawn Powers by David Gaider~
 INCLUDE ~ascension/lib/charset.tpa~
+INCLUDE ~ascension/lib/ds.tpa~
 INCLUDE ~ascension/lib/bhaalspawnpower.tpa~ //Patching Library
 ADD_JOURNAL @2000 @2001 @2002 @2003 @2004 @2005 @2006 @2007
 
@@ -137,8 +120,8 @@ ADD_JOURNAL @2000 @2001 @2002 @2003 @2004 @2005 @2006 @2007
 
 BEGIN @3
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
-REQUIRE_COMPONENT "Setup-Ascension.tp2" "0" "Cannot install without initializing!"
 INCLUDE ~ascension/lib/charset.tpa~
+INCLUDE ~ascension/lib/ds.tpa~
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_abazigal.flag~
 INCLUDE ~ascension/lib/tougherabazigal.tpa~ //Patching Library
 
@@ -148,7 +131,7 @@ INCLUDE ~ascension/lib/tougherabazigal.tpa~ //Patching Library
 
 BEGIN @4 // TOUGHER DEMOGORGON
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
-REQUIRE_COMPONENT "Setup-Ascension.tp2" "0" "Cannot install without initializing!"
+INCLUDE ~ascension/lib/ds.tpa~
 INCLUDE ~ascension/lib/tougherdemo2.tpa~ //Patching Library
 
 /////////////////////
@@ -157,7 +140,7 @@ INCLUDE ~ascension/lib/tougherdemo2.tpa~ //Patching Library
 
 BEGIN @5
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
-REQUIRE_COMPONENT "Setup-Ascension.tp2" "0" "Cannot install without initializing!"
+INCLUDE ~ascension/lib/ds.tpa~
  COPY_EXISTING ~sw1h01.itm~ ~override/asc_gromnir.flag~ //Set Install Flag
 INCLUDE ~ascension/lib/toughergrom.tpa~ //Install Library
 
@@ -172,7 +155,7 @@ END
 
 BEGIN @6
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
-REQUIRE_COMPONENT "Setup-Ascension.tp2" "0" "Cannot install without initializing!"
+INCLUDE ~ascension/lib/ds.tpa~
  COPY_EXISTING ~sw1h01.itm~ ~override/asc_illasera.flag~
 //Patch Tougher Illasera CRE's
 INCLUDE ~ascension/lib/tougherillasera.tpa~  //Install library
@@ -183,8 +166,8 @@ INCLUDE ~ascension/lib/tougherillasera.tpa~  //Install library
 
 BEGIN @7
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
-REQUIRE_COMPONENT "Setup-Ascension.tp2" "0" "Cannot install without initializing!"
 INCLUDE ~ascension/lib/charset.tpa~
+INCLUDE ~ascension/lib/ds.tpa~
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_yagashura.flag~ //Creates install "flag"
 INCLUDE ~ascension/lib/tougheryaga.tpa~ //Install Library
 
