@@ -315,101 +315,18 @@ BUT_ONLY
 ///////////////////////////////////////////////////////////////////////
 COPY ~ascension/ascensionmain/epilogue~  ~override~
 
-COPY_EXISTING ~aeriend1.2da~ ~override~
-  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Aerie_Epi~
-  REPLACE ~EA_Asc_Aerie_Epi~ @82714
+COPY - ~ascension/lib/epilogues.tbl~  ~ascension/lib/epilogues.tbl~
+  COUNT_2DA_ROWS 2 "rows_cnt_nscp"
+  FOR( cntg=0; cntg<"%rows_cnt_nscp%"; cntg=cntg+1 ) BEGIN
+    READ_2DA_ENTRY cntg  0 2 "2daNAME"
+    READ_2DA_ENTRY cntg  1 2 "StringNBR"
+		INNER_ACTION BEGIN
+			COPY_EXISTING ~%2daNAME%.2da~ ~override~
+				SET_2DA_ENTRY 4 2 1 ~EpilgoueString~
+				REPLACE ~EpilgoueString~ ( AT StringNBR )
 BUT_ONLY
-
-COPY_EXISTING ~aeriend2.2da~ ~override~
-  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Aerie_Epi~
-  REPLACE ~EA_Asc_Aerie_Epi~ @82715
-BUT_ONLY
-
-COPY_EXISTING ~anomend1.2da~ ~override~
-  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Anomen_Epi~
-  REPLACE ~EA_Asc_Anomen_Epi~ @82716
-BUT_ONLY
-
-COPY_EXISTING ~anomend2.2da~ ~override~
-  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Anomen_Epi~
-  REPLACE ~EA_Asc_Anomen_Epi~ @82717
-BUT_ONLY
-
-COPY_EXISTING ~balthand.2da~  ~override~
-  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Balthazar_Epi~
-  REPLACE ~EA_Asc_Balthazar_Epi~ @82760
-BUT_ONLY
-
-COPY_EXISTING ~bodhind.2da~  ~override~
-  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Bodhi_Epi~
-  REPLACE ~EA_Asc_Bodhi_Epi~ @82785
-BUT_ONLY
-
-COPY_EXISTING ~cerndnd.2da~  ~override~
-  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Cernd_Epi~
-  REPLACE ~EA_Asc_Cernd_Epi~ @82718
-BUT_ONLY
-
-COPY_EXISTING ~haernd.2da~   ~override~
-  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Haerdalis_Epi~
-  REPLACE ~EA_Asc_Haerdalis_Epi~ @82720
-BUT_ONLY
-
-COPY_EXISTING ~imoennd.2da~  ~override~
-  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Imoen_Epi~
-  REPLACE ~EA_Asc_Imoen_Epi~ @82731
-BUT_ONLY
-
-COPY_EXISTING ~jaheind1.2da~ ~override~
-  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Jaheira_Epi~
-  REPLACE ~EA_Asc_Jaheira_Epi~ @82721
-BUT_ONLY
-
-COPY_EXISTING ~jaheind2.2da~ ~override~
-  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Jaheira_Epi~
-  REPLACE ~EA_Asc_Jaheira_Epi~ @82722
-BUT_ONLY
-
-COPY_EXISTING ~mazzynd.2da~  ~override~
-  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Mazzy_Epi~
-  REPLACE ~EA_Asc_Mazzy_Epi~ @82723
-BUT_ONLY
-
-COPY_EXISTING ~naliand.2da~  ~override~
-  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Nalia_Epi~
-  REPLACE ~EA_Asc_Nalia_Epi~ @82724
-BUT_ONLY
-
-COPY_EXISTING ~sarevnd.2da~  ~override~
-  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Sarevok_Epi~
-  REPLACE ~EA_Asc_Sarevok_Epi~ @82725
-BUT_ONLY
-
-COPY_EXISTING ~sarevnd2.2da~  ~override~
-  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Sarevok_Epi~
-  REPLACE ~EA_Asc_Sarevok_Epi~ @82726
-BUT_ONLY
-
-COPY_EXISTING ~valygnd.2da~  ~override~
-  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Valygar_Epi~
-  REPLACE ~EA_Asc_Valygar_Epi~ @82727
-BUT_ONLY
-
-COPY_EXISTING ~viconnd1.2da~  ~override~
-  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Viconia_Epi~
-  REPLACE ~EA_Asc_Viconia_Epi~ @82728
-BUT_ONLY
-
-COPY_EXISTING ~viconnd2.2da~  ~override~
-  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Viconia_Epi~
-  REPLACE ~EA_Asc_Viconia_Epi~ @82732
-BUT_ONLY
-
-COPY_EXISTING ~viconnd3.2da~  ~override~
-  SET_2DA_ENTRY 4 2 1 ~EA_Asc_Viconia_Epi~
-  REPLACE ~EA_Asc_Viconia_Epi~ @82729
-BUT_ONLY
-
+		END
+	END
 
 //Item Patching
 COPY_EXISTING ~dartmel.itm~ ~override~
