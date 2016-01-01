@@ -432,95 +432,7 @@ END
 
 IF
   Global("StartEndBios","AR6200",1)
-  InParty("Aerie")  // ~Aerie~
-  Gender(Player1,FEMALE)
-  OR(2)
-  !Global("AerieRomanceActive","GLOBAL",2)
-  Global("PlayerChoseEssence","GLOBAL",1)
-  Global("AerieBio","GLOBAL",0)
-THEN
-  RESPONSE #100
-    SetGlobal("AerieBio","GLOBAL",1)
-    TextScreen("AERIFND1")
-END
-
-IF
-  Global("StartEndBios","AR6200",1)
   InParty("Viconia")  // Viconia
-  OR(2)
-  !Global("ViconiaRomanceActive","GLOBAL",2)
-  Global("PlayerChoseEssence","GLOBAL",1)
-  !Alignment("Viconia",MASK_EVIL)  // Viconia
-  Gender(Player1,FEMALE)
-  Global("ViconiaBio","GLOBAL",0)
-THEN
-  RESPONSE #100
-    SetGlobal("ViconiaBio","GLOBAL",1)
-    TextScreen("VICOFND3")
-END
-
-IF
-  Global("StartEndBios","AR6200",1)
-  InParty("Valygar")  // Valygar
-  Gender(Player1,FEMALE)
-  Global("ValygarBio","GLOBAL",0)
-THEN
-  RESPONSE #100
-    SetGlobal("ValygarBio","GLOBAL",1)
-    TextScreen("VALYGFND")
-END
-
-IF
-  Global("StartEndBios","AR6200",1)
-  InParty("Sarevok")  // ~Sarevok~
-  Alignment("Sarevok",MASK_GOOD)  // ~Sarevok~
-  Gender(Player1,FEMALE)
-  Global("SarevokGoodBio","GLOBAL",0)
-THEN
-  RESPONSE #100
-    SetGlobal("SarevokGoodBio","GLOBAL",1)
-    TextScreen("SAREVFND")
-END
-
-IF
-  Global("StartEndBios","AR6200",1)
-  OR(2)
-  InParty("Imoen2")  // Imoen2
-  Global("ImoenEpilogueAnyway","GLOBAL",1)
-  Gender(Player1,FEMALE)
-  Global("ImoenBio","GLOBAL",0)
-THEN
-  RESPONSE #100
-    SetGlobal("ImoenBio","GLOBAL",1)
-    TextScreen("IMOENFND")
-END
-
-IF
-  Global("StartEndBios","AR6200",1)
-  InParty("Mazzy")  // Mazzy
-  Gender(Player1,FEMALE)
-  Global("MazzyBio","GLOBAL",0)
-THEN
-  RESPONSE #100
-    SetGlobal("MazzyBio","GLOBAL",1)
-    TextScreen("MAZZYFND")
-END
-
-IF
-  Global("StartEndBios","AR6200",1)
-  Global("BalthazarFights","GLOBAL",1)
-  Gender(Player1,FEMALE)
-  Global("BalthazarBio","GLOBAL",0)
-THEN
-  RESPONSE #100
-    SetGlobal("BalthazarBio","GLOBAL",1)
-    TextScreen("BALTHFND")
-END
-
-IF
-  Global("StartEndBios","AR6200",1)
-  InParty("Viconia")  // Viconia
-  !Gender(Player1,FEMALE)
   OR(2)
   !Global("ViconiaRomanceActive","GLOBAL",2)
   Global("PlayerChoseEssence","GLOBAL",1)
@@ -546,7 +458,6 @@ END
 IF
   Global("StartEndBios","AR6200",1)
   !InParty("Imoen2")  // Imoen2
-  !Gender(Player1,FEMALE)
   Global("ImoenEpilogueAnyway","GLOBAL",1)
   Global("ImoenBio","GLOBAL",0)
 THEN
@@ -560,7 +471,6 @@ END
 IF
   Global("StartEndBios","AR6200",1)
   Global("BalthazarFights","GLOBAL",1)
-  !Gender(Player1,FEMALE)
   Global("BalthazarBio","GLOBAL",0)
 THEN
   RESPONSE #100
