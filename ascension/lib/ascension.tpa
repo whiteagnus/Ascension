@@ -315,18 +315,8 @@ BUT_ONLY
 ///////////////////////////////////////////////////////////////////////
 COPY ~ascension/ascensionmain/epilogue~  ~override~
 
-COPY - ~ascension/lib/epilogues.tbl~  ~ascension/lib/epilogues.tbl~
-  COUNT_2DA_ROWS 2 "rows_cnt_nscp"
-  FOR( cntg=0; cntg<"%rows_cnt_nscp%"; cntg=cntg+1 ) BEGIN
-    READ_2DA_ENTRY cntg  0 2 "2daNAME"
-    READ_2DA_ENTRY cntg  1 2 "StringNBR"
-		INNER_ACTION BEGIN
-			COPY_EXISTING ~%2daNAME%.2da~ ~override~
-				SET_2DA_ENTRY 4 2 1 ~EpilgoueString~
-				REPLACE ~EpilgoueString~ ( AT StringNBR )
-BUT_ONLY
-		END
-	END
+LAF update_epilogues STR_VAR filepath = ~ascension/lib/epilogues.tbl~ END
+LAF update_epilogues STR_VAR filepath = ~ascension/lib/epilogues_asconly.tbl~ END
 
 //Item Patching
 COPY_EXISTING ~dartmel.itm~ ~override~
