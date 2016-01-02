@@ -20,7 +20,7 @@ LAF HANDLE_CHARSETS
 		iconv_path = ~ascension/tools/iconv~
 END
 		
-LOAD_TRA ~ascension/tra/autotra/%LANGUAGE%/Setup.tra~
+LOAD_TRA ~ascension/tra/autotra/%LANGUAGE%/ascension.tra~
 
 COPY_EXISTING ~sw1h01.itm~ ~ascension/charsets.mrk~
 
