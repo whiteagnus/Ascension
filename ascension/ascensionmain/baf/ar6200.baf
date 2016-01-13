@@ -82,46 +82,46 @@ THEN
 END
 
 IF
-  StateCheck("finiren",4032)  // finiren
-  OR(2)
-  StateCheck("finbodh",4032)  // finbodh
-  Global("BodhiFights","GLOBAL",1)
-  StateCheck("finsolar",4032)  // finsolar
-  !Exists([ENEMY])
-  Global("SetForceWalkwayTimer","AR6200",0)
-  Global("FinalFight","AR6200",3)
-THEN
+  StateCheck("finiren",4032)  // finiren      //Irenicus is dead
+  OR(2)                                       
+  StateCheck("finbodh",4032)  // finbodh      //And Bodhi is dead
+  Global("BodhiFights","GLOBAL",1)            //OR Bodhi is fighting
+  StateCheck("finsolar",4032)  // finsolar    //And Solar is dead
+  !Exists([ENEMY])                            //And no enemies exist
+  Global("SetForceWalkwayTimer","AR6200",0)   //Timer not set
+  Global("FinalFight","AR6200",3)             //FinalFight 3
+THEN                                            
   RESPONSE #100
-    SetGlobal("SetForceWalkwayTimer","AR6200",1)
-    SetGlobalTimer("ForceWalkway","AR6200",30)
+    SetGlobal("SetForceWalkwayTimer","AR6200",1) //ForceWalkway
+    SetGlobalTimer("ForceWalkway","AR6200",30)   //Forcebridges timer
 END
 
 IF
-  GlobalTimerExpired("ForceWalkway","AR6200")
+  GlobalTimerExpired("ForceWalkway","AR6200")   //Failsafe measure timer set
   Global("FinalFight","AR6200",3)
 THEN
   RESPONSE #100
-    SetGlobal("FinalFight","AR6200",5)
+    SetGlobal("FinalFight","AR6200",5)          //Forces bridges to appear
 END
 
 IF
-  Delay(3)
-  StateCheck("finiren",4032)  // finiren
-  OR(2)
-  StateCheck("finbodh",4032)  // finbodh
-  Global("BodhiFights","GLOBAL",1)
-  StateCheck("finsolar",4032)  // finsolar
-  !Exists([ENEMY])
-  Global("BalthazarFights","GLOBAL",1)
-  !StateCheck("balth2",4032)  // balth2
+  Delay(3)                                        //Wait 3 seconds
+  StateCheck("finiren",4032)  // finiren          //Irenicus died
+  OR(2)                                           
+  StateCheck("finbodh",4032)  // finbodh          //And Bodhi died
+  Global("BodhiFights","GLOBAL",1)                //OR sided with player
+  StateCheck("finsolar",4032)  // finsolar        //And Solar is dead
+  !Exists([ENEMY])                                //And no more enemies exist (Imoen/summons check?)
+  Global("BalthazarFights","GLOBAL",1)            //And Balthazar is fighting with player
+  !StateCheck("balth2",4032)  // balth2           //And Balthazar is not dead or stunned etc
   !StateCheck("balth2",STATE_STUNNED)  // balth2
   !StateCheck("balth2",STATE_SLEEPING)  // balth2
   !StateCheck("balth2",STATE_SILENCED)  // balth2
   !StateCheck("balth2",STATE_CONFUSED)  // balth2
-  OR(2)
-  Global("ImoenBackToHuman","GLOBAL",2)
-  StateCheck("Imoen2",4032)  // Imoen2
-  Global("FinalFight","AR6200",3)
+  OR(2)                                           //
+  Global("ImoenBackToHuman","GLOBAL",2)           //And Imoen Back
+  StateCheck("Imoen2",4032)  // Imoen2            //OR Imoen Died
+  Global("FinalFight","AR6200",3)                 //AND finalfight is 3
 THEN
   RESPONSE #100
     SetGlobal("FinalFight","AR6200",4)
@@ -129,27 +129,27 @@ THEN
 END
 
 IF
-  Delay(3)
-  StateCheck("finiren",4032)  // finiren
-  OR(2)
-  StateCheck("finbodh",4032)  // finbodh
-  Global("BodhiFights","GLOBAL",1)
-  StateCheck("finsolar",4032)  // finsolar
-  !Exists([ENEMY])
-  OR(6)
-  Global("BalthazarFights","GLOBAL",0)
-  StateCheck("balth2",4032)  // balth2
-  StateCheck("balth2",STATE_STUNNED)  // balth2
+  Delay(3)                                  //Wait 3 seconds
+  StateCheck("finiren",4032)  // finiren    //Check Irenicus death
+  OR(2)                                     //OR next 2
+  StateCheck("finbodh",4032)  // finbodh    //Bodhi is dead
+  Global("BodhiFights","GLOBAL",1)          //Bodhi fought by players side
+  StateCheck("finsolar",4032)  // finsolar  //and Solar is dead
+  !Exists([ENEMY])                          //and There are no enemies in AR6200
+  OR(6)                                     //OR
+  Global("BalthazarFights","GLOBAL",0)      //Balthazar did not fight by players side
+  StateCheck("balth2",4032)  // balth2      //Balathazar is dead 
+  StateCheck("balth2",STATE_STUNNED)  // balth2  //Various balthazar states
   StateCheck("balth2",STATE_SLEEPING)  // balth2
   StateCheck("balth2",STATE_SILENCED)  // balth2
   StateCheck("balth2",STATE_CONFUSED)  // balth2
-  OR(2)
-  Global("ImoenBackToHuman","GLOBAL",2)
-  StateCheck("Imoen2",4032)  // Imoen2
-  Global("FinalFight","AR6200",3)
+  OR(2)                                          //OR
+  Global("ImoenBackToHuman","GLOBAL",2)          //Imoen made it back to Human
+  StateCheck("Imoen2",4032)  // Imoen2           //But she died
+  Global("FinalFight","AR6200",3)                //And global is 3
 THEN
   RESPONSE #100
-    SetGlobal("FinalFight","AR6200",4)
+    SetGlobal("FinalFight","AR6200",4)           //
     ActionOverride(Player1,StartDialogue("player1",Player1))
 END
 
