@@ -1,5 +1,5 @@
 /*************************************************************************
- * Ascension v1.4
+ * Ascension v1.5 BETA_20160114
  *
  * http://www.cs.berkeley.edu/~weimer/bgate
  *
@@ -9,7 +9,7 @@ BACKUP ~ascension/backup~
 //AUTHORS: David Gaider & Contributers, Westley Weimer, Turumbar, Miloch, Cuv, WhiteAgnus, JediMindTrix"
 AUTHOR "Active Caretaker: JediMindTrix contact on the Beamdog forums at "
 
-VERSION ~v1.5 BETA_20160103~
+VERSION ~v1.5 BETA_20160114~
 
 AUTO_TRA "ascension/tra/autotra/%s"//%"
 

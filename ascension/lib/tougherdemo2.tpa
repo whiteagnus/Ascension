@@ -184,7 +184,7 @@ LPF ADD_SPELL_EFFECT
 BUT_ONLY
 
 COPY_EXISTING ~SPIN549.SPL~ ~override~    //Summon the Abyssal Host
-ACTION_GET_STRREF 70985 summon_host       //Change name to be lore-friendly
+ACTION_GET_STRREF 70985 summon_host       //Change name to be lore-friendly, comment this section out if you want the original
 
 OUTER_PATCH_SAVE summon_host ~%summon_host%~ BEGIN
   REPLACE_TEXTUALLY ~Summon the Infernal Host~ ~Summon the Abyssal Host~
