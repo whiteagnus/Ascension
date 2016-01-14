@@ -11,6 +11,7 @@ Each of them will add an effect, with the specified parameters, to the specified
 replace==0 means just add effect
 replace!=0 means: look for effects with same opcode and par_2 and in that case only update par_%replace% (IE, 1 or 2) with the provided value; otherwise, add the effect from scratch
 */
+
 DEFINE_ACTION_MACRO add_many_cre_effects BEGIN
 // With MODDER MISSING_EVAL, this function raises many warnings: WARNING: possible missing EVALUATE_BUFFER in [array name at $"TU_MANY_{some stuff}]
 // They can usually be ignored, and give extra info on which values of the array PHP_EACH has looped through
@@ -73,8 +74,6 @@ END
 OUTER_SPRINT TU_NONCHAR ~[^a-zA-Z0-9]*~
 OUTER_SPRINT ANL ~[\%MNL%\%LNL%]~
 
-// /*  new functions
-
 DEFINE_PATCH_FUNCTION TU_MODIFY_BLOCK STR_VAR blockid=~.~ forbid=~[^.]~ search=~~ replace=~~ BEGIN
 PATCH_IF (~%blockid%~ STRING_EQUAL ~.~ AND ~%forbid%~ STRING_EQUAL ~[^.]~) OR (~%search%~ STRING_EQUAL ~~) BEGIN
 	PATCH_WARN ~TU_MODIFY_BLOCK: invalid arguments; SKIPPING!~
@@ -116,8 +115,6 @@ END ELSE BEGIN //STR_VAR sanity check
 END //STR_VAR sanity check
 END //DEFINE
 
-//GWENDOLYNE's FUNCTION FOR SAVE BONUS on SPELL HEADERS
-
 DEFINE_PATCH_FUNCTION TU_MODIFY_BLOCK_CONTAINING STR_VAR blockid=~~ search=~~ replace=~~ BEGIN
 PATCH_IF (~%blockid%~ STRING_EQUAL ~~) OR (~%search%~ STRING_EQUAL ~~) BEGIN
 	PATCH_WARN ~TU_MODIFY_BLOCK_CONTAINING: invalid arguments; SKIPPING!~
@@ -125,72 +122,6 @@ END ELSE BEGIN //STR_VAR sanity check
 	LPF TU_MODIFY_BLOCK STR_VAR blockid=EVAL ~%blockid%~ search=EVAL ~%search%~ replace=EVAL ~%replace%~ END
 END //STR_VAR sanity check
 END //DEFINE
-
-DEFINE_PATCH_FUNCTION ~GW_DEF_OFFSETS_FILE~
-    RET GW_oe        // Extended Header offset
-        GW_oc        // Extended Header count
-        GW_al        // Extended Header length (ability length)
-        GW_fx        // Feature blocks offset
-        GW_fi        // Equipping-Casting feature blocks index
-        GW_fc        // Equipping Feature Blocks count
-        GW_min_size  // Minimum size
-BEGIN
-    READ_ASCII 0 sig (3)
-    PATCH_MATCH ~%sig%~ WITH
-        ITM    BEGIN    SET GW_oe = 0x64    // Extended Header offset
-                    SET GW_oc = 0x68        // Extended Header count
-                    SET GW_al = 0x38        // Extended Header length (ability length)
-                    SET GW_fx = 0x6a        // Feature blocks offset
-                    SET GW_fi = 0x6e        // Equipping feature blocks index
-                    SET GW_fc = 0x70        // Equipping Feature Blocks count
-                    SET GW_min_size = 0x71  // Minimum size
-        END
-        SPL    BEGIN    SET GW_oe = 0x64    // Extended Header offset
-                    SET GW_oc = 0x68        // Extended Header count
-                    SET GW_al = 0x28        // Extended Header length (ability length)
-                    SET GW_fx = 0x6a        // Feature Block Table offset
-                    SET GW_fi = 0x6e        // Casting Feature Block offset
-                    SET GW_fc = 0x70        // Casting Feature Block count
-                    SET GW_min_size = 0x71  // Minimum size
-        END
-        CRE BEGIN    SET GW_oe = 0           // Extended Header offset
-                    SET GW_oc = 0            // Extended Header count
-                    SET GW_al = 0            // Extended Header length (ability length)
-                    SET GW_fx = 0x2c4        // Effects offset
-                    SET GW_fi = 0            // Casting Feature Block offset
-                    SET GW_fc = 0x2c8        // Effects count
-                    SET GW_min_size = 0x2d3  // Minimum size
-        END
-        DEFAULT
-    END
-END    // of DEFINE_PATCH_FUNCTION
-
-DEFINE_PATCH_FUNCTION ~GW_MODIFY_ST_BONUS~
-    INT_VAR GW_oldbonus      = "-99"      // old bonus to check
-            GW_newbonus      = "-99"      // new bonus to write
-BEGIN
-    PATCH_IF (GW_oe = 0) BEGIN            // Creatures : NO Extended Headers !
-        SET abil_off = 0
-        SET abil_num = 0
-    END ELSE BEGIN
-        READ_LONG  GW_oe abil_off
-        READ_SHORT GW_oc abil_num
-        READ_LONG  GW_fx fx_off
-    END
-    FOR (i = 0 ; i < abil_num ; ++i) BEGIN                                          // looks through headers
-        READ_SHORT (abil_off + 0x1e + GW_al*i) "abil_fx_num"
-        READ_SHORT (abil_off + 0x20 + GW_al*i) "abil_fx_idx"
-        FOR (j = 0 ; j < abil_fx_num ; ++j ) BEGIN                                  // looks through effects
-            READ_LONG (fx_off + 0x24 + (0x30 * (j + abil_fx_idx))) ST               // reads ST
-            READ_LONG (fx_off + 0x28 + (0x30 * (j + abil_fx_idx))) savebonus        // reads ST bonus
-            PATCH_IF ((GW_oldbonus = savebonus) OR (GW_oldbonus = "-99")) BEGIN
-                PATCH_IF ((GW_newbonus != savebonus) AND (GW_newbonus != "-99")) BEGIN
-                    WRITE_LONG (fx_off + 0x28 + (0x30 * (j + abil_fx_idx))) GW_newbonus
-                END
-            END
-        END    // of looping through effects
-    END        // of looping through heders
-END    // of 
 
 // Special thanks to Ardanis for adapting/expanding what Nythrun originally wrote.
 // Special thanks to Mike1072 for freely sharing this on the Gibberlings 3.
@@ -354,3 +285,70 @@ BEGIN
    END
  END
 END
+
+//GWENDOLYNE's FUNCTION FOR SAVE BONUS on SPELL HEADERS
+DEFINE_PATCH_FUNCTION ~GW_DEF_OFFSETS_FILE~
+    RET GW_oe        // Extended Header offset
+        GW_oc        // Extended Header count
+        GW_al        // Extended Header length (ability length)
+        GW_fx        // Feature blocks offset
+        GW_fi        // Equipping-Casting feature blocks index
+        GW_fc        // Equipping Feature Blocks count
+        GW_min_size  // Minimum size
+BEGIN
+    READ_ASCII 0 sig (3)
+    PATCH_MATCH ~%sig%~ WITH
+        ITM    BEGIN    SET GW_oe = 0x64    // Extended Header offset
+                    SET GW_oc = 0x68        // Extended Header count
+                    SET GW_al = 0x38        // Extended Header length (ability length)
+                    SET GW_fx = 0x6a        // Feature blocks offset
+                    SET GW_fi = 0x6e        // Equipping feature blocks index
+                    SET GW_fc = 0x70        // Equipping Feature Blocks count
+                    SET GW_min_size = 0x71  // Minimum size
+        END
+        SPL    BEGIN    SET GW_oe = 0x64    // Extended Header offset
+                    SET GW_oc = 0x68        // Extended Header count
+                    SET GW_al = 0x28        // Extended Header length (ability length)
+                    SET GW_fx = 0x6a        // Feature Block Table offset
+                    SET GW_fi = 0x6e        // Casting Feature Block offset
+                    SET GW_fc = 0x70        // Casting Feature Block count
+                    SET GW_min_size = 0x71  // Minimum size
+        END
+        CRE BEGIN    SET GW_oe = 0           // Extended Header offset
+                    SET GW_oc = 0            // Extended Header count
+                    SET GW_al = 0            // Extended Header length (ability length)
+                    SET GW_fx = 0x2c4        // Effects offset
+                    SET GW_fi = 0            // Casting Feature Block offset
+                    SET GW_fc = 0x2c8        // Effects count
+                    SET GW_min_size = 0x2d3  // Minimum size
+        END
+        DEFAULT
+    END
+END    // of DEFINE_PATCH_FUNCTION
+
+DEFINE_PATCH_FUNCTION ~GW_MODIFY_ST_BONUS~
+    INT_VAR GW_oldbonus      = "-99"      // old bonus to check
+            GW_newbonus      = "-99"      // new bonus to write
+BEGIN
+    PATCH_IF (GW_oe = 0) BEGIN            // Creatures : NO Extended Headers !
+        SET abil_off = 0
+        SET abil_num = 0
+    END ELSE BEGIN
+        READ_LONG  GW_oe abil_off
+        READ_SHORT GW_oc abil_num
+        READ_LONG  GW_fx fx_off
+    END
+    FOR (i = 0 ; i < abil_num ; ++i) BEGIN                                          // looks through headers
+        READ_SHORT (abil_off + 0x1e + GW_al*i) "abil_fx_num"
+        READ_SHORT (abil_off + 0x20 + GW_al*i) "abil_fx_idx"
+        FOR (j = 0 ; j < abil_fx_num ; ++j ) BEGIN                                  // looks through effects
+            READ_LONG (fx_off + 0x24 + (0x30 * (j + abil_fx_idx))) ST               // reads ST
+            READ_LONG (fx_off + 0x28 + (0x30 * (j + abil_fx_idx))) savebonus        // reads ST bonus
+            PATCH_IF ((GW_oldbonus = savebonus) OR (GW_oldbonus = "-99")) BEGIN
+                PATCH_IF ((GW_newbonus != savebonus) AND (GW_newbonus != "-99")) BEGIN
+                    WRITE_LONG (fx_off + 0x28 + (0x30 * (j + abil_fx_idx))) GW_newbonus
+                END
+            END
+        END    // of looping through effects
+    END        // of looping through heders
+END    // of 

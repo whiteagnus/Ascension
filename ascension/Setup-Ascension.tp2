@@ -7,7 +7,7 @@
  *************************************************************************/
 BACKUP ~ascension/backup~
 //AUTHORS: David Gaider & Contributers, Westley Weimer, Turumbar, Miloch, Cuv, WhiteAgnus, JediMindTrix"
-AUTHOR "Active Caretaker: JediMindTrix contact on the Beamdog forums at "
+AUTHOR "Active Caretaker: please JediMindTrix contact on the Beamdog forums, or on the open discussion forums at http://s13.zifboards.com/Project_Ascension/index.php?showforum=2"
 
 VERSION ~v1.5 BETA_20160114~
 
@@ -224,7 +224,7 @@ LAF update_epilogues STR_VAR filepath = ~ascension/lib/shawnesepiloguesEE.tbl~ E
 
 BEGIN ~Ascension Epilogues~ DESIGNATED 106
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2
-FORBID_FILE ~override/asc_main.flag~ ~This component is not neccessary, because it was installed with the main ascension component~
+FORBID_FILE ~override/asc_main.flag~ ~Ascension Epilogue's are included in The Ascension!~
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_epi_only.flag~
 INCLUDE ~ascension/lib/charset.tpa~
 INCLUDE ~ascension/lib/epilogue_update.tph~

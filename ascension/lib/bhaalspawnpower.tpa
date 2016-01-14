@@ -23,7 +23,6 @@ COPY_EXISTING ~BHAAL2B.spl~    ~override/BHAAL2B.spl~
   min_level = 19
  END
 BUT_ONLY
-*/
 
 //COPY FILES - Hand of Murder Installation, original Ascension NOTE: For time's sake, the original effect was copied and namechanged to match references from the vanilla implementation of Hand of Murder, rather than patching the Hand of Murder spell headers to all use the original effect. Laziness, basically, but harmless laziness.
 COPY ~ascension/bhlspwnpwr/bh3b1.eff~  ~override/bh3b2.eff~
@@ -36,5 +35,3 @@ COPY ~ascension/bhlspwnpwr/bh3b1.eff~  ~override/bh3b5.eff~
   WRITE_ASCII   0x30 "BH3B5" #8
 COPY ~ascension/bhlspwnpwr/bh3b1.eff~  ~override/balth01a.eff~ //Balthazar can now have Hand of Murder?
   WRITE_ASCII   0x30 "BALTH01A" #8
-
-COPY ~ascension/bhlspwnpwr/spl~ ~override~

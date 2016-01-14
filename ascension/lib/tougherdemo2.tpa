@@ -1,6 +1,14 @@
 //Copy
 COPY ~ascension/tougher/demogorgon/eff~ ~override~
 
+ACTION_GET_STRREF 70985 summon_host       //Change name to be lore-friendly, comment this section out if you want the original
+
+OUTER_PATCH_SAVE summon_host ~%summon_host%~ BEGIN
+  REPLACE_TEXTUALLY ~Summon the Infernal Host~ ~Summon the Abyssal Host~
+END
+
+STRING_SET_EVALUATE 70985 ~%summon_host%~
+
 //DEMOGORGON CREATURE PATCH
 COPY_EXISTING ~DEMOGOR2.CRE~ ~override~
  WRITE_BYTE 0x6e 0        //Unused Large Prof
@@ -184,13 +192,6 @@ LPF ADD_SPELL_EFFECT
 BUT_ONLY
 
 COPY_EXISTING ~SPIN549.SPL~ ~override~    //Summon the Abyssal Host
-ACTION_GET_STRREF 70985 summon_host       //Change name to be lore-friendly, comment this section out if you want the original
-
-OUTER_PATCH_SAVE summon_host ~%summon_host%~ BEGIN
-  REPLACE_TEXTUALLY ~Summon the Infernal Host~ ~Summon the Abyssal Host~
-END
-
-STRING_SET_EVALUATE 70985 ~%summon_host%~
 
  LPF ALTER_SPELL_EFFECT
  INT_VAR
