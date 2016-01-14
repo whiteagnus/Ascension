@@ -1,4 +1,11 @@
 IF
+  Die()
+THEN
+  RESPONSE #100
+    SetGlobal("JMT#BD","AR6200",1)
+END
+
+IF
   Global("Lunar","GLOBAL",1)
   See(NearestEnemyOf(Myself))
 THEN

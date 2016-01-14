@@ -1,23 +1,57 @@
+IF                                        //All enemies are dead, Imoen resolved, Balthazar Dead
+  Die()
+  Global("JMT#WV1","AR6200",3)            //Current first wave count
+  OR(2)
+  Global("BalthazarFights","GLOBAL",0)    //Balthazar did not fight with you
+  StateCheck("balth2",15)                 //Balthazar died
+  !Exists([ENEMY])                        //No summons around
+THEN
+  RESPONSE #100
+    SetGlobal("FinalFight","AR6200",4)     //Set to pre-bridge dialog
+END
+
+IF                                     //All enemies are dead, Imoen resolved, Balthazar is ally
+  DIE()
+  Global("JMT#WV1","AR6200",3)         
+  Global("BalthazarFights","Global",1) 
+  !Exists([ENEMY])                     
+THEN
+  RESPONSE #100
+    SetGlobal("FinalFight","AR6200",4)   
+END
+
+IF                                     //All enemies are dead, Imoen resolved, Bodhi is ally (no balthazar)
+  Die()
+  Global("JMT#WV1","AR6200",3)
+  Global("BodhiFights","GLOBAL",1)
+  !Exists([ENEMY]) 
+THEN
+  RESPONSE #100
+    SetGlobal("FinalFight","AR6200",4)
+END
+
 IF
   Die()
 THEN
   RESPONSE #100
+    SetGlobal("JMT#IMD","AR6200",1)
     CreateVisualEffectObject("SPROTECT",Myself)
     ApplySpellRES("SPWI055",Myself)  // ~Disintegrate~
 END
 
 IF
-  StateCheck("finiren",4032)  // finiren
+  StateCheck("finiren",15)  // finiren
   OR(2)
-  StateCheck("finbodh",4032)  // finbodh
+  StateCheck("finbodh",15)  // finbodh
   Global("BodhiFights","GLOBAL",1)
-  StateCheck("finsolar",4032)  // finsolar
+  StateCheck("finsolar",15)  // finsolar
   Global("ImoenBackToHuman","GLOBAL",0)
   GlobalTimerNotExpired("ImoenChangeBack","GLOBAL")
 THEN
   RESPONSE #100
     SetInterrupt(FALSE)
     SetGlobal("ImoenBackToHuman","GLOBAL",1)
+	SetGlobal("FinalFight","AR6200",4)
     ClearActions(Myself)
     ActionOverride("Imoen2",ReallyForceSpellRES("imoslay2",Myself))  // imoslay2
     ActionOverride("Imoen2",ChangeEnemyAlly("Imoen2",NEUTRAL))
@@ -38,6 +72,7 @@ THEN
   RESPONSE #100
     SetInterrupt(FALSE)
     SetGlobal("ImoenBackToHuman","GLOBAL",1)
+	SetGlobal("FinalFight","AR6200",4)
     ClearActions(Myself)
     ActionOverride("Imoen2",ReallyForceSpellRES("imoslay2",Myself))  // imoslay2
     ActionOverride("Imoen2",ChangeEnemyAlly(Myself,NEUTRAL))

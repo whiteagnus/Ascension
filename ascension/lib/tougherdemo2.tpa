@@ -132,7 +132,7 @@ COPY_EXISTING ~SPIN548.SPL~ ~override~ //Demogorgon's Gate
   INT_VAR
   opcode = 177
   target = 1
-  parameter1 = 2
+  parameter2 = 2
   resist_dispel = 0
   duration = 2400
   probability1 = 50
@@ -145,7 +145,7 @@ LPF ADD_SPELL_EFFECT
   INT_VAR
   opcode = 177
   target = 1
-  parameter1 = 2
+  parameter2 = 2
   resist_dispel = 0
   duration = 2400
   probability1 = 50
@@ -158,7 +158,7 @@ LPF ADD_SPELL_EFFECT
   INT_VAR
   opcode = 177
   target = 1
-  parameter1 = 2
+  parameter2 = 2
   resist_dispel = 0
   duration = 2400
   probability1 = 80
@@ -172,7 +172,7 @@ LPF ADD_SPELL_EFFECT
   INT_VAR
   opcode = 177
   target = 1
-  parameter1 = 2
+  parameter2 = 2
   resist_dispel = 0
   duration = 2400
   probability1 = 100
@@ -235,7 +235,7 @@ COPY_EXISTING ~SPIN549.SPL~ ~override~    //Summon the Infernal Host
  INT_VAR
   opcode = 177
   target = 1
-  parameter1 = 2
+  parameter2 = 2
   resist_dispel = 2
   duration = 2400
   probability1 = 100
@@ -247,7 +247,7 @@ COPY_EXISTING ~SPIN549.SPL~ ~override~    //Summon the Infernal Host
  INT_VAR
   opcode = 177
   target = 1
-  parameter1 = 2
+  parameter2 = 2
   resist_dispel = 2
   duration = 2400
   probability1 = 100
@@ -259,7 +259,7 @@ COPY_EXISTING ~SPIN549.SPL~ ~override~    //Summon the Infernal Host
  INT_VAR
   opcode = 177
   target = 1
-  parameter1 = 2
+  parameter2 = 2
   dispel_resist = 2
   duration = 2400
   probability1 = 100
@@ -271,7 +271,7 @@ COPY_EXISTING ~SPIN549.SPL~ ~override~    //Summon the Infernal Host
  INT_VAR
   opcode = 177
   target = 1
-  parameter1 = 2
+  parameter2 = 2
   dispel_resist = 2
   duration = 2400
   probability = 100
@@ -283,7 +283,7 @@ COPY_EXISTING ~SPIN549.SPL~ ~override~    //Summon the Infernal Host
  INT_VAR
   opcode = 177
   target = 1
-  parameter1 = 2
+  parameter2 = 2
   dispel_resist = 2
   duration = 2400
   probability1 = 100

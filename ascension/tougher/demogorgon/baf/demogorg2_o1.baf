@@ -10,3 +10,14 @@ THEN
     ReallyForceSpell(Myself,CLERIC_AURA_OF_FLAMING_DEATH)
     ReallyForceSpellRES("jwglobe",Myself)
 END
+
+IF
+	Detect(NearestEnemyOf(Myself))
+	Global("StoppedTime","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("StoppedTime","LOCALS",2)
+		SetGlobalTimer("SumReinf","LOCALS",3)
+		DisplayStringHead(Myself,70999) // Now you will pay, foolish mortals!
+		ReallyForceSpell(NearestEnemyOf(Myself),SUMMON_INFERNAL_HOST) // SPIN549.SPL (Summon the Infernal Host)
+END

@@ -1,6 +1,6 @@
 IF
   Global("DeathScriptSend","AR6200",1)
-  !StateCheck("finsend",4032)  // finsend
+  !StateCheck("finsend",15)  // finsend
 THEN
   RESPONSE #100
     SetGlobal("DeathScriptSend","AR6200",0)
@@ -8,7 +8,7 @@ END
 
 IF
   Global("DeathScriptAbaz","AR6200",1)
-  !StateCheck("finabaz",4032)  // finabaz
+  !StateCheck("finabaz",15)  // finabaz
 THEN
   RESPONSE #100
     SetGlobal("DeathScriptAbaz","AR6200",0)
@@ -16,7 +16,7 @@ END
 
 IF
   Global("DeathScriptIlla","AR6200",1)
-  !StateCheck("finilla",4032)  // finilla
+  !StateCheck("finilla",15)  // finilla
 THEN
   RESPONSE #100
     SetGlobal("DeathScriptIlla","AR6200",0)
@@ -24,7 +24,7 @@ END
 
 IF
   Global("DeathScriptSare","AR6200",1)
-  !StateCheck("finsarev",4032)  // finsarev
+  !StateCheck("finsarev",15)  // finsarev
 THEN
   RESPONSE #100
     SetGlobal("DeathScriptSare","AR6200",0)
@@ -32,7 +32,7 @@ END
 
 IF
   Global("DeathScriptYaga","AR6200",1)
-  !StateCheck("finyaga",4032)  // finyaga
+  !StateCheck("finyaga",15)  // finyaga
 THEN
   RESPONSE #100
     SetGlobal("DeathScriptYaga","AR6200",0)
@@ -40,7 +40,7 @@ END
 
 IF
   Global("DeathScriptGrom","AR6200",1)
-  !StateCheck("fingrom",4032)  // fingrom
+  !StateCheck("fingrom",15)  // fingrom
 THEN
   RESPONSE #100
     SetGlobal("DeathScriptGrom","AR6200",0)
@@ -82,83 +82,11 @@ THEN
 END
 
 IF
-  StateCheck("finiren",4032)  // finiren      //Irenicus is dead
-  OR(2)                                       
-  StateCheck("finbodh",4032)  // finbodh      //And Bodhi is dead
-  Global("BodhiFights","GLOBAL",1)            //OR Bodhi is fighting
-  StateCheck("finsolar",4032)  // finsolar    //And Solar is dead
-  !Exists([ENEMY])                            //And no enemies exist
-  Global("SetForceWalkwayTimer","AR6200",0)   //Timer not set
-  Global("FinalFight","AR6200",3)             //FinalFight 3
-THEN                                            
-  RESPONSE #100
-    SetGlobal("SetForceWalkwayTimer","AR6200",1) //ForceWalkway
-    SetGlobalTimer("ForceWalkway","AR6200",30)   //Forcebridges timer
-END
-
-IF
-  GlobalTimerExpired("ForceWalkway","AR6200")   //Failsafe measure timer set
-  Global("FinalFight","AR6200",3)
-THEN
-  RESPONSE #100
-    SetGlobal("FinalFight","AR6200",5)          //Forces bridges to appear
-END
-
-IF
-  Delay(3)                                        //Wait 3 seconds
-  StateCheck("finiren",4032)  // finiren          //Irenicus died
-  OR(2)                                           
-  StateCheck("finbodh",4032)  // finbodh          //And Bodhi died
-  Global("BodhiFights","GLOBAL",1)                //OR sided with player
-  StateCheck("finsolar",4032)  // finsolar        //And Solar is dead
-  !Exists([ENEMY])                                //And no more enemies exist (Imoen/summons check?)
-  Global("BalthazarFights","GLOBAL",1)            //And Balthazar is fighting with player
-  !StateCheck("balth2",4032)  // balth2           //And Balthazar is not dead or stunned etc
-  !StateCheck("balth2",STATE_STUNNED)  // balth2
-  !StateCheck("balth2",STATE_SLEEPING)  // balth2
-  !StateCheck("balth2",STATE_SILENCED)  // balth2
-  !StateCheck("balth2",STATE_CONFUSED)  // balth2
-  OR(2)                                           //
-  Global("ImoenBackToHuman","GLOBAL",2)           //And Imoen Back
-  StateCheck("Imoen2",4032)  // Imoen2            //OR Imoen Died
-  Global("FinalFight","AR6200",3)                 //AND finalfight is 3
-THEN
-  RESPONSE #100
-    SetGlobal("FinalFight","AR6200",4)
-    ActionOverride("balth2",Dialog(Player1))
-END
-
-IF
-  Delay(3)                                  //Wait 3 seconds
-  StateCheck("finiren",4032)  // finiren    //Check Irenicus death
-  OR(2)                                     //OR next 2
-  StateCheck("finbodh",4032)  // finbodh    //Bodhi is dead
-  Global("BodhiFights","GLOBAL",1)          //Bodhi fought by players side
-  StateCheck("finsolar",4032)  // finsolar  //and Solar is dead
-  !Exists([ENEMY])                          //and There are no enemies in AR6200
-  OR(6)                                     //OR
-  Global("BalthazarFights","GLOBAL",0)      //Balthazar did not fight by players side
-  StateCheck("balth2",4032)  // balth2      //Balathazar is dead 
-  StateCheck("balth2",STATE_STUNNED)  // balth2  //Various balthazar states
-  StateCheck("balth2",STATE_SLEEPING)  // balth2
-  StateCheck("balth2",STATE_SILENCED)  // balth2
-  StateCheck("balth2",STATE_CONFUSED)  // balth2
-  OR(2)                                          //OR
-  Global("ImoenBackToHuman","GLOBAL",2)          //Imoen made it back to Human
-  StateCheck("Imoen2",4032)  // Imoen2           //But she died
-  Global("FinalFight","AR6200",3)                //And global is 3
-THEN
-  RESPONSE #100
-    SetGlobal("FinalFight","AR6200",4)           //
-    ActionOverride(Player1,StartDialogue("player1",Player1))
-END
-
-IF
   OR(2)
   Global("SarevokFights","GLOBAL",1)
-  StateCheck("sarevok",4032)  // ~Sarevok~
+  StateCheck("sarevok",15)  // ~Sarevok~
   OR(2)
-  StateCheck("balth2",4032)  // balth2
+  StateCheck("balth2",15)  // balth2
   Global("BalthazarFights","GLOBAL",0)
   Global("MelStillImmortal","AR6200",2)
   Delay(6)
@@ -166,6 +94,28 @@ THEN
   RESPONSE #100
     SetGlobal("MelStillImmortal","AR6200",3)
     ActionOverride(Player1,StartDialogue("player1",Player1))
+END
+
+IF                                   //Player talks about pools
+  Global("FinalFight","AR6200",4)    
+  OR(2)
+  Global("BalthazarFights","Global",0)
+  Global("JMT#BD","AR6200",1)
+THEN
+  RESPONSE #100
+   ClearAllActions()
+   Wait(10)
+   ActionOverride(Player1,StartDialog("player1",Player1)) //Start dialog
+END
+
+IF                                   //Balthazar speaks about pools
+  Global("FinalFight","AR6200",4)    
+  Global("JMT#BD","AR6200",0)
+THEN
+  RESPONSE #100
+   ClearAllActions()
+   Wait(10)
+   ActionOverride("balth2",StartDialogueNoSet(Player1)) //Start dialog
 END
 
 IF
@@ -249,7 +199,7 @@ THEN
 END
 
 IF
-  StateCheck("finilla",4032)  // finilla
+  StateCheck("finilla",15)  // finilla
   Global("IllaseraDead","AR6200",0)
 THEN
   RESPONSE #100
@@ -258,7 +208,7 @@ THEN
 END
 
 IF
-  !StateCheck("finilla",4032)  // finilla
+  !StateCheck("finilla",15)  // finilla
   Global("IllaseraDead","AR6200",1)
 THEN
   RESPONSE #100
@@ -267,7 +217,7 @@ THEN
 END
 
 IF
-  StateCheck("finabaz",4032)  // finabaz
+  StateCheck("finabaz",15)  // finabaz
   Global("AbazigalDead","AR6200",0)
 THEN
   RESPONSE #100
@@ -276,7 +226,7 @@ THEN
 END
 
 IF
-  !StateCheck("finabaz",4032)  // finabaz
+  !StateCheck("finabaz",15)  // finabaz
   Global("AbazigalDead","AR6200",1)
 THEN
   RESPONSE #100
@@ -285,7 +235,7 @@ THEN
 END
 
 IF
-  StateCheck("finyaga",4032)  // finyaga
+  StateCheck("finyaga",15)  // finyaga
   Global("YagaDead","AR6200",0)
 THEN
   RESPONSE #100
@@ -294,7 +244,7 @@ THEN
 END
 
 IF
-  !StateCheck("finyaga",4032)  // finyaga
+  !StateCheck("finyaga",15)  // finyaga
   Global("YagaDead","AR6200",1)
 THEN
   RESPONSE #100
@@ -303,7 +253,7 @@ THEN
 END
 
 IF
-  StateCheck("finsend",4032)  // finsend
+  StateCheck("finsend",15)  // finsend
   Global("SendaiDead","AR6200",0)
 THEN
   RESPONSE #100
@@ -312,7 +262,7 @@ THEN
 END
 
 IF
-  !StateCheck("finsend",4032)  // finsend
+  !StateCheck("finsend",15)  // finsend
   Global("SendaiDead","AR6200",1)
 THEN
   RESPONSE #100
@@ -321,7 +271,7 @@ THEN
 END
 
 IF
-  StateCheck("finbalth",4032)  // finbalth
+  StateCheck("finbalth",15)  // finbalth
   Global("BalthazarFights","GLOBAL",0)
   Global("BalthDead","AR6200",0)
 THEN
@@ -331,7 +281,7 @@ THEN
 END
 
 IF
-  !StateCheck("finbalth",4032)  // finbalth
+  !StateCheck("finbalth",15)  // finbalth
   Global("BalthazarFights","GLOBAL",0)
   Global("BalthDead","AR6200",1)
 THEN
@@ -341,7 +291,7 @@ THEN
 END
 
 IF
-  StateCheck("fingrom",4032)  // fingrom
+  StateCheck("fingrom",15)  // fingrom
   Global("BalthazarFights","GLOBAL",1)
   DifficultyGT(EASY)
   Global("GromnirDead","AR6200",0)
@@ -352,7 +302,7 @@ THEN
 END
 
 IF
-  !StateCheck("fingrom",4032)  // fingrom
+  !StateCheck("fingrom",15)  // fingrom
   Global("BalthazarFights","GLOBAL",1)
   DifficultyGT(EASY)
   Global("GromnirDead","AR6200",1)
@@ -363,7 +313,7 @@ THEN
 END
 
 IF
-  StateCheck("finsarev",4032)  // finsarev
+  StateCheck("finsarev",15)  // finsarev
   Global("SarevokFights","GLOBAL",1)
   Global("SarevokDead","AR6200",0)
 THEN
@@ -373,7 +323,7 @@ THEN
 END
 
 IF
-  !StateCheck("finsarev",4032)  // finsarev
+  !StateCheck("finsarev",15)  // finsarev
   Global("SarevokFights","GLOBAL",1)
   Global("SarevokDead","AR6200",1)
 THEN
@@ -432,7 +382,95 @@ END
 
 IF
   Global("StartEndBios","AR6200",1)
+  InParty("Aerie")  // ~Aerie~
+  Gender(Player1,FEMALE)
+  OR(2)
+  !Global("AerieRomanceActive","GLOBAL",2)
+  Global("PlayerChoseEssence","GLOBAL",1)
+  Global("AerieBio","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("AerieBio","GLOBAL",1)
+    TextScreen("AERIFND1")
+END
+
+IF
+  Global("StartEndBios","AR6200",1)
   InParty("Viconia")  // Viconia
+  OR(2)
+  !Global("ViconiaRomanceActive","GLOBAL",2)
+  Global("PlayerChoseEssence","GLOBAL",1)
+  !Alignment("Viconia",MASK_EVIL)  // Viconia
+  Gender(Player1,FEMALE)
+  Global("ViconiaBio","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("ViconiaBio","GLOBAL",1)
+    TextScreen("VICOFND3")
+END
+
+IF
+  Global("StartEndBios","AR6200",1)
+  InParty("Valygar")  // Valygar
+  Gender(Player1,FEMALE)
+  Global("ValygarBio","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("ValygarBio","GLOBAL",1)
+    TextScreen("VALYGFND")
+END
+
+IF
+  Global("StartEndBios","AR6200",1)
+  InParty("Sarevok")  // ~Sarevok~
+  Alignment("Sarevok",MASK_GOOD)  // ~Sarevok~
+  Gender(Player1,FEMALE)
+  Global("SarevokGoodBio","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("SarevokGoodBio","GLOBAL",1)
+    TextScreen("SAREVFND")
+END
+
+IF
+  Global("StartEndBios","AR6200",1)
+  OR(2)
+  InParty("Imoen2")  // Imoen2
+  Global("ImoenEpilogueAnyway","GLOBAL",1)
+  Gender(Player1,FEMALE)
+  Global("ImoenBio","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("ImoenBio","GLOBAL",1)
+    TextScreen("IMOENFND")
+END
+
+IF
+  Global("StartEndBios","AR6200",1)
+  InParty("Mazzy")  // Mazzy
+  Gender(Player1,FEMALE)
+  Global("MazzyBio","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("MazzyBio","GLOBAL",1)
+    TextScreen("MAZZYFND")
+END
+
+IF
+  Global("StartEndBios","AR6200",1)
+  Global("BalthazarFights","GLOBAL",1)
+  Gender(Player1,FEMALE)
+  Global("BalthazarBio","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("BalthazarBio","GLOBAL",1)
+    TextScreen("BALTHFND")
+END
+
+IF
+  Global("StartEndBios","AR6200",1)
+  InParty("Viconia")  // Viconia
+  !Gender(Player1,FEMALE)
   OR(2)
   !Global("ViconiaRomanceActive","GLOBAL",2)
   Global("PlayerChoseEssence","GLOBAL",1)
@@ -458,6 +496,7 @@ END
 IF
   Global("StartEndBios","AR6200",1)
   !InParty("Imoen2")  // Imoen2
+  !Gender(Player1,FEMALE)
   Global("ImoenEpilogueAnyway","GLOBAL",1)
   Global("ImoenBio","GLOBAL",0)
 THEN
@@ -471,6 +510,7 @@ END
 IF
   Global("StartEndBios","AR6200",1)
   Global("BalthazarFights","GLOBAL",1)
+  !Gender(Player1,FEMALE)
   Global("BalthazarBio","GLOBAL",0)
 THEN
   RESPONSE #100
