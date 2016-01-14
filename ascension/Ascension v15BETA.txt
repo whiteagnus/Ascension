@@ -20,6 +20,33 @@ I also want to stress that all of the work done was geared towards producing a r
 <b>CHANGELOG/CREDITS</b>
 I felt it easiest to describe who did what and also display what's changed by using this method:
 
+1/14/2016
+PACKAGE
+- Fixed patching errors on spell abilities         -JediMindTrix
+- Reorganized several files, corrected typo's -WhiteAgnus, JediMindTrix
+- Fixed Translation Encoding                           -WhiteAgnus
+- Detectable Spells and HANDLE_CHARSETS moved into components that utilize them -WhiteAgnus
+
+ASCENSION - MAIN COMPONENT
+- Fixed gamebreaking bug where bridges to the pools were not spawning in endgame. This was accomplished through a restructuring and rewriting of code. UNTESTED with BODHI. -JediMindTrix
+- Pool fix implemented                -WhiteAgnus
+- melis02.spl updated to DS v3  -WhiteAgnus
+- Fixed minor script errors         -WhiteAgnus
+
+TOUGHER DEMOGORGON
+- Fixed Demogorgon's A.I. script, mismatched variables were causing him to stand still after timestop -JediMindTrix
+- Changed Summon the Infernal Host to Summon the Abyssal Host to be lore accurate -JediMindTrix
+
+RESTORED BHAALSPAWN POWERS
+- Dark Taint converted to patching, big credit to Gwendolyne for generously allowing use of their code :) -JediMindTrix, mainly Gwendolyne
+
+NEW COMPONENTS
+-Shawne's Revised Epilogue's       -shawne
+-Shawne's Revised Epilogue's - EE NPC's -shawne
+-Original Ascension Epilogue's -WhiteAgnus
+-ANYONE EA.IDS hotfix for mod compatibility -WhiteAgnus
+
+12/15/2016
 <i><b>Cuv/Turumbar/Miloch</b> (Some WhiteAgnus as well!)</i>
 - <b>Ascension</b>: A vertex bugfix for patching AR6200.
 - <b>Ascension</b>: Balthazar's Solar Stance should no longer freeze the game.
