@@ -112,8 +112,8 @@ COPY_EXISTING ~DEMOCHM.SPL~ ~override~ //Demogorgon Tanar'ri Charm
   opcode = 177
   target = 2
   timing = 4
-  parameter1 = 5
-  parameter2 = 160
+  parameter1 = 160
+  parameter2 = 5
   resist_dispel = 2
   duration = 1
   probability1 = 100
@@ -183,7 +183,14 @@ LPF ADD_SPELL_EFFECT
  END
 BUT_ONLY
 
-COPY_EXISTING ~SPIN549.SPL~ ~override~    //Summon the Infernal Host
+COPY_EXISTING ~SPIN549.SPL~ ~override~    //Summon the Abyssal Host
+ACTION_GET_STRREF 70985 summon_host       //Change name to be lore-friendly
+
+OUTER_PATCH_SAVE summon_host ~%summon_host%~ BEGIN
+  REPLACE_TEXTUALLY ~Summon the Infernal Host~ ~Summon the Abyssal Host~
+END
+
+STRING_SET_EVALUATE 70985 ~%summon_host%~
 
  LPF ALTER_SPELL_EFFECT
  INT_VAR
