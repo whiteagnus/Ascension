@@ -3,10 +3,10 @@ INCLUDE ~ascension/lib/always.tpa~
 
 COPY_EXISTING ~CUT242A.bcs~ ~override~
 DECOMPILE_AND_PATCH BEGIN
-REPLACE_TEXTUALLY ~CreateCreature("BALELITE",[866.468],SE)~ ~CreateCreature("BALELIT1",[866.468],SE))~
-REPLACE_TEXTUALLY ~CreateCreature("BALELITE",[614.559],SE)~ ~CreateCreature("BALELIT2",[614.559],SE)~
-REPLACE_TEXTUALLY ~CreateCreature("BALELITE",[441.794],NE)~ ~CreateCreature("BALELIT3",[441.794],NE)~
-REPLACE_TEXTUALLY ~CreateCreature("BALELITE",[1218.558],W)~ ~CreateCreature("BALELIT4",[1218.558],W)~
+REPLACE_TEXTUALLY ~CreateCreature("BALELITE",\[866\.468\],SE)~ ~CreateCreature("BALELIT1",[866.468],SE)~
+REPLACE_TEXTUALLY ~CreateCreature("BALELITE",\[614\.559\],SE)~ ~CreateCreature("BALELIT2",[614.559],SE)~
+REPLACE_TEXTUALLY ~CreateCreature("BALELITE",\[441\.794\],NE)~ ~CreateCreature("BALELIT3",[441.794],NE)~
+REPLACE_TEXTUALLY ~CreateCreature("BALELITE",\[1218\.558\],[4W])~ ~CreateCreature("BALELIT4",[1218.558],W)~
 END
 
 //Copy and Compile
@@ -1209,4 +1209,3 @@ COPY_EXISTING ~finmel01.bcs~  ~override~
     REPLACE_TEXTUALLY CASE_INSENSITIVE ~ClearAllActions()[%MNL%%LNL%%TAB% ]+StartCutSceneMode()[%MNL%%LNL%%TAB% ]+StartCutScene("cut233f")~ ~SetGlobal("allfive","GLOBAL",2) ClearAllActions() StartCutSceneMode() StartCutScene("cut233gb")~
   END
 BUT_ONLY
-
