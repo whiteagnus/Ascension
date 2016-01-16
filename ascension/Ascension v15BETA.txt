@@ -1,4 +1,4 @@
-<b>FORWARD & THANK YOU:</b>
+FORWARD & THANK YOU:
 By JediMindTrix on 12/15/2015
 Merry Christmas!
 
@@ -6,19 +6,22 @@ This work began behind-the-scenes in mid-August, but due to a persona' tragedy, 
 
 My initial motivation came when I started a playthrough of the EE trilogy and found to my disappointment that Ascension was still incompatible (except for a clanky workaround) with what I felt were superior editions of my favorite game. I realized that if I wanted to play a solid implementation of one of my Bread & Butter mods, I'd have to make it happen myself. I had absolutely NO clue what I was doing, but yet, four 1/2 months later, here we are. 
 
-I'd like to take a moment to thank WhiteAgnus especially (who I asked many an obnoxious question too) and the community at Gibberlings3 for answering <i>numerous</i> questions for me (Jarno Mikolla, Mike1072, subtledoctor,  especially!) and anyone else who helped along the way (lynx, argent77, gwendolyne, Demivrgs, jalily come to mind).
+I'd like to take a moment to thank WhiteAgnus especially (who I asked many an obnoxious question too) and the community at Gibberlings3 for answering numerous questions for me (Jarno Mikolla, Mike1072, subtledoctor,  especially!) and anyone else who helped along the way (lynx, argent77, gwendolyne, Demivrgs, jalily come to mind).
 
 All of JediMindTrix's work is dedicated to Charles Hein, beloved cousin and best friend.
 
-<b>ABOUT THIS BETA</b>
+ABOUT THIS BETA
 At present, this build is a combination of two different builds: The mythical Cuv build (which itself is heavily based on work by Turumbar and Miloch), and a build by WhiteAgnus and myself (JediMindTrix). Most of the The Ascension component comes from the Cuv/Turumbar/Miloch build. Everything else (save Cuv's Portrait!) comes from the WhiteAgnus/JediMindTrix build.
 
-<b>I want to stress that this <i>is a BETA</i></b>, not a final release. Just because everything installs without an error does not mean everything is working as intended. This is where the community comes in: I do not have time for a lot of beta-testing (long workweeks!) myself, so I am counting on everyone to report everything they find from simple typo's or grammatical errors in dialogue to enormous Fallout-Sized termite infestations (hopefully I sprayed all of these!)
+I want to stress that this is a BETA, not a final release. Just because everything installs without an error does not mean everything is working as intended. This is where the community comes in: I do not have time for a lot of beta-testing (long workweeks!) myself, so I am counting on everyone to report everything they find from simple typo's or grammatical errors in dialogue to enormous Fallout-Sized termite infestations (hopefully I sprayed all of these!)
 
 I also want to stress that all of the work done was geared towards producing a release that was EE-focused/friendly. While not strictly incompatible with Biogate, this would probably need some tweaking/know-how to keep backwards compatible. Perhaps in the future this may become a priority, but for now I am focused on the Enhanced Editions and the inevitable Siege of Dragonspear updates.
 
-<b>CHANGELOG/CREDITS</b>
+CHANGELOG/CREDITS
 I felt it easiest to describe who did what and also display what's changed by using this method:
+
+1/15/2016
+-Balthazar's Adherants (unique Monks) should now properly spawn when entering his monestary for the final time.
 
 1/14/2016
 PACKAGE
