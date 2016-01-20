@@ -107,13 +107,6 @@ COPY_EXISTING ~YAGA01.cre~ ~override~
    parameter2 = 0 
    timing = 1 
   END 
- LPF ADD_CRE_EFFECT INT_VAR //Movemod
-   opcode = 126 
-   target = 0 
-   parameter1 = 0 
-   parameter2 = 1 
-   timing = 1 
-  END 
  LPF ADD_CRE_EFFECT INT_VAR //Immunity to Effect AKA Protection from opcode
    opcode = 101 
    target = 0 

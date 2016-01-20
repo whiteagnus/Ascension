@@ -20,6 +20,9 @@ I also want to stress that all of the work done was geared towards producing a r
 CHANGELOG/CREDITS
 I felt it easiest to describe who did what and also display what's changed by using this method:
 
+1/20/2016
+- Yaga-Shura will no longer be immobile. At any point in the battle (it is a Tougher component, afterall).
+
 1/15/2016
 -Balthazar's Adherants (unique Monks) should now properly spawn when entering his monestary for the final time.
 

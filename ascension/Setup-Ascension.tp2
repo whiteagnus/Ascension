@@ -9,7 +9,7 @@ BACKUP ~ascension/backup~
 //AUTHORS: David Gaider & Contributers, Westley Weimer, Turumbar, Miloch, Cuv, WhiteAgnus, JediMindTrix"
 AUTHOR "Active Caretaker: please JediMindTrix contact on the Beamdog forums, or on the open discussion forums at http://s13.zifboards.com/Project_Ascension/index.php?showforum=2"
 
-VERSION ~v1.5 BETA_20160114~
+VERSION ~v1.5 BETA_20160120~
 
 AUTO_TRA "ascension/tra/autotra/%s"//%"
 
