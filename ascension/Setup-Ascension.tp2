@@ -154,7 +154,7 @@ COPY_EXISTING ~sw1h01.itm~ ~override/asc_altbodhi.flag~ //Creates install "flag"
 COPY ~ascension/ascports/altbodhi~ ~override~
 COPY_EXISTING ~FINBODH.CRE~ ~override~
  WRITE_ASCII 0x34 ~ABODHIS~ //Portrait Swap
- WRITE_ASCII 0x3a ~ABODHIL~ //Portrait Swap
+ WRITE_ASCII 0x3c ~ABODHIL~ //Portrait Swap
 BUT_ONLY
 
 //////////////////////////////////////////////////////
@@ -168,7 +168,7 @@ COPY_EXISTING ~sw1h01.itm~ ~override/asc_altbalth.flag~ //Creates install "flag"
 COPY ~ascension/ascports/cuvbalth~ ~override~
 COPY_EXISTING ~BALTH.CRE~ ~override~ ~balth2.CRE~ ~override~ ~finbalth.cre~ ~override~
  WRITE_ASCII 0x34 ~CBALTHAS~ //Portrait Swap
- WRITE_ASCII 0x3a ~CBALTHAL~ //Portrait Swap
+ WRITE_ASCII 0x3c ~CBALTHAL~ //Portrait Swap
 BUT_ONLY
 
 ////////////////////////////////////////////////
