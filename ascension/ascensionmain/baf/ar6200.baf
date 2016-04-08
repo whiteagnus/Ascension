@@ -1,6 +1,6 @@
 IF
   Global("DeathScriptSend","AR6200",1)
-  !StateCheck("finsend",15)  // finsend
+  !Dead("finsend")  // finsend
 THEN
   RESPONSE #100
     SetGlobal("DeathScriptSend","AR6200",0)
@@ -8,7 +8,7 @@ END
 
 IF
   Global("DeathScriptAbaz","AR6200",1)
-  !StateCheck("finabaz",15)  // finabaz
+  !Dead("finabaz")  // finabaz
 THEN
   RESPONSE #100
     SetGlobal("DeathScriptAbaz","AR6200",0)
@@ -16,7 +16,7 @@ END
 
 IF
   Global("DeathScriptIlla","AR6200",1)
-  !StateCheck("finilla",15)  // finilla
+  !Dead("finilla")  // finilla
 THEN
   RESPONSE #100
     SetGlobal("DeathScriptIlla","AR6200",0)
@@ -24,7 +24,7 @@ END
 
 IF
   Global("DeathScriptSare","AR6200",1)
-  !StateCheck("finsarev",15)  // finsarev
+  !Dead("finsarev")  // finsarev
 THEN
   RESPONSE #100
     SetGlobal("DeathScriptSare","AR6200",0)
@@ -32,7 +32,7 @@ END
 
 IF
   Global("DeathScriptYaga","AR6200",1)
-  !StateCheck("finyaga",15)  // finyaga
+  !Dead("finyaga")  // finyaga
 THEN
   RESPONSE #100
     SetGlobal("DeathScriptYaga","AR6200",0)
@@ -40,7 +40,7 @@ END
 
 IF
   Global("DeathScriptGrom","AR6200",1)
-  !StateCheck("fingrom",15)  // fingrom
+  !Dead("fingrom")  // fingrom
 THEN
   RESPONSE #100
     SetGlobal("DeathScriptGrom","AR6200",0)
@@ -84,9 +84,9 @@ END
 IF
   OR(2)
   Global("SarevokFights","GLOBAL",1)
-  StateCheck("sarevok",15)  // ~Sarevok~
+  Dead("sarevok")  // ~Sarevok~
   OR(2)
-  StateCheck("balth2",15)  // balth2
+  Dead("balth2")  // balth2
   Global("BalthazarFights","GLOBAL",0)
   Global("MelStillImmortal","AR6200",2)
   Delay(6)
@@ -199,7 +199,7 @@ THEN
 END
 
 IF
-  StateCheck("finilla",15)  // finilla
+  Dead("finilla")  // finilla
   Global("IllaseraDead","AR6200",0)
 THEN
   RESPONSE #100
@@ -208,7 +208,7 @@ THEN
 END
 
 IF
-  !StateCheck("finilla",15)  // finilla
+  !Dead("finilla")  // finilla
   Global("IllaseraDead","AR6200",1)
 THEN
   RESPONSE #100
@@ -217,7 +217,7 @@ THEN
 END
 
 IF
-  StateCheck("finabaz",15)  // finabaz
+  Dead("finabaz")  // finabaz
   Global("AbazigalDead","AR6200",0)
 THEN
   RESPONSE #100
@@ -226,7 +226,7 @@ THEN
 END
 
 IF
-  !StateCheck("finabaz",15)  // finabaz
+  !Dead("finabaz")  // finabaz
   Global("AbazigalDead","AR6200",1)
 THEN
   RESPONSE #100
@@ -235,7 +235,7 @@ THEN
 END
 
 IF
-  StateCheck("finyaga",15)  // finyaga
+  Dead("finyaga")  // finyaga
   Global("YagaDead","AR6200",0)
 THEN
   RESPONSE #100
@@ -244,7 +244,7 @@ THEN
 END
 
 IF
-  !StateCheck("finyaga",15)  // finyaga
+  !Dead("finyaga")  // finyaga
   Global("YagaDead","AR6200",1)
 THEN
   RESPONSE #100
@@ -253,7 +253,7 @@ THEN
 END
 
 IF
-  StateCheck("finsend",15)  // finsend
+  Dead("finsend")  // finsend
   Global("SendaiDead","AR6200",0)
 THEN
   RESPONSE #100
@@ -262,7 +262,7 @@ THEN
 END
 
 IF
-  !StateCheck("finsend",15)  // finsend
+  !Dead("finsend")  // finsend
   Global("SendaiDead","AR6200",1)
 THEN
   RESPONSE #100
@@ -271,7 +271,7 @@ THEN
 END
 
 IF
-  StateCheck("finbalth",15)  // finbalth
+  Dead("finbalth")  // finbalth
   Global("BalthazarFights","GLOBAL",0)
   Global("BalthDead","AR6200",0)
 THEN
@@ -281,7 +281,7 @@ THEN
 END
 
 IF
-  !StateCheck("finbalth",15)  // finbalth
+  !Dead("finbalth")  // finbalth
   Global("BalthazarFights","GLOBAL",0)
   Global("BalthDead","AR6200",1)
 THEN
@@ -291,7 +291,7 @@ THEN
 END
 
 IF
-  StateCheck("fingrom",15)  // fingrom
+  Dead("fingrom")  // fingrom
   Global("BalthazarFights","GLOBAL",1)
   DifficultyGT(EASY)
   Global("GromnirDead","AR6200",0)
@@ -302,7 +302,7 @@ THEN
 END
 
 IF
-  !StateCheck("fingrom",15)  // fingrom
+  !Dead("fingrom")  // fingrom
   Global("BalthazarFights","GLOBAL",1)
   DifficultyGT(EASY)
   Global("GromnirDead","AR6200",1)
@@ -313,7 +313,7 @@ THEN
 END
 
 IF
-  StateCheck("finsarev",15)  // finsarev
+  Dead("finsarev")  // finsarev
   Global("SarevokFights","GLOBAL",1)
   Global("SarevokDead","AR6200",0)
 THEN
@@ -323,7 +323,7 @@ THEN
 END
 
 IF
-  !StateCheck("finsarev",15)  // finsarev
+  !Dead("finsarev")  // finsarev
   Global("SarevokFights","GLOBAL",1)
   Global("SarevokDead","AR6200",1)
 THEN
