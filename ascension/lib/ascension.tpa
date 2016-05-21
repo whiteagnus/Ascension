@@ -18,10 +18,12 @@ COMPILE ~ascension/ascensionmain/d~
 COMPILE ~ascension/ascensionmain/baf/compile~
 
 //EE Style Sword Description
-ACTION_IF FILE_EXISTS ~ascension/tra/%LANGUAGE%/ee.tra~ BEGIN
-	LOAD_TRA ~ascension/tra/%LANGUAGE%/ee.tra~
-END ELSE BEGIN
-	LOAD_TRA ~ascension/tra/american/ee.tra~
+ACTION_IF GAME_IS ~bg2ee~ BEGIN
+	ACTION_IF FILE_EXISTS ~ascension/tra/%LANGUAGE%/ee.tra~ BEGIN
+		LOAD_TRA ~ascension/tra/%LANGUAGE%/ee.tra~
+	END ELSE BEGIN
+		LOAD_TRA ~ascension/tra/american/ee.tra~
+	END
 END
 
 //Copy and Alter Strings
