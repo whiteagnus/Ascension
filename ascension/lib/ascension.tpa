@@ -17,6 +17,13 @@ COPY ~ascension/ascensionmain/spl/copy~ ~override~
 COMPILE ~ascension/ascensionmain/d~
 COMPILE ~ascension/ascensionmain/baf/compile~
 
+//EE Style Sword Description
+ACTION_IF FILE_EXISTS ~ascension/tra/%LANGUAGE%/ee.tra~ BEGIN
+	LOAD_TRA ~ascension/tra/%LANGUAGE%/ee.tra~
+END ELSE BEGIN
+	LOAD_TRA ~ascension/tra/american/ee.tra~
+END
+
 //Copy and Alter Strings
 COPY ~ascension/ascensionmain/itm/finsarev.itm~ ~override~
   SAY NAME2 @3000
