@@ -1,5 +1,5 @@
 /*************************************************************************
- * Ascension v1.5 BETA_20160520
+ * Ascension v1.5 BETA_20160115
  *
  * http://www.cs.berkeley.edu/~weimer/bgate
  *
@@ -9,11 +9,7 @@ BACKUP ~ascension/backup~
 //AUTHORS: David Gaider & Contributers, Westley Weimer, Turumbar, Miloch, Cuv, WhiteAgnus, JediMindTrix"
 AUTHOR "Active Caretaker: please JediMindTrix contact on the Beamdog forums, or on the open discussion forums at http://s13.zifboards.com/Project_Ascension/index.php?showforum=2"
 
-<<<<<<< HEAD
-VERSION ~v1.5 BETA_20160520~
-=======
 VERSION ~v1.5 BETA_20160522~
->>>>>>> origin/master
 
 AUTO_TRA "ascension/tra/autotra/%s"//%"
 
@@ -181,7 +177,6 @@ BUT_ONLY
 
 BEGIN ~Restored Bhaalspawn Powers by David Gaider~ DESIGNATED 103
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2
-REQUIRE_PREDICATE !FILE_EXISTS ~override/ubpower.xxx~ //Checks for Unfinished Business Bhaalspawn Powers
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_rest_powers.flag~ //Creates install "flag"
 INCLUDE ~ascension/lib/charset.tpa~
 INCLUDE ~ascension/lib/ds.tpa~
