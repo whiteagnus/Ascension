@@ -177,6 +177,7 @@ BUT_ONLY
 
 BEGIN ~Restored Bhaalspawn Powers by David Gaider~ DESIGNATED 103
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2
+REQUIRE_PREDICATE !FILE_EXISTS ~override/ubpower.xxx~ //Checks for Unfinished Business Bhaalspawn Powers
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_rest_powers.flag~ //Creates install "flag"
 INCLUDE ~ascension/lib/charset.tpa~
 INCLUDE ~ascension/lib/ds.tpa~

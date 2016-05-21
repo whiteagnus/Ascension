@@ -161,15 +161,11 @@ Damage: 1d10+4 (slashing)
 Speed Factor: 8
 Proficiency Type: Two-handed Sword
 Type: Two-handed
-
+Weight: 10~
 Requires:
 14 Strength
 18 Constitution
 
-Weight: 10~
-@3002 = ~Sendai's Potion~
-@3003 = ~Sendai's Potion
-Possibly a brew of Sendai's own, this is an incredibly potent healing potion capable of fully restoring the hit points of any who use it.~
 Not Usable By:
 Cleric
 Mage
