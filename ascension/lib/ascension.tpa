@@ -17,6 +17,13 @@ COPY ~ascension/ascensionmain/spl/copy~ ~override~
 COMPILE ~ascension/ascensionmain/d~
 COMPILE ~ascension/ascensionmain/baf/compile~
 
+//EE Style Sword Description
+ACTION_IF FILE_EXISTS ~ascension/tra/%LANGUAGE%/ee.tra~ BEGIN
+	LOAD_TRA ~ascension/tra/%LANGUAGE%/ee.tra~
+END ELSE BEGIN
+	LOAD_TRA ~ascension/tra/american/ee.tra~
+END
+
 //Copy and Alter Strings
 LOAD_TRA ~ASCENSION/TRA/%LANGUAGE%/ASCENSION.tra~
   ACTION_IF GAME_IS ~bg2ee~ THEN BEGIN
