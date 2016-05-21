@@ -18,9 +18,12 @@ COMPILE ~ascension/ascensionmain/d~
 COMPILE ~ascension/ascensionmain/baf/compile~
 
 //Copy and Alter Strings
+LOAD_TRA ~ASCENSION/TRA/%LANGUAGE%/ASCENSION.tra~
+  ACTION_IF GAME_IS ~bgee~ THEN BEGIN
+	LOAD_TRA ~ASCENSION/TRA/%LANGUAGE%/EEASCENSION.tra~ /* Item descriptions for BGEE, i.e. without usability info */
+  END
 COPY ~ascension/ascensionmain/itm/finsarev.itm~ ~override~
-  SAY NAME2 @3000
-  SAY DESC @3001
+
 
 COPY ~ascension/ascensionmain/itm/send01.itm~ ~override~
   SAY NAME2 @3002

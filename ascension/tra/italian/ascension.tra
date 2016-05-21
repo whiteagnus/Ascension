@@ -169,12 +169,18 @@ Danno: 1d10+4 (tagliente)
 Fattore-velocità: 8
 Tipo di Competenza: Spade a Due Mani
 Tipo: A due mani
-
+Peso: 10~
 Richiede:
 Forza 14
 Costituzione 18
+Non utilizzabile da:
+ Chierico
+ Mago 
+ Paladino
+ Ranger
+ Druido
+non caotici~
 
-Peso: 10~
 @3002 = ~Pozione di Sendai~
 @3003 = ~Forse un infuso realizzato da Sendai in persona, questa è una pozione di guarigione incredibilmente potente capace di ripristinare i Punti Ferita di chi la usa.~
 
