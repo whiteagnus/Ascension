@@ -1,16 +1,14 @@
-// PLAYER1 pøekladovı soubor
-@314 = ~Schopnosti zabijáka se zmìnily
+// PLAYER1 pÅ™ekladovÃ½ soubor
+@314 = ~Schopnosti ZabijÃ¡ka se zmÄ›nily
 
-Zdá se, e se má schopnost ovládat promìnu v zabijáka zvıšila.  Má podoba zabijáka je silnìjší, více smrtící... a jsem v ní schopen vydret déle.  A také se sníila šance, e ztratím nad sebou kontrolu, kdy jsem v této podobì.~~Schopnosti zabijáka se zmìnily
+ZdÃ¡ se, Å¾e se mÃ¡ schopnost ovlÃ¡dat promÄ›nu v ZabijÃ¡ka zvÃ½Å¡ila. MÃ¡ podoba ZabijÃ¡ka je silnÄ›jÅ¡Ã­, vÃ­ce smrtÃ­cÃ­... a jsem v nÃ­ schopen vydrÅ¾et dÃ©le. A takÃ© se snÃ­Å¾ila Å¡ance, Å¾e ztratÃ­m nad sebou kontrolu, kdyÅ¾ jsem v tÃ©to podobÄ›.~
+@315 = ~Schopnosti ZabijÃ¡ka se znovu zmÄ›nily
 
-Zdá se, e se má schopnost ovládat promìnu v zabijáka zvıšila.  Má podoba zabijáka je silnìjší, více smrtící... a jsem v ní schopna vydret déle.  A také se sníila šance, e ztratím nad sebou kontrolu, kdy jsem v této podobì.~
-@315 = ~Schopnosti zabijáka se znovu zmìnily
+MÃ¡ kontrola nad promÄ›nou v ZabijÃ¡ka stÃ¡le roste. ZabijÃ¡k se stal neuvÄ›Å™itelnÄ› imunnÃ­m na poÅ¡kozenÃ­ a vÄ›tÅ¡inu magie. ZdÃ¡ se, Å¾e je teÄ imunnÃ­ na vÄ›tÅ¡inu nemocÃ­ a nÃ¡kazy, stejnÄ› jako na zpomalenÃ­ nebo zrychlenÃ­. Dokonce i ZabijÃ¡kovy drÃ¡py nÄ›kdy proniknou skrze magii a ochrany.~
+@316 = ~Podoba NiÄitele
 
-Má kontrola nad promìnou v zabijáka stále roste.  Zabiják se stal neuvìøitelnì imunním na poškození a vìtšinu magie.  Zdá se, e je teï imunní na vìtšinu nemocí a nákazy, stejnì jako na zpomalení nebo zrychlení.  Dokonce i zabijákovy drápy nìkdy proniknou skrze magii a ochrany.~
-@316 = ~Podoba nièitele
-
-Nevím, zda je to dobøe nebo ne... ale má schopnost ovládat promìnu se vyvinula do bodu, kdy se mùu stát nièitelem... libovolnì.  Pøesto, e je tato podoba neuvìøitelnì mocná (nièitel obdrí pouze polovinu poškození z vìtšiny útokù, imunitu na nìkolik druhù znehybòujících nebo sráejících útokù), je sloité jej ovládat a mùe bıt nebezpeènı tìm, co jsou v jeho blízkosti.~
-@317 = ~Rozhodl jsem se stát nièitelem.~~Rozhodla jsem se stát nièitelem.~
-@396 = ~Na zaèátku bitvy teï zvauješ své monosti.  V proudu energie ve støedu trùnu vypadá Melissan nezranitelnì... a její síla kadım okamikem vzrùstá.  Abys ji porazil, musíš jí odtamtud vylákat.~~Na zaèátku bitvy teï zvauješ své monosti.  V proudu energie ve støedu trùnu vypadá Melissan nezranitelnì... a její síla kadım okamikem vzrùstá.  Abys ji porazila, musíš jí odtamtud vylákat.~
-@397 = ~Jediná monost, která tì napadá, jsou tøi 'jezírka esencí', které sousedí s trùnem.  Tvé vlastní spojení s esencí by ti mohlo umonit pøetnout proud energie z tìchto jezírek, vedoucí k Melissan a pøinutit ji bojovat.  Jene tato jezírka jsou nìjak chránìna.~
-@398 = ~Melissan pokraèuje v obnovì své boské energie ve zdroji, kterı jí poskytuje nesmrtelnou ochranu.  Musí existovat zpùsob, jak ji ještì oslabit, nebo ji neporazíš.~
+NevÃ­m, zda je to dobÅ™e nebo ne... ale mÃ¡ schopnost ovlÃ¡dat promÄ›nu se vyvinula do bodu, kdy se mÅ¯Å¾u stÃ¡t NiÄitelem... libovolnÄ›. PÅ™esto, Å¾e je tato podoba neuvÄ›Å™itelnÄ› mocnÃ¡ (NiÄitel obdrÅ¾Ã­ pouze polovinu poÅ¡kozenÃ­ z vÄ›tÅ¡iny ÃºtokÅ¯, imunitu na nÄ›kolik druhÅ¯ znehybÅˆujÃ­cÃ­ch nebo srÃ¡Å¾ejÃ­cÃ­ch ÃºtokÅ¯), je sloÅ¾itÃ© jej ovlÃ¡dat a mÅ¯Å¾e bÃ½t nebezpeÄnÃ½ tÄ›m, co jsou v jeho blÃ­zkosti.~
+@317 = ~Rozhodl jsem se stÃ¡t niÄitelem.~
+@396 = ~Na zaÄÃ¡tku bitvy teÄ zvaÅ¾ujeÅ¡ svÃ© moÅ¾nosti. V proudu energie ve stÅ™edu trÅ¯nu vypadÃ¡ Melissan nezranitelnÄ›... a jejÃ­ sÃ­la kaÅ¾dÃ½m okamÅ¾ikem vzrÅ¯stÃ¡. Abys ji porazil, musÃ­Å¡ jÃ­ odtamtud vylÃ¡kat.~
+@397 = ~JedinÃ¡ moÅ¾nost, kterÃ¡ tÄ› napadÃ¡, jsou tÅ™i "jezÃ­rka esencÃ­", kterÃ© jsou spojenÃ© s trÅ¯nem. TvÃ© vlastnÃ­ spojenÃ­ s esencÃ­ by ti mohlo umoÅ¾nit pÅ™etnout proud energie z tÄ›chto jezÃ­rek, vedoucÃ­ k Melissan a pÅ™inutit ji bojovat. JenÅ¾e tato jezÃ­rka urÄitÄ› budou nÄ›jak chrÃ¡nÄ›na.~
+@398 = ~Melissan pokraÄuje v ÄerpÃ¡nÃ­ boÅ¾skÃ© energie ve zdroji, kterÃ½ jÃ­ poskytuje nesmrtelnou ochranu. MusÃ­ existovat zpÅ¯sob, jak ji jeÅ¡tÄ› oslabit, nebo ji nikdy nebudeÅ¡ schopen porazÃ­t.~

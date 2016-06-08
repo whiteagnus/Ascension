@@ -1,18 +1,18 @@
-// SAREV25J pøekladovı soubor
-@262 = ~Co tím myslíš, enská?  Já a ty nemáme ádnı obchod.~
-@263 = ~Nemohu.  I kdy jsem nad touto nabídkou pøemıšlel.  K <CHARNAME> mì váe pøísaha.~
-@264 = ~Vidím.  A ty vìøíš, e mì tvá nabídka zaujala?  <CHARNAME> toho dosud proti tobì hodnì vykonal.~~Vidím.  A ty vìøíš, e mì tvá nabídka zaujala?  <CHARNAME> toho dosud proti tobì hodnì vykonala.~
-@265 = ~Slouit ti?  Tohle jsi mi ji kdysi nabízela a já to odmítl.  Napnul jsem tvého posla navrchol hrotù mé vìe a nechal vrány, aby se nakrmily z jeho vnitøností.  Já chci vládnout, ne posluhovat.  A já ti slouit nebudu, enská.  Má odpovìï zní ne.~
-@266 = ~Jsem unavenı z <CHARNAME> a jeho hloupıch zásad.  Jsem unavenı z toho, jak jsem oznaèován jako jeho sluha.  Zhatil mé plány dávno pøed tím, ne jsi uskuteènila ty své, knìko.  Ano... budu tvım generálem.~~Jsem unavenı z <CHARNAME> a jejích hloupıch zásad.  Jsem unavenı z toho, jak jsem oznaèován jako její sluha.  Zhatila mé plány dávno pøed tím, ne jsi uskuteènila ty své, knìko.  Ano... budu tvım generálem.~
-@267 = ~Ne, Sarevoku!  Ty proradnı parchante!~
-@268 = ~To je chyba, Sarevoku.  Zemøeš s ní po jejím boku.~
-@269 = ~Èekal jsem od tebe pøíliš.  Dobøe, opìt tì zabiju.  Vše je v poøádku.~~Èekala jsem od tebe pøíliš.  Dobøe, opìt tì zabiju.  Vše je v poøádku.~
-@270 = ~Stát se znovu démonem, kterım jsem kdysi byl?  Takovı u dávno nejsem a ani takovı bıt nechci.  Pokud mi <CHARNAME> nìco ukázal, tak to, e je lepší, kdy zùstanu nedotèen šílenstvím, které mì kdysi pohltilo.  Kochej se svımi iluzemi, enská, jestli chceš.  Budu si to dobøe pomatovat.  A nepøidám se k tobì.~~Stát se znovu démonem, kterım jsem kdysi byl?  Takovı u dávno nejsem a ani takovı bıt nechci.  Pokud mi <CHARNAME> nìco ukázala, tak to, e je lepší, kdy zùstanu nedotèen šílenstvím, které mì kdysi pohltilo.  Kochej se svımi iluzemi, enská, jestli chceš.  Budu si to dobøe pomatovat.  A nepøidám se k tobì.~
-@271 = ~Má povaha se nezmìnila, <CHARNAME>.  Vánì si oèekával opak?  Lépe bojovat za Melissan, ne bıt ve tvém stínu a sledovat, jak si bereš to, co mìlo kdysi patøit mnì.~~Má povaha se nezmìnila, <CHARNAME>.  Vánì si oèekávala opak?  Lépe bojovat za Melissan, ne bıt ve tvém stínu a sledovat, jak si bereš to, co mìlo kdysi patøit mnì.~
-@272 = ~Moná.  Ale nebudu ve tvém stínu a sledovat, jak si bereš to, co mìlo kdysi patøit mnì.  Nezaslouíš si moc, <CHARNAME>.  Udìlám to, co musím, i kdyby to znamenalo bojovat za Melissan.~
-@273 = ~Typické chvástání.  Ale i kdy moná vyhraješ, nebudu zde zahálet, zatím co si bereš to, co mìlo kdysi patøit mnì.  Nezaslouíš si moc, <CHARNAME> a já udìlám to, co musím, i kdyby to znamenalo bojovat za Melissan.~
-@274 = ~Prásk!  Ta enská se vrací k Bhaalovì esenci jako zbabìlec, léèí se!  Musí existovat nìjaká monost, jak ji oslabit nebo ji nikdy neporazíme!~
-@275 = ~Má èepel, je to ona?!  Myslel jsem, e je u navdy ztracena.  Je skvìlé mít ji zase zpìt.  I kdy u nemám svoji esenci, aby se s ní mohla propojit, stále je to Smrtonošova zbraò a mùu jí vrátit spoustu z její síly.  Ale nedoporuèoval bych ti, abys ji zkoušel sám pouít.~
-@276 = ~Nemáš náhodou nìkde ve svıch vìcech schované taky moje brnìní?  Hmm.  Pøipouštím, pøíliš jsem doufal v nìkterıch ohledech.~
-@277 = ~Tak tohle je ten Irenicus, o kterém mi bylo vyprávìno?  Èekal jsem více horlivosti a síly od nìkoho, kdo honil <CHARNAME>, a ne zase ...*dalšího*... mága.~
-@278 = ~Zato já bych urèitì <CHARNAME> nedovolil, aby mi unikl.  S mou mocí se musel utkat ne jednou, ale dokonce dvakrát.  Na druhou stranu mì ale napadlo, e jsi asi byl pøíliš zamìstnanı pøevzetím kontroly nad šílenou léèebnou a bezdùvodnım pøemìòováním zlodìjù v upíry.~~Zato já bych urèitì <CHARNAME> nedovolil, aby mi unikla.  S mou mocí se musela utkat ne jednou, ale dokonce dvakrát.  Na druhou stranu mì ale napadlo, e jsi asi byl pøíliš zamìstnanı pøevzetím kontroly nad šílenou léèebnou a bezdùvodnım pøemìòováním zlodìjù v upíry.~
+// SAREV25J pÅ™ekladovÃ½ soubor
+@262 = ~Co tÃ­m myslÃ­Å¡, Å¾enskÃ¡? Ty a jÃ¡ nemÃ¡me nic k projednÃ¡nÃ­.~
+@263 = ~Nemohu. I kdyÅ¾ jsem nad touto nabÃ­dkou pÅ™emÃ½Å¡lel. K <CHARNAME> mÄ› vÃ¡Å¾e pÅ™Ã­saha.~
+@264 = ~VidÃ­m. A ty vÄ›Å™Ã­Å¡, Å¾e mÄ› tvÃ¡ nabÃ­dka zaujala?  <CHARNAME> toho dosud proti tobÄ› hodnÄ› vykonal.~
+@265 = ~SlouÅ¾it ti? Tohle jsi mi jiÅ¾ kdysi nabÃ­zela a jÃ¡ to odmÃ­tl. Napnul jsem tvÃ©ho posla navrchol hrotÅ¯ mÃ© vÄ›Å¾e a nechal vrÃ¡ny, aby se nakrmily z jeho vnitÅ™nostÃ­. JÃ¡ chci vlÃ¡dnout, ne posluhovat. A tobÄ› slouÅ¾it nebudu, Å¾enskÃ¡.  MÃ¡ odpovÄ›Ä znÃ­ ne.~
+@266 = ~Jsem unavenÃ½ z <CHARNAME> a jeho hloupÃ½ch zÃ¡sad. Jsem unavenÃ½ z toho, jak jsem oznaÄovÃ¡n jako jeho sluha. Zhatil mÃ© plÃ¡ny dÃ¡vno pÅ™ed tÃ­m, neÅ¾ jsi uskuteÄnila ty svÃ©, knÄ›Å¾ko.  Ano... budu tvÃ½m generÃ¡lem.~
+@267 = ~Ne, Sarevoku!  Ty proradnÃ½ parchante!~
+@268 = ~To je chyba, Sarevoku.  TeÄ zemÅ™eÅ¡ spoleÄnÄ› s nÃ­.~
+@269 = ~NepÅ™ekvapil jsi mÄ›. AlespoÅˆ dostanu pÅ™Ã­leÅ¾itost zabÃ­t tÄ› potÅ™etÃ­. UÅ¾ mi to chybÄ›lo.~
+@270 = ~StÃ¡t se znovu zrÅ¯dou, jakou jsem kdysi byl? TakovÃ½ uÅ¾ dÃ¡vno nejsem a ani takovÃ½ nechci bÃ½t. Pokud mi <CHARNAME> nÄ›co ukÃ¡zal, tak to, Å¾e je lepÅ¡Ã­, kdyÅ¾ zÅ¯stanu nedotÄen Å¡Ã­lenstvÃ­m, kterÃ© mÄ› kdysi pohltilo. OpÃ¡jej se svÃ½mi iluzemi, Å¾enskÃ¡, jestli chceÅ¡, ale mÅ¯j nÃ¡zor nezmÄ›nÃ­Å¡. NepÅ™idÃ¡m se k tobÄ›.~
+@271 = ~MÃ¡ povaha se nezmÄ›nila, <CHARNAME>. VÃ¡Å¾nÄ› si oÄekÃ¡val opak? LÃ©pe bojovat za Melissan, neÅ¾ bÃ½t ve tvÃ©m stÃ­nu a sledovat, jak si bereÅ¡ to, co mÄ›lo prÃ¡vem patÅ™it mnÄ›.~
+@272 = ~MoÅ¾nÃ¡.  Ale nebudu ve tvÃ©m stÃ­nu a sledovat, jak si bereÅ¡ to, co mÄ›lo kdysi patÅ™it mnÄ›. NezaslouÅ¾Ã­Å¡ si moc, <CHARNAME>.  UdÄ›lÃ¡m to, co musÃ­m, i kdyby to znamenalo bojovat za Melissan.~
+@273 = ~UbohÃ© chvÃ¡stÃ¡nÃ­. Ale i kdyÅ¾ moÅ¾nÃ¡ vyhrajeÅ¡, nebudu zde zahÃ¡let, zatÃ­m co si bereÅ¡ to, co mÄ›lo kdysi patÅ™it mnÄ›. NezaslouÅ¾Ã­Å¡ si moc, <CHARNAME> a jÃ¡ udÄ›lÃ¡m to, co musÃ­m, i kdyby to znamenalo bojovat za Melissan.~
+@274 = ~ZatracenÄ›! Ta Å¾enskÃ¡ se vracÃ­ k BhaalovÄ› esenci jako zbabÄ›lec, aby se mohla vylÃ©Äit! MusÃ­ existovat nÄ›jakÃ¡ moÅ¾nost, jak ji oslabit nebo ji nikdy neporazÃ­me!~
+@275 = ~MÃ¡ Äepel, je to ona?! Myslel jsem, Å¾e je uÅ¾ navÅ¾dy ztracena. Je skvÄ›lÃ© mÃ­t ji zase zpÄ›t. I kdyÅ¾ uÅ¾ nemÃ¡m svoji esenci, aby se s nÃ­ mohla propojit, je to stÃ¡le zbraÅˆ SmrtonoÅ¡e a mÅ¯Å¾u jÃ­ vrÃ¡tit spoustu z jejÃ­ sÃ­ly. Ale uÅ¾ bych ti nedoporuÄoval, aby ji zkouÅ¡el pouÅ¾Ã­vat nÄ›kdo jinÃ½.~
+@276 = ~NemÃ¡Å¡ nÃ¡hodou nÄ›kde ve svÃ½ch vÄ›cech schovanÃ© taky moje brnÄ›nÃ­? Hmm. HÃ¡dÃ¡m, Å¾e to uÅ¾ bych asi chtÄ›l trochu moc.~
+@277 = ~Tak tohle je ten Irenicus, o kterÃ©m mi bylo vyprÃ¡vÄ›no? ÄŒekal jsem vÃ­ce horlivosti a sÃ­ly od nÄ›koho, kdo pronÃ¡sledoval <CHARNAME> tak dlouho, a ne zase ...*dalÅ¡Ã­ho*... mÃ¡ga.~
+@278 = ~Zato jÃ¡ bych urÄitÄ› <CHARNAME> nedovolil, aby mi unikl. S mou mocÃ­ se musel utkat ne jednou, ale dokonce dvakrÃ¡t. Na druhou stranu mÄ› ale napadlÃ¡, Å¾e jsi asi byl pÅ™Ã­liÅ¡ zamÄ›stnanÃ½ pÅ™evzetÃ­m kontroly nad blÃ¡zincem a bezdÅ¯vodnÃ½m pÅ™emÄ›ÅˆovÃ¡nÃ­m zlodÄ›jÅ¯ v upÃ­ry.~~
