@@ -20,6 +20,25 @@ I also want to stress that all of the work done was geared towards producing a r
 CHANGELOG/CREDITS
 I felt it easiest to describe who did what and also display what's changed by using this method:
 
+6/8/2016 (Edvin/Aedan)
+- Italian translation for Shawne's EE Epilogue's by Aedan
+- Czech translation (Ascension rewritten, also Shawne's components translated) by Edvin
+
+5/23/2016 (WhiteAgnus/JediMindTrix)
+- Installer woes should now be fixed.
+- Installer should also now properly apply the correct version of the description for Sarevok's Sword of Chaos to EE/BioGate (English and Italian ONLY).
+- EDIT: Forgot to note that Restored Bhaalspawn Powers should now check to see if the version included in PPG's Unfinished Business is installed already (I believe they are functionally identical, even if written separately.)
+
+5/20/2016 (All @Aedan)
+- Italian translation updated!
+- American translation typo and grammar fixes!
+- Sarevok's sword description updated to EE standards. CURRENTLY EE version only, backwards compatibility to BioGate incoming.
+
+4/8/2016 (All @WhiteAgnus)
+- Killing Balthazar will no longer prevent you from being able to access the Throne of Bhaal.
+- The final fight will now progress correctly after the Five are dead.
+- Alternate portraits fix.
+
 1/20/2016
 - Yaga-Shura will no longer be immobile. At any point in the battle (it is a Tougher component, afterall).
 
