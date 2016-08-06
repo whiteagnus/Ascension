@@ -20,10 +20,6 @@ I also want to stress that all of the work done was geared towards producing a r
 CHANGELOG/CREDITS
 I felt it easiest to describe who did what and also display what's changed by using this method:
 
-6/8/2016 (Edvin/Aedan)
-- Italian translation for Shawne's EE Epilogue's by Aedan
-- Czech translation (Ascension rewritten, also Shawne's components translated) by Edvin
-
 5/23/2016 (WhiteAgnus/JediMindTrix)
 - Installer woes should now be fixed.
 - Installer should also now properly apply the correct version of the description for Sarevok's Sword of Chaos to EE/BioGate (English and Italian ONLY).
