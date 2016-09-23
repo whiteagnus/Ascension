@@ -97,7 +97,7 @@ THEN
 END
 
 IF                                   //Player talks about pools
-  Global("FinalFight","AR6200",4)    
+  Global("FinalFight","AR6200",4)
   OR(2)
   Global("BalthazarFights","Global",0)
   Global("JMT#BD","AR6200",1)
@@ -109,13 +109,23 @@ THEN
 END
 
 IF                                   //Balthazar speaks about pools
-  Global("FinalFight","AR6200",4)    
+  Global("FinalFight","AR6200",4)
   Global("JMT#BD","AR6200",0)
 THEN
   RESPONSE #100
    ClearAllActions()
    Wait(10)
    ActionOverride("balth2",StartDialogueNoSet(Player1)) //Start dialog
+END
+
+IF                                   //Bodhi speaks about pools
+  Global("FinalFight","AR6200",4)
+  Global("JMT#BOD","AR6200",0)
+THEN
+  RESPONSE #100
+   ClearAllActions()
+   Wait(10)
+   ActionOverride("finbodh",StartDialogueNoSet(Player1)) //Start dialog
 END
 
 IF
