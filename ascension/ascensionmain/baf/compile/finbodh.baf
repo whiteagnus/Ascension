@@ -1,4 +1,11 @@
 IF
+  Die()
+THEN
+  RESPONSE #100
+    SetGlobal("JMT#BOD","AR6200",1)
+END
+
+IF
   HPPercentLT(Myself,75)
   CheckStatLT(Myself,100,RESISTSLASHING)
 THEN
