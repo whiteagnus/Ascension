@@ -1094,12 +1094,12 @@ IF
   OR(2)
     !GlobalTimerNotExpired("SpellCast","LOCALS")
     GlobalTimerNotExpired("Alacrity","LOCALS")
-  HaveSpell(KAISHAS_CHANGE)
+  HaveSpell(WIZARD_COMET)
   !CheckStatGT(LastSeenBy(Myself),75,RESISTFIRE)
 THEN
   RESPONSE #100
     SetGlobalTimer("SpellCast","LOCALS",6)
-    Spell(LastSeenBy(Myself),KAISHAS_CHANGE)
+    Spell(LastSeenBy(Myself),WIZARD_COMET)
 END
 
 IF
@@ -1858,14 +1858,14 @@ IF
   OR(2)
     !GlobalTimerNotExpired("SpellCast","LOCALS")
     GlobalTimerNotExpired("Alacrity","LOCALS")
-  HaveSpell(KAISHAS_CHANGE)
+  HaveSpell(WIZARD_COMET)
   !CheckStatGT(LastSeenBy(Myself),75,RESISTFIRE)
   !CheckStatGT(LastSeenBy(Myself),50,RESISTMAGIC)
   !HasItemEquiped("CLCK26",LastSeenBy(Myself))
 THEN
   RESPONSE #100
     SetGlobalTimer("SpellCast","LOCALS",6)
-    Spell(LastSeenBy(Myself),KAISHAS_CHANGE)
+    Spell(LastSeenBy(Myself),WIZARD_COMET)
 END
 
 IF

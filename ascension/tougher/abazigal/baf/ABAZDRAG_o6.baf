@@ -12,6 +12,6 @@ IF
 		CheckStatGT(LastSeenBy(Myself),0,STONESKINS)
 THEN
 	RESPONSE #100
-		SetGlobalTimer("dbDispel","LOCALS",30)
+		SetGlobalTimer("dbDispel","LOCALS",FIVE_ROUNDS)
 		ForceSpell(LastSeenBy(Myself),WIZARD_DISPEL_MAGIC) 
 END

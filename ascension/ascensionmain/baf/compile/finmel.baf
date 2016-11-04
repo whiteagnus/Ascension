@@ -1371,12 +1371,12 @@ THEN
     SetGlobalTimer("Spell","LOCALS",6)
     SetGlobalTimer("Comet","LOCALS",1000)
     SetGlobalTimer("MelissanBigAttack","LOCALS",12)
-    SpellNoDec(LastSeenBy(Myself),KAISHAS_CHANGE)
+    SpellNoDec(LastSeenBy(Myself),WIZARD_COMET)
   RESPONSE #70
     SetGlobalTimer("Spell","LOCALS",6)
     SetGlobalTimer("Comet","LOCALS",1000)
     SetGlobalTimer("MelissanBigAttack","LOCALS",12)
-    ForceSpell(LastSeenBy(Myself),KAISHAS_CHANGE)
+    ForceSpell(LastSeenBy(Myself),WIZARD_COMET)
   RESPONSE #100
     Continue()
 END
