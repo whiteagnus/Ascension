@@ -20,6 +20,10 @@ I also want to stress that all of the work done was geared towards producing a r
 CHANGELOG/CREDITS
 I felt it easiest to describe who did what and also display what's changed by using this method:
 
+04.11.2016 (agb1)
+- EET fix - Replaced KAISHAS_CHANGE in finiren.baf and finmel.baf with WIZARD_COMET (KAISHAS_CHANGE is a duplicate IDS entry for WIZARD_COMET that EET removes)
+- BG2EE fix - Replaced 30/60 with FIVE_ROUNDS/TEN_ROUNDS in ABAZDRAG_o6.baf and ABAZDRAG_n6.baf
+
 26.09.2016 (Quitch)
 - Add new Bodhi dialogue to other languages
 - Give Bodhi dialogue after Irenicus dies
