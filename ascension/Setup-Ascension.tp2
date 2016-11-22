@@ -9,7 +9,7 @@ BACKUP ~ascension/backup~
 //AUTHORS: David Gaider & Contributers, Westley Weimer, Turumbar, Miloch, Cuv, WhiteAgnus, JediMindTrix"
 AUTHOR "Active Caretaker: please JediMindTrix contact on the Beamdog forums, or on the open discussion forums at http://s13.zifboards.com/Project_Ascension/index.php?showforum=2"
 
-VERSION ~v1.51 BETA BWP 20161104~
+VERSION ~v1.51 BETA BWP 20161122~
 
 AUTO_TRA "ascension/tra/autotra/%s"//%"
 
@@ -224,24 +224,9 @@ LAF update_epilogues STR_VAR filepath = ~ascension/lib/shawnesepiloguesEE.tbl~ E
 
 BEGIN ~Ascension Epilogues~ DESIGNATED 106
 REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2
-FORBID_FILE ~override/asc_main.flag~ ~Ascension Epilogue's are included in The Ascension!~
+FORBID_FILE ~override/asc_main.flag~ ~Ascension Epilogues are included in The Ascension!~
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_epi_only.flag~
 INCLUDE ~ascension/lib/charset.tpa~
 INCLUDE ~ascension/lib/epilogue_update.tph~
 
 LAF update_epilogues STR_VAR filepath = ~ascension/lib/epilogues.tbl~ END
-
-//////////////////////////////////////////////////////////////////////
-// Temporary fix for other mods, which got install problems, if     //
-// Tougher Gromnir is installed. Bug is caused by Anyone Identifier //
-// in EA.ids in BG2:EE, I don't think we need this Identifier.      //
-// Fix will be removed after a new stable version is out, current   //
-// beta version includes a fix for it.                              //
-//////////////////////////////////////////////////////////////////////
-
-BEGIN ~Remove Anyone Identifier in EA.ids~ DESIGNATED 999
-REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ ~This component is for BG2:EE or EET only~
-COPY_EXISTING ~EA.ids~ ~override~
-REPLACE_TEXTUALLY ~0 ANYONE%MNL%%LNL%~ ~~
-BUT_ONLY
-
