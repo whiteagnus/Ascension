@@ -13,5 +13,5 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobalTimer("dbDispel","LOCALS",FIVE_ROUNDS)
-		ForceSpell(LastSeenBy(Myself),WIZARD_DISPEL_MAGIC) 
+		ForceSpell(LastSeenBy(Myself),WIZARD_REMOVE_MAGIC) 
 END
