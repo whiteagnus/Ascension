@@ -1,0 +1,13 @@
+IF
+  ActionListEmpty()
+  HitBy([ANYONE],CRUSHING)
+  Global("GiantStrengthPotion","LOCALS",0)
+  !GlobalTimerNotExpired("DrankPotionTimer","LOCALS")
+  HasItem("POTN05",Myself)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("DrankPotionTimer","LOCALS",6)
+    SetGlobal("GiantStrengthPotion","LOCALS",1)
+    DisplayStringHead(Myself,46150)
+    UseItem("POTN05",Myself)
+END

@@ -1,0 +1,156 @@
+IF
+  ActionListEmpty()
+  Detect(NearestEnemyOf(Myself))
+  HaveSpell(WIZARD_TRUE_SIGHT)
+  OR(8)
+    StateCheck(NearestEnemyOf(Myself),STATE_INVISIBLE)
+    StateCheck(NearestEnemyOf(Myself),STATE_IMPROVEDINVISIBILITY)
+    StateCheck(SecondNearestEnemyOf(Myself),STATE_INVISIBLE)
+    StateCheck(SecondNearestEnemyOf(Myself),STATE_IMPROVEDINVISIBILITY)
+    StateCheck(NearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+    StateCheck(NearestEnemyOf(Myself),STATE_BLUR)
+    Gender(NearestEnemyOf(Myself),ILLUSIONARY)
+    Gender(SecondNearestEnemyOf(Myself),ILLUSIONARY)
+  !GlobalTimerNotExpired("TrueSight_Used","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("TrueSight_Used","LOCALS",60)
+    Spell(Myself,WIZARD_TRUE_SIGHT)
+END
+
+IF
+  ActionListEmpty()
+  See(NearestEnemyOf(Myself))
+  HaveSpell(WIZARD_IMPROVED_INVISIBILITY)
+  !StateCheck(Myself,STATE_INVISIBLE)
+  !StateCheck(Myself,STATE_IMPROVEDINVISIBILITY)
+THEN
+  RESPONSE #100
+    Spell(Myself,WIZARD_IMPROVED_INVISIBILITY)
+END
+
+IF
+  ActionListEmpty()
+  See(NearestEnemyOf(Myself))
+  HaveSpell(WIZARD_IMPROVED_HASTE)
+  !StateCheck(Myself,STATE_HASTED)
+  CheckStat(Myself,0,IMPROVEDHASTE)
+THEN
+  RESPONSE #100
+    Spell(Myself,WIZARD_IMPROVED_HASTE)
+END
+
+IF
+  ActionListEmpty()
+  See(NearestEnemyOf(Myself))
+  OR(2)
+    CheckStatGT(Myself,0,IMPROVEDHASTE)
+    StateCheck(Myself,STATE_NORMAL)
+  HaveSpell(WIZARD_IMPROVED_HASTE)
+  See(NearestMyGroupOfType)
+  !StateCheck(LastSeenBy(Myself),STATE_HASTED)
+  CheckStat(LastSeenBy(Myself),0,IMPROVEDHASTE)
+THEN
+  RESPONSE #100
+    Spell(LastSeenBy(Myself),WIZARD_IMPROVED_HASTE)
+END
+
+IF
+  ActionListEmpty()
+  See(NearestEnemyOf(Myself))
+  HaveSpell(WIZARD_HASTE)
+  !StateCheck(Myself,STATE_HASTED)
+  CheckStat(Myself,0,IMPROVEDHASTE)
+THEN
+  RESPONSE #100
+    Spell(Myself,WIZARD_HASTE)
+END
+
+IF
+  ActionListEmpty()
+  See(NearestEnemyOf(Myself))
+  OR(2)
+    CheckStatGT(Myself,0,IMPROVEDHASTE)
+    StateCheck(Myself,STATE_HASTED)
+  HaveSpell(WIZARD_HASTE)
+  See(NearestMyGroupOfType)
+  !StateCheck(LastSeenBy(Myself),STATE_HASTED)
+  CheckStat(LastSeenBy(Myself),0,IMPROVEDHASTE)
+THEN
+  RESPONSE #100
+    Spell(LastSeenBy(Myself),WIZARD_HASTE)
+END
+
+IF
+  GlobalTimerExpired("SpecialDefenseUp","LOCALS")
+THEN
+  RESPONSE #100
+    IncrementGlobal("NumDefenses","LOCALS",-1)
+    Continue()
+END
+
+IF
+  GlobalTimerExpired("SpellDefense1_On","LOCALS")
+THEN
+  RESPONSE #100
+    IncrementGlobal("NumDefenses","LOCALS",-1)
+    Continue()
+END
+
+IF
+  GlobalTimerExpired("FireShield_On","LOCALS")
+THEN
+  RESPONSE #100
+    IncrementGlobal("NumDefenses","LOCALS",-1)
+    Continue()
+END
+
+IF
+  OR(10)
+    SpellCastOnMe([GOODCUTOFF],WIZARD_DISPEL_MAGIC)
+    SpellCastOnMe([GOODCUTOFF],WIZARD_TRUE_DISPEL_MAGIC)
+    SpellCastOnMe([GOODCUTOFF],CLERIC_DISPEL_MAGIC)
+    SpellCastOnMe([GOODCUTOFF],WIZARD_BREACH)
+    SpellCastOnMe([GOODCUTOFF],WIZARD_PIERCE_MAGIC)
+    SpellCastOnMe([GOODCUTOFF],WIZARD_DISPEL_MAGIC)
+    SpellCastOnMe([GOODCUTOFF],WIZARD_WARDING_WHIP)
+    SpellCastOnMe([GOODCUTOFF],WIZARD_RUBY_RAY_OF_REVERSAL)
+    SpellCastOnMe([GOODCUTOFF],WIZARD_SPELL_STRIKE)
+    SpellCastOnMe([GOODCUTOFF],INQUIS_DISPEL_MAGIC)
+  OR(6)
+    GlobalTimerNotExpired("SpecialDefenseUp","LOCALS")
+    GlobalTimerNotExpired("SpellDefense1_On","LOCALS")
+    GlobalTimerNotExpired("WeaponDefense_On","LOCALS")
+    GlobalTimerNotExpired("FireShield_On","LOCALS")
+    GlobalTimerNotExpired("Shield_On","LOCALS")
+    GlobalGT("NumDefenses","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("NumDefenses","LOCALS",0)
+    SetGlobalTimer("SpecialDefenseUp","LOCALS",0)
+    SetGlobalTimer("SpellDefense1_On","LOCALS",0)
+    SetGlobalTimer("WeaponDefense_On","LOCALS",0)
+    SetGlobalTimer("FireShield_On","LOCALS",0)
+    SetGlobalTimer("Shield_On","LOCALS",0)
+END
+
+IF
+  SpellCastOnMe([GOODCUTOFF],WIZARD_TRUE_SIGHT)
+  SpellCastOnMe([GOODCUTOFF],CLERIC_TRUE_SIGHT)
+  SpellCastOnMe([GOODCUTOFF],INQUIS_TRUE_SIGHT)
+  GlobalTimerNotExpired("SpecialDefenseUp","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("SpecialDefenseUp","LOCALS",0)
+    IncrementGlobal("NumDefenses","LOCALS",-1)
+END
+
+IF
+  GlobalGT("NumDefenses","LOCALS",0)
+  Global("DefenseSpell","LOCALS",0)
+  RandomNum(3,1)
+THEN
+  RESPONSE #100
+    SetGlobal("DefenseSpell","LOCALS",1)
+    Continue()
+END

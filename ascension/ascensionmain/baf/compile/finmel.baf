@@ -1,0 +1,1578 @@
+IF
+  Global("CloseCombat","LOCALS",1)
+  GlobalTimerExpired("attacked","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobal("CloseCombat","LOCALS",0)
+    SetGlobalTimer("SafeForAWhile","LOCALS",6)
+END
+
+IF
+  Global("CloseCombat","LOCALS",0)
+  Global("safe","LOCALS",0)
+  GlobalTimerExpired("SafeForAWhile","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobal("safe","LOCALS",1)
+END
+
+IF
+  Global("CloseCombat","LOCALS",0)
+  AttackedBy(NearestEnemyOf(Myself),DEFAULT)
+  Range(NearestEnemyOf(Myself),8)
+THEN
+  RESPONSE #100
+    SetGlobal("CloseCombat","LOCALS",1)
+    SetGlobal("safe","LOCALS",0)
+    SetGlobalTimer("attacked","LOCALS",5)
+END
+
+IF
+  Global("CloseCombat","LOCALS",0)
+  AttackedBy(SecondNearestEnemyOf(Myself),DEFAULT)
+  Range(SecondNearestEnemyOf(Myself),8)
+THEN
+  RESPONSE #100
+    SetGlobal("CloseCombat","LOCALS",1)
+    SetGlobal("safe","LOCALS",0)
+    SetGlobalTimer("attacked","LOCALS",5)
+END
+
+IF
+  Global("CloseCombat","LOCALS",0)
+  AttackedBy(ThirdNearestEnemyOf(Myself),DEFAULT)
+  Range(ThirdNearestEnemyOf(Myself),8)
+THEN
+  RESPONSE #100
+    SetGlobal("CloseCombat","LOCALS",1)
+    SetGlobal("safe","LOCALS",0)
+    SetGlobalTimer("attacked","LOCALS",5)
+END
+
+IF
+  Global("CloseCombat","LOCALS",0)
+  AttackedBy(FourthNearestEnemyOf(Myself),DEFAULT)
+  Range(FourthNearestEnemyOf(Myself),8)
+THEN
+  RESPONSE #100
+    SetGlobal("CloseCombat","LOCALS",1)
+    SetGlobal("safe","LOCALS",0)
+    SetGlobalTimer("attacked","LOCALS",5)
+END
+
+IF
+  Global("CloseCombat","LOCALS",0)
+  HitBy([ANYONE],CRUSHING)
+  Range(NearestEnemyOf(Myself),8)
+THEN
+  RESPONSE #100
+    SetGlobal("CloseCombat","LOCALS",1)
+    SetGlobal("safe","LOCALS",0)
+    SetGlobalTimer("attacked","LOCALS",5)
+END
+
+IF
+  GlobalGT("allfive","GLOBAL",0)
+  !HPLT(Myself,20)
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  Global("Draw","LOCALS",0)
+  NumInPartyAliveGT(1)
+  Difficulty(NORMAL)
+  !GlobalTimerNotExpired("ChainContingency","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("ChainContingency","LOCALS",1000)
+    SetGlobalTimer("MelissanSummonDemon","LOCALS",18)
+    DisplayString(Myself,73139)  // ~Contingency - Fired~
+    DisplayStringHead(Myself,73244)  // ~Come to your mistress, minions of the Abyss!~
+    ReallyForceSpellRES("gate5",Myself)  // gate5
+END
+
+IF
+  GlobalGT("allfive","GLOBAL",0)
+  !HPLT(Myself,20)
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  Global("Draw","LOCALS",0)
+  Difficulty(HARD)
+  !GlobalTimerNotExpired("ChainContingency","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("ChainContingency","LOCALS",1000)
+    SetGlobalTimer("MelissanSummonDemon","LOCALS",18)
+    DisplayString(Myself,73139)  // ~Contingency - Fired~
+    DisplayStringHead(Myself,73244)  // ~Come to your mistress, minions of the Abyss!~
+    ReallyForceSpellRES("gate5",Myself)  // gate5
+    ReallyForceSpellRES("gate5",Myself)  // gate5
+    ReallyForceSpellRES("gate5",Myself)  // gate5
+END
+
+IF
+  GlobalGT("allfive","GLOBAL",0)
+  !HPLT(Myself,20)
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  Global("Draw","LOCALS",0)
+  Difficulty(HARDEST)
+  !GlobalTimerNotExpired("ChainContingency","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("ChainContingency","LOCALS",1000)
+    SetGlobalTimer("MelissanSummonDemon","LOCALS",18)
+    DisplayString(Myself,73139)  // ~Contingency - Fired~
+    DisplayStringHead(Myself,73244)  // ~Come to your mistress, minions of the Abyss!~
+    ReallyForceSpellRES("gate5",Myself)  // gate5
+    ReallyForceSpellRES("gate5",Myself)  // gate5
+    ReallyForceSpellRES("gate5",Myself)  // gate5
+    ReallyForceSpellRES("gate5",Myself)  // gate5
+    ReallyForceSpellRES("gate5",Myself)  // gate5
+END
+
+IF
+  Allegiance(Myself,ENEMY)
+  !HPLT(Myself,20)
+  Global("FinalFight","AR6200",8)
+  Global("MelInitial","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("MelInitial","LOCALS",1)
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("MelissanSummonDemon","LOCALS",12)
+    SetGlobalTimer("DivineMantle","LOCALS",30)
+    SetGlobalTimer("DivineShield","LOCALS",30)
+    SetGlobalTimer("Cleansing","LOCALS",30)
+    CreateCreatureObject("melrat",Myself,0,0,0)  // melrat
+    ApplySpell(Myself,HEAL_NO_VISUAL)
+    ReallyForceSpellRES("melspl01",Myself)  // melspl01
+    ReallyForceSpellRES("melspl03",Myself)  // melspl03
+END
+
+IF
+  Difficulty(HARDEST)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  Allegiance(Myself,ENEMY)
+  !HPLT(Myself,20)
+  Global("Draw","LOCALS",0)
+  Global("SummonSolars","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("SummonSolars","LOCALS",1)
+    SetGlobalTimer("Spell","LOCALS",6)
+    DisplayStringHead(Myself,73244)  // ~Come to your mistress, minions of the Abyss!~
+    ForceSpellRES("gate7",Myself)  // gate7
+END
+
+IF
+  HPLT(Myself,20)
+  Global("allfive","GLOBAL",0)
+  Global("Draw","LOCALS",0)
+  !GlobalTimerNotExpired("Retreat","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobal("Draw","LOCALS",1)
+    SetInterrupt(FALSE)
+    SetGlobalTimer("Retreat","LOCALS",15)
+    IncrementGlobal("MelStillImmortal","AR6200",1)
+    DisplayStringHead(Myself,67805)  // ~No!  Too strong!  Damn you!  I must take more essence...I must have more power!!~ [FINMEL27]
+    ForceSpellPointRES("dimdoor",[1286.1122])
+    Face(8)
+    ForceSpellRES("melspl02",Myself)  // melspl02
+    SetInterrupt(TRUE)
+END
+
+IF
+  !HPLT(Myself,20)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  !GlobalTimerNotExpired("Freedom","LOCALS")
+  Global("Draw","LOCALS",0)
+  Global("IMPRISON","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("Freedom","LOCALS",30)
+    SetInterrupt(FALSE)
+    SetGlobal("IMPRISON","GLOBAL",0)
+    SetGlobal("IllaseraImprisoned","AR6200",0)
+    SetGlobal("AbazigalImprisoned","AR6200",0)
+    SetGlobal("YagaImprisoned","AR6200",0)
+    SetGlobal("BalthImprisoned","AR6200",0)
+    SetGlobal("GromnirImprisoned","AR6200",0)
+    SetGlobal("SarevokImprisoned","AR6200",0)
+    SetGlobal("SendaiImprisoned","AR6200",0)
+    ClearActions(Myself)
+    ForceSpell(Myself,WIZARD_FREEDOM)
+    SetInterrupt(TRUE)
+END
+
+IF
+  !HPLT(Myself,20)
+  !DifficultyLT(NORMAL)
+  Allegiance(Myself,ENEMY)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("Cleansing","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  Global("Draw","LOCALS",0)
+  !CheckStatLT(Myself,200,0)
+  OR(10)
+    CheckStatGT(Myself,-10,ARMORCLASS)
+    CheckStatGT(Myself,-7,THAC0)
+    CheckStatGT(Myself,0,SAVEVSSPELL)
+    CheckStatLT(Myself,70,RESISTMAGIC)
+    CheckStatGT(Myself,0,170)
+    CheckStatGT(Myself,0,175)
+    CheckStatGT(Myself,0,180)
+    StateCheck(Myself,STATE_SILENCED)
+    StateCheck(Myself,STATE_SLOWED)
+    StateCheck(Myself,STATE_BLIND)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("Cleansing","LOCALS",30)
+    ReallyForceSpellRES("melspl12",Myself)  // melspl12
+  RESPONSE #50
+    Continue()
+END
+
+IF
+  Allegiance(Myself,ENEMY)
+  !HPLT(Myself,20)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("DivineMantle","LOCALS")
+  Global("Draw","LOCALS",0)
+  !CheckStatGT(Myself,0,SCRIPTINGSTATE5)
+  Global("CloseCombat","LOCALS",1)
+  OR(3)
+    GlobalGT("allfive","GLOBAL",0)
+    !HasItem("finbalth",Myself)  // finbalth
+    HPPercentLT(Myself,50)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("DivineMantle","LOCALS",30)
+    ForceSpellRES("melspl01",Myself)  // melspl01
+  RESPONSE #50
+    Continue()
+END
+
+IF
+  Allegiance(Myself,ENEMY)
+  !HPLT(Myself,20)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("DivineShield","LOCALS")
+  Global("Draw","LOCALS",0)
+  !CheckStatGT(Myself,0,SCRIPTINGSTATE1)
+  CheckStatLT(Myself,70,RESISTMAGIC)
+  OR(4)
+    See(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+    See(NearestEnemyOfType([0.0.0.CLERIC_ALL]))
+    See(NearestEnemyOfType([0.0.0.BARD_ALL]))
+    See(NearestEnemyOfType([0.0.0.DRUID_ALL]))
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("DivineShield","LOCALS",30)
+    ForceSpellRES("melspl03",Myself)
+  RESPONSE #50
+    Continue()
+END
+
+IF
+  Allegiance(Myself,ENEMY)
+  !HPLT(Myself,20)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("DivineShield","LOCALS")
+  Global("Draw","LOCALS",0)
+  !CheckStatGT(Myself,0,SCRIPTINGSTATE1)
+  !CheckStatLT(Myself,70,RESISTMAGIC)
+  OR(4)
+    See(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+    See(NearestEnemyOfType([0.0.0.CLERIC_ALL]))
+    See(NearestEnemyOfType([0.0.0.BARD_ALL]))
+    See(NearestEnemyOfType([0.0.0.DRUID_ALL]))
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("DivineShield","LOCALS",30)
+    ForceSpellRES("melspl03",Myself)
+  RESPONSE #200
+    Continue()
+END
+
+IF
+  Allegiance(Myself,ENEMY)
+  !HPLT(Myself,20)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  Global("Draw","LOCALS",0)
+  !CheckStatGT(Myself,0,121)
+  Range(NearestEnemyOf(Myself),8)
+  Global("CloseCombat","LOCALS",1)
+  !DifficultyLT(EASY)
+  !GlobalTimerNotExpired("GlobeOfBlades","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("GlobeOfBlades","LOCALS",30)
+    ForceSpellRES("melis02",Myself)  // ~Blade Barrier~
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  !HPLT(Myself,20)
+  Allegiance(Myself,ENEMY)
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  !GlobalTimerNotExpired("CircleKick","LOCALS")
+  Global("Draw","LOCALS",0)
+  Range(ThirdNearestEnemyOf(Myself),10)
+  Global("CloseCombat","LOCALS",1)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CircleKick","LOCALS",15)
+    ReallyForceSpellRES("dgwhirl",[PC])
+    SetSequence(SEQ_ATTACK_JAB)
+  RESPONSE #50
+    Continue()
+END
+
+IF
+  !HPLT(Myself,20)
+  Allegiance(Myself,ENEMY)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  !CheckStatGT(Myself,0,167)
+  Global("Draw","LOCALS",0)
+  OR(8)
+    StateCheck(NearestEnemyOf(Myself),STATE_IMPROVEDINVISIBILITY)
+    StateCheck(SecondNearestEnemyOf(Myself),STATE_IMPROVEDINVISIBILITY)
+    StateCheck(ThirdNearestEnemyOf(Myself),STATE_IMPROVEDINVISIBILITY)
+    StateCheck(NearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+    StateCheck(NearestEnemyOf(Myself),STATE_BLUR)
+    See(NearestEnemyOfType([GOODCUTOFF.0.0.0.0.ILLUSIONARY]))
+    CheckStatGT(NearestEnemyOfType([0.0.0.MAGE_ALL]),0,184)
+    CheckStatGT(SecondNearestEnemyOfType([0.0.0.MAGE_ALL]),0,184)
+THEN
+  RESPONSE #30
+    SetGlobalTimer("Spell","LOCALS",6)
+    SpellNoDec(Myself,CLERIC_TRUE_SIGHT)
+  RESPONSE #70
+    SetGlobalTimer("Spell","LOCALS",6)
+    ForceSpell(Myself,CLERIC_TRUE_SIGHT)
+  RESPONSE #50
+    Continue()
+END
+
+IF
+  !Difficulty(EASIEST)
+  !Global("allfive","GLOBAL",0)
+  !GlobalLT("TimeStop","LOCALS",15)
+  Global("ReactTimeStop","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("ReactTimeStop","LOCALS",1)
+    SetGlobalTimer("TimeStop","LOCALS",6)
+END
+
+IF
+  !HPLT(Myself,20)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  Global("Draw","LOCALS",0)
+  See(NearestEnemyOf(Myself))
+  DifficultyGT(EASY)
+  OR(3)
+    Global("safe","LOCALS",1)
+    !Range(NearestEnemyOf(Myself),12)
+    CheckStatGT(Myself,0,SCRIPTINGSTATE5)
+  !GlobalTimerNotExpired("TimeStop","LOCALS")
+THEN
+  RESPONSE #70
+    SetGlobalTimer("SpellCast","LOCALS",6)
+    SetGlobalTimer("TimeStop","LOCALS",120)
+    ForceSpell(Myself,WIZARD_TIME_STOP)
+  RESPONSE #30
+    SetGlobalTimer("SpellCast","LOCALS",6)
+    SetGlobalTimer("TimeStop","LOCALS",120)
+    SpellNoDec(Myself,WIZARD_TIME_STOP)
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  !HPLT(Myself,20)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  Global("Draw","LOCALS",0)
+  See(NearestEnemyOf(Myself))
+  DifficultyLT(NORMAL)
+  OR(3)
+    Global("safe","LOCALS",1)
+    !Range(NearestEnemyOf(Myself),12)
+    CheckStatGT(Myself,0,SCRIPTINGSTATE5)
+  !GlobalTimerNotExpired("TimeStop","LOCALS")
+THEN
+  RESPONSE #70
+    SetGlobalTimer("SpellCast","LOCALS",6)
+    SetGlobalTimer("TimeStop","LOCALS",1000)
+    ForceSpell(Myself,WIZARD_TIME_STOP)
+  RESPONSE #30
+    SetGlobalTimer("SpellCast","LOCALS",6)
+    SetGlobalTimer("TimeStop","LOCALS",1000)
+    SpellNoDec(Myself,WIZARD_TIME_STOP)
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  !HPLT(Myself,20)
+  Allegiance(Myself,ENEMY)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("Whirlwind","LOCALS")
+  Global("Draw","LOCALS",0)
+  Global("CloseCombat","LOCALS",1)
+  !DifficultyLT(NORMAL)
+  OR(4)
+    CheckStatGT(NearestEnemyOf(Myself),4,NUMBEROFATTACKS)
+    CheckStatGT(SecondNearestEnemyOf(Myself),4,NUMBEROFATTACKS)
+    Range(ThirdNearestEnemyOf(Myself),8)
+    !Global("allfive","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("Whirlwind","LOCALS",30)
+    ForceSpell(Myself,WARRIOR_GREATER_WHIRLWIND)
+END
+
+IF
+  !HPLT(Myself,20)
+  Allegiance(Myself,ENEMY)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("Whirlwind","LOCALS")
+  Global("Draw","LOCALS",0)
+  Global("CloseCombat","LOCALS",1)
+  DifficultyLT(NORMAL)
+  OR(4)
+    CheckStatGT(NearestEnemyOf(Myself),4,NUMBEROFATTACKS)
+    CheckStatGT(SecondNearestEnemyOf(Myself),4,NUMBEROFATTACKS)
+    Range(ThirdNearestEnemyOf(Myself),8)
+    !Global("allfive","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("Whirlwind","LOCALS",1000)
+    ForceSpell(Myself,WARRIOR_GREATER_WHIRLWIND)
+END
+
+IF
+  Global("TimeToTeleport","LOCALS",1)
+THEN
+  RESPONSE #100
+    SetGlobal("TimeToTeleport","LOCALS",0)
+    Continue()
+END
+
+IF
+  HPPercentLT(Myself,50)
+  !Global("allfive","GLOBAL",0)
+  Range(NearestEnemyOf(Myself),8)
+THEN
+  RESPONSE #100
+    SetGlobal("TimeToTeleport","LOCALS",1)
+    Continue()
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  HPPercentLT(Myself,50)
+  Global("CloseCombat","LOCALS",1)
+  Range(SecondNearestEnemyOf(Myself),8)
+  OR(2)
+    CheckStatGT(NearestEnemyOf(Myself),4,NUMBEROFATTACKS)
+    CheckStatGT(SecondNearestEnemyOf(Myself),4,NUMBEROFATTACKS)
+THEN
+  RESPONSE #100
+    SetGlobal("TimeToTeleport","LOCALS",1)
+    Continue()
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  HPPercentLT(Myself,50)
+  Global("CloseCombat","LOCALS",1)
+  CheckStatGT(Myself,0,SCRIPTINGSTATE5)
+  Range(ThirdNearestEnemyOf(Myself),8)
+THEN
+  RESPONSE #100
+    SetGlobal("TimeToTeleport","LOCALS",1)
+    Continue()
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  HPPercentLT(Myself,50)
+  Global("CloseCombat","LOCALS",1)
+  !CheckStatGT(Myself,0,SCRIPTINGSTATE5)
+  Range(ThirdNearestEnemyOf(Myself),8)
+THEN
+  RESPONSE #100
+    SetGlobal("TimeToTeleport","LOCALS",1)
+    Continue()
+  RESPONSE #25
+    Continue()
+END
+
+IF
+  Global("allfive","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("TimeToTeleport","LOCALS",1)
+    Continue()
+  RESPONSE #300
+    Continue()
+END
+
+IF
+  GlobalTimerNotExpired("Whirlwind","LOCALS")
+  Global("TimeToTeleport","LOCALS",1)
+THEN
+  RESPONSE #100
+    SetGlobal("TimeToTeleport","LOCALS",0)
+    Continue()
+END
+
+IF
+  !HPLT(Myself,20)
+  Allegiance(Myself,ENEMY)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  Global("Draw","LOCALS",0)
+  Global("TimeToTeleport","LOCALS",1)
+  !Range("melrat",30)  // melrat
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Spell","LOCALS",6)
+    ForceSpellRES("dimdoor","melrat")  // dimdoor
+END
+
+IF
+  GlobalGT("ControlDemonTarget","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("ControlDemonTarget","LOCALS",0)
+    Continue()
+END
+
+IF
+  Allegiance(ThirdNearestEnemyOfType([0.MONSTER.DEMONIC]),GOODCUTOFF)
+  !HPPercentLT(ThirdNearestEnemyOfType([0.MONSTER.DEMONIC]),50)
+  !Gender(ThirdNearestEnemyOfType([0.MONSTER.DEMONIC]),SUMMONED)
+  See(ThirdNearestEnemyOfType([0.MONSTER.DEMONIC]))
+THEN
+  RESPONSE #100
+    SetGlobal("ControlDemonTarget","LOCALS",1)
+    Continue()
+END
+
+IF
+  Allegiance(ThirdNearestEnemyOfType([0.MONSTER.DEMONIC]),GOODCUTOFF)
+  !HPPercentLT(ThirdNearestEnemyOfType([0.MONSTER.DEMONIC]),50)
+  !Gender(ThirdNearestEnemyOfType([0.MONSTER.DEMONIC]),SUMMONED)
+  OR(2)
+    Name("finbalor",ThirdNearestEnemyOfType([0.MONSTER.DEMONIC]))
+    Name("finmaril",ThirdNearestEnemyOfType([0.MONSTER.DEMONIC]))
+  See(NearestEnemyOfType([0.MONSTER.DEMONIC]))
+THEN
+  RESPONSE #100
+    SetGlobal("ControlDemonTarget","LOCALS",2)
+    Continue()
+END
+
+IF
+  Allegiance(SecondNearestEnemyOfType([0.MONSTER.DEMONIC]),GOODCUTOFF)
+  !HPPercentLT(SecondNearestEnemyOfType([0.MONSTER.DEMONIC]),50)
+  !Gender(SecondNearestEnemyOfType([0.MONSTER.DEMONIC]),SUMMONED)
+  !Global("ControlDemonTarget","LOCALS",2)
+  See(SecondNearestEnemyOfType([0.MONSTER.DEMONIC]))
+THEN
+  RESPONSE #100
+    SetGlobal("ControlDemonTarget","LOCALS",1)
+    Continue()
+END
+
+IF
+  Allegiance(SecondNearestEnemyOfType([0.MONSTER.DEMONIC]),GOODCUTOFF)
+  !HPPercentLT(SecondNearestEnemyOfType([0.MONSTER.DEMONIC]),50)
+  !Gender(SecondNearestEnemyOfType([0.MONSTER.DEMONIC]),SUMMONED)
+  OR(2)
+    Name("finbalor",SecondNearestEnemyOfType([0.MONSTER.DEMONIC]))
+    Name("finmaril",SecondNearestEnemyOfType([0.MONSTER.DEMONIC]))
+  See(SecondNearestEnemyOfType([0.MONSTER.DEMONIC]))
+THEN
+  RESPONSE #100
+    SetGlobal("ControlDemonTarget","LOCALS",2)
+    Continue()
+END
+
+IF
+  Allegiance(NearestEnemyOfType([0.MONSTER.DEMONIC]),GOODCUTOFF)
+  !HPPercentLT(NearestEnemyOfType([0.MONSTER.DEMONIC]),50)
+  !Gender(NearestEnemyOfType([0.MONSTER.DEMONIC]),SUMMONED)
+  !Global("ControlDemonTarget","LOCALS",2)
+  See(NearestEnemyOfType([0.MONSTER.DEMONIC]))
+THEN
+  RESPONSE #100
+    SetGlobal("ControlDemonTarget","LOCALS",1)
+    Continue()
+END
+
+IF
+  Allegiance(NearestEnemyOfType([0.MONSTER.DEMONIC]),GOODCUTOFF)
+  !HPPercentLT(NearestEnemyOfType([0.MONSTER.DEMONIC]),50)
+  !Gender(NearestEnemyOfType([0.MONSTER.DEMONIC]),SUMMONED)
+  OR(2)
+    Name("finbalor",NearestEnemyOfType([0.MONSTER.DEMONIC]))
+    Name("finmaril",NearestEnemyOfType([0.MONSTER.DEMONIC]))
+  See(NearestEnemyOfType([0.MONSTER.DEMONIC]))
+THEN
+  RESPONSE #100
+    SetGlobal("ControlDemonTarget","LOCALS",2)
+    Continue()
+END
+
+IF
+  Global("ControlDemonTarget","LOCALS",2)
+  !HPLT(Myself,20)
+  !GlobalTimerNotExpired("ControlDemon","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  Global("Draw","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("ControlDemon","LOCALS",6)
+    ForceSpellRES("melspl05",LastSeenBy(Myself))  // melspl05
+  RESPONSE #50
+    Continue()
+END
+
+IF
+  Global("ControlDemonTarget","LOCALS",1)
+  !HPLT(Myself,20)
+  !GlobalTimerNotExpired("ControlDemon","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  Global("Draw","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("ControlDemon","LOCALS",6)
+    ForceSpellRES("melspl05",LastSeenBy(Myself))  // melspl05
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  !HPLT(Myself,20)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  Global("Draw","LOCALS",0)
+  See(NearestEnemyOfType([0.0.0.0.0.SUMMONED]))
+  !HPPercentLT(LastSeenBy(Myself),35)
+  LevelGT(LastSeenBy(Myself),10)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Spell","LOCALS",6)
+    ForceSpellRES("melspl06",LastSeenBy(Myself))  // melspl06
+  RESPONSE #50
+    Continue()
+END
+
+IF
+  Global("UseRestoration","LOCALS",1)
+THEN
+  RESPONSE #100
+    SetGlobal("UseRestoration","LOCALS",0)
+    Continue()
+END
+
+IF
+  LevelLT("finilla",12)  // finilla
+  !StateCheck("finilla",4032)  // finilla
+  See("finilla")  // finilla
+THEN
+  RESPONSE #100
+    SetGlobal("UseRestoration","LOCALS",1)
+    Continue()
+END
+
+IF
+  LevelLT("finyaga",12)  // finyaga
+  !StateCheck("finyaga",4032)  // finyaga
+  See("finyaga")  // finyaga
+THEN
+  RESPONSE #100
+    SetGlobal("UseRestoration","LOCALS",1)
+    Continue()
+END
+
+IF
+  LevelLT("finabaz",20)  // finabaz
+  !StateCheck("finabaz",4032)  // finabaz
+  See("finabaz")  // finabaz
+THEN
+  RESPONSE #100
+    SetGlobal("UseRestoration","LOCALS",1)
+    Continue()
+END
+
+IF
+  LevelLT("finsend",20)  // finsend
+  !StateCheck("finsend",4032)  // finsend
+  See("finsend")  // finsend
+THEN
+  RESPONSE #100
+    SetGlobal("UseRestoration","LOCALS",1)
+    Continue()
+END
+
+IF
+  LevelLT("finbalth",20)  // finbalth
+  !StateCheck("finbalth",4032)  // finbalth
+  See("finbalth")  // finbalth
+THEN
+  RESPONSE #100
+    SetGlobal("UseRestoration","LOCALS",1)
+    Continue()
+END
+
+IF
+  Global("UseRestoration","LOCALS",1)
+  !HPPercentLT(Myself,50)
+  !CheckStatLT(Myself,16,STR)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  Global("Draw","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Spell","LOCALS",6)
+    ForceSpellRES("melspl11",LastSeenBy(Myself))  // melspl11
+  RESPONSE #50
+    Continue()
+END
+
+IF
+  !HPLT(Myself,20)
+  Allegiance(Myself,ENEMY)
+  Global("allfive","GLOBAL",1)
+  !GlobalTimerNotExpired("MelissanSummonDemon","LOCALS")
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  Global("Draw","LOCALS",0)
+  OR(2)
+    NumInPartyAliveGT(1)
+    DifficultyGT(NORMAL)
+  !DifficultyLT(NORMAL)
+  OR(3)
+    Global("safe","LOCALS",1)
+    !Range(NearestEnemyOf(Myself),12)
+    CheckStatGT(Myself,0,SCRIPTINGSTATE5)
+THEN
+  RESPONSE #30
+    SetGlobalTimer("MelissanSummonDemon","LOCALS",18)
+    SetGlobalTimer("Spell","LOCALS",6)
+    DisplayStringHead(Myself,73244)  // ~Come to your mistress, minions of the Abyss!~
+    SpellNoDecRES("gate5",Myself)
+  RESPONSE #70
+    SetGlobalTimer("MelissanSummonDemon","LOCALS",18)
+    SetGlobalTimer("Spell","LOCALS",6)
+    DisplayStringHead(Myself,73244)  // ~Come to your mistress, minions of the Abyss!~
+    ForceSpellRES("gate5",Myself)  // gate5
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  !HPLT(Myself,20)
+  Allegiance(Myself,ENEMY)
+  Global("allfive","GLOBAL",0)
+  !GlobalTimerNotExpired("MelissanSummonDemon","LOCALS")
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  Global("Draw","LOCALS",0)
+  OR(2)
+    NumInPartyAliveGT(1)
+    DifficultyGT(NORMAL)
+  !DifficultyLT(NORMAL)
+  OR(3)
+    Global("safe","LOCALS",1)
+    !Range(NearestEnemyOf(Myself),12)
+    CheckStatGT(Myself,0,SCRIPTINGSTATE5)
+THEN
+  RESPONSE #30
+    SetGlobalTimer("MelissanSummonDemon","LOCALS",24)
+    SetGlobalTimer("Spell","LOCALS",6)
+    DisplayStringHead(Myself,73244)  // ~Come to your mistress, minions of the Abyss!~
+    SpellNoDecRES("gate5",Myself)
+  RESPONSE #70
+    SetGlobalTimer("MelissanSummonDemon","LOCALS",24)
+    SetGlobalTimer("Spell","LOCALS",6)
+    DisplayStringHead(Myself,73244)  // ~Come to your mistress, minions of the Abyss!~
+    ForceSpellRES("gate5",Myself)  // gate5
+  RESPONSE #200
+    Continue()
+END
+
+IF
+  !Allegiance(Myself,ENEMY)
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  OR(6)
+    See(SixthNearestEnemyOf(Myself))
+    See(FifthNearestEnemyOf(Myself))
+    See(FourthNearestEnemyOf(Myself))
+    See(ThirdNearestEnemyOf(Myself))
+    See(SecondNearestEnemyOf(Myself))
+    See(NearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  !CheckStatGT(SixthNearestEnemyOf(Myself),30,RESISTMAGIC)
+  !CheckStatGT(SixthNearestEnemyOf(Myself),0,162)
+  !CheckStatGT(SixthNearestEnemyOf(Myself),0,164)
+  !CheckStatGT(SixthNearestEnemyOf(Myself),0,177)
+  !CheckStatGT(SixthNearestEnemyOf(Myself),0,SCRIPTINGSTATE6)
+  !CheckStatGT(SixthNearestEnemyOf(Myself),0,186)
+  OR(2)
+    !Gender(SixthNearestEnemyOf(Myself),SUMMONED)
+    LevelGT(SixthNearestEnemyOf(Myself),9)
+  See(SixthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  !CheckStatGT(FifthNearestEnemyOf(Myself),30,RESISTMAGIC)
+  !CheckStatGT(FifthNearestEnemyOf(Myself),0,162)
+  !CheckStatGT(FifthNearestEnemyOf(Myself),0,164)
+  !CheckStatGT(FifthNearestEnemyOf(Myself),0,177)
+  !CheckStatGT(FifthNearestEnemyOf(Myself),0,SCRIPTINGSTATE6)
+  !CheckStatGT(FifthNearestEnemyOf(Myself),0,186)
+  OR(2)
+    !Gender(FifthNearestEnemyOf(Myself),SUMMONED)
+    LevelGT(FifthNearestEnemyOf(Myself),9)
+  See(FifthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  !CheckStatGT(FourthNearestEnemyOf(Myself),30,RESISTMAGIC)
+  !CheckStatGT(FourthNearestEnemyOf(Myself),0,162)
+  !CheckStatGT(FourthNearestEnemyOf(Myself),0,164)
+  !CheckStatGT(FourthNearestEnemyOf(Myself),0,177)
+  !CheckStatGT(FourthNearestEnemyOf(Myself),0,SCRIPTINGSTATE6)
+  !CheckStatGT(FourthNearestEnemyOf(Myself),0,186)
+  OR(2)
+    !Gender(FourthNearestEnemyOf(Myself),SUMMONED)
+    LevelGT(FourthNearestEnemyOf(Myself),9)
+  See(FourthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  !CheckStatGT(ThirdNearestEnemyOf(Myself),30,RESISTMAGIC)
+  !CheckStatGT(ThirdNearestEnemyOf(Myself),0,162)
+  !CheckStatGT(ThirdNearestEnemyOf(Myself),0,164)
+  !CheckStatGT(ThirdNearestEnemyOf(Myself),0,177)
+  !CheckStatGT(ThirdNearestEnemyOf(Myself),0,SCRIPTINGSTATE6)
+  !CheckStatGT(ThirdNearestEnemyOf(Myself),0,186)
+  OR(2)
+    !Gender(ThirdNearestEnemyOf(Myself),SUMMONED)
+    LevelGT(ThirdNearestEnemyOf(Myself),9)
+  See(ThirdNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  !CheckStatGT(SecondNearestEnemyOf(Myself),30,RESISTMAGIC)
+  !CheckStatGT(SecondNearestEnemyOf(Myself),0,162)
+  !CheckStatGT(SecondNearestEnemyOf(Myself),0,164)
+  !CheckStatGT(SecondNearestEnemyOf(Myself),0,177)
+  !CheckStatGT(SecondNearestEnemyOf(Myself),0,SCRIPTINGSTATE6)
+  !CheckStatGT(SecondNearestEnemyOf(Myself),0,186)
+  OR(2)
+    !Gender(SecondNearestEnemyOf(Myself),SUMMONED)
+    LevelGT(SecondNearestEnemyOf(Myself),9)
+  See(SecondNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  !CheckStatGT(NearestEnemyOf(Myself),30,RESISTMAGIC)
+  !CheckStatGT(NearestEnemyOf(Myself),0,162)
+  !CheckStatGT(NearestEnemyOf(Myself),0,164)
+  !CheckStatGT(NearestEnemyOf(Myself),0,177)
+  !CheckStatGT(NearestEnemyOf(Myself),0,SCRIPTINGSTATE6)
+  !CheckStatGT(NearestEnemyOf(Myself),0,186)
+  OR(2)
+    !Gender(NearestEnemyOf(Myself),SUMMONED)
+    LevelGT(NearestEnemyOf(Myself),9)
+  See(NearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  !StateCheck(NearestEnemyOfType([0.0.0.CLERIC_ALL]),STATE_SILENCED)
+  !StateCheck(NearestEnemyOfType([0.0.0.CLERIC_ALL]),STATE_STUNNED)
+  !StateCheck(NearestEnemyOfType([0.0.0.CLERIC_ALL]),STATE_PANIC)
+  !StateCheck(NearestEnemyOfType([0.0.0.CLERIC_ALL]),STATE_SLEEPING)
+  CheckStatLT(SecondNearestEnemyOfType([0.0.0.CLERIC_ALL]),30,SPELLFAILUREPRIEST)
+  See(NearestEnemyOfType([0.0.0.CLERIC_ALL]))
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  !StateCheck(SecondNearestEnemyOfType([0.0.0.MAGE_ALL]),STATE_SILENCED)
+  !StateCheck(SecondNearestEnemyOfType([0.0.0.MAGE_ALL]),STATE_STUNNED)
+  !StateCheck(SecondNearestEnemyOfType([0.0.0.MAGE_ALL]),STATE_PANIC)
+  !StateCheck(SecondNearestEnemyOfType([0.0.0.MAGE_ALL]),STATE_SLEEPING)
+  CheckStatLT(SecondNearestEnemyOfType([0.0.0.MAGE_ALL]),30,SPELLFAILUREMAGE)
+  See(SecondNearestEnemyOfType([0.0.0.MAGE_ALL]))
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  !StateCheck(NearestEnemyOfType([0.0.0.MAGE_ALL]),STATE_SILENCED)
+  !StateCheck(NearestEnemyOfType([0.0.0.MAGE_ALL]),STATE_STUNNED)
+  !StateCheck(NearestEnemyOfType([0.0.0.MAGE_ALL]),STATE_PANIC)
+  !StateCheck(NearestEnemyOfType([0.0.0.MAGE_ALL]),STATE_SLEEPING)
+  CheckStatLT(NearestEnemyOfType([0.0.0.MAGE_ALL]),30,SPELLFAILUREMAGE)
+  See(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  Global("BalthazarFights","GLOBAL",1)
+  Range("balth2",10)  // balth2
+  !StateCheck("balth2",4032)  // balth2
+  See("balth2")  // balth2
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  Range(Player1,15)
+  See(Player1)
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  Range(LastAttackerOf(Myself),8)
+  !StateCheck(LastAttackerOf(Myself),4032)
+  Global("CloseCombat","LOCALS",1)
+  OR(4)
+    !GlobalTimerNotExpired("TimeStop","LOCALS")
+    CheckStatGT(LastAttackerOf(Myself),0,SCRIPTINGSTATE1)
+    InParty(LastAttackerOf(Myself))
+    LevelGT(LastAttackerOf(Myself),12)
+  OR(2)
+    !CheckStatGT(Myself,0,SCRIPTINGSTATE5)
+    !Global("allfive","GLOBAL",0)
+  !StateCheck(LastAttackerOf(Myself),STATE_PANIC)
+  !StateCheck(LastAttackerOf(Myself),STATE_STUNNED)
+  !StateCheck(LastAttackerOf(Myself),STATE_HELPLESS)
+  !StateCheck(LastAttackerOf(Myself),STATE_SLEEPING)
+  See(LastAttackerOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  Range(SecondNearestEnemyOf(Myself),8)
+  CheckStatGT(SecondNearestEnemyOf(Myself),4,NUMBEROFATTACKS)
+  StateCheck(SecondNearestEnemyOf(Myself),STATE_HASTED)
+  !StateCheck(SecondNearestEnemyOf(Myself),STATE_PANIC)
+  !StateCheck(SecondNearestEnemyOf(Myself),STATE_STUNNED)
+  !StateCheck(SecondNearestEnemyOf(Myself),STATE_HELPLESS)
+  !StateCheck(SecondNearestEnemyOf(Myself),STATE_SLEEPING)
+  See(SecondNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  Range(NearestEnemyOf(Myself),8)
+  CheckStatGT(NearestEnemyOf(Myself),4,NUMBEROFATTACKS)
+  StateCheck(NearestEnemyOf(Myself),STATE_HASTED)
+  !StateCheck(NearestEnemyOf(Myself),STATE_PANIC)
+  !StateCheck(NearestEnemyOf(Myself),STATE_STUNNED)
+  !StateCheck(NearestEnemyOf(Myself),STATE_HELPLESS)
+  !StateCheck(NearestEnemyOf(Myself),STATE_SLEEPING)
+  See(NearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  Allegiance(LastSeenBy(Myself),EVILCUTOFF)
+  See([GOODCUTOFF])
+THEN
+  RESPONSE #100
+    MoveToObject([GOODCUTOFF])
+END
+
+IF
+  OR(2)
+    !Allegiance(LastSeenBy(Myself),GOODCUTOFF)
+    !See([GOODCUTOFF])
+THEN
+  RESPONSE #100
+    MoveToObject(Player1)
+END
+
+IF
+  StateCheck(LastSeenBy(Myself),STATE_DEAD)
+THEN
+  RESPONSE #100
+    MoveToObject(Player1)
+END
+
+IF
+  !HPLT(Myself,20)
+  Global("Draw","LOCALS",0)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  !GlobalTimerNotExpired("Breach","LOCALS")
+  !InPartySlot(LastSeenBy(Myself),0)
+  OR(7)
+    CheckStatGT(LastSeenBy(Myself),0,SCRIPTINGSTATE2)
+    CheckStatGT(LastSeenBy(Myself),0,SCRIPTINGSTATE3)
+    CheckStatGT(LastSeenBy(Myself),0,163)
+    CheckStatGT(LastSeenBy(Myself),0,168)
+    CheckStatGT(LastSeenBy(Myself),0,171)
+    CheckStatGT(LastSeenBy(Myself),0,185)
+    CheckStatGT(LastSeenBy(Myself),0,STONESKINS)
+THEN
+  RESPONSE #70
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("Breach","LOCALS",18)
+    ForceSpell(LastSeenBy(Myself),WIZARD_BREACH)
+  RESPONSE #30
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("Breach","LOCALS",18)
+    SpellNoDec(LastSeenBy(Myself),WIZARD_BREACH)
+  RESPONSE #200
+    Continue()
+END
+
+IF
+  !HPLT(Myself,20)
+  Global("Draw","LOCALS",0)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  !GlobalTimerNotExpired("Breach","LOCALS")
+  InPartySlot(LastSeenBy(Myself),0)
+  OR(6)
+    CheckStatGT(LastSeenBy(Myself),0,SCRIPTINGSTATE1)
+    CheckStatGT(LastSeenBy(Myself),0,163)
+    CheckStatGT(LastSeenBy(Myself),0,168)
+    CheckStatGT(LastSeenBy(Myself),0,171)
+    CheckStatGT(LastSeenBy(Myself),0,185)
+    CheckStatGT(LastSeenBy(Myself),0,STONESKINS)
+THEN
+  RESPONSE #70
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("Breach","LOCALS",18)
+    ForceSpell(LastSeenBy(Myself),WIZARD_BREACH)
+  RESPONSE #30
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("Breach","LOCALS",18)
+    SpellNoDec(LastSeenBy(Myself),WIZARD_BREACH)
+  RESPONSE #200
+    Continue()
+END
+
+IF
+  !HPLT(Myself,20)
+  Global("Draw","LOCALS",0)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  !GlobalTimerNotExpired("PierceShield","LOCALS")
+  OR(2)
+    CheckStatGT(LastSeenBy(Myself),20,RESISTMAGIC)
+    RandomNumLT(10,4)
+  OR(7)
+    CheckStatGT(LastSeenBy(Myself),30,RESISTMAGIC)
+    CheckStatGT(LastSeenBy(Myself),0,SCRIPTINGSTATE6)
+    CheckStatGT(LastSeenBy(Myself),0,MINORGLOBE)
+    CheckStatGT(LastSeenBy(Myself),0,186)
+    CheckStatGT(LastSeenBy(Myself),0,177)
+    CheckStatGT(LastSeenBy(Myself),0,162)
+    CheckStatGT(LastSeenBy(Myself),0,173)
+THEN
+  RESPONSE #70
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("PierceShield","LOCALS",18)
+    ForceSpell(LastSeenBy(Myself),WIZARD_PIERCE_SHIELD)
+  RESPONSE #30
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("PierceShield","LOCALS",18)
+    SpellNoDec(LastSeenBy(Myself),WIZARD_PIERCE_SHIELD)
+  RESPONSE #200
+    Continue()
+END
+
+IF
+  !HPLT(Myself,20)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  Global("Draw","LOCALS",0)
+  Gender(LastSeenBy(Myself),SUMMONED)
+  LevelLT(LastSeenBy(Myself),11)
+THEN
+  RESPONSE #70
+    SetGlobalTimer("SpellCast","LOCALS",6)
+    ForceSpell(LastSeenBy(Myself),WIZARD_DEATH_SPELL)
+  RESPONSE #30
+    SetGlobalTimer("SpellCast","LOCALS",6)
+    SpellNoDec(LastSeenBy(Myself),WIZARD_DEATH_SPELL)
+END
+
+IF
+  !HPLT(Myself,20)
+  !GlobalTimerNotExpired("ControlDemon","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  Global("Draw","LOCALS",0)
+  Race(LastSeenBy(Myself),DEMONIC)
+  !Allegiance(LastSeenBy(Myself),EVILCUTOFF)
+  !Gender(LastSeenBy(Myself),SUMMONED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("ControlDemon","LOCALS",6)
+    ForceSpellRES("melspl05",LastSeenBy(Myself))  // melspl05
+END
+
+IF
+  !HPLT(Myself,20)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  Global("Draw","LOCALS",0)
+  Gender(LastSeenBy(Myself),SUMMONED)
+  LevelGT(LastSeenBy(Myself),10)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Spell","LOCALS",6)
+    ForceSpellRES("melspl06",LastSeenBy(Myself))  // melspl06
+END
+
+IF
+  !HPLT(Myself,20)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  Global("Draw","LOCALS",0)
+  !GlobalTimerNotExpired("Unleash","LOCALS")
+  Range(ThirdNearestEnemyOf(Myself),10)
+  !DifficultyLT(EASY)
+THEN
+  RESPONSE #70
+    SetGlobalTimer("Unleash","LOCALS",18)
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetSequence(SEQ_ATTACK_JAB)
+    ForceSpellRES("melspl08",NearestEnemyOf(Myself))  // melspl08
+  RESPONSE #30
+    SetGlobalTimer("Unleash","LOCALS",18)
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetSequence(SEQ_ATTACK_JAB)
+    SpellNoDecRES("melspl08",NearestEnemyOf(Myself))
+  RESPONSE #50
+    Continue()
+END
+
+IF
+  !HPLT(Myself,20)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  Global("Draw","LOCALS",0)
+  !GlobalTimerNotExpired("Unleash","LOCALS")
+  Range(LastSeenBy(Myself),10)
+  Range(SecondNearestEnemyOf(Myself),10)
+  !DifficultyLT(EASY)
+THEN
+  RESPONSE #70
+    SetGlobalTimer("Unleash","LOCALS",18)
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetSequence(SEQ_ATTACK_JAB)
+    ForceSpellRES("melspl08",LastSeenBy(Myself))  // melspl08
+  RESPONSE #30
+    SetGlobalTimer("Unleash","LOCALS",18)
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetSequence(SEQ_ATTACK_JAB)
+    SpellNoDecRES("melspl08",LastSeenBy(Myself))
+  RESPONSE #150
+    Continue()
+END
+
+IF
+  !HPLT(Myself,20)
+  !InPartySlot(LastSeenBy(Myself),0)
+  Range(ThirdNearestEnemyOf(Myself),30)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("GreaterCurse","LOCALS")
+  Global("Draw","LOCALS",0)
+  !DifficultyLT(NORMAL)
+THEN
+  RESPONSE #30
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("GreaterCurse","LOCALS",120)
+    SpellNoDecRES("melspl07",Myself)
+  RESPONSE #70
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("GreaterCurse","LOCALS",120)
+    ForceSpellRES("melspl07",Myself)  // melspl07
+  RESPONSE #50
+    Continue()
+END
+
+IF
+  !HPLT(Myself,20)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  !GlobalTimerNotExpired("SymbolSlow","LOCALS")
+  Global("Draw","LOCALS",0)
+  OR(4)
+    StateCheck(LastSeenBy(Myself),STATE_HASTED)
+    HPGT(LastSeenBy(Myself),100)
+    !Range(LastSeenBy(Myself),15)
+    CheckStatGT(LastSeenBy(Myself),4,NUMBEROFATTACKS)
+  !StateCheck(LastSeenBy(Myself),STATE_SLOWED)
+  !CheckStatGT(LastSeenBy(Myself),30,RESISTMAGIC)
+THEN
+  RESPONSE #30
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("SymbolSlow","LOCALS",30)
+    SpellNoDecRES("MELS545",LastSeenBy(Myself))
+  RESPONSE #70
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("SymbolSlow","LOCALS",30)
+    ForceSpellRES("MELS545",LastSeenBy(Myself))
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  !HPLT(Myself,20)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  !GlobalTimerNotExpired("UnholyWord","LOCALS")
+  Global("Draw","LOCALS",0)
+  OR(4)
+    LevelLT(LastSeenBy(Myself),11)
+    Class(LastSeenBy(Myself),MAGE_ALL)
+    Class(LastSeenBy(Myself),CLERIC_ALL)
+    Class(LastSeenBy(Myself),BARD_ALL)
+  Alignment(LastSeenBy(Myself),MASK_GOOD)
+THEN
+  RESPONSE #30
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("UnholyWord","LOCALS",30)
+    SpellNoDec(LastSeenBy(Myself),CLERIC_UNHOLY_WORD)
+  RESPONSE #70
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("UnholyWord","LOCALS",30)
+    ForceSpell(LastSeenBy(Myself),CLERIC_UNHOLY_WORD)
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  !HPLT(Myself,20)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  !GlobalTimerNotExpired("Vengeance","LOCALS")
+  !GlobalTimerNotExpired("MelissanBigAttack","LOCALS")
+  Global("Draw","LOCALS",0)
+  !CheckStatGT(LastSeenBy(Myself),30,RESISTMAGIC)
+  !CheckStatGT(LastSeenBy(Myself),0,187)
+  !CheckStatGT(LastSeenBy(Myself),0,163)
+  !CheckStatGT(LastSeenBy(Myself),0,183)
+  !Range(LastSeenBy(Myself),15)
+THEN
+  RESPONSE #30
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("Vengeance","LOCALS",1000)
+    SetGlobalTimer("MelissanBigAttack","LOCALS",12)
+    SpellNoDec(LastSeenBy(Myself),CLERIC_STORM_OF_VENGEANCE)
+  RESPONSE #70
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("Vengeance","LOCALS",1000)
+    SetGlobalTimer("MelissanBigAttack","LOCALS",12)
+    ForceSpell(LastSeenBy(Myself),CLERIC_STORM_OF_VENGEANCE)
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  !HPLT(Myself,20)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  !GlobalTimerNotExpired("Comet","LOCALS")
+  !GlobalTimerNotExpired("MelissanBigAttack","LOCALS")
+  Global("Draw","LOCALS",0)
+  !CheckStatGT(LastSeenBy(Myself),75,RESISTFIRE)
+  !CheckStatGT(LastSeenBy(Myself),30,RESISTMAGIC)
+  OR(3)
+    Global("safe","LOCALS",1)
+    CheckStatGT(Myself,0,SCRIPTINGSTATE5)
+    !Range(NearestEnemyOf(Myself),12)
+THEN
+  RESPONSE #30
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("Comet","LOCALS",1000)
+    SetGlobalTimer("MelissanBigAttack","LOCALS",12)
+    SpellNoDec(LastSeenBy(Myself),WIZARD_COMET)
+  RESPONSE #70
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("Comet","LOCALS",1000)
+    SetGlobalTimer("MelissanBigAttack","LOCALS",12)
+    ForceSpell(LastSeenBy(Myself),WIZARD_COMET)
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  !HPGT(LastSeenBy(Myself),70)
+  !HPLT(Myself,20)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  !GlobalTimerNotExpired("PWKill","LOCALS")
+  Global("Draw","LOCALS",0)
+  InParty(LastSeenBy(Myself))
+  NumInPartyAliveGT(1)
+  !DifficultyLT(EASY)
+  !HasItemEquiped("CLCK26",LastSeenBy(Myself))
+  !CheckStatGT(LastSeenBy(Myself),0,SCRIPTINGSTATE2)
+THEN
+  RESPONSE #70
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("PWKill","LOCALS",120)
+    DisplayStringHead(Myself,22142)  // ~Power Word, Kill~
+    ForceSpell(LastSeenBy(Myself),WIZARD_POWER_WORD_KILL)
+  RESPONSE #30
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("PWKill","LOCALS",120)
+    DisplayStringHead(Myself,22142)  // ~Power Word, Kill~
+    SpellNoDec(LastSeenBy(Myself),WIZARD_POWER_WORD_KILL)
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  !HPLT(Myself,20)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  !GlobalTimerNotExpired("Bigby","LOCALS")
+  Global("Draw","LOCALS",0)
+  OR(3)
+    Global("safe","LOCALS",1)
+    CheckStatGT(Myself,0,SCRIPTINGSTATE5)
+    !Range(NearestEnemyOf(Myself),12)
+  !StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+  !CheckStatLT(LastSeenBy(Myself),0,SAVEVSDEATH)
+  OR(2)
+    HPGT(LastSeenBy(Myself),100)
+    HPLT(LastSeenBy(Myself),40)
+THEN
+  RESPONSE #30
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("Bigby","LOCALS",1000)
+    SpellNoDec(LastSeenBy(Myself),WIZARD_BIGBYS_CRUSHING_HAND)
+  RESPONSE #70
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("Bigby","LOCALS",1000)
+    ForceSpell(LastSeenBy(Myself),WIZARD_BIGBYS_CRUSHING_HAND)
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  !HPLT(Myself,20)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  !GlobalTimerNotExpired("DragonsBreath","LOCALS")
+  !GlobalTimerNotExpired("MelissanBigAttack","LOCALS")
+  Global("Draw","LOCALS",0)
+  !CheckStatGT(LastSeenBy(Myself),75,RESISTFIRE)
+  OR(3)
+    Global("safe","LOCALS",1)
+    CheckStatGT(Myself,0,SCRIPTINGSTATE5)
+    !Range(NearestEnemyOf(Myself),12)
+THEN
+  RESPONSE #30
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("DragonsBreath","LOCALS",1000)
+    SetGlobalTimer("MelissanBigAttack","LOCALS",12)
+    SpellNoDec(LastSeenBy(Myself),WIZARD_DRAGONS_BREATH)
+  RESPONSE #70
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("DragonsBreath","LOCALS",1000)
+    SetGlobalTimer("MelissanBigAttack","LOCALS",12)
+    ForceSpell(LastSeenBy(Myself),WIZARD_DRAGONS_BREATH)
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  !HPLT(Myself,20)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  Global("Draw","LOCALS",0)
+  !CheckStatGT(LastSeenBy(Myself),30,RESISTMAGIC)
+  !CheckStatGT(LastSeenBy(Myself),50,0)
+THEN
+  RESPONSE #70
+    SetGlobalTimer("Spell","LOCALS",6)
+    ForceSpellRES("melspl09",LastSeenBy(Myself))  // melspl09
+  RESPONSE #30
+    SetGlobalTimer("Spell","LOCALS",6)
+    SpellNoDecRES("melspl09",LastSeenBy(Myself))
+  RESPONSE #50
+    Continue()
+END
+
+IF
+  !HPLT(Myself,20)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  Global("Draw","LOCALS",0)
+  !GlobalTimerNotExpired("BladesAttack","LOCALS")
+  !Range(LastSeenBy(Myself),8)
+  !CheckStatGT(LastSeenBy(Myself),50,RESISTSLASHING)
+THEN
+  RESPONSE #70
+    SetGlobalTimer("BladesAttack","LOCALS",12)
+    SetGlobalTimer("Spell","LOCALS",6)
+    ForceSpellRES("melis01",LastSeenBy(Myself))  // ~Bone Blades~
+  RESPONSE #30
+    SetGlobalTimer("BladesAttack","LOCALS",12)
+    SetGlobalTimer("Spell","LOCALS",6)
+    SpellNoDecRES("melis01",LastSeenBy(Myself))
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  !HPLT(Myself,20)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  !GlobalTimerNotExpired("LockTarget","LOCALS")
+  !GlobalTimerNotExpired("FingerOfDeath","LOCALS")
+  Global("Draw","LOCALS",0)
+  CheckStatLT(LastSeenBy(Myself),50,RESISTMAGIC)
+  !CheckStatLT(LastSeenBy(Myself),0,SAVEVSDEATH)
+  !CheckStatGT(LastSeenBy(Myself),0,SCRIPTINGSTATE2)
+  HPPercentGT(LastSeenBy(Myself),50)
+THEN
+  RESPONSE #30
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("FingerOfDeath","LOCALS",18)
+    SpellNoDec(LastSeenBy(Myself),CLERIC_FINGER_OF_DEATH)
+  RESPONSE #70
+    SetGlobalTimer("Spell","LOCALS",6)
+    SetGlobalTimer("FingerOfDeath","LOCALS",18)
+    ForceSpell(LastSeenBy(Myself),CLERIC_FINGER_OF_DEATH)
+  RESPONSE #50
+    Continue()
+END
+
+IF
+  Global("Draw","LOCALS",0)
+  !HPLT(Myself,20)
+  HPPercentGT(Myself,50)
+  OR(4)
+    StateCheck(LastSeenBy(Myself),STATE_STUNNED)
+    StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+    StateCheck(LastSeenBy(Myself),STATE_SLEEPING)
+    CheckStatGT(LastSeenBy(Myself),0,HELD)
+  !CheckStatGT(LastSeenBy(Myself),0,STONESKINS)
+  OR(2)
+    CheckStatLT(LastSeenBy(Myself),100,RESISTSLASHING)
+    CheckStatLT(LastSeenBy(Myself),100,RESISTCOLD)
+THEN
+  RESPONSE #100
+    SetGlobal("xyxManeuvered","LOCALS",1)
+    SetGlobalTimer("LockTarget","LOCALS",6)
+    SetGlobalTimer("Spell","LOCALS",6)
+    Attack(LastSeenBy(Myself))
+END
+
+IF
+  Global("xyxManeuvered","LOCALS",0)
+  Global("Draw","LOCALS",0)
+  GlobalTimerExpired("xyxAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobal("xyxManeuvered","LOCALS",1)
+    RandomWalkContinuous()
+END
+
+IF
+  Global("Draw","LOCALS",0)
+  !HPLT(Myself,20)
+  !CheckStatGT(LastSeenBy(Myself),0,185)
+  OR(2)
+    CheckStatLT(LastSeenBy(Myself),100,RESISTSLASHING)
+    CheckStatLT(LastSeenBy(Myself),100,RESISTCOLD)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("xyxAttack","LOCALS",5)
+    SetGlobal("xyxManeuvered","LOCALS",0)
+    Attack(NearestEnemyOf(Myself))
+END
+
+IF
+  True()
+THEN
+  RESPONSE #100
+    RandomWalkContinuous()
+END

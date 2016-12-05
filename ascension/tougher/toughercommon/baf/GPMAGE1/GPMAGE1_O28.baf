@@ -1,0 +1,7 @@
+IF
+  HaveSpell(WIZARD_POWER_WORD_KILL)
+  RandomNum(2,1)
+THEN
+  RESPONSE #100
+    Spell(Lastseenby(Myself),WIZARD_POWER_WORD_KILL)
+END

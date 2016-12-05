@@ -1,0 +1,10 @@
+IF
+  ActionListEmpty()
+  HaveSpell(WIZARD_MORDENKAINENS_SWORD)
+  !Range(LastSeenBy(Myself),5)
+  NumCreatureLT([EVILCUTOFF.0.0.0.0.SUMMONED],7)
+  RandomNum(4,1)
+THEN
+  RESPONSE #100
+    Spell(Myself,WIZARD_MORDENKAINENS_SWORD)
+END

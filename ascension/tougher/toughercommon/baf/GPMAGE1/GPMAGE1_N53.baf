@@ -1,0 +1,10 @@
+IF
+  ActionListEmpty()
+  HaveSpell(WIZARD_RAY_OF_ENFEEBLEMENT)
+  !Range(LastSeenBy(Myself),10)
+  !HasBounceEffects(LastSeenBy(Myself))
+  RandomNum(3,1)
+THEN
+  RESPONSE #100
+    Spell(LastSeenBy(Myself),WIZARD_RAY_OF_ENFEEBLEMENT)
+END

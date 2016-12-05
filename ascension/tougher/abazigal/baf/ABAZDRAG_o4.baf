@@ -1,0 +1,8 @@
+IF
+	RandomNum(3,1)
+	!GlobalTimerNotExpired("dbMalison","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("dbMalison","LOCALS",1000)
+		ForceSpell(LastSeenBy(Myself),WIZARD_GREATER_MALISON) 
+END

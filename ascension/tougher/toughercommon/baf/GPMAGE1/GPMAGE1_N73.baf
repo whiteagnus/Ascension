@@ -1,0 +1,10 @@
+IF
+  ActionListEmpty()
+  General(LastSeenBy(Myself),UNDEAD)
+  !StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+  HaveSpell(WIZARD_CONTROL_UNDEAD)
+  RandomNum(2,1)
+THEN
+  RESPONSE #100
+    Spell(LastSeenBy(Myself),WIZARD_CONTROL_UNDEAD)
+END

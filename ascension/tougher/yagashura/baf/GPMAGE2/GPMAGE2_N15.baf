@@ -1,0 +1,11 @@
+IF
+  ActionListEmpty()
+  See(NearestEnemyOf(Myself))
+  HaveSpell(WIZARD_HASTE)
+  !StateCheck(Myself,STATE_HASTED)
+  CheckStat(Myself,0,IMPROVEDHASTE)
+  RandomNum(2,1)
+THEN
+  RESPONSE #100
+    Spell(Myself,WIZARD_HASTE)
+END

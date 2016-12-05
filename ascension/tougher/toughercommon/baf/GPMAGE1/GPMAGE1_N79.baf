@@ -1,0 +1,11 @@
+IF
+  ActionListEmpty()
+  HaveSpell(WIZARD_MELF_METEOR)
+  !HasItem("BLAKBLAD",Myself)
+  !HasItem("PHANBLAD",Myself)
+  !HasItem("MELFMET",Myself)
+  RandomNum(3,1)
+THEN
+  RESPONSE #100
+    Spell(Myself,WIZARD_MELF_METEOR)
+END

@@ -1,0 +1,12 @@
+IF
+  See(Nearestenemyof(Myself))
+  OR(2)
+    Range(Nearestenemyof(Myself),4)
+    AttackedBy([GOODCUTOFF],DEFAULT)
+  HaveSpell(WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
+  !GlobalTimerNotExpired("WeaponDefense_On","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("WeaponDefense_On","LOCALS",24)
+    Spell(Myself,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)
+END

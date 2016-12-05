@@ -1,0 +1,274 @@
+IF
+  Die()
+THEN
+  RESPONSE #100
+    Shout(ALERT)
+END
+
+IF
+  BreakingPoint()
+THEN
+  RESPONSE #100
+    DisplayStringHead(Myself,49766)
+    Shout(ASSIST)
+  RESPONSE #100
+    DisplayStringHead(Myself,49767)
+    Shout(ASSIST)
+  RESPONSE #100
+    DisplayStringHead(Myself,49768)
+    Shout(ASSIST)
+END
+
+IF
+  AttackedBy([GOODCUTOFF],DEFAULT)
+  OR(3)
+  Allegiance(Myself,GOODBUTBLUE)
+  Allegiance(Myself,NEUTRAL)
+  Allegiance(Myself,0)
+THEN
+  RESPONSE #100
+    Shout(ALERT)
+    Enemy()
+END
+
+IF
+  HitBy([GOODCUTOFF],CRUSHING)
+THEN
+  RESPONSE #100
+    Shout(ALERT)
+    Continue()
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  See([EVILCUTOFF])
+  InMyGroup(LastSeenBy(Myself))
+  HPPercentLT(Myself,25)
+  HPGT(Myself,1)
+  !Range(LastSeenBy(Myself),8)
+  !GlobalTimerNotExpired("Whined","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Whined","LOCALS",6)
+    DisplayStringHead(Myself,46151)
+    Shout(ASSIST)
+  RESPONSE #100
+    SetGlobalTimer("Whined","LOCALS",6)
+    DisplayStringHead(Myself,49763)
+    Shout(ASSIST)
+  RESPONSE #100
+    SetGlobalTimer("Whined","LOCALS",6)
+    DisplayStringHead(Myself,49764)
+    Shout(ASSIST)
+  RESPONSE #100
+    SetGlobalTimer("Whined","LOCALS",6)
+    DisplayStringHead(Myself,49765)
+    Shout(ASSIST)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  OR(2)
+  Range(NearestMyGroupOfType,20)
+  See(NearestMyGroupOfType([0.0.0.CLERIC_ALL]))
+  HPPercentLT(Myself,35)
+  !GlobalTimerNotExpired("CalledForHealing","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CalledForHealing","LOCALS",6)
+    DisplayStringHead(Myself,72808)
+    Shout(HEALME)
+    Continue()
+END
+
+IF
+  Heard(NearestMyGroupOfType,HEALME)
+  !StateCheck(LastHeardBy(Myself),STATE_DEAD)
+  HPPercentGT(Myself,75)
+  See(LastHeardBy(Myself))
+  Range(LastHeardBy(Myself),10)
+  !Range(NearestMyGroupOfType([0.0.0.CLERIC_ALL]),20)
+  !NumItemsGT("POTN55",LastHeardBy(Myself),0)
+  NumItemsGT("POTN55",Myself,1)
+  !GlobalTimerNotExpired("GaveAwayPotion","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("GaveAwayPotion","LOCALS",12)
+    DisplayStringHead(Myself,72809)
+    GiveItem("POTN55",LastHeardBy(Myself))
+    SmallWait(2)
+    ActionOverride(LastHeardBy(Myself),DisplayStringHead(Myself,73896))
+    Continue()
+END
+
+IF
+  ActionListEmpty()
+  Allegiance(Myself,ENEMY)
+  OR(3)
+  See(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+  See(NearestEnemyOfType([0.0.0.SORCERER]))
+  See(NearestEnemyOfType([0.0.0.BARD_ALL]))
+  !GlobalTimerNotExpired("ResistMagic","LOCALS")
+  HaveSpellRES("SPCL904")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("ResistMagic","LOCALS",24)
+    SpellRES("SPCL904",Myself)
+END
+
+IF
+  ActionListEmpty()
+  Allegiance(Myself,ENEMY)
+  CheckStatLT(Myself,0,DEX)
+  Range(NearestEnemyOf(Myself),10)
+  !GlobalTimerNotExpired("Hardiness","LOCALS")
+  HaveSpellRES("SPCL907")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Hardiness","LOCALS",60)
+    SpellRES("SPCL907",Myself)
+END
+
+IF
+  !Allegiance(Myself,ENEMY)
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+THEN
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  See(SecondNearestEnemyOf(Myself))
+  Class(SecondNearestEnemyOf(Myself),BARD_ALL)
+THEN
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  Class(NearestEnemyOf(Myself),BARD_ALL)
+THEN
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  See(ThirdNearestEnemyOf(Myself))
+  OR(2)
+  Class(ThirdNearestEnemyOf(Myself),MAGE_ALL)
+  Class(ThirdNearestEnemyOf(Myself),SORCERER)
+THEN
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  See(SecondNearestEnemyOf(Myself))
+  OR(2)
+  Class(SecondNearestEnemyOf(Myself),MAGE_ALL)
+  Class(SecondNearestEnemyOf(Myself),SORCERER)
+THEN
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  OR(2)
+  Class(NearestEnemyOf(Myself),MAGE_ALL)
+  Class(NearestEnemyOf(Myself),SORCERER)
+THEN
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  RandomNum(3,1)
+  HPPercentLT(Myself,75)
+  Range(NearestEnemyOf(Myself),4)
+  See(NearestEnemyOf(Myself))
+  !CheckStatGT(LastSeenBy(Myself),25,INT)
+  !Gender(LastSeenBy(Myself),ILLUSIONARY)
+  !Gender(LastSeenBy(Myself),SUMMONED)
+THEN
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  RandomNum(2,1)
+  HPPercentLT(Myself,75)
+  AttackedBy([ANYONE],DEFAULT)
+  See(LastAttackerOf(Myself))
+  !CheckStatGT(LastSeenBy(Myself),25,INT)
+  !Gender(LastSeenBy(Myself),ILLUSIONARY)
+  !Gender(LastSeenBy(Myself),SUMMONED)
+THEN
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  !Allegiance(LastSeenBy(Myself),GOODCUTOFF)
+  See([GOODCUTOFF])
+THEN
+  RESPONSE #100
+    MoveToObject([GOODCUTOFF])
+END
+
+IF
+  OR(2)
+  !Allegiance(LastSeenBy(Myself),GOODCUTOFF)
+  !See([GOODCUTOFF])
+  !Range(Player1,20)
+THEN
+  RESPONSE #100
+    RandomWalkContinuous()
+END
+
+IF
+  OR(2)
+  !Allegiance(LastSeenBy(Myself),GOODCUTOFF)
+  !See([GOODCUTOFF])
+  Range(Player1,20)
+THEN
+  RESPONSE #100
+    MoveToObject(Player1)
+END
+
+IF
+  HPPercentLT(Myself,20)
+  OR(2)
+  HasItem("POTN55",Myself)
+  Range(NearestMyGroupOfType,25)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    RunAwayFrom(NearestEnemyOf(Myself),45)
+    SetInterrupt(TRUE)
+END
+
+IF
+  HPPercentLT(Myself,20)
+  !HasItem("POTN55",Myself)
+  !Range(NearestMyGroupOfType,15)
+THEN
+  RESPONSE #100
+    DisplayStringHead(Myself,49767)
+    EscapeArea()
+END
+
+IF
+  ActionListEmpty()
+THEN
+  RESPONSE #100
+    AttackReevaluate(LastSeenBy(Myself),45)
+END
+

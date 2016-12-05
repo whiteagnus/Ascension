@@ -1,0 +1,15 @@
+IF
+	OR(3)
+		See(SecondNearestEnemyOfType([GOODCUTOFF.0.0.BARD_ALL]))
+		See(SecondNearestEnemyOfType([GOODCUTOFF.0.0.LONG_BOW]))
+		See(SecondNearestEnemyOfType([GOODCUTOFF.0.0.SORCERER]))
+	!StateCheck(LastSeenBy(Myself),STATE_SILENCED)
+	!StateCheck(LastSeenBy(Myself),STATE_REALLY_DEAD)
+	Range(LastSeenBy(Myself),20)
+	HPPercentGT(Myself,80)
+	CheckStatGT(Myself,0,STONESKINS)
+	RandomNum(2,1)
+THEN
+	RESPONSE #100
+		Continue()
+END

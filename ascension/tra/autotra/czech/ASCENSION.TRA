@@ -1,0 +1,246 @@
+/////////////////////////////////////////////////////////////////////////
+// Volby nastavení
+/////////////////////////////////////////////////////////////////////////
+@1 = ~Ascension v1.51 BETA (vyzaduje datadisk ToB)~
+
+@2 = ~
+Nemuzu najit soubor [Data/25Dialog.bif], pravdepodobne nemate 
+nainstalovany datadisk Throne of Bhaal.  Pro instalaci modu Ascension 
+je tento datadisk vyzadovan.
+
+Pokud jej presto mate nainstalovany a zobrazila se vam tato chyba, 
+kontaktujte prosim spravce modulu.~
+
+@3 = ~Silnejsi Abazigal (volitelne, vyzaduje datadisk ToB)~
+@4 = ~Puvodni silnejsi Demogorgon (volitelne, vyzaduje datadisk ToB)~
+@5 = ~Silnejsi Gromnir (volitelne, vyzaduje datadisk ToB)~
+@6 = ~Silnejsi Illasera (volitelne, vyzaduje datadisk ToB)~
+@7 = ~Silnejsi Yaga-Shura (volitelne, vyzaduje datadisk ToB)~
+
+/////////////////////////////////////////////////////////////////////////
+// Příšery
+/////////////////////////////////////////////////////////////////////////
+@500 = ~Babau~
+
+
+/////////////////////////////////////////////////////////////////////////
+// Kouzla
+/////////////////////////////////////////////////////////////////////////
+@1003 = ~Proměna v netopýra~
+@1006 = ~Úderná vlna~
+@1007 = ~Aura blesků~
+@1009 = ~Telekinenze~
+@1012 = ~Odolnost na otočky~
+@1013 = ~Ovládnutí démona~
+@1014 = ~Ohnisko~
+@1016 = ~Božský plášť~
+@1017 = ~Čerpání síly~
+@1018 = ~Božský kouzelný štít~
+@1019 = ~Příkaz démonu~
+@1020 = ~Vyhoštění~
+@1022 = ~Utržení ze řetězu~
+@1024 = ~Zpětná vazba~
+@1025 = ~Božské zotavení~
+@1026 = ~Božská očista~
+@1027 = ~Aura ochromení~
+@1029 = ~Lávová bomba~
+@1031 = ~Symbol moci: Zpomal~
+@1037 = ~Proměna v ničitele~
+@1038 = ~Melissan: Vláda nad přisluhovači Propasti~
+
+/////////////////////////////////////////////////////////////////////////
+// Skripty
+/////////////////////////////////////////////////////////////////////////
+@2000 = ~Schopnosti Bhaalova zplozence
+
+<CHARNAME> má vrozenou schopnost, použitelnou jednou denně: 
+
+Hromadné léčení 
+(Nekromancie)
+
+Dosah: dohled sesilatele
+Trvání: trvale 
+Doba sesílání: 1
+Oblast působení: poloměr 30 m
+Záchranný hod: není 
+
+Při použití této schopnosti si musí Bhaalův zplozenec jasně představit tváře svých společníků a soustředit se na jednotu družiny.
+Po dokončení jsou všichni členové družiny v okruhu 30 metrů od sesílajícího uzdraveni o 2k8 + 2/úroveň životů.  Jsou vyléčeny i další nepříjemnosti: únava, otrava, nákaza, slepota a hluchota.~
+@2001 = ~Schopnosti Bhaalova zplozence
+
+<CHARNAME> má vrozenou schopnost, použitelnou jednou denně: 
+
+Regenerace 
+(Nekromancie) 
+
+Dosah: dotyk
+Trvání: 1 kolo/2 úrovně
+Doba sesílání: 7
+Oblast působení: dotknutá bytost
+Záchranný hod: není 
+
+Tato mocná schopnost umožňuje Bhaalovu zplozenci předat 1 bytosti schopnost regenerace.  Tato regenerace zahojí rány a vždy obnoví ztracené končetiny.  Ovlivněná bytost získá 3 životy za sekundu.  Účinek trvá 1 kolo za každé 2 úrovně sesilatele, nebo do rozptýlení kouzla.  Například postava 14. úrovně regeneruje 18 životů za kolo po dobu 7 kol.~
+@2002 = ~Schopnosti Bhaalova zplozence
+
+<CHARNAME> má vrozenou schopnost, použitelnou jednou denně: 
+
+Posílení svatou mocí 
+(Vzývání) 
+
+Dosah: 0 
+Trvání: 1 tah
+Doba sesílání: 1
+Oblast působení: sesilatel 
+Záchranný hod: není 
+
+Bhaalův zplozenec povolá moc své krve, aby mu poskytla na krátkou dobu moc.  Když tak učiní, jeho síla, odolnost a obratnost se zvýší o 1 bod za každé 3 úrovně sesilatele.  Sesilateli na 3. úrovni se zvýší schopnosti o 1, zatímco sesilateli na 12. úrovni se zvýší schopnosti o 4.~
+@2003 = ~Schopnosti Bhaalova zplozence
+
+<CHARNAME> má vrozenou schopnost, použitelnou jednou denně: 
+
+Temná poskvrna 
+(Nekromancie)
+
+Dosah: 20 m
+Trvání: 1 tah
+Doba sesílání: 1
+Oblast působení: 1 bytost
+Záchranný hod: zrušení
+
+Tímto kouzlem může Bhaalův zplozenec vypustit na oběť poskvrnu svého zlého otce, a otrávit tak ty, kteří neuspějí v záchraně proti smrti.  Účinky závisí na úrovni sesilatele:
+7-9. úroveň: 2k8 + 2/kolo, zpomalení po 12 vteřin, záchrana s postihem -2
+10-12. úroveň: 3k8 + 3/kolo, zpomalení po 12 vteřin, záchrana s postihem -2
+13-14. úroveň: 4k8 + 4/kolo, zpomalení po 12 vteřin, záchrana s postihem -2
+15-16. úroveň: 6k8 + 5/kolo, zpomalení po 24 vteřin, záchrana s postihem -2
+17-21. úroveň: 8k8 + 6/kolo, zpomalení po 24 vteřin, záchrana s postihem -4
+25. úroveň: 8k8 + 6/kolo, zpomalení po 36 vteřin, záchrana s postihem -4, ovlivní skupinu cílů~
+@2004 = ~Schopnosti Bhaalova zplozence
+
+<CHARNAME> má trvalou ochranu před negativní sférou (jinými slovy: <CHARNAME> nemůže být vysáta úroveň) a 5% magické odolnosti.~
+@2005 = ~Schopnosti Bhaalova zplozence
+
+<CHARNAME> má vrozenou schopnost, použitelnou jednou denně: 
+
+Ruka zabíjení 
+(Nekromancie) 
+
+Dosah: sesilatel
+Trvání: 1 kolo/5 úrovní
+Doba sesílání: 1
+Záchranný hod: není 
+
+Když Bhaalův zplozenec povolá tuto sílu, s každým zásahem a jakoukoliv zbraní na blízko (ať už se jedná o pěst nebo meč), okamžitě způsobí cíli zranění navíc.  
+Jeho temná energie prochází zbraní a napadne oběť... a vstřebá toto zranění v podobě vyléčení sesilatele.
+Účinky se liší dle úrovně a jsou následující:
+10.: 2 kola, 4 životy zranění navíc, vyléčí 4 životy
+15.: 3 kola, 6 životů zranění navíc, vyléčí 6 životů
+20.: 4 kola, 8 životů zranění navíc, vyléčí 8 životů
+25.: 5 kol, 10 životů zranění navíc, vyléčí 10 životů
+30.: 6 kol, 12 životů zranění navíc, vyléčí 12 životů~
+@2006 = ~Schopnosti Bhaalova zplozence
+
+<CHARNAME> má vrozenou schopnost, použitelnou jednou denně: 
+
+Vzkříšení 
+(Nekromancie)
+
+Dosah: dotyk
+Trvání: trvale
+Doba sesílání: 1
+Oblast působení: dotknutá bytost
+Záchranný hod: není
+
+Podobně jako kouzlo 5. úrovně Oživ mrtvého, i Vzkříšení vrátí život jedné postavě.  Avšak Vzkříšení ji také vyléčí, takže je připravena na další dobrodružství.~
+@2007 = ~Schopnosti Bhaalova zplozence
+
+<CHARNAME> má 25% odolnost na fyzická zranění (sečná, bodná, drtivá a střelná).~
+
+/////////////////////////////////////////////////////////////////////////
+// Předměty
+/////////////////////////////////////////////////////////////////////////
+@3000 = ~Meč Chaosu~
+@3001 = ~Obouruční meč +4: Sarevokův meč Chaosu 
+
+Čepel Sarevoka, bratra <CHARNAME>, použitá v bitvě, kterou spolu bojovali ve vzdálené Baldurově Bráně.  <CHARNAME> zvítězila, zničila Sarevokovy plány a zachránila Mečové pobřeží na pokraji války.  Nyní se Sarevok připojil k <CHARNAME> a jeho čepel mu byla navrácena.
+Sarevok popisuje zbraň jako Smrtonošovu čepel a obnovil její starou sílu.  Bez esence Bhaalova zplozence, proudící skrze meč, nemůže dosáhnout té síly, co měla.  Leč stále je to strašlivá zbraň... a Sarevok varuje, že když se pokusí použít zbraň někdo, kdo není Smrtonošem, tak bude mít sníženou schopnost ovládat zbraň.
+
+VLASTNOSTI:
+
+Schopnost v boji:
+– Každý zásah vysaje z cíle 1 až 5 bodů života a přemístí jej k vlastníkovi. Tímto není možné se uzdravit nad maximální hranici životů vlastníka.
+
+Při vybavení:
+- Magická odolnost: +10%
+
+THAC0: +4
+Zranění: 1K10 +4 (sečné)
+Rychlost: 8
+Druh dovednosti: obouruční meč
+Druh: obouruční
+Vyžaduje:
+Síla 14
+Odolnost 18
+
+Váha: 10~
+
+@3002 = ~Lektvar Sendai~
+@3003 = ~Lektvar Sendai
+Tohle je neuvěřitelně silný hojivý lektvar, který možná uvařila samotná Sendai.  Je schopný úplně obnovit životy toho, kdo jej použije.~
+
+/////////////////////////////////////////////////////////////////////////
+// závěrečné epilogy datadisku ToB
+/////////////////////////////////////////////////////////////////////////
+
+@82710 = ~Poté, co Aerie opustila společnost <CHARNAME>, často cestovala s větší skupinkou, ale někdy se překvapivě oddělila, aby použila své značné schopnosti k boji proti otrokářství v Říších. Její soucit však zkazila pomsta; pomsta za to, co jí vzali, když byla v řetězech a co již nelze vrátit zpět. Nejspíše by své pomstě úplně propadla, kdyby se na ní neusmálo štěstí. Příběh vypráví, že Aerie, plná hněvu spravedlnosti, samostatně zničila otrokářskou enklávu sídlící v severních kopcích Cormyru. Byla ohromená, když zde nalezla zajatou skupinu okřídlených elfů Avariel, které ihned osvobodila. Ti ji přiměli, aby se s nimi vrátila do jejího dlouho ztraceného domova Faenya-Dail, kde se toho mnoho dozvěděla. To nejdůležitější bylo, že pochopila, že již není jednou z Avariel a svá ztracená křídla pustila z hlavy. Faenya-Dail nebyl jejím domovem nadlouho a nadobro jej se smíšenými pocity opustila. Aerie se nakonec stala nejvyšší kněžkou v Understone, gnómské vesnici, o které se několikrát zmínil její opatrovník Quayle. To on byl její skutečná rodina a mezi jeho lidmi konečně nalezla své štěstí a rodinu, po kterém vždy toužila. Říká se také, že každou noc, jakmile se na obloze zjevily hvězdy, se modlila za svou starou kamarádku, <CHARNAME>. Upřímně doufala, že má dostatek štěstí v hledání míru, který nalezla. Bez <CHARNAME> by se jí to nikdy nepodařilo.~
+
+@82711= ~V následujících letech po svém vzkříšení strávil Sarevok mnoho let putováním po Zapomenutých Říších a jen vzácně se zdržel na jednom místě. V Beredusku prý zahnal vpád armády orků a předvedl při tom tak děsivou moc a zuřivost, že vystrašení místní lidé nevěděli, koho se mají víc obávat. A tak mu jen tiše zmizeli, bez očekávané odměny. Jako dobyvatel zavítal do Západní Brány, kde si brutálně vynutil svoji vůli nad městem, jen aby po pár měsících záhadně zmizel a ponechal zde své vlastní překvapené lidi na pospas rozhněvanému davu. Choval se jako člověk, který neznal sám sebe. Všechny příběhy se shodují v tom, že Sarevok byl soužená duše, která se drží na hranici mezi životem a smrtí a nemůže dosáhnout ani jednoho. Ti, jenž Sarevoka znali nejlépe (a kterých bylo málo), říkali, že proklínal bájnou <CHARNAME> za to, že mu dala druhou šanci a jindy jí pro změnu za to děkoval. Nakonec z Říší úplně zmizel. Říká se, že sám vzal útokem Propast, nebo že si vzal život. Ale ve skutečnosti cestoval do Kara-Tur, aby zde pohřbil svoji jedinou pravou lásku, válečnici Tamoko. I když se již nikdy nevrátil, příběhy o něm stále kolují.~
+
+@82712 = ~Poté, co se Valygar rozloučil s <CHARNAME>, pokračoval několik let ve svých dobrodružstvích. Cestoval divočinou severního Faerunu a stal se běžným pozorovatelem v oblasti Hlubiny. Později se nakonec spokojeně vrátil do Athkatly a odešel do ústraní.  Ve svém rodinném sídle vedl život v rozjímání, jak si vždycky přál.  Z nátlaku obdivovatelů místní šlechty, kteří v něm viděli ideálního kandidáta, přijal místo vrchního komisaře. Nikdy po odpovědnosti netoužil, ale místo rád převzal, aby zatočil s narůstající korupcí ve městě. Mnoho let bylo Valygarovo jméno vyslovováno s odplivnutím každým kriminálníkem, nebo otrokářem, co si troufl páchnout do města. Valygar byl nebojácný, přetvořil městskou stráž v mocnost, kterou dokonce i sebevědomí zloději museli respektovat. Valygar a stínoví zloději se mnohokrát střetli, což nakonec vyústilo ve vzájemný respekt... leč nejrozvážnější hraničář nad nimi nakonec zvítězil. I pro něj bylo udivující, když nakonec obnovil dobré jméno Corthalů v Athkatle a oženil se. Jeho jediný syn, pýcha jeho života, si vzal rady svého otce k srdci. Valygar jej vedl k tomu, aby se stal hlavou zahalených čarodějů a jejich největším vykonavatelem reforem a tak pro jednou ve svém životě pocítil pýchu. Vzpomínal na to, jakým byl kdysi člověkem, který prchl své historii do hlubokých lesů Amnu. Hraničář byl vděčný, že <CHARNAME> vstoupila do jeho života a přál si, aby se jeho staré kamarádce navždy dobře dařilo.~
+
+@82713 = ~Poté, co se Viconia rozloučila s <CHARNAME>, dlouho cestovala. Stále se setkávala s nevědomostí a nenávistí od těch, co znali její původ, ale tehdy se více než jindy rozhodla, že se zařídí a oddělí od dědictví temných elfů. Vstoupila do nejhlubších sfér pekla, bojovala tam po boku <CHARNAME>, která se stala bohyní... a skryla tak svou tvář před povrchem o něco déle. Dokonce když ji Shar, její bohyně temnoty a ztráty, úplně opustila, Viconia zůstala nelítostná. Příběhy o ní sílily, když její přítomnost pocítili další a další kraje, kde byla často za zachránkyni, kterou nevděčně vyhnali kvůli podezírání a ze strachu.  Viconia stále cestovala, odmítala společnost blízkých cestujících a dobrodruhů, a nikdy nenalezla to, čemu by opravdu mohla říkat domov. Její osud jí patřil a ona o něj usilovala za vlastních okolností. Co se nakonec s Viconií stalo, není jasné. Ta největší legenda o ní je také nanejvýš nepravděpodobná, i když se jí, kvůli jejímu setrvávání, připisuje důvěryhodnost. Vypráví se o tom, jak Viconia zachránila elfy ze Suldanessellaru od úkladů Zentarimu, jak udatně bojovala proti agentům této organizace... a jak nakonec svým tělem bolestně vykryla ránu smrtícího šípu, který byl směřován na královnu Ellesime. Jakmile Viconia přišla k sobě, užasla nad zjištěním, že jí tento skutek zajistil okamžité přijetí mezi elfy Suldanessellaru, kteří své drowí sestře odpustili. Od královny Ellesime získala největší pocty Seldarinu. Byla prvním takto vyznamenaným drowem vůbec, a tak spravedlivě uvítaná Viconia opět nalezla domov na Stromu života. Viconia byla zřejmě tímto gestem dojata... Říká se, že i když tuto nabídku královny zvážila, tak se prý nakonec Ellesime pouze hluboce uklonila a tiše opustila Suldanessellar navždy.  Viconii již nikdo nikdy nespatřil.~
+
+@82714 = ~Poté, co Aerie opustila společnost <CHARNAME>, často cestovala s větší skupinkou, ale někdy se překvapivě oddělila, aby použila své značné schopnosti k boji proti otrokářství v Říších. Její soucit však zkazila pomsta; pomsta za to, co jí vzali, když byla v řetězech a co již nelze vrátit zpět.  Nejspíše by své pomstě úplně propadla, kdyby se na ní neusmálo štěstí. Příběh vypráví, že Aerie, plná hněvu spravedlnosti, samostatně zničila otrokářskou enklávu sídlící v severních kopcích Cormyru. Byla ohromená, když zde nalezla zajatou skupinu okřídlených elfů Avariel, které ihned osvobodila. Ti ji přiměli, aby se s nimi vrátila do jejího dlouho ztraceného domova Faenya-Dail, kde se toho mnoho dozvěděla. To nejdůležitější bylo, že pochopila, že již není jednou z Avariel a svá ztracená křídla pustila z hlavy. Faenya-Dail nebyl jejím domovem nadlouho a nadobro jej se smíšenými pocity opustila. Aerie se nakonec stala nejvyšší kněžkou v Understone, gnómské vesnici, o které se několikrát zmínil její opatrovník Quayle. To on byl její skutečná rodina a mezi jeho lidmi konečně nalezla své štěstí a rodinu, po kterém vždy toužila. Říká se také, že každou noc, jakmile se na obloze zjevily hvězdy, se modlila za svého starého přítele, <CHARNAME>. Upřímně doufala, že má dostatek štěstí v hledání míru, který nalezla. Bez <CHARNAME> by se jí to nikdy nepodařilo.~
+
+@82715 = ~Aerie a <CHARNAME> jsou nerozdělitelní, jejich dobrodružství v budoucnu po mnoho let pokračují. Chuť Aerie po cestování provedla dvojici celým Faerunem a ještě dál. Jejich mladý synek byl s nimi vždy v závěsu a veselil <CHARNAME> svojí dětskou bázní nad podivnostmi světa. Pár se nakonec usadil a následné narození jejich překrásné dcerky bylo pro ně dalším radostným okamžikem. Pouze vzácně se kvůli potížím stalo, že <CHARNAME> a Aerie museli použít své velké schopnosti proti zlu tohoto světa, ačkoli příběhy o těchto bitvách se staly legendárními. V pozdějších letech se vydali na poslední velkou cestu, protože Aerie stále cítila smutek z časů jejího zotročení a ztráty křídel. Ona a <CHARNAME> společně hledali Avariely z Faenya-Dail, okřídlené elfy, od kterých byla kdysi dávno oddělena. Neobjevili pouze její lid, ale i milující rodiče, co strávili roky hledáním svého ztraceného dítěte. Aerie konečně nalezla svoji rodinu. Žádné záhady nebo komplikace již nevrhali stín na jejich životy, a tak se zde, mezi oblaky, Aerie a <CHARNAME> nakonec vzali.  Říká se, že jejich spojení požehnali přítomní Aerdrie Faenya a Baervan Wildwanderer. A osud dětí <CHARNAME> a Aerie, které vychovaly dvě nejmocnější bytosti Říší, je příběhem, který se vyrovná osudu jejich otce...~
+
+@82716 = ~Anomen poté, co se rozloučil se svými společníky, vstoupil do řádu Helmovy církve a po čase získal hodnost Velkého strážce. Zůstal neklidným, nespokojeným a vzpomínal na časy, kdy s <CHARNAME> prožíval dobrodružství. I když by hodně jeho přátel tvrdilo opak, Anomen nikdy necítil, že církev je jeho pravým domovem. Po rok zůstal ve svém postavení, až už to nakonec neunesl. Zanechal své aktivní služby v církvi a načas se uchýlil do nové země Maztika jako misionář. Anomen zůstal souženou duší, stále nebyl spokojen, i když mu jeho hrdinství zaručovalo velké uznání od nových přátel, které zde potkal. Když mocný zlý kněz Yamash povolal dav démonů, ve snaze zbavit Maztiku všeho živého, Anomen konečně našel svůj smysl. Zasloužil se za zformování roztroušeného zbytku Amnských vojáků a místních obyvatelů Maztiky v jednotné vojsko, které se postavilo proti temnému knězi. Ve velké bitvě, která následovala, byl Anomen všemi jasně viděn, jak se sám pouští do souboje s Yamashem. Neměl poblíž sebe <CHARNAME>, nebo někoho ze svých společníků: sám se postavil přívalu zla a pro jednou si nepřipadal zbytečný. Naposledy byl zpovzdálí spatřen, když spoutal Yamashe, jak roní slzy blaha a volá k Helmovi. Najednou je zaplavil oslepující záblesk síly. Když se vyjasnilo, byli kněz i Anomen pryč. Bitva byla dokonána a Maztika zachráněna. Anomen byl poté navždy obyvateli Maztiky považován za hrdinu, inspiroval je ve vytvoření ochranného řádu rytířů, který nesl jeho jméno.  Nový řád pro novou zem.~
+
+@82717 = ~Anomen a <CHARNAME> pokračovali v dobrodružství, až byli známí jako hrdinové, kamkoliv jen přišli. Bylo mnoho velkých příběhů o zářícím rytíři a naprosté oddanosti k jeho velké dámě. Minulost <CHARNAME> - hrůzostrašné zplozenkyně Bhaala byla navždy zapomenuta, nové skutky nahradily ty staré a odkaz, který stvořili předstihl vše, co může zaručit božská krev. Tak bohatý byl jejich život, že stále odkládali datum svatby. Buď kvůli blížící se krizi, nebo kvůli zajímavému dobrodružství. Nakonec nadešlo datum jejich oddání, které se <CHARNAME> a její milovaný zavázali dodržet a tato událost přivábila hrdiny a hodnostáře z celého Faerunu. Pár ovlivnil život mnoha lidí a ti přišli v zástupech sledovat, jak sám Elminster oba spojí v jednom z nejvelkolepějších obřadů, jaké kdy město Baldurova Brána spatřila. Krátce po oslavách narození jejich dcery se Anomen a <CHARNAME> vzdálili do ústraní. Pokud je však příběh pravdivý, tak jejich dobrodružství nikdy neskončila. Anomen povýšil v hiearchii své církve a <CHARNAME> zase byla neustále středem podivných událostí, provázející jejich životy. A totéž se týká i jejich dcery, kterou doprovázeli dva z největších hrdinů Říší a jejíž pověst mohla směle konkurovat pověsti své matky. To už je ale ovšem úplně jiný příběh...~
+
+@82718 = ~Cernd zanechal dobrodružného života, aby se vrátil do svého hájku v Tethyru se slibem, že převezme zodpovědnost a vychová svého syna, Ashdalea, tak jak by jako otec měl. Nakonec se stal nejvyšším druidem a vytvořil si jméno v Říších nejen bojem za rovnováhu svého hájku, ale i ochranou svátosti života všech lidí po celých říších. Cernd po čase s lítostí zjistil, že jeho zaujetí k povinnostem způsobilo, že zapomněl na závazky k Ahsdaleovi. Jeho syn již dávno předtím hájek opustil. Cernd zjistil, že se z Ashdalea stal zlý a zvrácený kouzelník, vládnoucí mocí, co ohrožuje Mečové pobřeží. Jelikož zjistil, že je to jeho břímě, kterému musí čelit, tak se závazně zřekl svého postavení nejvyššího druida a jal se vyhledat svého syna. Zapojil se do mnoha bitev s jeho přisluhovači a vládnul mocí přírody s obrovskou zuřivostí, o které všichni, kteří ji spatřili, tvrdili, že je legendární. Nakonec se Cernd v hlubokých lesích Tethyru utkal s Ashdalem a naposledy se ho snažil přesvědčit, aby se odvrátil od své cesty. Ashdale odmítl a Cernd s ním bojoval v dlouhé a hrůzostrašné bitvě, která nakonec skončila jejich smrtí. S posledním dechem se Cernd plazil podél země, aby objal ruku mrtvého Ashdalea a slzy mu stékaly po tváři, když prosil svého syna o odpuštění. Cerndova duše vstoupila do velkého dubu uvnitř lesa a věří se, že tento nesmrtelný dub tu stále stojí, a že podivuhodně obrostl hájek veliké krásy, jenž je domovem nejvzácnějších magických bytostí. Každý podzim velký dub a hájek okolo něj zrudnou do špinavého odstínu, pro připomnění toho, že i ti nejvíce zkažení z nás mohou nakonec nalézt svoji rovnováhu.~
+
+@82719 = ~Nebezpečí, kterým Mazzy Fentanová po boku <CHARNAME> čelila, ji nikterak neodradila od její touhy po dobrodružství. Nedlouho po událostech v Tethyru utvořila statnou skupinku hrdinů, o které se vyprávělo po celých Říších - rytíře Mazzy Fentanové. Mazzy vždy vzývala jméno <CHARNAME>, když pobízela své kamarády k odvaze, nebo když bojovali s pochybami či pokušením. <CHARNAME> byla nejvelkolepějším člověkem, kterého kdy poznala a půlčicí bojovnice cítila, že její povinností je žít dle odkazu své staré kamarádky. Rytíři Mazzy Fentanové bojovali s trolly, aby zachránili ohrožená města, odráželi nájezdy orků, aby ochránili starověké lesy a čelili darebnému drakovi v jeho vlastní doupěti, aby učinili svět bezpečnějším. Legendy o jejich činech dalece přesáhly jejich životy a to platí hlavně pro Mazzy. Kdyby se její hrdinství měřilo výškou, byla by velká jako obr. Bylo dobře známo, že se snaha Mazzy završila dnem, kdy byla vysvěcena čestným paladinem ve velkém sále Zářícího srdce. Byla to první půlčice, vlastně vůbec první nelidská bytost, která něčeho takového vůbec dosáhla. Tiché slzy hrdostí stékaly Mazzy po obličeji, když jí starý prelát pokládal na ramena největší pocty Řádu. Říká se, že v průběhu oslav často pozorovala dav lidí a ze všech přátel, co mohli dorazit, se nejvíce dívala na <CHARNAME>.  Nakonec Mazzy po všech nebezpečích spokojeně odešla ve zralém stáří z tohoto světa. Nikdy se neusadila a neměla děti, ale její odkaz po generace nadchnul její lid, aby v něm pokračoval.~
+
+@82720 = ~Haer'Dalis viděl putování s <CHARNAME> jako skvělý úvod do Říší a když se spolu rozloučili, zachtělo se mu toho spatřit více. Navštívil mnohá místa - Hlubinu, Letohrad a Thay - šířil zde příběhy o svých skutcích s <CHARNAME> a jaksi se v nich vždy dokázal vylíčit jako střed mnoha dobrodružství, která kdysi zažil. Nakonec Haer'Dalis shledal, že se zapojil do místních potíží, a to na obou stranách, což jej přimělo vydat se znovu na cesty. To bylo pro něj skvělé, i když bard přiznává, že jenom vzácně chápal některé zvláštnosti těchto základníků a že toužil po majestátnosti sfér, na které vzpomínal. Po čase se spřátelil s potulující se kambionkou a s chutí se s ní vrátil do Propasti, jenže se jaksi nechtěně stal vůdcem povstání v několika patrech pekla. Později zase tieflinga pobavily historky, ve kterých přinutil mocného Graz'zta usednout za jednacím stolem - nepříjemné postavení pro tohoto mocného pána démonů, i když si Haer'Dalis nikdy neověřil pravdu tohoto příběhu. Haer'Dalis byl po nějakou dobu nejhledanějším mužem sfér, ale zloba jeho nepřátel se nemohla srovnávat s jeho touhou cestovat, takže se nakonec v pořádku dostal zpátky do Sigilu. Zde se opět připojil k Raelisině herecké skupině a velmi rád se konečně usadil - jistěže až do dalšího nedorozumění.~
+
+@82721 = ~Události ságy Bhaalových zplozenců Jaheiru hluboce zasáhly. Její povinnost byla chránit vyšší rovnováhu věcí, ale v následujících letech se čím dál větší část tohoto boje odehrávala v její mysli. Ve společnosti <CHARNAME> spatřila veliké změny a náhle si uvědomila, jaký je život prchavý a jak ztráta blízkých užírá její mysl.  Po čase byla známá jako neúnavná zastánkyně rovnováhy, která někdy jedná ve shodě s Harfeníky a jindy zase ne. Jaheira působila v tichosti, zjevovala se, když jí bylo zapotřebí a zase zmizela, když už byla zbytečná. Mnoho lidí ji přesvědčovalo, aby zaujala vedoucí postavení, ale Jaheira to vždy odmítla s tím, že by toho nebyla schopná a říkala, že jinde jsou jiní, co její pomoc více potřebují. Zůstala zdrženlivou a obezřetnou, nikdy nezůstala dlouho na jednom místě. Říká se, že na třikrát prošla Zapomenutými Říšemi, pořád bloudila a stále pátrala... až se nakonec začala obávat, jestli to, po čem pátrala, byla pravda. Co se později v životě Jaheiry událo, není příliš známo. Říká se, že za ní nakonec přišel Elminster a přesvědčil ji, aby přijala místo mezi největšími vůdci záhadných Harfeníků. Někdo tvrdí, že padla v bitvě proti mocnému lichovi, co vyhrožoval znesvěcením severních lesů. Jiní zase vypráví, že se vydala hledat <CHARNAME> a cestovala kouty, daleko od nás vzdálenými. Ať už se s ní stalo cokoliv, Jaheira se už nikdy do Tethyru nebo na Mečové pobřeží nevrátila.~
+
+@82722 = ~Následující léta po událostech ságy Bhaalových zplozenců byla k Jaheiře vlídná. Ne, že by byly zrovna pokojná, ale její vztah s <CHARNAME> vše přestál. Byl neotřesitelný a i když je na pár let mohly rozdělit povinnosti, pokaždé se k sobě vrátili. Její přátelé podivilo, jak může být tak bezstarostná, hlavně když vezmeme v úvahu její počáteční zdráhání, ale ona se při vzpomínce na první obezřetné dny jen pousměje. Konec konců si ona a <CHARNAME> doslova prošli peklem a když je nemohli rozdělit ani bohové, tak jak by je mohlo rozdělit pár měsíců či mil?  Jaheira povýšila v postavení u Harfeníků, kde byla vždy hlasem moudra a smyslem pro pořádek. Stala se proslulou jako veliká hrdinka a prostředník, i když nikoho nepřekvapilo, když na delší dobu odešla cestovat s <CHARNAME> do dalekých zákoutí Říší. Pár byl spatřen v Letohradu, Rashemonu, ve velkých jižních stepích a dokonce i v džunglích Chultu. Nakonec Jaheira zanechala Harfeníky s jejich spory, ulevilo se jí, že s nimi skoncovala a začala se starat o svého nového synka. <CHARNAME> ji často navštěvoval a oddával se radostem otcovství, avšak tuláctví jej vždy přimělo znovu cestovat. Jaheira nebyla stále s <CHARNAME> a ne vždy s ním sdílela jeho vítězství a úspěchy, ale nikdy se od něj doopravdy neoddělila.  A syn <CHARNAME>?  Vychován dvěmi z nejmocnějších bytostí Říší, vyrostl a zvolil si svůj vlastní osud, který konkuroval osudu jeho otce. Tohle už je ale jiný příběh...~
+
+@82723 = ~Nebezpečí, kterým Mazzy Fentanová po boku <CHARNAME> čelila, ji nikterak neodradila od její touhy po dobrodružství. Nedlouho po událostech v Tethyru utvořila statnou skupinku hrdinů, o které se vyprávělo po celých Říších - rytíře Mazzy Fentanové. Mazzy vždy vzývala jméno <CHARNAME>, když pobízela své kamarády k odvaze, nebo když bojovali s pochybami či pokušením. <CHARNAME> byl nejvelkolepější člověk, kterého kdy poznala a půlčicí bojovnice cítila, že její povinností je žít dle odkazu svého starého přítele. Rytíři Mazzy Fentanové bojovali s trolly, aby zachránili ohrožená města, odráželi nájezdy orků, aby ochránili starověké lesy a čelili darebnému drakovi v jeho vlastní doupěti, aby učinili svět bezpečnějším. Legendy o jejich činech dalece přesáhly jejich životy a to platí hlavně pro Mazzy. Kdyby se její hrdinství měřilo výškou, byla by velká jako obr. Bylo dobře známo, že se snaha Mazzy završila dnem, kdy byla vysvěcena čestným paladinem ve velkém sále Zářícího srdce. Byla to první půlčice, vlastně vůbec první nelidská bytost, která něčeho takového vůbec dosáhla. Tiché slzy hrdostí stékaly Mazzy po obličeji, když jí starý prelát pokládal na ramena největší pocty Řádu.  
+Říká se, že v průběhu oslav často pozorovala dav lidí a ze všech přátel, co mohli dorazit, se nejvíce dívala na <CHARNAME>. Nakonec Mazzy po všech nebezpečích spokojeně odešla ve zralém stáří z tohoto světa. Nikdy se neusadila a neměla děti, ale její odkaz po generace nadchnul její lid, aby v něm pokračoval.~
+
+@82724 = ~Poté, co byla Nalia společnicí <CHARNAME>, získala velkou moc. Z počátku cestovala a ve společnosti těch největších čarodějů Říší hasila svoji touhu po magických vědomostech. Chtěla použít svoji velikou moc, aby nastolila v zemi spravedlnost, ale časem shledala, že jestli se od <CHARNAME> něco naučila, tak to, že s takovou mocí musí být moudře nakládáno, jinak není užitečná.  Mohla srazit zlo k zemi, jak si vždy přála... ale ne vždy to pomohlo potřebným, jak si myslela. Po letech cestování si vzpomněla, že byla daleko užitečnější ve službách svého lidu.  Nalia se vrátila do Amnu a svého domova do tvrze de'Arnise. Zjistila, že není v rukou nikoho jiného, než Isaea Roenala, avšak již dlouho nebyla tím vzpurným dítetem, jak si myslela. Sama jej soudila, za jeho bezohlednosti. Prohlásila se dědicem vévodského titulu svého otce a ze strany místní šlechty již nebyly žádné námitky. Byli na ní a její magii krátcí. Nejdříve se radovali, to když se jí zahalení čarodějové snažili vzít její moc. Avšak Nalia všem ukázala, že není radno si s ní zahrávat a tak zahalení čarodějové poznali strach z jejího jména. Po čase se Nalia stala milovanou vládkyní, uznávanou arcimáginí a nakonec získala místo v Amnské Radě šesti. Vzrůstalo spoléhání šlechty na Naliino vůdcovství a stala se významnou tváří Amnu po mnoho let. Nepřetržitě bojovala za dobro obyčejných lidí a znechucovala nepřátele mezi šlechtou a zahalenými čaroději. O mnoho let později Nalia zemřela, obklopená svoji milovanou rodinou. Její poslední slova byla poděkování <CHARNAME> za to, že před dávnou dobou během putování s <PRO_HIMHER> poznala, jakou cestou se má ubrat.~
+
+@82725 = ~V následujících letech po svém vzkříšení strávil Sarevok mnoho let putováním po Zapomenutých Říších a jen vzácně se zdržel na jednom místě. V Beredusku prý zahnal vpád armády orků a předvedl při tom tak děsivou moc a zuřivost, že vystrašení místní lidé nevěděli, koho se mají víc obávat. A tak mu jen tiše zmizeli, bez očekávané odměny. Jako dobyvatel zavítal do Západní Brány, kde si brutálně vynutil svoji vůli nad městem, jen aby po pár měsících záhadně zmizel a ponechal zde své vlastní překvapené lidi na pospas rozhněvanému davu. Choval se jako člověk, který neznal sám sebe. Všechny příběhy se shodují v tom, že Sarevok byl soužená duše, která se drží na hranici mezi životem a smrtí a nemůže dosáhnout ani jednoho. Ti, jenž Sarevoka znali nejlépe (a kterých bylo málo), říkali, že proklínal bájného <CHARNAME> za to, že mu dal druhou šanci a jindy mu pro změnu za to děkoval. Nakonec z Říší úplně zmizel. Říká se, že sám vzal útokem Propast, nebo že si vzal život. Ale ve skutečnosti cestoval do Kara-Tur, aby zde pohřbil svoji jedinou pravou lásku, válečnici Tamoko. I když se již nikdy nevrátil, příběhy o něm stále kolují.~
+
+@82726 = ~Když se znovuzrozený Sarevok s <CHARNAME> rozloučil, choval se podle své pověsti. Daleko mocnější, než kdy předtím se vrátil do krajů, které kdysi znal. Staré nepřátelé jeho návštěva šokovala, ale ne na dlouho. Ani ne o měsíc později nastolil v Baldurově Bráně hrůzovládu, která mu zajistila plnou moc nad městem. Odpor byl rozdrcen, zatímco Sarevok začal budovat armádu pro dobývání v jeho jménu. Když nemohl mít božskou sílu svého otce, měl pořád dost té pozemské, aby nasytil svůj chtíč. Sarevok páchl ženskýma a velmi jej těšilo, když se jeho jméno stalo hořkým přídomkem na jazyku každého občana Mečového pobřeží. První oběti jeho hrůzostrašné armády byly lehce poraženy a Sarevokova moc rostla. Ať již válečník zuřil sebevíce, tak shledal, že už jej vítězství nevzrušují. Moc chutnala jako popel, ač se Sarevok mnohokráte pokoušel konat činy, které u něj vyvolávaly potěšení ze záchvatů zuřivosti. Nakonec jeho trůn začal upadat a tak v obavách uvítal nevyhnutelný příchod hrdinů, kteří jej vyhnali ani ne rok po jeho návratu. Sarevok prchl nocí, zapomněl na Baldurovu Bránu a vzdal se snů o moci. Stal se z něj člověk, kterého pronásledovala jeho druhá šance. Byl pronásledován svým dřívějším životem, který ani nebyl a možným životem, který se nikdy nemohl udát. Bez osudu a bez své opravdové duše bloudil Říšemi... někdy přinášel hrůzu a jindy zase nic, kromě svého znaveného srdce. Zanedlouho odešel navždy. Někdo říká, že našel svůj smysl ve velké poušti, kde do konce života budoval království. Jiní zase říkají, že cestoval po sférách, kde zahájil tažení proti velké hoře Celestie.  Pravda zůstává zahalena, ale příběhy stále setrvávají.~
+
+@82727 = ~Poté, co se Valygar rozloučil s <CHARNAME>, pokračoval několik let ve svých dobrodružstvích. Cestoval divočinou severního Faerunu a stal se běžným pozorovatelem v oblasti Hlubiny. Později se nakonec spokojeně vrátil do Athkatly a odešel do ústraní. Ve svém rodinném sídle vedl život v rozjímání, jak si vždycky přál.  Z nátlaku obdivovatelů místní šlechty, kteří v něm viděli ideálního kandidáta, přijal místo vrchního komisaře. Nikdy po odpovědnosti netoužil, ale místo rád převzal, aby zatočil s narůstající korupcí ve městě. Mnoho let bylo Valygarovo jméno vyslovováno s odplivnutím každým kriminálníkem, nebo otrokářem, co si troufl páchnout do města. Valygar byl nebojácný, přetvořil městskou stráž v mocnost, kterou dokonce i sebevědomí zloději museli respektovat. Valygar a stínoví zloději se mnohokrát střetli, což nakonec vyústilo ve vzájemný respekt... leč nejrozvážnější hraničář nad nimi nakonec zvítězil. I pro něj bylo udivující, když nakonec obnovil dobré jméno Corthalů v Athkatle a oženil se.  Jeho jediný syn, pýcha jeho života, si vzal rady svého otce k srdci. Valygar jej vedl k tomu, aby se stal hlavou zahalených čarodějů a jejich největším vykonavatelem reforem a tak pro jednou ve svém životě pocítil pýchu. Vzpomínal na to, jakým byl kdysi člověkem, který prchl své historii do hlubokých lesů Amnu. Hraničář byl vděčný, že <CHARNAME> vstoupil do jeho života a přál si, aby se jeho starému příteli navždy dobře dařilo.~
+
+@82728 = ~Poté, co se Viconia rozloučila s <CHARNAME>, po krátký čas cestovala a nakonec uvnitř mohutného města Hlubina založila kult zasvěcený Shar. Jeden z jejích následovníků ji však zradil, a tím poštval rozzuřenou Viconii k vyhlazení celého kultu. Shar tento čin Viconii neodpustila a vzala jí její schopnosti. Avšak Viconia tvrdohlavě odmítla pykat a namísto toho odešla z Hlubiny a začala bloudit Říšemi. Temná elfka se stala známá jako nevyzpytatelná a mocná postava příběhů, které se o ní šířily... a ačkoli bylo známo, že již Shar neuctívá, taktéž se dobře vědělo, že její kněžské schopnosti byly stále ohromující. Koho tehdy temná dáma uctívala bylo jejím dobře střeženým tajemstvím. Údajně vytvořila vojsko proti Vaasanovi, králi čarodejů, zlomyslně se pokoušela zmařit jeho vládu nad královstvím a jenom stěží byla poražena po několika prohraných bitvách. Viconia zamezila pokusu rytířů Štítu zabrat Calimport... jenom proto, aby jej o den později zabrala pro sebe a nastolila vládu teroru a ukrutností, o které bylo po několik let později zmiňováno s třesoucí se hrůzou. Říká se, že Viconia opustila Calimport a vrátila se do Podtemna, odkud přišla. Nebyl to však mírumilovný návrat, jelikož si Viconia mezi drowy vybojovala moc a zastavila dokonce samotnou Lolth. Viconia říkala, že její povahu vyzkoušely oba světy a že jí přinesla zásluhy. Udělala drowy silnými tam, kde byli zrovna slabí. Co se nakonec s Viconii stalo, je dle zvěstí velkou neznámou obestřenou tajemstvím... ale říká se, že ani velká pavoučí královna již nikdy nebude odpočívat v klidu.~
+
+@82729 = ~Poté, co se Viconia rozloučila s <CHARNAME>, dlouho cestovala. Stále se setkávala s nevědomostí a nenávistí od těch, co znali její původ, ale tehdy se více než kdy předtím rozhodla, že se zařídí a oddělí od dědictví temných elfů.
+Vstoupila do nejhlubších sfér pekla, bojovala tam po boku <CHARNAME>, který se stal bohem... a skryla tak svou tvář před povrchem o něco déle. Dokonce i když ji Shar, její bohyně temnoty a ztráty, úplně opustila, Viconia zůstala nelítostná. Příběhy o ní sílily, když její přítomnost pocítili další a další kraje, kde byla často za zachránkyni, kterou nevděčně vyhnali kvůli podezírání a ze strachu. Viconia stále cestovala, odmítala společnost blízkých cestujících a dobrodruhů, a nikdy nenalezla to, čemu by opravdu mohla říkat domov. Její osud jí patřil a ona o něj usilovala za vlastních okolností. Co se nakonec s Viconií stalo, není jasné. Ta největší legenda o ní je také nanejvýš nepravděpodobná, i když se jí, kvůli jejímu setrvávání, připisuje důvěryhodnost. Vypráví se o tom, jak Viconia zachránila elfy ze Suldanessellaru od úkladů Zentarimu, jak udatně bojovala proti agentům této organizace... a jak nakonec svým tělem bolestně vykryla ránu smrtícího šípu, který byl směřován na královnu Ellesime. Jakmile Viconia přišla k sobě, užasla nad zjištěním, že jí tento skutek zajistil okamžité přijetí mezi elfy Suldanessellaru, kteří své drowí sestře odpustili. Od královny Ellesime získala největší pocty Seldarinu. Byla prvním takto vyznamenaným drowem vůbec, a tak spravedlivě uvítaná Viconia opět nalezla domov na Stromu života. Viconia byla zřejmě tímto gestem dojata... Říká se, že i když tuto nabídku královny zvážila, tak se prý nakonec Ellesime pouze hluboce uklonila a tiše opustila Suldanessellar navždy. Viconii již nikdo nikdy nespatřil.~
+
+@82730 = ~A co Imoen, věčné dítě? Během putování s <CHARNAME> hodně přemýšlela o věcech, o kterých se později nechtěla bavit, ale její duši to nikdy nezlomilo. Oddělila se od svých společníků, aby nalezla svůj osud, daleko ze stínu svého sourozence. Na chvíli se vrátila do Svítící tvrze, kde při své impozantní moci již lépe ocenila zdejší svazky. Zde si vzpomněla na skromnější začátky s <CHARNAME> a Gorionem, a potěšilo ji, že kráčela ve stopách svého pěstouna. I když byla Imoen požádána, aby zde zůstala, usoudila, že je Svítící tvrz nějaká menší, než si pomatovala a vydala se za hranice za dobrodružstvími.  Koluje spousta příběhů o tom, jak se Imoen stala arcimáginí. Za svůj život vystřídala spoustu dalších jmen, některá byla tajuplná a zlověstná, zatímco jiná byla výstřední a legrační, vzhledem k moci, kterou tato skvělá žena vlastnila. Avšak každý, kdo znal Imoen z jejího mládí, by ji poznal ihned, i kdyby měla jakékoliv jméno... věk ani moudrost nemohly zakrýt zlomyslný záblesk v jejích očích, nebo hbitý úšklebek, kterým vítala své přátele. Stala se důvěrnou přítelkyní Khelbena "Černé hole" Arunsuna a byla často spojována s příběhem, týkajícím se velkého Elminstera, ve kterém se prý jeden den bavila vykrádáním mudrcových kapes a poté jej čtyři měsíce předbíhala ve veselých kouzelnických honech napříč Faerunem. Přesná podoba příběhu není známa... i když zcela jistě tomu nebylo tak, že by Imoen povzbuzovala starého podivína, aby nebyl takový nekňuba. Její pozdější přátelství s Elminsterem to jasně dokazuje. Později se vyprávělo, že Imoen založila zlodějskou gildu, která působila po celém pobřeží až k Letohradu a soupeřila se Stínovými zloději, Zentarimem a dokonce bojovala s drakem, protože (jak se v příběhu vypráví) "byl na ni drzý". O Imoen bylo známo, že se občas smutně pousměje a přemýšlí o návratu ke své staré kamarádce, <CHARNAME>... a pak ji hned napadne nějaká nestydatě legrační myšlenka, která ji přiměje k dalším pletichám. Zdá se, že někteří lide se, díky bohu, nikdy nezmění.~
+
+@82731 = ~A co Imoen, věčné dítě? Během putování s <CHARNAME> hodně přemýšlela o věcech, o kterých se později nechtěla bavit, ale její duši to nikdy nezlomilo. Oddělila se od svých společníků, aby nalezla svůj osud, daleko ze stínu svého sourozence. Na chvíli se vrátila do Svítící tvrze, kde při své impozantní moci již lépe ocenila zdejší svazky. Zde si vzpomněla na skromnější začátky s <CHARNAME> a Gorionem, a potěšilo ji, že kráčela ve stopách svého pěstouna. I když byla Imoen požádána, aby zde zůstala, usoudila, že je Svítící tvrz nějaká menší, než si pomatovala a vydala se za hranice za dobrodružstvími.  Koluje spousta příběhů o tom, jak se Imoen stala arcimáginí. Za svůj život vystřídala spoustu dalších jmen, některá byla tajuplná a zlověstná, zatímco jiná byla výstřední a legrační, vzhledem k moci, kterou tato skvělá žena vlastnila. Avšak každý, kdo znal Imoen z jejího mládí, by ji poznal ihned, i kdyby měla jakékoliv jméno... věk ani moudrost nemohly zakrýt zlomyslný záblesk v jejích očích, nebo hbitý úšklebek, kterým vítala své přátele. Stala se důvěrnou přítelkyní Khelbena "Černé hole" Arunsuna a byla často spojována s příběhem, týkajícím se velkého Elminstera, ve kterém se prý jeden den bavila vykrádáním mudrcových kapes a poté jej čtyři měsíce předbíhala ve veselých kouzelnických honech napříč Faerunem. Přesná podoba příběhu není známa... i když zcela jistě tomu nebylo tak, že by Imoen povzbuzovala starého podivína, aby nebyl takový nekňuba. Její pozdější přátelství s Elminsterem to jasně dokazuje. Později se vyprávělo, že Imoen založila zlodějskou gildu, která působila po celém pobřeží až k Letohradu a soupeřila se Stínovými zloději, Zentarimem a dokonce bojovala s drakem, protože (jak se v příběhu vypráví) "byl na ni drzý". O Imoen bylo známo, že se občas smutně pousměje a přemýšlí o návratu ke svému starému příteli, <CHARNAME>... a pak ji hned napadne nějaká nestydatě legrační myšlenka, která ji přiměje k dalším pletichám. Zdá se, že někteří lide se, díky bohu, nikdy nezmění.~
+
+@82732 = ~Viconia a <CHARNAME> pokračovali ve svých dobrodružstvích po mnoho let. Poté získali značného věhlasu, když sehráli hlavní roli ve dvou válkách, jenž otřásly Mečovým pobřežím. Časem postavení <CHARNAME> v Říších značně rostlo a jeho temná panna vždy stála po jeho boku. Viconia měla nakonec s <CHARNAME> dítě, byla to událost, co mezi nimi způsobila hodně hádek a svárů, které skončily jejich krátkým odloučením. Nicméně, narození syna <CHARNAME> Viconii navždy změnilo. Vrátila se k <CHARNAME> a přesvědčila jej, aby se nakonec usadili v Baldurově Bráně. Zcela se věnovala výchově svého syna a učila jej, jak žijí drowové tak jako žijí lidé <CHARNAME>. Rovněž žasla nad jeho schopnostmi, které již jako klučina předváděl. Přestože velmi ráda sledovala porozumění v jeho očích, nedožila se toho, vidět jej vyrůstat. Viconia byla sice velmi mocnou kněžkou a imunní na většinu běžných jedů, ale jedu pomsty pavoučí královny šlo jen ztěží odolat a její snaha byla marná. Byla otrávena služebníkem bohyně Lolth. <CHARNAME> v hněvu naříkal, když se i ta nejmocnější magie použitá na léčbu jeho ženy, ukázala jako neúčinná. Ještě než Viconia skonala, pošeptala v soukromí <CHARNAME> svá poslední slova a ta jsou neznámá. Avšak příběhy jasně praví, jak těsně v náručí držel <CHARNAME> mrtvé tělo své temné panny a jak přitom plakal. A s ním plakalo celé město, trpěli tolik její ztrátou, protože si před tím nikdy neuvědomili, že mají někoho tak drahocenného. Zdrcený <CHARNAME> Baldurovu Bránu opustil a ve skrytu daleko odsud vychoval svého syna. Dále už se příběhy liší. Některé praví, že začal vést křížovou výpravu proti drowům z Podtemna, jiné tvrdí, že se stal hrdinou ve vzdálených severních zemích. Ty další zase s jistotou praví, že <CHARNAME> bojoval proti samotné Lolth v propastní jámě pavučiny démonů. Všechny jsou však zajedno v tom, že bývalého Bhaalova syna navždy změnila jeho láska k temné panně. A co jeho syn, který byl vychován dvěmi z nejmocnějších bytostí Říší? Vznikly o něm takové pověsti, co se vyrovnaly těm o jeho otci. Ale to už je úplně jiné vyprávění...~
+
+@82734 = ~Po svém návratu do Amkethranu začal Balthazar uskutečňovat změny k lepšímu. Hodně se poučil od své kamarádky a sestry o významu slova "dobro". Svůj pocit viny si s sebou nesl vždy; připomínal si nedělat znovu stejné chyby. V dosahu jeho hlídek došlo k vymýcení zbývajících zločinů, což přitáhlo nové osadníky a obchodníky. Amkethran po několika letech vyrostl v prospěšné město a kulturní centrum celého kraje, jenž bylo proslulé svým mírem a soucitem. Balthazar se také zasadil o vytvoření klášterních stráží; skupiny těch nejlepších paladinů a mnichů, co odpřísáhli chránit obyčejné lidi od násilí jakékoliv podoby. Jeho skutky si rychle zasloužily úctu a důvěru jeho lidu. Říká se, že v Balthazarově pokročilém věku, kdy jeho práce skončila, býval často k nalezení, jak pozoruje noční oblohu a vzpomíná na <CHARNAME>. Později Balthazar navždy opustil Amkethran při své pouti do Svítící tvrze...... dát tak poslední dík míru, který nalezl a shlédnout skromný začátek legendy.~
+
+@82760 = ~Po svém návratu do Amkethranu začal Balthazar uskutečňovat změny k lepšímu. Hodně se poučil od svého přítele a sourozence o významu slova "dobro". Svůj pocit viny si s sebou nesl vždy; připomínal si nedělat znovu stejné chyby. V dosahu jeho hlídek došlo k vymýcení zbývajících zločinů, což přitáhlo nové osadníky a obchodníky. Amkethran po několika letech vyrostl v prospěšné město a kulturní centrum celého kraje, jenž bylo proslulé svým mírem a soucitem. Balthazar se také zasadil o vytvoření klášterních stráží; skupiny těch nejlepších paladinů a mnichů, co odpřísáhli chránit obyčejné lidi od násilí jakékoliv podoby. Jeho skutky si rychle zasloužily úctu a důvěru jeho lidu. Říká se, že v Balthazarově pokročilém věku, kdy jeho práce skončila, býval často k nalezení, jak pozoruje noční oblohu a vzpomíná na <CHARNAME>. Později Balthazar navždy opustil Amkethran při své pouti do Svítící tvrze...... dát tak poslední dík míru, který nalezl a shlédnout skromný začátek legendy.~
+
+@82785 = ~Bodhi ochutnala božskou sílu v podobě duše <CHARNAME>. Jak s časem odvály její poslední stopy, začala po ní prahnout více, propadla ukrutné nenávisti, rovněž jako se stala posedlou znovudosažením svých úmyslů. Lidé podél Mečového pobřeží poznali strach, když se Bodhi koupala v jejich krvi a hasila tak svou žízeň po chaosu a smrti. Lidé začali opouštět vesnice, končící na cestě jako oběti věci plížící se nocí. Její jméno se stalo symbolem hrůzy pro chrámy široko a daleko, které se ji marně pokoušely polapit. Později bylo nalezeno mnoho mocných knězů s vysátou krví a v mukách provázených leptáním jejich pobledlých rysů. Bodhi po čase pocítila ledové sevření svého prokletí. Zoufalství ve spojení se strachem drásalo každičkou nitku jejího bytí. Touha po chaosu zanikla a ona opět bojovala o přežití. Ctižádost, která ji kdysi pobídla k našeptávání snů o moci do uší jejího bratra, ji nyní přivedla zpět na místo, které před dávnou dobou nazývala domovem. Do Suldanessellaru. U bran se setkala s Ellesime. A též u bran zatančila Bodhi naposled. Mezi oběmi čiře hořela pomsta, jenž volala po krvi. Bodhi se hnala za mocí Stromu života a Ellesime naříkala při vzpomínce na Joneletha. Skončily v sevření a pomsta spravedlivě určila vítěze, a to kůlem probodnutým skrze temné srdce Bodhi, jejíž prokletí za živa byla smrt.~

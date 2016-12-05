@@ -1,9 +1,0 @@
-IF
-  ActionListEmpty()
-  HaveSpell(WIZARD_RESIST_FEAR)
-  See(NearestMyGroupOfType)
-  StateCheck(LastSeenBy(Myself),STATE_PANIC)
-THEN
-  RESPONSE #100
-    Spell(LastSeenBy(Myself),WIZARD_RESIST_FEAR)
-END

@@ -1,7 +1,0 @@
-IF
-  ActionListEmpty()
-THEN
-  RESPONSE #100
-    EquipMostDamagingMelee()
-    AttackReevaluate(LastSeenBy(Myself),45)
-END

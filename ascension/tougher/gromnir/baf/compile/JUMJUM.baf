@@ -1,0 +1,234 @@
+IF
+  Die()
+THEN
+  RESPONSE #100
+    Shout(ALERT)
+END
+
+IF
+  BreakingPoint()
+THEN
+  RESPONSE #100
+    DisplayStringHead(Myself,49766)
+    Shout(ASSIST)
+  RESPONSE #100
+    DisplayStringHead(Myself,49767)
+    Shout(ASSIST)
+  RESPONSE #100
+    DisplayStringHead(Myself,49768)
+    Shout(ASSIST)
+END
+
+IF
+  AttackedBy([GOODCUTOFF],DEFAULT)
+  !Allegiance(Myself,ENEMY)
+THEN
+  RESPONSE #100
+    Shout(ALERT)
+    Enemy()
+END
+
+IF
+  ActionListEmpty()
+  See([GOODCUTOFF])
+  Allegiance(Myself,ENEMY)
+  Global("ShoutedAlert","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("ShoutedAlert","LOCALS",1)
+    Shout(ALERT)
+    Continue()
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  See([EVILCUTOFF])
+  InMyGroup(LastSeenBy(Myself))
+  HPPercentLT(Myself,25)
+  HPGT(Myself,1)
+  !Range(LastSeenBy(Myself),8)
+  !GlobalTimerNotExpired("Whined","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Whined","LOCALS",6)
+    DisplayStringHead(Myself,46151)
+    Shout(ASSIST)
+  RESPONSE #100
+    SetGlobalTimer("Whined","LOCALS",6)
+    DisplayStringHead(Myself,49763)
+    Shout(ASSIST)
+  RESPONSE #100
+    SetGlobalTimer("Whined","LOCALS",6)
+    DisplayStringHead(Myself,49764)
+    Shout(ASSIST)
+  RESPONSE #100
+    SetGlobalTimer("Whined","LOCALS",6)
+    DisplayStringHead(Myself,49765)
+    Shout(ASSIST)
+END
+
+IF
+  ActionListEmpty()
+  HPPercentLT(Myself,50)
+  !GlobalTimerNotExpired("DrankPotionTimer","LOCALS")
+  HasItem("POTN55",Myself)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("DrankPotionTimer","LOCALS",6)
+    DisplayStringHead(Myself,46150)
+    UseItem("POTN55",Myself)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  OR(2)
+  Range(NearestMyGroupOfType,20)
+  See(NearestMyGroupOfType([0.0.0.CLERIC_ALL]))
+  HPPercentLT(Myself,35)
+  !GlobalTimerNotExpired("CalledForHealing","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CalledForHealing","LOCALS",6)
+    DisplayStringHead(Myself,72808)
+    Shout(HEALME)
+    Continue()
+END
+
+IF
+  Heard(NearestMyGroupOfType,HEALME)
+  !StateCheck(LastHeardBy(Myself),STATE_DEAD)
+  HPPercentGT(Myself,75)
+  See(LastHeardBy(Myself))
+  Range(LastHeardBy(Myself),10)
+  !Range(NearestMyGroupOfType([0.0.0.CLERIC_ALL]),20)
+  !NumItemsGT("POTN55",LastHeardBy(Myself),0)
+  NumItemsGT("POTN55",Myself,1)
+  !GlobalTimerNotExpired("GaveAwayPotion","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("GaveAwayPotion","LOCALS",12)
+    DisplayStringHead(Myself,72809)
+    GiveItem("POTN55",LastHeardBy(Myself))
+    SmallWait(2)
+    ActionOverride(LastHeardBy(Myself),DisplayStringHead(Myself,73896))
+    Continue()
+END
+
+IF
+  !Allegiance(Myself,ENEMY)
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  !StateCheck(LastSeenBy(Myself),STATE_DEAD)
+  !StateCheck(LastSeenBy(Myself),STATE_STONE_DEATH)
+THEN
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  AttackedBy([ANYONE],DEFAULT)
+  See(LastAttackerOf(Myself))
+  !StateCheck(LastSeenBy(Myself),STATE_STONE_DEATH)
+THEN
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  Range(NearestEnemyOf(Myself),4)
+  See(NearestEnemyOf(Myself))
+  !StateCheck(LastSeenBy(Myself),STATE_DEAD)
+  !StateCheck(LastSeenBy(Myself),STATE_STONE_DEATH)
+THEN
+  RESPONSE #100
+    Continue()
+END
+
+IF
+  !Allegiance(LastSeenBy(Myself),GOODCUTOFF)
+  See([GOODCUTOFF])
+THEN
+  RESPONSE #100
+    MoveToObject([GOODCUTOFF])
+END
+
+IF
+  OR(2)
+  !Allegiance(LastSeenBy(Myself),GOODCUTOFF)
+  !See([GOODCUTOFF])
+THEN
+  RESPONSE #100
+    RandomWalkContinuous()
+END
+
+IF
+  ActionListEmpty()
+  HPPercentLT(Myself,75)
+  RandomNum(3,1)
+  See([ANYONE])
+  Range([ANYONE],30)
+  !StateCheck([ANYONE],STATE_STONE_DEATH)
+  !GlobalTimerNotExpired("basgaze","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("basgaze","LOCALS",6)
+    PlaySound("SIRIN06")
+    ReallyForceSpellRES("basilisk",[ANYONE])
+END
+
+IF
+  ActionListEmpty()
+  Range(LastSeenBy(Myself),30)
+  !StateCheck(LastSeenBy(Myself),STATE_STONE_DEATH)
+  RandomNum(2,2)
+  !GlobalTimerNotExpired("basgaze","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("basgaze","LOCALS",6)
+    PlaySound("SIRIN06")
+    ReallyForceSpellRES("basilisk",LastSeenBy(Myself))
+END
+
+IF
+  HPPercentLT(Myself,20)
+  OR(2)
+  HasItem("POTN55",Myself)
+  Range(NearestMyGroupOfType,25)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    RunAwayFrom(NearestEnemyOf(Myself),45)
+    SetInterrupt(TRUE)
+END
+
+IF
+  HPPercentLT(Myself,20)
+  !HasItem("POTN55",Myself)
+  !Range(NearestMyGroupOfType,15)
+THEN
+  RESPONSE #100
+    DisplayStringHead(Myself,49767)
+    EscapeArea()
+END
+
+IF
+  ActionListEmpty()
+  Range(NearestEnemyOf(Myself),10)
+  RandomNum(2,1)
+THEN
+  RESPONSE #100
+    RunAwayFrom(NearestEnemyOf(Myself),45)
+END
+
+IF
+  ActionListEmpty()
+THEN
+  RESPONSE #100
+    AttackReevaluate(LastSeenBy(Myself),30)
+END
+

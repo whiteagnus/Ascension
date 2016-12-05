@@ -1,0 +1,10 @@
+IF
+  ActionListEmpty()
+  HaveSpell(WIZARD_EMOTION_HOPELESSNESS)
+  !Range(LastSeenBy(Myself),5)
+  !HasBounceEffects(LastSeenBy(Myself))
+  RandomNum(2,1)
+THEN
+  RESPONSE #100
+    Spell(LastSeenBy(Myself),WIZARD_EMOTION_HOPELESSNESS)
+END

@@ -1,0 +1,10 @@
+IF
+  Allegiance(Myself,ENEMY)
+  Range(Nearestenemyof(Myself),10)
+  !GlobalTimerNotExpired("WhirlwindAttack","LOCALS")
+  HaveSpellRES("SPCL900")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("WhirlwindAttack","LOCALS",6)
+    SpellRES("SPCL900",Myself)
+END

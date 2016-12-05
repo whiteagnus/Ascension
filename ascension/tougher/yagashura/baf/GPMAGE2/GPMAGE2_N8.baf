@@ -1,0 +1,15 @@
+IF
+  ActionListEmpty()
+  See(NearestEnemyOf(Myself))
+  HaveSpell(WIZARD_SHADOW_DOOR)
+  !StateCheck(Myself,STATE_INVISIBLE)
+  !StateCheck(Myself,STATE_IMPROVEDINVISIBILITY)
+  !StateCheck(Myself,STATE_POISONED)
+  !GlobalTimerNotExpired("SpecialDefenseUp","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("SpecialDefenseUp","LOCALS",54)
+    IncrementGlobal("NumDefenses","LOCALS",1)
+    Spell(Myself,WIZARD_SHADOW_DOOR)
+    Continue()
+END

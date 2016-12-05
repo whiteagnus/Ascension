@@ -1,8 +1,0 @@
-IF
-	!Range(LastSeenBy(Myself),10)
-	GlobalTimerNotExpired("CalledShot","LOCALS")
-THEN
-	RESPONSE #100
-		EquipRanged()
-		AttackReevaluate(LastSeenBy(Myself),30)
-END

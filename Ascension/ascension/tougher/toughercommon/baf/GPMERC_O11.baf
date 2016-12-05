@@ -1,8 +1,0 @@
-IF
-	!HPPercentLT(Myself,20)
-	Range(LastSeenBy(Myself),8)
-THEN
-	RESPONSE #100
-		EquipMostDamagingMelee()
-		AttackReevaluate(LastSeenBy(Myself),45)
-END

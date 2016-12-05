@@ -1,0 +1,9 @@
+IF
+  !HasBounceEffects(Lastseenby(Myself))
+  !Range(Lastseenby(Myself),5)
+  HaveSpell(WIZARD_FINGER_OF_DEATH)
+  RandomNum(2,1)
+THEN
+  RESPONSE #100
+    Spell(Lastseenby(Myself),WIZARD_FINGER_OF_DEATH)
+END

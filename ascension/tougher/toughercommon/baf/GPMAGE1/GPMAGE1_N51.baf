@@ -1,0 +1,10 @@
+IF
+  ActionListEmpty()
+  HaveSpell(WIZARD_CONFUSION)
+  !StateCheck(LastSeenBy(Myself),STATE_CONFUSED)
+  !Range(LastSeenBy(Myself),5)
+  RandomNum(2,1)
+THEN
+  RESPONSE #100
+    Spell(LastSeenBy(Myself),WIZARD_CONFUSION)
+END

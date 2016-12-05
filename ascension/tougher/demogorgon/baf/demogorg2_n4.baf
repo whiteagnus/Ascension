@@ -1,0 +1,11 @@
+IF
+  Global("StoppedTime","LOCALS",2)
+  !GlobalTimerNotExpired("breathspell","LOCALS")
+  RandomNum(2,2)
+  See(NearestEnemyOf(Myself))
+THEN
+  RESPONSE #100
+    SetGlobalTimer("breathspell","LOCALS",1000)
+    IncrementGlobal("demospell","LOCALS",1)
+    ForceSpell(NearestEnemyOf(Myself),WIZARD_DRAGONS_BREATH)
+END

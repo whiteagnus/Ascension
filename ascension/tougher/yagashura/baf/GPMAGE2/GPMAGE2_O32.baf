@@ -1,0 +1,8 @@
+IF
+  CheckStatLT(Lastseenby(Myself),50,RESISTMAGIC)
+  HaveSpell(WIZARD_MELF_ACID_ARROW)
+  RandomNum(3,1)
+THEN
+  RESPONSE #100
+    Spell(Lastseenby(Myself),WIZARD_MELF_ACID_ARROW)
+END

@@ -1,9 +1,0 @@
-IF
-  HaveSpell(WIZARD_DEATH_SPELL)
-  !HasBounceEffects(Lastseenby(Myself))
-  NumCreatureGT([GOODCUTOFF],4)
-  RandomNum(2,1)
-THEN
-  RESPONSE #100
-    Spell(Lastseenby(Myself),WIZARD_DEATH_SPELL)
-END

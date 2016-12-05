@@ -1,0 +1,11 @@
+IF
+  Global("StoppedTime","LOCALS",2)
+  !GlobalTimerNotExpired("finger","LOCALS")
+  RandomNum(4,2)
+  See(NearestEnemyOf(Myself))
+THEN
+  RESPONSE #100
+    SetGlobalTimer("finger","LOCALS",15)
+    IncrementGlobal("demospell","LOCALS",1)
+    ForceSpell(NearestEnemyOf(Myself),CLERIC_FINGER_OF_DEATH)
+END

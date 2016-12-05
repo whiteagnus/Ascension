@@ -1,0 +1,10 @@
+IF
+  ActionListEmpty()
+  HPGT(LastSeenBy(Myself),50)
+  !HasBounceEffects(LastSeenBy(Myself))
+  HaveSpell(WIZARD_MAZE)
+  RandomNum(2,1)
+THEN
+  RESPONSE #100
+    Spell(LastSeenBy(Myself),WIZARD_MAZE)
+END

@@ -1,0 +1,13 @@
+IF
+  Global("FORCETOBPARTYMOVE4000","GLOBAL",0)
+THEN
+  RESPONSE #100
+    LeaveAreaLUAPanic("AR4000","",[1300.1840],%FaceW%)
+    ActionOverride(Player1,LeaveAreaLUA("AR4000","",[1300.1840],%FaceW%))
+    ActionOverride(Player2,LeaveAreaLUA("AR4000","",[1300.1840],%FaceW%))
+    ActionOverride(Player3,LeaveAreaLUA("AR4000","",[1300.1840],%FaceW%))
+    ActionOverride(Player4,LeaveAreaLUA("AR4000","",[1300.1840],%FaceSW%))
+    ActionOverride(Player5,LeaveAreaLUA("AR4000","",[1300.1840],%FaceS%))
+    ActionOverride(Player6,LeaveAreaLUA("AR4000","",[1300.1840],%FaceS%))
+    SetGlobal("FORCETOBPARTYMOVE4000","GLOBAL",1)
+END

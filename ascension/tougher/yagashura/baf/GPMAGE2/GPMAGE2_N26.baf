@@ -1,0 +1,10 @@
+IF
+  ActionListEmpty()
+  HaveSpell(WIZARD_HORROR)
+  CheckStatLT(LastSeenBy(Myself),50,RESISTMAGIC)
+  CheckStatGT(LastSeenBy(Myself),8,SAVEVSSPELL)
+  RandomNum(4,1)
+THEN
+  RESPONSE #100
+    Spell(LastSeenBy(Myself),WIZARD_HORROR)
+END

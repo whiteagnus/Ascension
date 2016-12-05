@@ -1,0 +1,16 @@
+IF
+  See([PC])
+  Allegiance(Myself,ENEMY)
+  Global("Contingency1","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("Contingency1","LOCALS",1)
+    FaceObject(LastSeenBy(Myself))
+    DisplayString(Myself,73139)
+    ReallyForceSpell(Myself,WIZARD_STONE_SKIN)
+  RESPONSE #100
+    SetGlobal("Contingency1","LOCALS",1)
+    FaceObject(LastSeenBy(Myself))
+    DisplayString(Myself,73139)
+    ReallyForceSpell(Myself,WIZARD_HASTE)
+END

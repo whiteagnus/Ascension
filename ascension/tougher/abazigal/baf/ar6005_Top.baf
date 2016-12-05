@@ -1,0 +1,12 @@
+IF
+  OnCreation()
+  Global("JustEntered","AR6005",0)
+THEN
+  RESPONSE #100
+    SetGlobal("JustEntered","AR6005",1)
+    CreateCreature("DRAKE01",[706.1084],%FaceS%)
+    CreateCreature("DRAKE02",[1181.1096],%FaceS%)
+    CreateCreature("DRAKE03",[1575.997],%FaceS%)
+    CreateCreature("DRAKE04",[1618.669],%FaceS%)
+    CreateCreature("ABAZDG02",[1224.1287],%FaceS%)
+END

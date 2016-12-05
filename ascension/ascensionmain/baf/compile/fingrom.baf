@@ -1,0 +1,490 @@
+IF
+  HPLT(Myself,20)
+  Global("DeathScriptGrom","AR6200",0)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobal("DeathScriptGrom","AR6200",1)
+    ClearActions(Myself)
+    CreateVisualEffectObject("ICRMPARI",Myself)
+    CreateVisualEffectObject("SPROTECT",Myself)
+    ActionOverride("finmel01",ClearActions(Myself))
+    ReallyForceSpellDead("finmel01",0)
+    Kill(Myself)
+END
+
+IF
+  Global("IMPRISON","LOCALS",1)
+  Global("GromnirImprisoned","AR6200",0)
+THEN
+  RESPONSE #100
+    ClearActions(Myself)
+    SetInterrupt(FALSE)
+    SetGlobal("IMPRISON","LOCALS",0)
+    SetGlobal("GromnirImprisoned","AR6200",1)
+    DisplayStringHead(Myself,46151)  // ~help!~
+    SetInterrupt(TRUE)
+END
+
+IF
+  Global("CloseCombat","LOCALS",1)
+  GlobalTimerExpired("attacked","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobal("CloseCombat","LOCALS",0)
+    SetGlobalTimer("SafeForAWhile","LOCALS",6)
+END
+
+IF
+  Global("CloseCombat","LOCALS",0)
+  Global("safe","LOCALS",0)
+  GlobalTimerExpired("SafeForAWhile","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobal("safe","LOCALS",1)
+END
+
+IF
+  Global("CloseCombat","LOCALS",0)
+  AttackedBy(NearestEnemyOf(Myself),DEFAULT)
+  Range(NearestEnemyOf(Myself),8)
+THEN
+  RESPONSE #100
+    SetGlobal("CloseCombat","LOCALS",1)
+    SetGlobal("safe","LOCALS",0)
+    SetGlobalTimer("attacked","LOCALS",5)
+END
+
+IF
+  Global("CloseCombat","LOCALS",0)
+  AttackedBy(SecondNearestEnemyOf(Myself),DEFAULT)
+  Range(SecondNearestEnemyOf(Myself),8)
+THEN
+  RESPONSE #100
+    SetGlobal("CloseCombat","LOCALS",1)
+    SetGlobal("safe","LOCALS",0)
+    SetGlobalTimer("attacked","LOCALS",5)
+END
+
+IF
+  Global("CloseCombat","LOCALS",0)
+  AttackedBy(ThirdNearestEnemyOf(Myself),DEFAULT)
+  Range(ThirdNearestEnemyOf(Myself),8)
+THEN
+  RESPONSE #100
+    SetGlobal("CloseCombat","LOCALS",1)
+    SetGlobal("safe","LOCALS",0)
+    SetGlobalTimer("attacked","LOCALS",5)
+END
+
+IF
+  Global("CloseCombat","LOCALS",0)
+  AttackedBy(FourthNearestEnemyOf(Myself),DEFAULT)
+  Range(FourthNearestEnemyOf(Myself),8)
+THEN
+  RESPONSE #100
+    SetGlobal("CloseCombat","LOCALS",1)
+    SetGlobal("safe","LOCALS",0)
+    SetGlobalTimer("attacked","LOCALS",5)
+END
+
+IF
+  Global("CloseCombat","LOCALS",0)
+  HitBy([ANYONE],CRUSHING)
+  Range(NearestEnemyOf(Myself),8)
+THEN
+  RESPONSE #100
+    SetGlobal("CloseCombat","LOCALS",1)
+    SetGlobal("safe","LOCALS",0)
+    SetGlobalTimer("attacked","LOCALS",5)
+END
+
+IF
+  HPPercentLT(Myself,50)
+  !GlobalTimerNotExpired("DrankPotionTimer","LOCALS")
+  HasItem("POTN55",Myself)  // ~Potion of Superior Healing~
+THEN
+  RESPONSE #100
+    SetGlobalTimer("DrankPotionTimer","LOCALS",6)
+    DisplayStringHead(Myself,46150)  // ~quaffs a potion~
+    UseItem("POTN55",Myself)  // ~Potion of Superior Healing~
+END
+
+IF
+  Allegiance(Myself,ENEMY)
+  See(NearestEnemyOf(Myself))
+  !GlobalTimerNotExpired("Rage","LOCALS")
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  HaveSpell(BERSERKER_RAGE)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Rage","LOCALS",60)
+    SetGlobalTimer("Spell","LOCALS",6)
+    Spell(Myself,BERSERKER_RAGE)
+END
+
+IF
+  Allegiance(Myself,ENEMY)
+  CheckStatLT(Myself,40,RESISTCRUSHING)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  HaveSpell(WARRIOR_HARDINESS)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Spell","LOCALS",6)
+    Spell(Myself,WARRIOR_HARDINESS)
+END
+
+IF
+  Allegiance(Myself,ENEMY)
+  Range(NearestEnemyOf(Myself),8)
+  !StateCheck(Myself,STATE_HASTED)
+  !GlobalTimerNotExpired("Spell","LOCALS")
+  HaveSpell(WARRIOR_WHIRLWIND)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Spell","LOCALS",6)
+    Spell(Myself,WARRIOR_WHIRLWIND)
+END
+
+IF
+  !Allegiance(Myself,ENEMY)
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  OR(6)
+  See(SixthNearestEnemyOf(Myself))
+  See(FifthNearestEnemyOf(Myself))
+  See(FourthNearestEnemyOf(Myself))
+  See(ThirdNearestEnemyOf(Myself))
+  See(SecondNearestEnemyOf(Myself))
+  See(NearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  Range(Player1,15)
+  See(Player1)
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  Range(LastAttackerOf(Myself),8)
+  !StateCheck(LastAttackerOf(Myself),4032)
+  Global("CloseCombat","LOCALS",1)
+  !StateCheck(LastAttackerOf(Myself),STATE_PANIC)
+  !StateCheck(LastAttackerOf(Myself),STATE_STUNNED)
+  !StateCheck(LastAttackerOf(Myself),STATE_HELPLESS)
+  !StateCheck(LastAttackerOf(Myself),STATE_SLEEPING)
+  !Gender(LastAttackerOf(Myself),SUMMONED)
+  !Gender(LastAttackerOf(Myself),ILLUSIONARY)
+  See(LastAttackerOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  HPPercentLT("finabaz",50)  // finabaz
+  !StateCheck("finabaz",4032)  // finabaz
+  Range(LastTargetedBy("finabaz"),15)  // finabaz
+  !StateCheck(LastTargetedBy("finabaz"),4032)  // finabaz
+  !StateCheck(LastTargetedBy("finabaz"),STATE_STUNNED)  // finabaz
+  !StateCheck(LastTargetedBy("finabaz"),STATE_SLEEPING)  // finabaz
+  !StateCheck(LastTargetedBy("finabaz"),STATE_HELPLESS)  // finabaz
+  !StateCheck(LastTargetedBy("finabaz"),STATE_CONFUSED)  // finabaz
+  !CheckStatGT(LastTargetedBy("finabaz"),0,185)  // finabaz
+  RandomNum(2,1)
+  See(LastTargetedBy("finabaz"))  // finabaz
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  HPPercentLT("finilla",50)  // finilla
+  !StateCheck("finilla",4032)  // finilla
+  Range(LastTargetedBy("finilla"),15)  // finilla
+  !StateCheck(LastTargetedBy("finilla"),4032)  // finilla
+  !StateCheck(LastTargetedBy("finilla"),STATE_STUNNED)  // finilla
+  !StateCheck(LastTargetedBy("finilla"),STATE_SLEEPING)  // finilla
+  !StateCheck(LastTargetedBy("finilla"),STATE_HELPLESS)  // finilla
+  !StateCheck(LastTargetedBy("finilla"),STATE_CONFUSED)  // finilla
+  !CheckStatGT(LastTargetedBy("finilla"),0,185)  // finilla
+  RandomNum(2,1)
+  See(LastTargetedBy("finilla"))  // finilla
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  HPPercentLT("finsend",50)  // finsend
+  !StateCheck("finsend",4032)  // finsend
+  Range(LastTargetedBy("finsend"),15)  // finsend
+  !StateCheck(LastTargetedBy("finsend"),4032)  // finsend
+  !StateCheck(LastTargetedBy("finsend"),STATE_STUNNED)  // finsend
+  !StateCheck(LastTargetedBy("finsend"),STATE_SLEEPING)  // finsend
+  !StateCheck(LastTargetedBy("finsend"),STATE_HELPLESS)  // finsend
+  !StateCheck(LastTargetedBy("finsend"),STATE_CONFUSED)  // finsend
+  !CheckStatGT(LastTargetedBy("finsend"),0,185)  // finsend
+  RandomNum(2,1)
+  See(LastTargetedBy("finsend"))  // finsend
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  !StateCheck(NearestEnemyOfType([0.0.0.CLERIC_ALL]),STATE_SILENCED)
+  !StateCheck(NearestEnemyOfType([0.0.0.CLERIC_ALL]),STATE_STUNNED)
+  !StateCheck(NearestEnemyOfType([0.0.0.CLERIC_ALL]),STATE_PANIC)
+  !StateCheck(NearestEnemyOfType([0.0.0.CLERIC_ALL]),STATE_SLEEPING)
+  !CheckStatGT(NearestEnemyOfType([0.0.0.CLERIC_ALL]),0,185)
+  See(NearestEnemyOfType([0.0.0.CLERIC_ALL]))
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  !StateCheck(NearestEnemyOfType([0.0.0.MAGE_ALL]),STATE_SILENCED)
+  !StateCheck(NearestEnemyOfType([0.0.0.MAGE_ALL]),STATE_STUNNED)
+  !StateCheck(NearestEnemyOfType([0.0.0.MAGE_ALL]),STATE_PANIC)
+  !StateCheck(NearestEnemyOfType([0.0.0.MAGE_ALL]),STATE_SLEEPING)
+  !CheckStatGT(NearestEnemyOfType([0.0.0.MAGE_ALL]),0,185)
+  See(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  !CheckStatGT(SixthNearestEnemyOf(Myself),0,185)
+  OR(2)
+  !Gender(SixthNearestEnemyOf(Myself),SUMMONED)
+  LevelGT(SixthNearestEnemyOf(Myself),10)
+  OR(3)
+  CheckStatGT(SixthNearestEnemyOf(Myself),-5,ARMORCLASS)
+  StateCheck(SixthNearestEnemyOf(Myself),STATE_STUNNED)
+  HPPercentLT(SixthNearestEnemyOf(Myself),25)
+  Range(SixthNearestEnemyOf(Myself),15)
+  See(SixthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  !CheckStatGT(FifthNearestEnemyOf(Myself),0,185)
+  OR(2)
+  !Gender(FifthNearestEnemyOf(Myself),SUMMONED)
+  LevelGT(FifthNearestEnemyOf(Myself),10)
+  OR(3)
+  CheckStatGT(FifthNearestEnemyOf(Myself),-5,ARMORCLASS)
+  StateCheck(FifthNearestEnemyOf(Myself),STATE_STUNNED)
+  HPPercentLT(FifthNearestEnemyOf(Myself),25)
+  Range(FifthNearestEnemyOf(Myself),15)
+  See(FifthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  !CheckStatGT(FourthNearestEnemyOf(Myself),0,185)
+  OR(2)
+  !Gender(FourthNearestEnemyOf(Myself),SUMMONED)
+  LevelGT(FourthNearestEnemyOf(Myself),10)
+  OR(3)
+  CheckStatGT(FourthNearestEnemyOf(Myself),-5,ARMORCLASS)
+  StateCheck(FourthNearestEnemyOf(Myself),STATE_STUNNED)
+  HPPercentLT(FourthNearestEnemyOf(Myself),25)
+  Range(FourthNearestEnemyOf(Myself),15)
+  See(FourthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  !CheckStatGT(ThirdNearestEnemyOf(Myself),0,185)
+  OR(2)
+  !Gender(ThirdNearestEnemyOf(Myself),SUMMONED)
+  LevelGT(ThirdNearestEnemyOf(Myself),10)
+  OR(3)
+  CheckStatGT(ThirdNearestEnemyOf(Myself),-5,ARMORCLASS)
+  StateCheck(ThirdNearestEnemyOf(Myself),STATE_STUNNED)
+  HPPercentLT(ThirdNearestEnemyOf(Myself),25)
+  Range(ThirdNearestEnemyOf(Myself),15)
+  See(ThirdNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  !CheckStatGT(SecondNearestEnemyOf(Myself),0,185)
+  OR(2)
+  !Gender(SecondNearestEnemyOf(Myself),SUMMONED)
+  LevelGT(SecondNearestEnemyOf(Myself),10)
+  OR(3)
+  CheckStatGT(SecondNearestEnemyOf(Myself),-5,ARMORCLASS)
+  StateCheck(SecondNearestEnemyOf(Myself),STATE_STUNNED)
+  HPPercentLT(SecondNearestEnemyOf(Myself),25)
+  Range(SecondNearestEnemyOf(Myself),15)
+  See(SecondNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  !CheckStatGT(NearestEnemyOf(Myself),0,185)
+  OR(2)
+  !Gender(NearestEnemyOf(Myself),SUMMONED)
+  LevelGT(NearestEnemyOf(Myself),10)
+  OR(3)
+  CheckStatGT(NearestEnemyOf(Myself),-5,ARMORCLASS)
+  StateCheck(NearestEnemyOf(Myself),STATE_STUNNED)
+  HPPercentLT(NearestEnemyOf(Myself),25)
+  Range(NearestEnemyOf(Myself),15)
+  See(NearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  !CheckStatGT(WorstAC(Myself),0,185)
+  !Gender(WorstAC(Myself),SUMMONED)
+  !StateCheck(LastSeenBy(Myself),STATE_STUNNED)
+  Range(WorstAC(Myself),15)
+  See(WorstAC(Myself))
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  Range(SecondNearestEnemyOf(Myself),8)
+  CheckStatGT(SecondNearestEnemyOf(Myself),4,NUMBEROFATTACKS)
+  !StateCheck(SecondNearestEnemyOf(Myself),STATE_PANIC)
+  !StateCheck(SecondNearestEnemyOf(Myself),STATE_STUNNED)
+  !StateCheck(SecondNearestEnemyOf(Myself),STATE_HELPLESS)
+  !StateCheck(SecondNearestEnemyOf(Myself),STATE_SLEEPING)
+  See(SecondNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  Range(NearestEnemyOf(Myself),8)
+  CheckStatGT(NearestEnemyOf(Myself),4,NUMBEROFATTACKS)
+  !StateCheck(NearestEnemyOf(Myself),STATE_PANIC)
+  !StateCheck(NearestEnemyOf(Myself),STATE_STUNNED)
+  !StateCheck(NearestEnemyOf(Myself),STATE_HELPLESS)
+  !StateCheck(NearestEnemyOf(Myself),STATE_SLEEPING)
+  See(NearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  Allegiance(LastSeenBy(Myself),EVILCUTOFF)
+  See([GOODCUTOFF])
+THEN
+  RESPONSE #100
+    MoveToObject([GOODCUTOFF])
+END
+
+IF
+  OR(2)
+  !Allegiance(LastSeenBy(Myself),GOODCUTOFF)
+  !See([GOODCUTOFF])
+  !Range(Player1,15)
+THEN
+  RESPONSE #100
+    MoveToObject(Player1)
+END
+
+IF
+  OR(2)
+  !Allegiance(LastSeenBy(Myself),GOODCUTOFF)
+  !See([GOODCUTOFF])
+  Range(Player1,15)
+THEN
+  RESPONSE #100
+    RandomWalk()
+END
+
+IF
+  StateCheck(LastSeenBy(Myself),STATE_DEAD)
+  See(NearestEnemyOf(Myself))
+THEN
+  RESPONSE #100
+    AttackOneRound(NearestEnemyOf(Myself))
+END
+
+IF
+  StateCheck(LastSeenBy(Myself),STATE_DEAD)
+  !See(NearestEnemyOf(Myself))
+THEN
+  RESPONSE #100
+    MoveToObject(Player1)
+END
+
+IF
+  Global("xyxManeuvered","LOCALS",0)
+  GlobalTimerExpired("xyxAttack","LOCALS")
+  !StateCheck(Myself,STATE_HASTED)
+THEN
+  RESPONSE #100
+    SetGlobal("xyxManeuvered","LOCALS",1)
+    RandomWalkContinuous()
+END
+
+IF
+  Allegiance(LastSeenBy(Myself),GOODCUTOFF)
+  OR(2)
+  CheckStatLT(LastSeenBy(Myself),100,RESISTCRUSHING)
+  CheckStatLT(LastSeenBy(Myself),100,RESISTCOLD)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("xyxAttack","LOCALS",5)
+    SetGlobal("xyxManeuvered","LOCALS",0)
+    Attack(LastSeenBy(Myself))
+END
+
+IF
+  True()
+THEN
+  RESPONSE #100
+    RandomWalkContinuous()
+END
+

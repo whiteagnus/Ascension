@@ -1,0 +1,13 @@
+IF
+  See(Nearestenemyof(Myself))
+  OR(2)
+    CheckStatGT(Myself,0,IMPROVEDHASTE)
+    StateCheck(Myself,STATE_NORMAL)
+  HaveSpell(WIZARD_IMPROVED_HASTE)
+  See(Nearestmygroupoftype)
+  !StateCheck(Lastseenby(Myself),STATE_HASTED)
+  CheckStat(Lastseenby(Myself),0,IMPROVEDHASTE)
+THEN
+  RESPONSE #100
+    Spell(Lastseenby(Myself),WIZARD_IMPROVED_HASTE)
+END

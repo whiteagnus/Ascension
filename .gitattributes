@@ -1,17 +1,11 @@
-# Auto detect text files and perform LF normalization
-* text=auto
-
-# Custom for Visual Studio
-*.cs     diff=csharp
-
-# Standard to msysgit
-*.doc	 diff=astextplain
-*.DOC	 diff=astextplain
-*.docx diff=astextplain
-*.DOCX diff=astextplain
-*.dot  diff=astextplain
-*.DOT  diff=astextplain
-*.pdf  diff=astextplain
-*.PDF	 diff=astextplain
-*.rtf	 diff=astextplain
-*.RTF	 diff=astextplain
+*.ini text eol=crlf
+*.txt text eol=crlf
+*.htm text eol=crlf
+*.html text eol=crlf
+*.gitignore text eol=crlf
+*.gitattributes text eol=crlf
+*.gif binary
+*.ico binary
+*.jpg binary
+*.png binary
+*.exe binary

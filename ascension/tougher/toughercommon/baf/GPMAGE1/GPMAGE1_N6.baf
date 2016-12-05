@@ -1,0 +1,15 @@
+IF
+  ActionListEmpty()
+  Global("DefenseSpell","LOCALS",1)
+  See(NearestEnemyOf(Myself))
+  HaveSpell(WIZARD_PROJECT_IMAGE)
+  !GlobalTimerNotExpired("SpecialDefenseUp","LOCALS")
+  GlobalLT("NumDefenses","LOCALS",2)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("SpecialDefenseUp","LOCALS",84)
+    IncrementGlobal("NumDefenses","LOCALS",1)
+    SetGlobal("DefenseSpell","LOCALS",0)
+    Spell(Myself,WIZARD_PROJECT_IMAGE)
+    Continue()
+END

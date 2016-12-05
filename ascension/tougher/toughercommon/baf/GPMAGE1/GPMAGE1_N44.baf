@@ -1,0 +1,10 @@
+IF
+  ActionListEmpty()
+  HaveSpell(WIZARD_TELEPORT_FIELD)
+  !GlobalTimerNotExpired("TeleportField_On","LOCALS")
+  RandomNum(4,1)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("TeleportField_On","LOCALS",100)
+    Spell(Myself,WIZARD_TELEPORT_FIELD)
+END

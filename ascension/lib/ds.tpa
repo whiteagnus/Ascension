@@ -1,0 +1,13 @@
+ACTION_IF !FILE_EXISTS ~ascension/ds.mrk~ BEGIN
+///////////////////////////////////////////////////////////////////////
+// Detectable Spells v3
+///////////////////////////////////////////////////////////////////////
+
+OUTER_SPRINT path ~ascension/ds~ // change it to your mod folder
+INCLUDE ~%path%/ds.tph~
+
+LAF detectable_spells_setup STR_VAR path = EVALUATE_BUFFER ~%path%~ END
+LAF detectable_spells STR_VAR table = ~cddetect.2da~ END
+//Initialize to prevent silliness
+COPY_EXISTING ~sw1h01.itm~ ~ascension/ds.mrk~
+END

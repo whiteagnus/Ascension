@@ -1,0 +1,14 @@
+IF
+  ActionListEmpty()
+  HaveSpell(WIZARD_REMOVE_MAGIC)
+  OR(5)
+    StateCheck(Lastseenby(Myself),STATE_HASTED)
+    StateCheck(Lastseenby(Myself),STATE_BLESS)
+    HasImmunityEffects(Lastseenby(Myself))
+    HasBounceEffects(Lastseenby(Myself))
+    InPartySlot(Lastseenby(Myself),0)
+  RandomNum(2,1)
+THEN
+  RESPONSE #100
+    Spell(Lastseenby(Myself),WIZARD_REMOVE_MAGIC)
+END

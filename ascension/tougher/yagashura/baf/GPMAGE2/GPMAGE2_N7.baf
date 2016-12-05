@@ -1,0 +1,13 @@
+IF
+  ActionListEmpty()
+  Detect(NearestEnemyOf(Myself))
+  HaveSpell(WIZARD_TRUE_SIGHT)
+  OR(2)
+  !See(NearestEnemyOf(Myself))
+  StateCheck(NearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+  !GlobalTimerNotExpired("TrueSight_Used","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("TrueSight_Used","LOCALS",60)
+    Spell(Myself,WIZARD_TRUE_SIGHT)
+END

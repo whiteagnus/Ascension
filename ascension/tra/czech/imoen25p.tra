@@ -1,0 +1,34 @@
+// IMOEN25P překladový soubor
+@470 = ~Néé! To bolí!  Au! <CHARNAME>! Zastav ji... strašně to bolí!!~ [IMOEN18]
+@471 = ~Co to s ní děláš?! Nech toho!!~
+@472 = ~Tohle je mezi námi dvěma Melissan! Nech ji být!!~
+@473 = ~Seber se Imoen!  Zaútoč!!~
+@474 = ~Proč bych se měl starat o nějakou Imoen? Klidně ji zabij, Melissan.~
+@475 = ~C-cože... kde to jsem? Co se to děje? <CHARNAME>?~
+@476 = ~Nepůjdu s tebou nikam! A nikdo mi nebude sahat na mou duši! Už nikdy!!~
+@477 = ~Je... už je po všem... zase jsem člověk. Ohhhh, teď už vím, čím jsi musel projít, <CHARNAME>!  Nevím, jestli bych to chtěla znovu zažít!~
+@478 = ~A taky nemůžu uvěřit, co jsi to řekl. "Klidně ji zabij"?  Po tom všem, čím jsme si prošli, to je to, co řekneš na moji obranu?!~
+@479 = ~Imoen, snažil jsem se Melissan přesvědčit, aby tě nechala na pokoji!~
+@480 = ~Překonej to, holčičko. Nikdo tě nenutil, abys jsi šla se mnou, nebo snad ano?~
+@481 = ~Imoen, na tohle povídání nemáme čas! Tady se bojuje!~
+@482 = ~Dobrá... věřím ti. Přesvědčil jsi mě víc než ji, to je jasné. Já... jsem ráda, že jsem jako zabiják neudělala více škody. Nevím jak to ovládat.  Díky, že... že jsi mě nezabil.~
+@483 = ~Já... přesto tu nemůžu zůstat. Tohle je na mě moc. Doufám <CHARNAME>, že se ti bude dařit a že se taky znovu setkáme. Možná opět ve Svítící tvrzi, co?  V každém případě, hodně štěstí...~
+@484 = ~Chceš, abych stála po tvém boku? Mohla bych... opustit trůn, myslím... myslím, že teď mám stejnou schopnost, jako ty. Ale budu bojovat po tvém boku, pokud si to budeš přát.~
+@485 = ~Imoen přežila
+
+Imoen se podařilo přežít útok Melissan, při kterém ji vnutila podobu zabijáka. Zdá se, že to probodilo její skrytý potenciál. Nejen, že se teď dokáže proměnit ve stejnou formu zabijáka, ve kterého jsem se začal v Čarotvrzi proměňovat... ale také získala schopnost, pomocí které se může stát na chvíli éterickou.
+
+Éterická
+-------------
+Imoen je teď na chvíli schopná vstoupit do éterické sféry. Schopnost je použitelná jednou po každou minutu a hodí se pro zamezení její proměny v zabijáka, která také trvá minutu. Imoen zůstane jedno kolo úplně éterickou a nezasažitelnou silou této sféry... v jeho průběhu je neviditelná a zcela imunní na poškození. V průběhu tohoto kola však nemůže kouzlit, nebo používat speciální schopnosti.  
+Později, za další dvě kola, zůstává v "polofázi". Je částečně éterickou a částečně v této sféře. Pořád je neviditelná, přesto obdrží polovinu poškození ze všech zdrojů. V tomto stadiu je malá šance (10%), že se jí nepovede seslat kouzlo. Imoen je také po všechna tři kola schopna uvidět jakýkoliv neviditelný cíl.~
+@486 = ~Jasně.  Přidej se opět k nám.~
+@487 = ~Ne... Imoen.  Kliď se odtud, dokud můžeš.~
+@488 = ~Doufám, že se ti bude dařit, <CHARNAME> a doufám, že tě opět uvidím. Možná znovu ve Svítící tvrzi, co? V každém případě, hodně štěstí...~
+@489 = ~Jó, jasně. Dělej si co chceš, <CHARNAME>. Já... mizím pryč. Tak daleko, jak jen to půjde.  Sbohem!~
+@490 = ~Určitě ne, není na tebe spolehnutí. Jsem rozhodnutá, díky za nic. Dělej si co chceš, <CHARNAME>. Já... mizím pryč, tak daleko, jak jen to půjde. Sbohem!~
+@491 = ~Jsem tak ráda, že je to pryč. Nikdy jsem neudělala nic horšího, než když jsem byla... já... ó, nevím, jak jsi to v Čarotvrzi dokázal ovládnout. Díky... že jsi mě nezabil, ok?~
+@492 = ~Oh, tak to je! Chceš, abych stála při tobě? Mohla bych... opustit trůn, myslím... myslím, že mám teď stejnou schopnost jako ty. Ale budu bojovat po tvém boku, pokud si to budeš přát.~
+@493 = ~Vidím, že souboj stále probíhá. Chceš, abych se k tobě opět přidala?  Mohla bych... opustit trůn, myslím... že mám teď stejnou schopnost jako ty. Ale taky bych ráda viděla, jak to dopadne.~
+@494 = ~Proboha, přestaň mě rušit uprostřed souboje! Vrať se zpět do družiny!~
+@495 = ~Ano <PRO_SIRMAAM>! (hihihi!) Je čas nakopat jisté dámě zadek, že jo?~

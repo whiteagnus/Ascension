@@ -1,0 +1,10 @@
+IF
+  HaveSpellRES("SPCL144")
+  Range(Lastseenby(Myself),6)
+  !GlobalTimerNotExpired("KaiAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("KaiAttack","LOCALS",10)
+    SpellRES("SPCL144",Myself)
+    AttackReevaluate(Lastseenby(Myself),45)
+END

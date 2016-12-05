@@ -1,0 +1,10 @@
+IF
+	!Range(LastSeenBy(Myself),10)
+	!HaveSpellRES("SPCL121") 
+THEN
+	RESPONSE #100
+		EquipRanged()
+		AttackReevaluate(LastSeenBy(Myself),30)
+	RESPONSE #100
+		Continue()
+END

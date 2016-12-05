@@ -1,0 +1,272 @@
+IF
+  Die()
+THEN
+  RESPONSE #100
+    SetGlobal("JMT#BOD","AR6200",1)
+END
+
+IF
+  HPPercentLT(Myself,75)
+  CheckStatLT(Myself,100,RESISTSLASHING)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("xyxGasseousForm","LOCALS",6)
+    ForceSpellRES("BODGASF",Myself)  // BODGASF
+    Continue()
+END
+
+IF
+  CheckStatLT(Myself,100,RESISTSLASHING)
+  OR(4)
+  CheckStat(LastAttackerOf(Myself),5,SCRIPTINGSTATE4)
+  CheckStat(LastAttackerOf(Myself),4,SCRIPTINGSTATE4)
+  CheckStat(NearestEnemyOf(Myself),5,SCRIPTINGSTATE4)
+  CheckStat(NearestEnemyOf(Myself),4,SCRIPTINGSTATE4)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("xyxGasseousForm","LOCALS",6)
+    ForceSpellRES("BODGASF",Myself)  // BODGASF
+    RunAwayFrom(NearestEnemyOf(Myself),90)
+END
+
+IF
+  AttackedBy("FINMEL01",DEFAULT)  // FINMEL
+  CheckStatLT(Myself,100,RESISTSLASHING)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("xyxGasseousForm","LOCALS",6)
+    ForceSpellRES("BODGASF",Myself)  // BODGASF
+    RunAwayFrom(NearestEnemyOf(Myself),90)
+END
+
+IF
+  CheckStat(Myself,100,RESISTSLASHING)
+  OR(2)
+  HPPercentLT(Myself,100)
+  GlobalTimerNotExpired("xyxGasseousForm","LOCALS")
+  Exists(NearestEnemyOf(Myself))
+THEN
+  RESPONSE #100
+    RunAwayFrom(NearestEnemyOf(Myself),45)
+  RESPONSE #100
+    MoveToObject(Player1)
+END
+
+IF
+  !Exists(NearestEnemyOf(Myself))
+  CheckStat(Myself,100,RESISTSLASHING)
+  OR(2)
+  HPPercentLT(Myself,100)
+  GlobalTimerNotExpired("xyxGasseousForm","LOCALS")
+THEN
+  RESPONSE #100
+    NoAction()
+  RESPONSE #100
+    MoveToObject(Player1)
+END
+
+IF
+  !Range([PC],10)
+  OR(2)
+  !Exists(NearestEnemyOf(Myself))
+  !Exists([PC])
+THEN
+  RESPONSE #100
+    MoveToObjectFollow(Player1)
+END
+
+IF
+  !Exists(NearestEnemyOf(Myself))
+  CheckStat(Myself,100,RESISTSLASHING)
+  HPPercent(Myself,100)
+THEN
+  RESPONSE #100
+    ForceSpellRES("SPINKRVA",Myself)  // SPINKRVA
+END
+
+IF
+  !Exists(NearestEnemyOf(Myself))
+THEN
+  RESPONSE #5
+    RandomWalk()
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  CheckStatLT(Myself,100,RESISTSLASHING)
+  Global("KRBODBAT","GLOBAL",0)
+  !GlobalTimerNotExpired("xyxVampireFear","LOCALS")
+  GlobalTimerExpired("xyxImmunity","LOCALS")
+  See(NearestEnemyOf(Myself))
+  CheckStatLT(LastSeenBy(Myself),6,SAVEVSSPELL)
+  See(SecondNearestEnemyOf(Myself))
+  CheckStatLT(LastSeenBy(Myself),6,SAVEVSSPELL)
+  See(ThirdNearestEnemyOf(Myself))
+  CheckStatLT(LastSeenBy(Myself),6,SAVEVSSPELL)
+  See(FourthNearestEnemyOf(Myself))
+  CheckStatLT(LastSeenBy(Myself),6,SAVEVSSPELL)
+  See(FifthNearestEnemyOf(Myself))
+  CheckStatLT(LastSeenBy(Myself),6,SAVEVSSPELL)
+  See(SixthNearestEnemyOf(Myself))
+  CheckStatLT(LastSeenBy(Myself),6,SAVEVSSPELL)
+  See(NearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  See(LastSeenBy(Myself))
+  CheckStatLT(Myself,100,RESISTSLASHING)
+  Global("KRBODBAT","GLOBAL",0)
+  !GlobalTimerNotExpired("xyxVampireFear","LOCALS")
+  GlobalTimerExpired("xyxImmunity","LOCALS")
+  !CheckStatLT(LastSeenBy(Myself),6,SAVEVSSPELL)
+  !Range(LastSeenBy(Myself),0)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("xyxVampireFear","LOCALS",6)
+    ForceSpell(LastSeenBy(Myself),VAMPIRE_FEAR)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  OR(4)
+  !Class(LastSeenBy(Myself),MAGE_ALL)
+  CheckStatGT(LastSeenBy(Myself),2,185)
+  HasItem("FINABAZ",LastSeenBy(Myself))  // FINABAZ
+  Name("Imoen2",LastSeenBy(Myself))
+  See(SecondNearestEnemyOf(Myself))
+  OR(4)
+  !Class(LastSeenBy(Myself),MAGE_ALL)
+  CheckStatGT(LastSeenBy(Myself),2,185)
+  HasItem("FINABAZ",LastSeenBy(Myself))  // FINABAZ
+  Name("Imoen2",LastSeenBy(Myself))
+  See(ThirdNearestEnemyOf(Myself))
+  OR(4)
+  !Class(LastSeenBy(Myself),MAGE_ALL)
+  CheckStatGT(LastSeenBy(Myself),2,185)
+  HasItem("FINABAZ",LastSeenBy(Myself))  // FINABAZ
+  Name("Imoen2",LastSeenBy(Myself))
+  See(FourthNearestEnemyOf(Myself))
+  OR(4)
+  !Class(LastSeenBy(Myself),MAGE_ALL)
+  CheckStatGT(LastSeenBy(Myself),2,185)
+  HasItem("FINABAZ",LastSeenBy(Myself))  // FINABAZ
+  Name("Imoen2",LastSeenBy(Myself))
+  See(FifthNearestEnemyOf(Myself))
+  OR(4)
+  !Class(LastSeenBy(Myself),MAGE_ALL)
+  CheckStatGT(LastSeenBy(Myself),2,185)
+  HasItem("FINABAZ",LastSeenBy(Myself))  // FINABAZ
+  Name("Imoen2",LastSeenBy(Myself))
+  See(SixthNearestEnemyOf(Myself))
+  OR(4)
+  !Class(LastSeenBy(Myself),MAGE_ALL)
+  CheckStatGT(LastSeenBy(Myself),2,185)
+  HasItem("FINABAZ",LastSeenBy(Myself))  // FINABAZ
+  Name("Imoen2",LastSeenBy(Myself))
+  See(NearestEnemyOf(Myself))
+  OR(3)
+  CheckStatGT(LastSeenBy(Myself),2,185)
+  HasItem("FINABAZ",LastSeenBy(Myself))  // FINABAZ
+  Name("Imoen2",LastSeenBy(Myself))
+  See(SecondNearestEnemyOf(Myself))
+  OR(3)
+  CheckStatGT(LastSeenBy(Myself),2,185)
+  HasItem("FINABAZ",LastSeenBy(Myself))  // FINABAZ
+  Name("Imoen2",LastSeenBy(Myself))
+  See(ThirdNearestEnemyOf(Myself))
+  OR(3)
+  CheckStatGT(LastSeenBy(Myself),2,185)
+  HasItem("FINABAZ",LastSeenBy(Myself))  // FINABAZ
+  Name("Imoen2",LastSeenBy(Myself))
+  See(FourthNearestEnemyOf(Myself))
+  OR(3)
+  CheckStatGT(LastSeenBy(Myself),2,185)
+  HasItem("FINABAZ",LastSeenBy(Myself))  // FINABAZ
+  Name("Imoen2",LastSeenBy(Myself))
+  See(FifthNearestEnemyOf(Myself))
+  OR(3)
+  CheckStatGT(LastSeenBy(Myself),2,185)
+  HasItem("FINABAZ",LastSeenBy(Myself))  // FINABAZ
+  Name("Imoen2",LastSeenBy(Myself))
+  See(SixthNearestEnemyOf(Myself))
+  OR(3)
+  CheckStatGT(LastSeenBy(Myself),2,185)
+  HasItem("FINABAZ",LastSeenBy(Myself))  // FINABAZ
+  Name("Imoen2",LastSeenBy(Myself))
+  See(NearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  Exists("FINILLA")  // FINILLA
+  !StateCheck("FINILLA",STATE_INVISIBLE)  // FINILLA
+  !StateCheck("FINILLA",STATE_DEAD)  // FINILLA
+  See("FINILLA")  // FINILLA
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  Exists("FINSEND")  // FINSEND
+  CheckStatLT("FINSEND",3,185)  // FINSEND
+  !StateCheck("FINSEND",STATE_DEAD)  // FINSEND
+  See("FINSEND")  // FINSEND
+  False()
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  CheckStat(Myself,100,RESISTSLASHING)
+  OR(2)
+  !GlobalTimerExpired("xyxImmunity","LOCALS")
+  CheckStatLT(LastSeenBy(Myself),3,185)
+  !Range(LastSeenBy(Myself),4)
+  !Allegiance(LastSeenBy(Myself),GOODCUTOFF)
+THEN
+  RESPONSE #100
+    MoveToObject(LastSeenBy(Myself))
+    ForceSpellRES("SPINKRVA",Myself)  // SPINKRVA
+    Attack(LastSeenBy(Myself))
+END
+
+IF
+  CheckStat(Myself,100,RESISTSLASHING)
+  OR(2)
+  !GlobalTimerExpired("xyxImmunity","LOCALS")
+  CheckStatLT(LastSeenBy(Myself),3,185)
+  !Allegiance(LastSeenBy(Myself),GOODCUTOFF)
+THEN
+  RESPONSE #100
+    ForceSpellRES("SPINKRVA",Myself)  // SPINKRVA
+    Attack(LastSeenBy(Myself))
+END
+
+IF
+  OR(2)
+  !GlobalTimerExpired("xyxImmunity","LOCALS")
+  CheckStatLT(LastSeenBy(Myself),3,185)
+  !Allegiance(LastSeenBy(Myself),GOODCUTOFF)
+THEN
+  RESPONSE #100
+    Attack(LastSeenBy(Myself))
+END
+
+IF
+  True()
+THEN
+  RESPONSE #100
+    RandomWalk()
+END
+

@@ -1,0 +1,10 @@
+IF
+  ActionListEmpty()
+  HaveSpell(WIZARD_CHAIN_LIGHTNING)
+  !HasBounceEffects(LastSeenBy(Myself))
+  !Range(LastSeenBy(Myself),10)
+  RandomNum(2,1)
+THEN
+  RESPONSE #100
+    Spell(LastSeenBy(Myself),WIZARD_CHAIN_LIGHTNING)
+END

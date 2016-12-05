@@ -1,0 +1,7 @@
+IF
+  !Range(Lastseenby(Myself),5)
+THEN
+  RESPONSE #100
+    EquipRanged()
+    AttackReevaluate(Lastseenby(Myself),15)
+END

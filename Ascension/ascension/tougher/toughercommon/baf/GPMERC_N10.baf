@@ -1,8 +1,0 @@
-IF
-  ActionListEmpty()
-  !Range(LastSeenBy(Myself),10)
-THEN
-  RESPONSE #100
-    EquipRanged()
-    AttackReevaluate(LastSeenBy(Myself),45)
-END

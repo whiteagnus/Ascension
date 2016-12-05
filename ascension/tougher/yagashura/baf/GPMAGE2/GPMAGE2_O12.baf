@@ -1,0 +1,9 @@
+IF
+  See(Nearestenemyof(Myself))
+  HaveSpell(WIZARD_STONE_SKIN)
+  CheckStatLT(Myself,1,STONESKINS)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("WeaponDefense_On","LOCALS",30)
+    Spell(Myself,WIZARD_STONE_SKIN)
+END

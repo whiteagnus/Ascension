@@ -1,0 +1,16 @@
+IF
+  ActionListEmpty()
+  OR(5)
+    Class(LastSeenBy(Myself),DRUID_ALL)
+    Class(LastSeenBy(Myself),BARD)
+    Class(LastSeenBy(Myself),CLERIC_ALL)
+    Class(LastSeenBy(Myself),MAGE_ALL)
+    Class(LastSeenBy(Myself),SORCERER)
+  HaveSpell(WIZARD_FEEBLEMIND)
+  !HasBounceEffects(LastSeenBy(Myself))
+  RandomNum(2,1)
+  !Range(LastSeenBy(Myself),10)
+THEN
+  RESPONSE #100
+    Spell(LastSeenBy(Myself),WIZARD_FEEBLEMIND)
+END

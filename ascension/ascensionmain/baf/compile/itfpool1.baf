@@ -1,0 +1,64 @@
+IF
+  OR(2)
+    WalkedToTrigger(Player1)
+    WalkedToTrigger("Imoen2")
+  !GlobalTimerNotExpired("Pool1Timer","AR6200")
+  Global("Pool1Active","AR6200",0)
+THEN
+  RESPONSE #100
+    SetGlobal("Pool1Active","AR6200",1)
+    ClearAllActions()
+    StartCutSceneMode()
+    SetGlobalTimer("Pool1Timer","AR6200",10)
+    StartCutScene("pool1a")
+END
+
+IF
+  WalkedToTrigger(Player1)
+  !GlobalTimerNotExpired("Pool1Timer","AR6200")
+  !ActuallyInCombat()
+  Global("Pool1Active","AR6200",1)
+THEN
+  RESPONSE #100
+    SetGlobal("Pool1Active","AR6200",2)
+    SetGlobalTimer("Pool1Timer","AR6200",10)
+    SmallWait(7)
+    CreateCreatureObject("PPGuy02",Player1,0,0,0)
+    ActionOverride("PPGuy02",StartDialogueNoSet(Player1))
+END
+
+IF
+  WalkedToTrigger("Imoen2")
+  !GlobalTimerNotExpired("Pool1Timer","AR6200")
+  !ActuallyInCombat()
+  Global("Pool1Active","AR6200",1)
+THEN
+  RESPONSE #100
+    SetGlobal("Pool1Active","AR6200",2)
+    SetGlobalTimer("Pool1Timer","AR6200",10)
+    SmallWait(7)
+    CreateCreatureObject("PPGuy02","Imoen2",0,0,0)
+    ActionOverride("PPGuy02",StartDialogueNoSet("Imoen2"))
+END
+
+IF
+  WalkedToTrigger([ANYONE])
+  !Name("Imoen2",LastTrigger) // Imoen
+  !InPartySlot(LastTrigger,0)
+  !GlobalTimerNotExpired("Pool1Timer","AR6200")
+THEN
+  RESPONSE #100
+    ClearActions(LastTrigger)
+    SetGlobalTimer("Pool1Timer","AR6200",10)
+    SmallWait(7)
+    CreateCreatureObject("PPGuy02",LastTrigger,0,0,0)
+    ActionOverride("PPGuy02",StartDialogueNoSet(LastTrigger))
+END
+
+IF
+  WalkedToTrigger([ANYONE])
+  GlobalTimerNotExpired("Pool1Timer","AR6200")
+THEN
+  RESPONSE #100
+    ClearActions(LastTrigger)
+END

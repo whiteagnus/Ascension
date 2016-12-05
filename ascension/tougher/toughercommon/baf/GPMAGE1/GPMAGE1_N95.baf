@@ -1,0 +1,16 @@
+IF
+  ActionListEmpty()
+  Range(LastSeenBy(Myself),5)
+  NumCreatureGT(NearestMyGroupOfType([0.0.0.FIGHTER_ALL]),0)
+  Range(NearestMyGroupOfType([0.0.0.FIGHTER_ALL]),10)
+  OR(5)
+    HasItem("BLAKBLAD",Myself)
+    HasItem("PHANBLAD",Myself)
+    CheckStatLT(Myself,10,THAC0)
+    CheckStatLT(Myself,0,ARMORCLASS)
+    !HaveAnySpells()
+THEN
+  RESPONSE #100
+    EquipMostDamagingMelee()
+    AttackReevaluate(LastSeenBy(Myself),30)
+END

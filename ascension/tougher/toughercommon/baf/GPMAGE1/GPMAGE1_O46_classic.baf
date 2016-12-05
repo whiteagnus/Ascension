@@ -1,0 +1,13 @@
+IF
+	HaveSpell(0)
+	OR(5)
+		StateCheck(LastSeenBy(Myself),STATE_HASTED)
+		StateCheck(LastSeenBy(Myself),STATE_BLESS)
+		HasImmunityEffects(LastSeenBy(Myself))
+		HasBounceEffects(LastSeenBy(Myself))
+		InPartySlot(LastSeenBy(Myself),0)
+	RandomNum(2,1)
+THEN
+	RESPONSE #100
+		Spell(LastSeenBy(Myself),0)
+END

@@ -1,8 +1,0 @@
-IF
-  !HasBounceEffects(Lastseenby(Myself))
-  HaveSpell(WIZARD_DISINTEGRATE)
-  RandomNum(2,1)
-THEN
-  RESPONSE #100
-    Spell([ENEMY],WIZARD_DISINTEGRATE)
-END

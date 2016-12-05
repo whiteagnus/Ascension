@@ -1,9 +1,0 @@
-IF
-  CheckStatLT(Lastseenby(Myself),50,RESISTMAGIC)
-  !HasBounceEffects(Lastseenby(Myself))
-  HaveSpell(WIZARD_MAGIC_MISSILE)
-  RandomNum(2,1)
-THEN
-  RESPONSE #100
-    Spell(Lastseenby(Myself),WIZARD_MAGIC_MISSILE)
-END

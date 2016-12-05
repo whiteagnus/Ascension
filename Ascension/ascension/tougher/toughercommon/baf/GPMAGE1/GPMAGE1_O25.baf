@@ -1,8 +1,0 @@
-IF
-  HaveSpell(WIZARD_RESIST_FEAR)
-  See(Nearestmygroupoftype)
-  StateCheck(Lastseenby(Myself),STATE_PANIC)
-THEN
-  RESPONSE #100
-    Spell(Lastseenby(Myself),WIZARD_RESIST_FEAR)
-END

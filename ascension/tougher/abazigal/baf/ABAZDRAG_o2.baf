@@ -1,0 +1,11 @@
+IF
+	Range(LastSeenBy(Myself),30)
+	!Range(LastSeenBy(Myself),4)
+	CheckStatLT(LastSeenBy(Myself),100,RESISTELECTRICITY)
+	!GlobalTimerNotExpired("BLUEDRAGONBREATH","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("BLUEDRAGONBREATH","LOCALS",12)
+		ForceSpell(LastSeenBy(Myself),BLUE_DRAGON_BREATH)
+		ReallyForceSpell(LastSeenBy(Myself),0)
+END

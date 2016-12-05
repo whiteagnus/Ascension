@@ -1,9 +1,0 @@
-IF
-  HaveSpell(WIZARD_LOWER_RESISTANCE)
-  RandomNum(2,1)
-  CheckStatGT(Lastseenby(Myself),50,RESISTMAGIC)
-  !Range(Lastseenby(Myself),5)
-THEN
-  RESPONSE #100
-    Spell(Lastseenby(Myself),WIZARD_LOWER_RESISTANCE)
-END

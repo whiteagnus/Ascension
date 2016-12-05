@@ -1,0 +1,11 @@
+IF
+  ActionListEmpty()
+  HaveSpell(WIZARD_SYMBOL_STUN)
+  !StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+  !HasBounceEffects(LastSeenBy(Myself))
+  !Range(LastSeenBy(Myself),5)
+  RandomNum(2,1)
+THEN
+  RESPONSE #100
+    Spell(LastSeenBy(Myself),WIZARD_SYMBOL_STUN)
+END

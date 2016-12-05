@@ -1,0 +1,41 @@
+IF
+	OR(2)
+		!Allegiance(LastSeenBy(Myself),GOODCUTOFF)
+		!See([GOODCUTOFF])
+	OR(3)
+		GlobalGT("HardinessUsed","LOCALS",0)
+		GlobalGT("WhirlwindUsed","LOCALS",0)
+		GlobalGT("KaiUsed","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("HardinessUsed","LOCALS",0)
+		SetGlobal("WhirlwindUsed","LOCALS",0)
+		SetGlobal("KaiUsed","LOCALS",0)
+END
+
+IF
+	OR(2)
+		!Allegiance(LastSeenBy(Myself),GOODCUTOFF)
+		!See([GOODCUTOFF])
+	Global("HardinessUsed","LOCALS",0)
+	Global("WhirlwindUsed","LOCALS",0)
+	Global("KaiUsed","LOCALS",0)
+THEN
+	RESPONSE #100
+		MoveToObject(Player1)
+END
+
+IF
+	Gender(LastSeenBy(Myself),SUMMONED)
+	CheckStatGT(LastSeenBy(Myself),90,RESISTSLASHING)
+	CheckStatLT(LastSeenBy(Myself),90,MAGICDAMAGERESISTANCE)
+	RandomNum(2,1)
+	!GlobalTimerNotExpired("Mordenkainen","LOCALS")
+THEN
+	RESPONSE #50
+		SetGlobalTimer("Mordenkainen","LOCALS",6)
+		ForceSpell(LastSeenBy(Myself),WIZARD_MAGIC_MISSILE)
+	RESPONSE #100
+		SetGlobalTimer("Mordenkainen","LOCALS",6)
+		ForceSpell(LastSeenBy(Myself),WIZARD_DISINTEGRATE)
+END

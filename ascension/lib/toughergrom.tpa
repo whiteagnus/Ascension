@@ -1,0 +1,490 @@
+//Copy and Compile
+COMPILE EVALUATE_BUFFER ~ascension/tougher/gromnir/d~ //Compile .d file
+COMPILE ~ascension/tougher/gromnir/baf/compile~ //Compile unique scripts
+COPY ~ascension/tougher/gromnir/cre~ ~override~
+COPY ~ascension/tougher/gromnir/itm~ ~override~
+COPY ~ascension/tougher/gromnir/spl~ ~override~
+
+//Area Patching
+COPY_EXISTING ~ar5002.are~ ~override~
+READ_LONG  0x54  "actors_offset"
+READ_SHORT 0x58  "actors_num"
+
+FOR( cnt=0; cnt<"%actors_num%"; cnt=cnt+1 ) BEGIN  //actors loop
+ READ_ASCII ("%actors_offset%"+0x110*cnt)       "actor_name" (15)
+ PATCH_IF (("%actor_name%" STRING_COMPARE_CASE "Gromnir Il-Khan")=0) BEGIN
+ 	SET offset = ("%actors_offset%"+0x110*cnt)
+ 	WRITE_SHORT (offset+0x20) 344         //X
+ 	WRITE_SHORT (offset+0x22) 648         //Y
+ 	WRITE_SHORT (offset+0x24) 344         //destination X
+ 	WRITE_SHORT (offset+0x26) 648         //destination Y
+ 	END
+END
+
+//Creature Patching
+COPY_EXISTING ~GROMG03.cre~ ~override~	
+ WRITE_BYTE 0x6e 0        //Unused Large Prof
+ WRITE_BYTE 0x6f 0        //Unused Small Prof
+ WRITE_BYTE 0x70 0        //Unused Bow Prof
+ WRITE_BYTE 0x71 0        //Unused Spear Prof
+ WRITE_BYTE 0x72 0        //Unused Blunt Prof
+ WRITE_BYTE 0x73 0        //Unused Spiked Prof
+ WRITE_BYTE 0x74 0        //Unused Axe Prof 
+ WRITE_BYTE 0x235 0       //Level Second Class
+ WRITE_BYTE 0x236 0       //Level Third Class
+ WRITE_BYTE 0x238 15      //STR Score
+ WRITE_ASCII 0x248 ~None~ #8 //Override Script
+ WRITE_ASCII 0x260 ~GPARCHER~ #8 //Default Script 
+ LPF ADD_CRE_EFFECT INT_VAR //Proficiencies
+  opcode = 233
+  target = 0
+  parameter1 = 1
+  parameter2 = 89
+  timing = 9
+  END
+ LPF ADD_CRE_EFFECT INT_VAR
+  opcode = 233
+  target = 0
+  parameter1 = 5
+  parameter2 = 104
+  timing = 9
+  END
+ LPF ADD_CRE_EFFECT INT_VAR
+  opcode = 233
+  target = 0
+  parameter1 = 2
+  parameter2 = 113
+  timing = 9
+  END
+  REMOVE_CRE_ITEM ~AROW02~
+  ADD_CRE_ITEM ~AROW02~ #20 #0 #0 ~None~ ~QUIVER1~
+  ADD_CRE_ITEM ~AROW07~ #2 #0 #0 ~None~ ~QUIVER2~
+  ADD_CRE_ITEM ~AROW10~ #6 #0 #0 ~None~ ~QUIVER3~
+  ADD_CRE_ITEM ~POTN55~ #1 #0 #0 ~None~ ~qitem1~
+  ADD_CRE_ITEM ~HELM01~ #0 #0 #0 ~None~ ~HELMET~
+  ADD_CRE_ITEM ~SW1H01~ #0 #0 #0 ~None~ ~WEAPON2~
+BUT_ONLY
+
+COPY_EXISTING ~GROMG05.CRE~ ~override~
+ WRITE_LONG 0x28 25104    //Animation: MAGE_FEMALE_HUMAN
+ WRITE_SHORT 0x46 5       //Natural AC
+ WRITE_SHORT 0x48 5       //Effective AC
+ WRITE_BYTE 0x6e 0        //Unused Large Prof
+ WRITE_BYTE 0x6f 0        //Unused Small Prof
+ WRITE_BYTE 0x70 0        //Unused Bow Prof
+ WRITE_BYTE 0x71 0        //Unused Spear Prof
+ WRITE_BYTE 0x72 0        //Unused Blunt Prof
+ WRITE_BYTE 0x73 0        //Unused Spiked Prof
+ WRITE_BYTE 0x74 0        //Unused Axe Prof
+ WRITE_BYTE 0x235 0       //Level Second Class
+ WRITE_BYTE 0x236 0       //Level Third Class
+ SAY 0xa4 #61609          //Initial Meeting
+ SAY 0x10c #61607         //SELECT COMMON
+ WRITE_BYTE 0x237 2       //Sex
+ WRITE_BYTE 0x23a 18      //INT Score
+ WRITE_BYTE 0x275 2       //Gender
+ WRITE_ASCII 0x250 ~None~ #8 //Class Script
+ WRITE_ASCII 0x260 ~SPSEQ16A~ #8 //Default Script 
+ WRITE_ASCII 0x260 ~GPMAGE1~ #8 //Default Script 
+ ADD_KNOWN_SPELL ~SPWI112~ #0 ~wizard~ //Magic Missile
+ ADD_KNOWN_SPELL ~SPWI206~ #1 ~wizard~ //Invisibility
+ ADD_KNOWN_SPELL ~SPWI221~ #1 ~wizard~ //Ray of Enfeeblement
+ ADD_KNOWN_SPELL ~SPWI308~ #2 ~wizard~ //Lightning Bolt
+ ADD_KNOWN_SPELL ~SPWI305~ #2 ~wizard~ //Haste
+ ADD_KNOWN_SPELL ~SPWI401~ #3 ~wizard~ //Confusion
+ ADD_KNOWN_SPELL ~SPWI406~ #3 ~wizard~ //Minor Globe
+ ADD_KNOWN_SPELL ~SPWI411~ #3 ~wizard~ //Emotion: Hopelessness
+ ADD_KNOWN_SPELL ~SPWI412~ #3 ~wizard~ //Greater Malsion
+ ADD_KNOWN_SPELL ~SPWI415~ #3 ~wizard~ //Polymorph: Other
+ ADD_KNOWN_SPELL ~SPWI505~ #4 ~wizard~ //Shadow Door
+ ADD_KNOWN_SPELL ~SPWI519~ #4 ~wizard~ //Spell Shield
+ ADD_KNOWN_SPELL ~SPWI518~ #4 ~wizard~ //Phantom Blade
+ ADD_KNOWN_SPELL ~SPWI613~ #5 ~wizard~ //Improved Haste
+ ADD_KNOWN_SPELL ~SPWI612~ #5 ~wizard~ //Power Word: Silence
+ ADD_KNOWN_SPELL ~SPWI602~ #5 ~wizard~ //Globe
+ ADD_KNOWN_SPELL ~SPWI705~ #6 ~wizard~ //Khelben's
+ ADD_KNOWN_SPELL ~SPWI804~ #7 ~wizard~ //Simulacrum
+ REMOVE_MEMORIZED_SPELL ~SPWI219~ ~SPWI212~ ~SPWI217~ ~SPWI304~ ~SPWI506~ ~SPWI523~ ~SPWI604~ ~SPWI609~ ~SPWI616~ ~SPWI701~ ~SPWI717~ ~SPWI898~ ~SPWI899~ ~SPWI913~
+ ADD_MEMORIZED_SPELL ~SPWI112~ #0 ~wizard~ (5)
+ ADD_MEMORIZED_SPELL ~SPWI219~ #1 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI206~ #1 ~wizard~ (2)
+ ADD_MEMORIZED_SPELL ~SPWI221~ #1 ~wizard~ (2)
+ ADD_MEMORIZED_SPELL ~SPWI308~ #2 ~wizard~ (2)
+ ADD_MEMORIZED_SPELL ~SPWI305~ #2 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI401~ #3 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI406~ #3 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI411~ #3 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI413~ #3 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI415~ #3 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI506~ #4 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI505~ #4 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI519~ #4 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI518~ #4 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI609~ #5 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI613~ #5 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI612~ #5 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI602~ #5 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI705~ #6 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI804~ #7 ~wizard~ (1)
+ LPF ADD_CRE_EFFECT INT_VAR //Proficiencies
+  opcode = 233
+  target = 0
+  parameter1 = 1
+  parameter2 = 102
+  timing = 9
+  END
+ LPF ADD_CRE_EFFECT INT_VAR
+  opcode = 233
+  target = 0
+  parameter1 = 1
+  parameter2 = 106
+  timing = 9
+  END
+ LPF ADD_CRE_EFFECT INT_VAR
+  opcode = 233
+  target = 0
+  parameter1 = 1
+  parameter2 = 96
+  timing = 9
+  END
+ LPF ADD_CRE_EFFECT INT_VAR
+  opcode = 233
+  target = 0
+  parameter1 = 1
+  parameter2 = 107
+  timing = 9
+  END
+ADD_CRE_ITEM ~POTN55~ #2 #0 #0 ~None~ ~qitem1~
+ADD_CRE_ITEM ~RNDTRE05~ #0 #0 #0 ~None~ ~qitem2~
+BUT_ONLY
+
+COPY_EXISTING ~GROMG08.cre~ ~override~
+ WRITE_SHORT 0x24 56      //Current HP
+ WRITE_SHORT 0x26 56      //Maximum HP
+ WRITE_BYTE 0x32 0        //Hair Color
+ WRITE_BYTE 0x6e 0        //Unused Large Prof
+ WRITE_BYTE 0x6f 0        //Unused Small Prof
+ WRITE_BYTE 0x70 0        //Unused Bow Prof
+ WRITE_BYTE 0x71 0        //Unused Spear Prof
+ WRITE_BYTE 0x72 0        //Unused Blunt Prof
+ WRITE_BYTE 0x73 0        //Unused Spiked Prof
+ WRITE_BYTE 0x74 0        //Unused Axe Prof
+ WRITE_BYTE 0x234 20      //Level First Class
+ WRITE_BYTE 0x235 0       //Level Second Class
+ WRITE_BYTE 0x236 0       //Level Third Class
+ WRITE_BYTE 0x23a 19      //INT Score
+ WRITE_BYTE 0x23d 15      //CON Score
+ WRITE_ASCII 0x250 ~None~ #8 //Class Script
+ WRITE_ASCII 0x260 ~SPSEQ16B~ #8 //General Script
+ WRITE_ASCII 0x268 ~GPMAGE1~ #8 //Default Script
+ REMOVE_KNOWN_SPELL ~SPWI506~ ~SPWI604~ ~SPWI714~ ~SPWI812~ ~SPWI898~ ~SPWI899~ ~SPWI913~
+ ADD_KNOWN_SPELL ~SPWI112~ #0 ~wizard~ //Magic Missile
+ ADD_KNOWN_SPELL ~SPWI217~ #1 ~wizard~ //Aganazzer's Scorcher
+ ADD_KNOWN_SPELL ~SPWI212~ #1 ~wizard~ //Mirror Image
+ ADD_KNOWN_SPELL ~SPWI219~ #1 ~wizard~ //Vocalize
+ ADD_KNOWN_SPELL ~SPWI201~ #1 ~wizard~ //Blur
+ ADD_KNOWN_SPELL ~SPWI308~ #2 ~wizard~ //Lightning Bolt
+ ADD_KNOWN_SPELL ~SPWI305~ #2 ~wizard~ //Haste
+ ADD_KNOWN_SPELL ~SPWI304~ #2 ~wizard~ //Fireball
+ ADD_KNOWN_SPELL ~SPWI312~ #2 ~wizard~ //Slow
+ ADD_KNOWN_SPELL ~SPWI318~ #2 ~wizard~ //Minor Spell Deflection
+ ADD_KNOWN_SPELL ~SPWI406~ #3 ~wizard~ //Minor Globe
+ ADD_KNOWN_SPELL ~SPWI412~ #3 ~wizard~ //Greater Malsion
+ ADD_KNOWN_SPELL ~SPWI405~ #3 ~wizard~ //Improved Invis
+ ADD_KNOWN_SPELL ~SPWI408~ #3 ~wizard~ //Stoneskin
+ ADD_KNOWN_SPELL ~SPWI509~ #4 ~wizard~ //Feeblemind
+ ADD_KNOWN_SPELL ~SPWI503~ #4 ~wizard~ //Cone of Cold
+ ADD_KNOWN_SPELL ~SPWI508~ #4 ~wizard~ //Chaos
+ ADD_KNOWN_SPELL ~SPWI513~ #4 ~wizard~ //Breach
+ ADD_KNOWN_SPELL ~SPWI605~ #5 ~wizard~ //Death Spell
+ ADD_KNOWN_SPELL ~SPWI611~ #5 ~wizard~ //Protection from Magical Weapons
+ ADD_KNOWN_SPELL ~SPWI613~ #5 ~wizard~ //Improved Haste
+ ADD_KNOWN_SPELL ~SPWI716~ #6 ~wizard~ //Mordenkainen's
+ ADD_KNOWN_SPELL ~SPWI711~ #6 ~wizard~ //Sphere of Chaos
+ ADD_KNOWN_SPELL ~SPWI813~ #7 ~wizard~ //Maze
+ ADD_KNOWN_SPELL ~SPWI911~ #8 ~wizard~ //Meteor Swarm
+ ADD_KNOWN_SPELL ~SPWI902~ #8 ~wizard~ //Spell Trap
+ 
+ REMOVE_MEMORIZED_SPELL ~SPWI523~ ~SPWI506~ ~SPWI604~ ~SPWI609~ ~SPWI714~ ~SPWI899~ ~SPWI898~ ~SPWI913~
+ ADD_MEMORIZED_SPELL ~SPWI112~ #0 ~wizard~ (5)
+ ADD_MEMORIZED_SPELL ~SPWI201~ #1 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI312~ #2 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI318~ #2 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI405~ #3 ~wizard~ (2)
+ ADD_MEMORIZED_SPELL ~SPWI406~ #3 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI408~ #3 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI412~ #3 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI523~ #4 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI509~ #4 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI503~ #4 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI508~ #4 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI513~ #4 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI609~ #5 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI616~ #5 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI605~ #5 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI613~ #5 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI716~ #6 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI711~ #6 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI812~ #7 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI813~ #7 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI902~ #8 ~wizard~ (1)
+ ADD_MEMORIZED_SPELL ~SPWI911~ #8 ~wizard~ (1)
+ LPF ADD_CRE_EFFECT INT_VAR  //Proficencies
+  opcode = 233
+  target = 0
+  parameter1 = 1
+  parameter2 = 102
+  timing = 9
+  END
+ LPF ADD_CRE_EFFECT INT_VAR
+  opcode = 233
+  target = 0
+  parameter1 = 1
+  parameter2 = 106
+  timing = 9
+  END
+ LPF ADD_CRE_EFFECT INT_VAR
+  opcode = 233
+  target = 0
+  parameter1 = 1
+  parameter2 = 96
+  timing = 9
+  END
+ LPF ADD_CRE_EFFECT INT_VAR
+  opcode = 233
+  target = 0
+  parameter1 = 1
+  parameter2 = 107
+  timing = 9
+  END
+ LPF ADD_CRE_EFFECT INT_VAR //Casting Speed
+  opcode = 189
+  target = 0
+  parameter1 = 4
+  parameter2 = 0
+  timing = 9
+  END
+ ADD_CRE_ITEM ~CLCK16~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~
+ ADD_CRE_ITEM ~RING07~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~RRING~
+ ADD_CRE_ITEM ~AMUL27~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~AMULET~
+ ADD_CRE_ITEM ~POTN55~ #2 #0 #0 ~None~ ~qitem1~
+ ADD_CRE_ITEM ~RNDTRE05~ #0 #0 #0 ~None~ ~qitem2~
+BUT_ONLY
+
+COPY_EXISTING ~GROMG09.cre~ ~override~
+ WRITE_LONG 0x28 25345    //Animation: THIEF_MALE_ELF
+ WRITE_LONG 0x244 16384   //Change Kit To True Class
+ WRITE_SHORT 0x46 7       //Nat AC
+ WRITE_SHORT 0x48 7       //Effective AC
+ WRITE_BYTE 0x2d 63       //Minor Color
+ WRITE_BYTE 0x2e 46       //Major Color
+ WRITE_BYTE 0x2f 14       //Skin Color
+ WRITE_BYTE 0x32 0        //Hair Color
+ WRITE_BYTE 0x4c 4        //Missile AC
+ WRITE_BYTE 0x5e 50       //Resist Magic Fire
+ WRITE_BYTE 0x5f 50       //Resist Magic Cold
+ WRITE_BYTE 0x6e 0        //Unused Large Prof
+ WRITE_BYTE 0x6f 0        //Unused Small Prof
+ WRITE_BYTE 0x70 0        //Unused Bow Prof
+ WRITE_BYTE 0x71 0        //Unused Spear Prof
+ WRITE_BYTE 0x72 0        //Unused Blunt Prof
+ WRITE_BYTE 0x73 0        //Unused Spiked Prof
+ WRITE_BYTE 0x74 0        //Unused Axe Prof
+ WRITE_BYTE 0x234 16      //Level First Class
+ WRITE_BYTE 0x235 0       //Level Second Class
+ WRITE_BYTE 0x236 0       //Level Third Class
+ WRITE_BYTE 0x238 17      //STR Score
+ WRITE_BYTE 0x239 0       //STR Percent
+ WRITE_BYTE 0x23a 14      //INT Score
+ WRITE_BYTE 0x23c 19      //DEX Score
+ WRITE_BYTE 0x23d 19      //CON Score
+ WRITE_BYTE 0x272 3       //Race Half-Elf
+ WRITE_ASCII 0x250 ~None~ #8 //Override Script
+ WRITE_ASCII 0x268 ~GPTHIEF~ #8 //Default Script
+ REMOVE_KNOWN_SPELL ~SPCL321~
+ ADD_KNOWN_SPELL ~SPCL916~ #0 ~innate~ //Assassination
+ ADD_MEMORIZED_SPELL ~SPCL916~ #0 ~innate~ (2)
+ LPF ADD_CRE_EFFECT INT_VAR //Magic Damage Resist
+  opcode = 31
+  target = 0
+  parameter1 = 50
+  parameter2 = 0
+  timing = 9
+  END
+ LPF ADD_CRE_EFFECT INT_VAR //Move Rate Bonus
+  opcode = 126
+  target = 0
+  parameter1 = 3
+  parameter2 = 0
+  timing = 9
+  END
+ LPF ADD_CRE_EFFECT INT_VAR //Profiencies
+  opcode = 233
+  target = 0
+  parameter1 = 1
+  parameter2 = 96
+  timing = 9
+  END
+ LPF ADD_CRE_EFFECT INT_VAR
+  opcode = 233
+  target = 0
+  parameter1 = 1
+  parameter2 = 112
+  timing = 9
+  END
+ LPF ADD_CRE_EFFECT INT_VAR //Poison immune
+  opcode = 173
+  target = 0
+  parameter1 = 100
+  parameter2 = 0
+  timing = 9
+  END
+ REMOVE_CRE_ITEM ~POTN52~ ~DAGG02~
+ ADD_CRE_ITEM ~POTN55~ #2 #0 #0 ~None~ ~qitem1~
+ ADD_CRE_ITEM ~DAGG16~ #4 #0 #0 ~None~ ~INV1~
+ ADD_CRE_ITEM ~DAGG16~ #20 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON2~
+ ADD_CRE_ITEM ~DAGG02~ #0 #0 #0 ~None~ ~INV2~
+ ADD_CRE_ITEM ~SHLD17~ #0 #0 #0 ~None~ ~SHIELD~
+ ADD_CRE_ITEM ~ELER~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP
+BUT_ONLY
+
+COPY_EXISTING ~GROMG10.cre~ ~override~
+ WRITE_LONG 0x244 16386   //Change Kit To Wiz Slayer
+ WRITE_SHORT 0x24 145     //Current HP
+ WRITE_SHORT 0x26 145     //Maximum HP
+ WRITE_BYTE 0x2d 62       //Minor Color
+ WRITE_BYTE 0x2e 66       //Major Color
+ WRITE_BYTE 0x2f 13       //Skin Color
+ WRITE_BYTE 0x32 76       //Hair Color
+ WRITE_BYTE 0x52 2        //THAC0
+ WRITE_BYTE 0x53 3        //# of Attacks
+ WRITE_BYTE 0x5d 36       //Resist Magic
+ WRITE_BYTE 0x6d 2        //Luck
+ WRITE_BYTE 0x6e 0        //Unused Large Prof
+ WRITE_BYTE 0x6f 0        //Unused Small Prof
+ WRITE_BYTE 0x70 0        //Unused Bow Prof
+ WRITE_BYTE 0x71 0        //Unused Spear Prof
+ WRITE_BYTE 0x72 0        //Unused Blunt Prof
+ WRITE_BYTE 0x73 0        //Unused Spiked Prof
+ WRITE_BYTE 0x74 0        //Unused Axe Prof
+ WRITE_BYTE 0x234 18      //Level First Class
+ WRITE_BYTE 0x235 0       //Level Second Class
+ WRITE_BYTE 0x236 0       //Level Third Class
+ WRITE_BYTE 0x23c 16      //DEX Score
+ WRITE_BYTE 0x23d 18      //CON Score
+ WRITE_ASCII 0x250 ~None~ #8 //Class Script
+ WRITE_ASCII 0x268 ~GPWSLAY~ #8 //Default Script
+ REMOVE_KNOWN_SPELL ~SPCL321~
+ ADD_KNOWN_SPELL ~SPCL904~ #0 ~innate~ //Resist Magic
+ ADD_KNOWN_SPELL ~SPCL907~ #0 ~innate~ //Hardiness
+ ADD_MEMORIZED_SPELL ~SPCL904~ #0 ~innate~ (1)
+ ADD_MEMORIZED_SPELL ~SPCL907~ #0 ~innate~ (1)
+ REMOVE_CRE_ITEM ~POTN52~ ~PLAT01~ ~SPER06~
+ ADD_CRE_ITEM ~PLAT05~ #0 #0 #0 ~None~ ~ARMOR~
+ ADD_CRE_ITEM ~RNDTRE05~ #0 #0 #0 ~None~ ~qitem1~
+ ADD_CRE_ITEM ~SPER06~ #0 #0 #0 ~None~ ~INV1~
+ ADD_CRE_ITEM ~BERENA~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP
+ LPF ADD_CRE_EFFECT INT_VAR
+  opcode = 98
+  target = 0
+  parameter1 = 3
+  parameter2 = 2
+  timing = 9
+  END
+ LPF ADD_CRE_EFFECT INT_VAR //Poison immune
+  opcode = 101
+  target = 0
+  parameter1 = 0
+  parameter2 = 55
+  timing = 9
+  END
+BUT_ONLY
+
+COPY_EXISTING ~GROMNIR.cre~ ~override~
+ WRITE_LONG 0x244 16385   //Kit Overwrite
+ WRITE_SHORT 0x24 240     //Current HP
+ WRITE_SHORT 0x26 240     //Maximum HP
+ WRITE_SHORT 0x46 8       //Nat AC
+ WRITE_SHORT 0x48 8       //Effective AC
+ WRITE_BYTE 0x5d 25       //Magic Resist
+ WRITE_BYTE 0x5e 50       //Magic Fire Resist
+ WRITE_BYTE 0x5f 50       //Magic Cold Resist
+ WRITE_BYTE 0x60 25       //Resist Slashing
+ WRITE_BYTE 0x61 25       //Resist Crushing
+ WRITE_BYTE 0x62 25       //Resist Piercing
+ WRITE_BYTE 0x63 25       //Resist Missile
+ WRITE_BYTE 0x6e 0        //Unused Large Prof
+ WRITE_BYTE 0x6f 0        //Unused Small Prof
+ WRITE_BYTE 0x70 0        //Unused Bow Prof
+ WRITE_BYTE 0x71 0        //Unused Spear Prof
+ WRITE_BYTE 0x72 0        //Unused Blunt Prof
+ WRITE_BYTE 0x73 0        //Unused Spiked Prof
+ WRITE_BYTE 0x74 0        //Unused Axe Prof
+ WRITE_BYTE 0x234 22      //Level First Class
+ WRITE_BYTE 0x235 0       //Level Second Class
+ WRITE_BYTE 0x236 0       //Level Third Class
+ WRITE_ASCII 0x250 ~None~ #8 //Class Script
+ WRITE_ASCII 0x268 ~GROMNIR~ #8 //Default Script
+ REMOVE_KNOWN_SPELL ~SPCL152~
+ ADD_KNOWN_SPELL ~SPCL321~ #0 ~innate~ //Enrage
+ ADD_KNOWN_SPELL ~SPCL907~ #0 ~innate~ //Hardiness
+ ADD_KNOWN_SPELL ~SPCL900~ #0 ~innate~ //Whirlwind
+ REMOVE_MEMORIZED_SPELL ~SPCL152~
+ ADD_MEMORIZED_SPELL ~SPCL321~ #0 ~innate~ (6)
+ ADD_MEMORIZED_SPELL ~SPCL907~ #0 ~innate~ (2)
+ ADD_MEMORIZED_SPELL ~SPCL900~ #0 ~innate~ (2)
+ REMOVE_CRE_EFFECTS
+ LPF ADD_CRE_EFFECT INT_VAR //Proficiencies
+  opcode = 233
+  target = 0
+  parameter1 = 4
+  parameter2 = 100
+  timing = 9
+  END
+ LPF ADD_CRE_EFFECT INT_VAR 
+  opcode = 233
+  target = 0
+  parameter1 = 2
+  parameter2 = 133
+  timing = 9
+  END
+ LPF ADD_CRE_EFFECT INT_VAR //Move Bonus
+  opcode = 123
+  target = 0
+  parameter1 = 3
+  parameter2 = 0
+  timing = 9
+  END
+ LPF ADD_CRE_EFFECT INT_VAR //Effect Immunity
+  opcode = 101
+  target = 0
+  parameter1 = 0
+  parameter2 = 55
+  timing = 9
+  END
+ LPF ADD_CRE_EFFECT INT_VAR //Magic Damage Resist
+  opcode = 31
+  target = 0
+  parameter1 = 50
+  parameter2 = 0
+  timing = 9
+  END
+ LPF ADD_CRE_EFFECT INT_VAR //Invis Detect
+  opcode = 193
+  target = 0
+  parameter1 = 0
+  parameter2 = 1
+  timing = 9
+  END
+ REMOVE_CRE_ITEM ~POTN52~ ~BLUN34~
+ ADD_CRE_ITEM ~GROMNIR~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP
+ ADD_CRE_ITEM ~BLUN34~ #0 #0 #0 ~None~ ~WEAPON2~
+BUT_ONLY
+
+//Script Patching
+COPY_EXISTING ~AR5002.bcs~ ~override~
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~SetGlobal("EnteredArea","AR5002",1)~ ~SetGlobal("EnteredArea","AR5002",1) CreateCreature("ramaz",[369.616],%FaceSE%)~
+  END
+
+EXTEND_BOTTOM ~AR5002.bcs~ ~ascension/tougher/gromnir/baf/AR5002_Bottom.baf~ EVALUATE_BUFFER // create grommin.cre and jumjum.cre after reinfg timer expires

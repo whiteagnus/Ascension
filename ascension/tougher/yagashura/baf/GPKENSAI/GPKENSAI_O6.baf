@@ -1,0 +1,19 @@
+IF
+  Heard(Nearestmygroupoftype,HEALME)
+  !StateCheck(Lastheardby(Myself),STATE_REALLY_DEAD)
+  HPPercentGT(Myself,75)
+  See(Lastheardby(Myself))
+  Range(Lastheardby(Myself),10)
+  !Range(Nearestmygroupoftype([ANYONE.GENERAL_ITEM.0.CLERIC_ALL]),20)
+  !NumItemsGT("POTN55",Lastheardby(Myself),0)
+  NumItemsGT("POTN55",Myself,1)
+  !GlobalTimerNotExpired("GaveAwayPotion","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("GaveAwayPotion","LOCALS",12)
+    DisplayStringHead(Myself,72809)
+    GiveItem("POTN55",Lastheardby(Myself))
+    SmallWait(2)
+    ActionOverride(Lastheardby(Myself),DisplayStringHead(Myself,73896))
+    Continue()
+END

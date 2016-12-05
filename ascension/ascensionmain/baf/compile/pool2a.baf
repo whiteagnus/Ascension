@@ -1,0 +1,27 @@
+IF
+  True()
+THEN
+  RESPONSE #100
+    CutSceneId(Player1)
+    CreateVisualEffect("ICMAGICH",[1971.1430])
+    CreateVisualEffect("SPHOLY",[1971.1430])
+    CreateVisualEffect("SPPLANAR",[2109.1485])
+    CreateVisualEffect("SPPLANAR",[2116.1343])
+    CreateVisualEffect("SPPLANAR",[1984.1545])
+    CreateVisualEffect("SPPLANAR",[1730.1106])
+    CreateVisualEffect("SPPLANAR",[1568.1225])
+    CreateVisualEffect("SPPLANAR",[1828.1535])
+    CreateVisualEffect("SPPLANAR",[2156.1275])
+    CreateVisualEffect("SPPLANAR",[1810.1500])
+    Wait(2)
+    CreateCreature("finglab",[2109.1485],6)  // finglab
+    CreateCreature("finnabas",[2116.1343],6)  // finnabas
+    CreateCreature("finnabas",[1984.1545],6)  // finnabas
+    CreateCreature("finbabau",[1730.1106],12)  // finbabau
+    CreateCreature("finbabau",[1568.1225],4)  // finbabau
+    CreateCreature("finaluf",[1828.1535],6)  // finaluf
+    CreateCreature("finmaril",[1810.1500],6)  // finmaril
+    CreateCreature("finaluf",[2156.1275],6)  // finaluf
+    EndCutSceneMode()
+END
+

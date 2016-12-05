@@ -1,0 +1,11 @@
+IF
+  ActionListEmpty()
+  HaveSpell(WIZARD_FIREBALL)
+  CheckStatLT(LastSeenBy(Myself),50,RESISTMAGICFIRE)
+  CheckStatLT(LastSeenBy(Myself),50,RESISTMAGIC)
+  !Range(LastSeenBy(Myself),10)
+  RandomNum(2,1)
+THEN
+  RESPONSE #100
+    Spell(LastSeenBy(Myself),WIZARD_FIREBALL)
+END

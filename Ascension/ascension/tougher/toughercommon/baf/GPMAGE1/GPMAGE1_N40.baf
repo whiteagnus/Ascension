@@ -1,9 +1,0 @@
-IF
-  ActionListEmpty()
-  HaveSpell(WIZARD_PRISMATIC_SPRAY)
-  RandomNum(3,1)
-  !Range(LastSeenBy(Myself),10)
-THEN
-  RESPONSE #100
-    Spell(LastSeenBy(Myself),WIZARD_PRISMATIC_SPRAY)
-END

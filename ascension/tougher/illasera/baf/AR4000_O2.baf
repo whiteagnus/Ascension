@@ -1,0 +1,52 @@
+IF
+  GlobalTimerExpired("IllaseraSpawnTimer","GLOBAL")
+  Global("IllaseraSpawn","GLOBAL",0)
+  OR(2)
+  NumInParty(1)
+  LevelPartyLT(10)
+THEN
+  RESPONSE #100
+    ClearAllActions()
+    SetGlobal("IllaseraSpawn","GLOBAL",1)
+    StartCutSceneMode()
+    StartCutScene("cut204f2")
+END
+
+IF
+  GlobalTimerExpired("IllaseraSpawnTimer","GLOBAL")
+  Global("IllaseraSpawn","GLOBAL",0)
+  LevelPartyGT(19)
+  NumInPartyLT(4)
+THEN
+  RESPONSE #100
+    ClearAllActions()
+    SetGlobal("IllaseraSpawn","GLOBAL",1)
+    StartCutSceneMode()
+    StartCutScene("cut204f3")
+END
+
+IF
+  GlobalTimerExpired("IllaseraSpawnTimer","GLOBAL")
+  Global("IllaseraSpawn","GLOBAL",0)
+  LevelPartyLT(20)
+  NumInPartyGT(1)
+THEN
+  RESPONSE #100
+    ClearAllActions()
+    SetGlobal("IllaseraSpawn","GLOBAL",1)
+    StartCutSceneMode()
+    StartCutScene("cut204f3")
+END
+
+IF
+  GlobalTimerExpired("IllaseraSpawnTimer","GLOBAL")
+  Global("IllaseraSpawn","GLOBAL",0)
+  LevelPartyGT(19)
+  NumInPartyGT(3)
+THEN
+  RESPONSE #100
+    ClearAllActions()
+    SetGlobal("IllaseraSpawn","GLOBAL",1)
+    StartCutSceneMode()
+    StartCutScene("cut204f")
+END

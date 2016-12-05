@@ -1,9 +1,0 @@
-IF
-  ActionListEmpty()
-  HaveSpellRES("SPCL144")
-  !Range(LastSeenBy(Myself),6)
-  !GlobalTimerNotExpired("KaiAttack","LOCALS")
-THEN
-  RESPONSE #100
-    MoveToObject(LastSeenBy(Myself))
-END

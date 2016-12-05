@@ -1,0 +1,9 @@
+IF
+	See(NearestEnemyOf(Myself))
+	CheckStatLT(Myself,1,STONESKINS)
+	!GlobalTimerNotExpired("DemoGorStone","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("DemoGorStone","LOCALS",10)
+		ForceSpellRES("melstone",Myself) // Stoneskin
+END

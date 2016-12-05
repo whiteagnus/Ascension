@@ -1,7 +1,0 @@
-IF
-	!Allegiance(LastSeenBy(Myself),GOODCUTOFF)
-	!See([GOODCUTOFF])
-THEN
-	RESPONSE #100
-		MoveToObject(Player1)
-END

@@ -1,9 +1,0 @@
-IF
-	OR(2)
-		!Allegiance(LastSeenBy(Myself),GOODCUTOFF)
-		!See([GOODCUTOFF])
-	!Range(Player1,40)
-THEN
-	RESPONSE #100
-		NoAction()
-END

@@ -1,0 +1,86 @@
+IF
+  Global("IllaseraDead","AR6200",1)
+  Global("IllaseraImprisoned","AR6200",0)
+  HasItem("finilla",Myself)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    DestroyItem("finilla")
+    SetInterrupt(TRUE)
+    Continue()
+END
+
+IF
+  Global("AbazigalDead","AR6200",1)
+  Global("AbazigalImprisoned","AR6200",0)
+  HasItem("finabaz",Myself)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    DestroyItem("finabaz")
+    SetInterrupt(TRUE)
+    Continue()
+END
+
+IF
+  Global("YagaDead","AR6200",1)
+  Global("YagaImprisoned","AR6200",0)
+  HasItem("finyaga",Myself)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    DestroyItem("finyaga")
+    SetInterrupt(TRUE)
+    Continue()
+END
+
+IF
+  Global("SendaiDead","AR6200",1)
+  Global("SendaiImprisoned","AR6200",0)
+  HasItem("finsend",Myself)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    DestroyItem("finsend")
+    SetInterrupt(TRUE)
+    Continue()
+END
+
+IF
+  Global("BalthazarFights","GLOBAL",0)
+  Global("BalthDead","AR6200",1)
+  Global("BalthImprisoned","AR6200",0)
+  HasItem("finbalth",Myself)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    DestroyItem("finbalth")
+    SetInterrupt(TRUE)
+    Continue()
+END
+
+IF
+  Global("BalthazarFights","GLOBAL",1)
+  DifficultyGT(EASY)
+  Global("GromnirDead","AR6200",1)
+  Global("GromnirImprisoned","AR6200",0)
+  HasItem("finbalth",Myself)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    DestroyItem("finbalth")
+    SetInterrupt(TRUE)
+    Continue()
+END
+
+IF
+  Global("BalthazarFights","GLOBAL",1)
+  DifficultyLT(NORMAL)
+  HasItem("finbalth",Myself)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    DestroyItem("finbalth")
+    SetInterrupt(TRUE)
+    Continue()
+END
