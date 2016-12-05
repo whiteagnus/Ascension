@@ -1,5 +1,5 @@
 //Copy and Compile
-COMPILE ~ascension/tougher/gromnir/d~ //Compile .d file
+COMPILE EVALUATE_BUFFER ~ascension/tougher/gromnir/d~ //Compile .d file
 COMPILE ~ascension/tougher/gromnir/baf/compile~ //Compile unique scripts
 COPY ~ascension/tougher/gromnir/cre~ ~override~
 COPY ~ascension/tougher/gromnir/itm~ ~override~
@@ -483,7 +483,8 @@ BUT_ONLY
 
 //Script Patching
 COPY_EXISTING ~AR5002.bcs~ ~override~
-DECOMPILE_AND_PATCH BEGIN
-REPLACE_TEXTUALLY ~SetGlobal("EnteredArea","AR5002",1)~ ~SetGlobal("EnteredArea","AR5002",1) CreateCreature("ramaz",[369.616],14)~
-END
-EXTEND_BOTTOM ~AR5002.bcs~ ~ascension/tougher/gromnir/baf/AR5002_Bottom.baf~ //Applies script to the bottom of the existing file.
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~SetGlobal("EnteredArea","AR5002",1)~ ~SetGlobal("EnteredArea","AR5002",1) CreateCreature("ramaz",[369.616],%FaceSE%)~
+  END
+
+EXTEND_BOTTOM ~AR5002.bcs~ ~ascension/tougher/gromnir/baf/AR5002_Bottom.baf~ EVALUATE_BUFFER // create grommin.cre and jumjum.cre after reinfg timer expires

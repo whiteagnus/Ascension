@@ -1,29 +1,30 @@
 //This code is almost entirely from the Cuv/Turumbar/Miloch build.
 INCLUDE ~ascension/lib/always.tpa~
 
+// Replace original Monks with Ascension's Adherents
 COPY_EXISTING ~CUT242A.bcs~ ~override~
-DECOMPILE_AND_PATCH BEGIN
-REPLACE_TEXTUALLY ~CreateCreature("BALELITE",\[866\.468\],SE)~ ~CreateCreature("BALELIT1",[866.468],SE)~
-REPLACE_TEXTUALLY ~CreateCreature("BALELITE",\[614\.559\],SE)~ ~CreateCreature("BALELIT2",[614.559],SE)~
-REPLACE_TEXTUALLY ~CreateCreature("BALELITE",\[441\.794\],NE)~ ~CreateCreature("BALELIT3",[441.794],NE)~
-REPLACE_TEXTUALLY ~CreateCreature("BALELITE",\[1218\.558\],[4W])~ ~CreateCreature("BALELIT4",[1218.558],W)~
-END
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~CreateCreature("BALELITE",\[866\.468\],%FaceSE%)~ ~CreateCreature("BALELIT1",[866.468],%FaceSE%)~
+    REPLACE_TEXTUALLY ~CreateCreature("BALELITE",\[614\.559\],%FaceSE%)~ ~CreateCreature("BALELIT2",[614.559],%FaceSE%)~
+    REPLACE_TEXTUALLY ~CreateCreature("BALELITE",\[441\.794\],%FaceNE%)~ ~CreateCreature("BALELIT3",[441.794],%FaceNE%)~
+    REPLACE_TEXTUALLY ~CreateCreature("BALELITE",\[1218\.558\],%FaceW%)~ ~CreateCreature("BALELIT4",[1218.558],%FaceW%)~
+  END
 
 //Copy and Compile
 COPY ~ascension/ascensionmain/itm/copy~ ~override~
 COPY ~ascension/ascensionmain/cre/copy~ ~override~
-COPY ~ascension/ascensionmain/eff~ ~override~
+COPY ~ascension/ascensionmain/eff~      ~override~
 COPY ~ascension/ascensionmain/spl/copy~ ~override~
 COMPILE ~ascension/ascensionmain/d~
 COMPILE ~ascension/ascensionmain/baf/compile~
 
 //EE Style Sword Description
 ACTION_IF GAME_IS ~bg2ee~ BEGIN
-	ACTION_IF FILE_EXISTS ~ascension/tra/%LANGUAGE%/ee.tra~ BEGIN
-		LOAD_TRA ~ascension/tra/%LANGUAGE%/ee.tra~
-	END ELSE BEGIN
-		LOAD_TRA ~ascension/tra/american/ee.tra~
-	END
+  ACTION_IF FILE_EXISTS ~ascension/tra/%LANGUAGE%/ee.tra~ BEGIN
+    LOAD_TRA ~ascension/tra/%LANGUAGE%/ee.tra~
+  END ELSE BEGIN
+    LOAD_TRA ~ascension/tra/american/ee.tra~
+  END
 END
 
 //Copy and Alter Strings
@@ -39,34 +40,34 @@ COPY ~ascension/ascensionmain/cre/finbabau.cre~ ~override~
   SAY NAME1 @500
   SAY NAME2 @500
 
-COPY ~ascension/ascensionmain/spl/SPINKRBT.SPL~ ~override/SPINKRBT.SPL~ SAY 8 @1003
-COPY ~ascension/ascensionmain/spl/SPINKRVA.SPL~ ~override/SPINKRVA.SPL~ SAY 8 #57971
-COPY ~ascension/ascensionmain/spl/abaz01.SPL~ ~override/abaz01.SPL~ SAY 8 @1006
-COPY ~ascension/ascensionmain/spl/abaz02.SPL~ ~override/abaz02.SPL~ SAY 8 @1007
-COPY ~ascension/ascensionmain/spl/balortk1.spl~ ~override/balortk1.spl~ SAY 8 @1009
-COPY ~ascension/ascensionmain/spl/balortk2.SPL~ ~override/balortk2.spl~ SAY 8 @1009
-COPY ~ascension/ascensionmain/spl/balth11.SPL~ ~override/balth11.SPL~ SAY 8 @1012
-COPY ~ascension/ascensionmain/spl/ctrldem.SPL~ ~override/ctrldem.SPL~ SAY 8 @1013
-COPY ~ascension/ascensionmain/spl/focus.SPL~ ~override/focus.SPL~ SAY 8 @1014
-COPY ~ascension/ascensionmain/spl/melspl01.SPL~ ~override/melspl01.SPL~ SAY 8 @1016
-COPY ~ascension/ascensionmain/spl/melspl02.SPL~ ~override/melspl02.SPL~ SAY 8 @1017
-COPY ~ascension/ascensionmain/spl/melspl03.SPL~ ~override/melspl03.SPL~ SAY 8 @1018
-COPY ~ascension/ascensionmain/spl/melspl05.SPL~ ~override/melspl05.SPL~ SAY 8 @1019
-COPY ~ascension/ascensionmain/spl/melspl5a.spl~ ~override~
+COPY ~ascension/ascensionmain/spl/SPINKRBT.SPL~   ~override/SPINKRBT.SPL~ SAY 8 @1003
+COPY ~ascension/ascensionmain/spl/SPINKRVA.SPL~   ~override/SPINKRVA.SPL~ SAY 8 #57971
+COPY ~ascension/ascensionmain/spl/abaz01.SPL~     ~override/abaz01.SPL~ SAY 8 @1006
+COPY ~ascension/ascensionmain/spl/abaz02.SPL~     ~override/abaz02.SPL~ SAY 8 @1007
+COPY ~ascension/ascensionmain/spl/balortk1.spl~   ~override/balortk1.spl~ SAY 8 @1009
+COPY ~ascension/ascensionmain/spl/balortk2.SPL~   ~override/balortk2.spl~ SAY 8 @1009
+COPY ~ascension/ascensionmain/spl/balth11.SPL~    ~override/balth11.SPL~ SAY 8 @1012
+COPY ~ascension/ascensionmain/spl/ctrldem.SPL~    ~override/ctrldem.SPL~ SAY 8 @1013
+COPY ~ascension/ascensionmain/spl/focus.SPL~      ~override/focus.SPL~ SAY 8 @1014
+COPY ~ascension/ascensionmain/spl/melspl01.SPL~   ~override/melspl01.SPL~ SAY 8 @1016
+COPY ~ascension/ascensionmain/spl/melspl02.SPL~   ~override/melspl02.SPL~ SAY 8 @1017
+COPY ~ascension/ascensionmain/spl/melspl03.SPL~   ~override/melspl03.SPL~ SAY 8 @1018
+COPY ~ascension/ascensionmain/spl/melspl05.SPL~   ~override/melspl05.SPL~ SAY 8 @1019
+COPY ~ascension/ascensionmain/spl/melspl5a.spl~   ~override~
   SAY 0x12e @1038 // Patch DisplayString opcode inside .spl
-COPY ~ascension/ascensionmain/spl/melspl06.SPL~ ~override/melspl06.SPL~ SAY 8 @1020
-COPY ~ascension/ascensionmain/spl/melspl07.SPL~ ~override/melspl07.SPL~ SAY 8 #73235
-COPY ~ascension/ascensionmain/spl/melspl08.SPL~ ~override/melspl08.SPL~ 
-     ~ascension/ascensionmain/spl/melspl09.SPL~ ~override/melspl09.SPL~
-     ~ascension/ascensionmain/spl/unleash.SPL~ ~override/unleash.SPL~
+COPY ~ascension/ascensionmain/spl/melspl06.SPL~   ~override/melspl06.SPL~ SAY 8 @1020
+COPY ~ascension/ascensionmain/spl/melspl07.SPL~   ~override/melspl07.SPL~ SAY 8 #73235
+COPY ~ascension/ascensionmain/spl/melspl08.SPL~   ~override/melspl08.SPL~ 
+     ~ascension/ascensionmain/spl/melspl09.SPL~   ~override/melspl09.SPL~
+     ~ascension/ascensionmain/spl/unleash.SPL~    ~override/unleash.SPL~
         SAY 8 @1022
-COPY ~ascension/ascensionmain/spl/melspl10.SPL~ ~override/melspl10.SPL~ SAY 8 @1024
-COPY ~ascension/ascensionmain/spl/melspl11.SPL~ ~override/melspl11.SPL~ SAY 8 @1025
-COPY ~ascension/ascensionmain/spl/melspl12.SPL~ ~override/melspl12.SPL~ SAY 8 @1026
-COPY ~ascension/ascensionmain/spl/nabpara.SPL~ ~override/nabpara.SPL~ SAY 8 @1027
-COPY ~ascension/tougher/yagashura/spl/yaga01.SPL~ ~ascension\tougher\yagashura\SPL\yaga01.SPL~ SAY 8 @1029
-COPY ~ascension/ascensionmain/spl/MELS545.spl~ ~override/mels545.spl~ SAY 8 @1031
-COPY ~ascension/ascensionmain/spl/slayer4.spl~ ~override/slayer4.spl~ SAY 8 @1037
+COPY ~ascension/ascensionmain/spl/melspl10.SPL~   ~override/melspl10.SPL~ SAY 8 @1024
+COPY ~ascension/ascensionmain/spl/melspl11.SPL~   ~override/melspl11.SPL~ SAY 8 @1025
+COPY ~ascension/ascensionmain/spl/melspl12.SPL~   ~override/melspl12.SPL~ SAY 8 @1026
+COPY ~ascension/ascensionmain/spl/nabpara.SPL~    ~override/nabpara.SPL~ SAY 8 @1027
+COPY ~ascension/tougher/yagashura/spl/yaga01.SPL~ ~ascension/tougher/yagashura/SPL/yaga01.SPL~ SAY 8 @1029
+COPY ~ascension/ascensionmain/spl/MELS545.spl~    ~override/mels545.spl~ SAY 8 @1031
+COPY ~ascension/ascensionmain/spl/slayer4.spl~    ~override/slayer4.spl~ SAY 8 @1037
 
 //Area Patching
 //Fixed bug in vertex offsets (was writing old instead of new coordinates)
@@ -81,7 +82,7 @@ COPY_EXISTING ~ar5505.are~ ~override~
       WRITE_SHORT (reg_off + (i * 0xc4) + 0x24) 679 //Bounding box top (was 386)
       WRITE_SHORT (reg_off + (i * 0xc4) + 0x26) 1417 //Bounding box right (was 1010)
       WRITE_SHORT (reg_off + (i * 0xc4) + 0x28) 703 //Bounding box bottom (was 424)
-      READ_LONG (reg_off + (i * 0xc4) + 0x2c) vertr //First vertex index
+      READ_LONG   (reg_off + (i * 0xc4) + 0x2c) vertr //First vertex index
       WRITE_SHORT (vert_off + (vertr * 4)) 1385      //Vertex 0 X (was 1022)
       WRITE_SHORT (vert_off + (vertr * 4) + 2) 703   //Vertex 0 Y (was 386)
       WRITE_SHORT (vert_off + (vertr * 4) + 4) 1405  //Vertex 1 X (was 1010)
@@ -94,7 +95,7 @@ COPY_EXISTING ~ar5505.are~ ~override~
       WRITE_SHORT (reg_off + (i * 0xc4) + 0x24) 1000 //Bounding box top (was 603)
       WRITE_SHORT (reg_off + (i * 0xc4) + 0x26) 375 //Bounding box right (was 461)
       WRITE_SHORT (reg_off + (i * 0xc4) + 0x28) 1041 //Bounding box bottom (was 648)
-      READ_LONG (reg_off + (i * 0xc4) + 0x2c) vertl  //First vertex index
+      READ_LONG   (reg_off + (i * 0xc4) + 0x2c) vertl  //First vertex index
       WRITE_SHORT (vert_off + (vertl * 4)) 344        //Vertex 0 X (was 434)
       WRITE_SHORT (vert_off + (vertl * 4) + 2) 1041   //Vertex 0 Y (was 645)
       WRITE_SHORT (vert_off + (vertl * 4) + 4) 361    //Vertex 1 X (was 454)
@@ -419,11 +420,11 @@ COPY_EXISTING ~dartmel.itm~ ~override~
 BUT_ONLY
 
 COPY_EXISTING ~demsuc01.itm~ ~override~
-  WRITE_LONG 0x8 213 //Unidentified name (Fists, was none)
+  WRITE_LONG  0x8 213   //Unidentified name (Fists, was none)
   WRITE_SHORT 0x1c 0x1c //Item type (hand-to-hand, was 0 misc.)
-  WRITE_LONG 0x60 0 //Magic level (was 2)
-  READ_LONG 0x64 hf //Extended header offset
-  READ_SHORT 0x68 hc //Extended header count
+  WRITE_LONG  0x60 0    //Magic level (was 2)
+  READ_LONG   0x64 hf   //Extended header offset
+  READ_SHORT  0x68 hc   //Extended header count
   FOR (i1 = 0; i1 < hc; i1 += 1) BEGIN //Cycle through headers
     READ_BYTE (0x38 * i1 + hf) pt //Attack type
     PATCH_IF pt = 1 BEGIN //If melee
@@ -543,7 +544,7 @@ COPY_EXISTING ~mfist7.itm~ ~override~
 BUT_ONLY
 
 COPY_EXISTING ~spermel.itm~ ~override~
-  READ_LONG 0x64 hf //Extended header offset
+  READ_LONG  0x64 hf //Extended header offset
   READ_SHORT 0x68 hc //Extended header count
   FOR (i1 = 0; i1 < hc; i1 += 1) BEGIN //Cycle through headers
     READ_BYTE (0x38 * i1 + hf) pt //Attack type
@@ -639,8 +640,8 @@ BUT_ONLY
 COPY_EXISTING ~balth02.spl~ ~override~ //Lunar Stance
   WRITE_BYTE 0x27 2 //Secondary type (specific protections, was none)
   WRITE_LONG 0x34 1 //Level
-  READ_LONG 0x64 abil_off
-  READ_LONG 0x6a ef_off
+  READ_LONG  0x64 abil_off
+  READ_LONG  0x6a ef_off
   READ_SHORT (abil_off + 0x1e) ef_count
   FOR (v = 0; v < ef_count; v += 1) BEGIN //Cycle through effects
     READ_LONG (0x30 * v + ef_off + 0xe) dur //Duration
@@ -697,8 +698,8 @@ BUT_ONLY
 
 COPY_EXISTING ~balth03.spl~ ~override~ //Dragon Fist
   WRITE_LONG 0x34 1 //Level
-  READ_LONG 0x64 abil_off
-  READ_LONG 0x6a ef_off
+  READ_LONG  0x64 abil_off
+  READ_LONG  0x6a ef_off
   READ_SHORT (abil_off + 0x1e) ef_count
   FOR (v = 0; v < ef_count; v += 1) BEGIN //Cycle through effects
     READ_BYTE (0x30 * v + ef_off + 0xc) tmd //Timing
@@ -772,8 +773,8 @@ BUT_ONLY
 
 COPY_EXISTING ~balth04.spl~ ~override~ //Tiger Strike
   WRITE_LONG 0x34 1 //Level
-  READ_LONG 0x64 abil_off
-  READ_LONG 0x6a ef_off
+  READ_LONG  0x64 abil_off
+  READ_LONG  0x6a ef_off
   READ_SHORT (abil_off + 0x1e) ef_count
   FOR (v = 0; v < ef_count; v += 1) BEGIN //Cycle through effects
     READ_SHORT (0x30 * v + ef_off) pcd //Opcode
@@ -790,8 +791,8 @@ BUT_ONLY
 
 COPY_EXISTING ~balth05.spl~ ~override~ //Hand of Murder
   WRITE_LONG 0x34 1 //Level
-  READ_LONG 0x64 abil_off
-  READ_LONG 0x6a ef_off
+  READ_LONG  0x64 abil_off
+  READ_LONG  0x6a ef_off
   READ_SHORT (abil_off + 0x1e) ef_count
   FOR (v = 0; v < ef_count; v += 1) BEGIN //Cycle through effects
     READ_BYTE (0x30 * v + ef_off + 3) pwr //Power
@@ -818,7 +819,7 @@ BUT_ONLY
 COPY_EXISTING ~balth07.spl~ ~override~ //Greater Malison
   WRITE_BYTE 0x19 (THIS BOR 0b00001000) //No LOS needed
   WRITE_LONG 0x34 1 //Level
-  READ_LONG 0x64 abil_off
+  READ_LONG  0x64 abil_off
   WRITE_SHORT (abil_off + 0x26) 159 //Projectile (Instant area)
   PATCH_FOR_EACH pcd IN 40 50 215 BEGIN
     LAUNCH_PATCH_FUNCTION DELETE_SPELL_EFFECT
@@ -837,8 +838,8 @@ BUT_ONLY
 
 COPY_EXISTING ~balth08.spl~ ~override~ //Faster Than the Eye
   WRITE_LONG 0x34 1 //Level
-  READ_LONG 0x64 abil_off
-  READ_LONG 0x6a ef_off
+  READ_LONG  0x64 abil_off
+  READ_LONG  0x6a ef_off
   WRITE_SHORT (abil_off + 0xe) 30 //Range
   READ_SHORT (abil_off + 0x1e) ef_count
   FOR (v = 0; v < ef_count; v += 1) BEGIN //Cycle through effects
@@ -860,8 +861,8 @@ BUT_ONLY
 
 COPY_EXISTING ~balth10.spl~ ~override~ //Shadow Stance
   WRITE_LONG 0x34 1 //Level
-  READ_LONG 0x64 abil_off
-  READ_LONG 0x6a ef_off
+  READ_LONG  0x64 abil_off
+  READ_LONG  0x6a ef_off
   READ_SHORT (abil_off + 0x1e) ef_count
   FOR (v = 0; v < ef_count; v += 1) BEGIN //Cycle through effects
     READ_SHORT (0x30 * v + ef_off) pcd //Opcode
@@ -880,7 +881,7 @@ COPY_EXISTING ~dgwhirl.spl~ ~override~ //Unnamed
               ~spwi929.spl~ ~override~ //Charm Person
               ~spwi930.spl~ ~override~ //Charm Person
   WRITE_LONG 0x34 1 //Level
-  READ_LONG 0x64 abil_off
+  READ_LONG  0x64 abil_off
   READ_SHORT 0x68 num_abil
   FOR (w = 0; w < num_abil; w += 1) BEGIN //Cycle through headers
     READ_SHORT (0x28 * w + abil_off + 0xe) rg //Range
@@ -891,10 +892,10 @@ COPY_EXISTING ~dgwhirl.spl~ ~override~ //Unnamed
 BUT_ONLY
 
 COPY_EXISTING ~melis01.spl~ ~override~ //Bone Blades
-  WRITE_BYTE 0x19 (THIS BOR 0b00000100) //Hostile spell
+  WRITE_BYTE  0x19 (THIS BOR 0b00000100) //Hostile spell
   WRITE_SHORT 0x1c 2 //Type (cleric, was innate)
-  READ_LONG 0x64 abil_off
-  READ_LONG 0x6a ef_off
+  READ_LONG   0x64 abil_off
+  READ_LONG   0x6a ef_off
   WRITE_BYTE (abil_off + 2) 2 //Location (spell, was innate)
   WRITE_BYTE (abil_off + 0xc) 1 //Target (creature, was self)
   WRITE_SHORT (abil_off + 0xe) 30 //Range
@@ -949,8 +950,8 @@ BUT_ONLY
 
 COPY_EXISTING ~melis02.spl~ ~override~ //Blade Barrier
   WRITE_SHORT 0x1c 2 //Type (cleric, was innate)
-  READ_LONG 0x64 abil_off
-  READ_LONG 0x6a ef_off
+  READ_LONG   0x64 abil_off
+  READ_LONG   0x6a ef_off
   WRITE_BYTE (abil_off + 2) 2 //Location (spell, was innate)
   READ_SHORT (abil_off + 0x1e) ef_count
   FOR (v = 0; v < ef_count; v += 1) BEGIN //Cycle through effects
@@ -966,8 +967,8 @@ COPY_EXISTING ~melis02.spl~ ~override~ //Blade Barrier
 BUT_ONLY
 
 COPY_EXISTING ~melis02b.spl~ ~override~ //Blade Barrier
-  READ_LONG 0x64 abil_off
-  READ_LONG 0x6a ef_off
+  READ_LONG   0x64 abil_off
+  READ_LONG   0x6a ef_off
   READ_SHORT (abil_off + 0x1e) ef_count
   FOR (v = 0; v < ef_count; v += 1) BEGIN //Cycle through effects
     READ_LONG (0x30 * v + ef_off + 0x24) svt //Save type
@@ -983,7 +984,7 @@ COPY_EXISTING ~melis02b.spl~ ~override~ //Blade Barrier
 BUT_ONLY
 
 COPY_EXISTING ~spin718.spl~ ~override~ //End Slayer Change
-  READ_LONG 0x64 abil_off
+  READ_LONG    0x64 abil_off
   WRITE_SHORT (abil_off + 0xe) 30 //Range
   PATCH_FOR_EACH pcd IN 17 93 BEGIN
     LAUNCH_PATCH_FUNCTION DELETE_SPELL_EFFECT
@@ -1061,8 +1062,8 @@ COPY_EXISTING ~spin718.spl~ ~override~ //End Slayer Change
 BUT_ONLY
 
 COPY_EXISTING ~spin823.spl~ ~override~ //Slayer Change
-  READ_LONG 0x64 abil_off
-  READ_LONG 0x6a ef_off
+  READ_LONG   0x64 abil_off
+  READ_LONG   0x6a ef_off
   READ_SHORT (abil_off + 0x1e) ef_count
   FOR (v = 0; v < ef_count; v += 1) BEGIN //Cycle through effects
     READ_BYTE (0x30 * v + ef_off + 0xc) tmd //Timing

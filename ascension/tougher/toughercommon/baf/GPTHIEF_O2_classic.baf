@@ -1,0 +1,10 @@
+IF
+	HaveSpellRES("SPCL913") // Evasion
+	Allegiance(Myself,ENEMY)
+	See(NearestEnemyOf(Myself))
+	!GlobalTimerNotExpired("Evasion","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("Evasion","LOCALS",18)
+		SpellRES("SPCL913",Myself) // Evasion
+END

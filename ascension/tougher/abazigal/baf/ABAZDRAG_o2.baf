@@ -6,5 +6,6 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobalTimer("BLUEDRAGONBREATH","LOCALS",12)
-		ForceSpell(LastSeenBy(Myself),BLUE_DRAGON_BREATH) 
+		ForceSpell(LastSeenBy(Myself),BLUE_DRAGON_BREATH)
+		ReallyForceSpell(LastSeenBy(Myself),0)
 END

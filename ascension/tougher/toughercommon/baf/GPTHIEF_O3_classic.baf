@@ -1,0 +1,10 @@
+IF
+	HaveSpellRES("SPCL917")
+	Allegiance(Myself,ENEMY)
+	See(NearestEnemyOf(Myself))
+	!GlobalTimerNotExpired("AvoidDeath","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("AvoidDeath","LOCALS",FIVE_ROUNDS)
+		SpellRES("SPCL917",Myself)
+END

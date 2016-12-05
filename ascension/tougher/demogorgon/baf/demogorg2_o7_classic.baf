@@ -1,0 +1,9 @@
+IF
+  !NumCreatureVsPartyLT([ENEMY.GENERAL_ITEM.DEMONIC],0)
+  Range(Nearestenemyof(Myself),4)
+THEN
+  RESPONSE #100
+    RunAwayFrom(Nearestenemyof(Myself),30)
+  RESPONSE #50
+    AttackReevaluate(Nearestenemyof(Myself),30)
+END

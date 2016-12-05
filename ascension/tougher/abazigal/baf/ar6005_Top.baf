@@ -4,9 +4,9 @@ IF
 THEN
   RESPONSE #100
     SetGlobal("JustEntered","AR6005",1)
-    CreateCreature("DRAKE01",[706.1084],0)
-    CreateCreature("DRAKE02",[1181.1096],0)
-    CreateCreature("DRAKE03",[1575.997],0)
-    CreateCreature("DRAKE04",[1618.669],0)
-    CreateCreature("ABAZDG02",[1224.1287],0)
+    CreateCreature("DRAKE01",[706.1084],%FaceS%)
+    CreateCreature("DRAKE02",[1181.1096],%FaceS%)
+    CreateCreature("DRAKE03",[1575.997],%FaceS%)
+    CreateCreature("DRAKE04",[1618.669],%FaceS%)
+    CreateCreature("ABAZDG02",[1224.1287],%FaceS%)
 END

@@ -5,6 +5,6 @@ IF
 THEN
   RESPONSE #100
     SetGlobal("EnteredArea","AR5002",2)
-    CreateCreature("grommin",[848.894],6)
-    CreateCreature("jumjum",[894.841],6)
+    CreateCreature("grommin",[848.894],%FaceNW%)
+    CreateCreature("jumjum",[894.841],%FaceNW%)
 END

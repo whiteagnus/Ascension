@@ -2,8 +2,8 @@ SET_WEIGHT BALTH 12 #-1
 
 REPLACE_SAY BALTH 19 @1060
 
-REPLACE BALTH 
-  IF ~~ THEN BEGIN 24 
+REPLACE BALTH
+  IF ~~ THEN BEGIN 24
     SAY #67727 
     + ~Alignment(Player1,MASK_GOOD) ReputationGT(Player1,18)~ + #67730 + a31
     + ~!Alignment(Player1,MASK_GOOD) ReputationGT(Player1,18)~ + #67730 + a32

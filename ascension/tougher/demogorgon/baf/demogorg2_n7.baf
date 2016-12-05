@@ -27,7 +27,7 @@ THEN
 END
 
 IF
-  !NumCreatureVsPartyLT([ENEMY.0.DEMONIC],0)
+  !NumCreatureVsPartyLT([ENEMY.GENERAL_ITEM.DEMONIC],0)
   Range(NearestEnemyOf(Myself),4)
 THEN
   RESPONSE #100

@@ -7,14 +7,16 @@
  *************************************************************************/
 BACKUP ~ascension/backup~
 //AUTHORS: David Gaider & Contributers, Westley Weimer, Turumbar, Miloch, Cuv, WhiteAgnus, JediMindTrix"
-AUTHOR "Active Caretaker: please JediMindTrix contact on the Beamdog forums, or on the open discussion forums at http://s13.zifboards.com/Project_Ascension/index.php?showforum=2"
+AUTHOR "Active Caretaker: please contact JediMindTrix on the Beamdog forums, or on the open discussion forums at http://s13.zifboards.com/Project_Ascension/index.php?showforum=2"
 
-VERSION ~v1.51 BETA BWP 20161122~
+VERSION ~v1.51 BETA BWP 20161205~
 
-AUTO_TRA "ascension/tra/autotra/%s"//%"
+AUTO_TRA ~ascension/tra/autotra/%s~
 
 ALWAYS
-INCLUDE ~ascension/lib/always.tpa~ //library with functions and macros common to all components
+  INCLUDE ~ascension/lib/always.tpa~ //library with functions and macros common to all components
+  INCLUDE ~ascension/lib/charset.tpa~
+  INCLUDE ~ascension/lib/ds.tpa~
 END
 
 ///////////////////////////////////////////////////////////////////////
@@ -40,20 +42,20 @@ LANGUAGE ~Francais (traduction de Ly Meng)~
          ~ascension/tra/autotra/french/ascension.tra~
 
 LANGUAGE ~Traducción al Español (hecha por Clan REO)~ 
-        ~spanish~
-        ~ascension/tra/autotra/spanish/ascension.tra~
+         ~spanish~
+         ~ascension/tra/autotra/spanish/ascension.tra~
 
 LANGUAGE ~Chinese Translation (by kalabaka)~ 
-        ~chinese~
-        ~ascension/tra/autotra/chinese/ascension.tra~
+         ~chinese~
+         ~ascension/tra/autotra/chinese/ascension.tra~
 
 LANGUAGE ~Traditional Chinese Translation (by kalabaka)~ 
-        ~chinese~
-        ~ascension/tra/autotra/Traditional Chinese/ascension.tra~
+         ~chinese~
+         ~ascension/tra/autotra/Traditional Chinese/ascension.tra~
 
 LANGUAGE ~Polski je;zyk (Przet?umaczony przez Damian Staniszewski)~ 
-        ~polski~
-        ~ascension/tra/autotra/polski/ascension.tra~
+         ~polski~
+         ~ascension/tra/autotra/polski/ascension.tra~
 
 LANGUAGE ~Russian (Pilferer, Serdrick, Aerie.ru)~ 
          ~russian~
@@ -74,141 +76,158 @@ LANGUAGE ~Italian (Al17, Alessandro, Max, M.Inxes, Rahar and Stefano)~
 /////////////////////////////////////////////////
 
 BEGIN @1 DESIGNATED 0
-REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // EE sanity check
-INCLUDE ~ascension/lib/charset.tpa~
-INCLUDE ~ascension/lib/ds.tpa~
+REQUIRE_PREDICATE GAME_INCLUDES ~tob~ @2 // ToB is required
+REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ OR MOD_IS_INSTALLED ~setup-bg2fixpack.tp2~ ~0~ "You must install the BG2 Fixpack before installing Ascension"
+
 INCLUDE ~ascension/lib/epilogue_update.tph~
-COPY_EXISTING ~sw1h01.itm~ ~override/asc_main.flag~
-INCLUDE ~ascension/lib/ascension.tpa~ //Installation Library
+INCLUDE ~ascension/lib/ascension.tpa~
+
+COPY_EXISTING ~sw1h01.itm~ ~override/asc_main.flag~ //Creates install "flag"
 
 ///////////////////////////////////////////////////////////////////////
 // Tougher Abazigal
 ///////////////////////////////////////////////////////////////////////
 
 BEGIN @3 DESIGNATED 1
-REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
-INCLUDE ~ascension/lib/charset.tpa~
-INCLUDE ~ascension/lib/ds.tpa~
-COPY_EXISTING ~sw1h01.itm~ ~override/asc_abazigal.flag~
-INCLUDE ~ascension/lib/tougherabazigal.tpa~ //Patching Library
+REQUIRE_PREDICATE GAME_INCLUDES ~tob~ @2 // ToB is required
+REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ OR MOD_IS_INSTALLED ~setup-bg2fixpack.tp2~ ~0~ "You must install the BG2 Fixpack before installing Ascension"
+
+INCLUDE ~ascension/lib/tougherabazigal.tpa~
+
+COPY_EXISTING ~sw1h01.itm~ ~override/asc_abazigal.flag~ //Creates install "flag"
 
 ////////////////////////
 // Tougher Demogorgon //
 ////////////////////////
 
 BEGIN @4 DESIGNATED 2
-REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
-INCLUDE ~ascension/lib/ds.tpa~
-INCLUDE ~ascension/lib/tougherdemo2.tpa~ //Patching Library
+REQUIRE_PREDICATE GAME_INCLUDES ~tob~ @2 // ToB is required
+REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ OR MOD_IS_INSTALLED ~setup-bg2fixpack.tp2~ ~0~ "You must install the BG2 Fixpack before installing Ascension"
+
+INCLUDE ~ascension/lib/tougherdemo2.tpa~
+
+COPY_EXISTING ~sw1h01.itm~ ~override/asc_demogorgon.flag~ //Creates install "flag"
 
 /////////////////////
 // Tougher Gromnir //
 /////////////////////
 
 BEGIN @5 DESIGNATED 3
-REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
-INCLUDE ~ascension/lib/ds.tpa~
- COPY_EXISTING ~sw1h01.itm~ ~override/asc_gromnir.flag~ //Set Install Flag
-INCLUDE ~ascension/lib/toughergrom.tpa~ //Install Library
+REQUIRE_PREDICATE GAME_INCLUDES ~tob~ @2 // ToB is required
+REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ OR MOD_IS_INSTALLED ~setup-bg2fixpack.tp2~ ~0~ "You must install the BG2 Fixpack before installing Ascension"
 
-//Compile if Tougher Yaga-Shura is not installed.
+INCLUDE ~ascension/lib/toughergrom.tpa~
+
+//Compile common scripts, if Tougher Yaga-Shura hasn't been installed already
 ACTION_IF !FILE_EXISTS ~override/asc_yagashura.flag~ BEGIN
 	INCLUDE ~ascension/lib/toughercommon.tpa~
 END
+
+COPY_EXISTING ~sw1h01.itm~ ~override/asc_gromnir.flag~ //Creates install "flag"
 
 //////////////////////
 // Tougher Illasera //
 //////////////////////
 
 BEGIN @6 DESIGNATED 4
-REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
-INCLUDE ~ascension/lib/ds.tpa~
- COPY_EXISTING ~sw1h01.itm~ ~override/asc_illasera.flag~
-//Patch Tougher Illasera CRE's
-INCLUDE ~ascension/lib/tougherillasera.tpa~  //Install library
+REQUIRE_PREDICATE GAME_INCLUDES ~tob~ @2 // ToB is required
+REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ OR MOD_IS_INSTALLED ~setup-bg2fixpack.tp2~ ~0~ "You must install the BG2 Fixpack before installing Ascension"
+
+INCLUDE ~ascension/lib/tougherillasera.tpa~
+
+COPY_EXISTING ~sw1h01.itm~ ~override/asc_illasera.flag~ //Creates install "flag"
 
 ////////////////////////
 // Tougher Yaga-Shura //
 ////////////////////////
 
 BEGIN @7 DESIGNATED 5
-REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2 // ToB sanity check
-INCLUDE ~ascension/lib/charset.tpa~
-INCLUDE ~ascension/lib/ds.tpa~
-COPY_EXISTING ~sw1h01.itm~ ~override/asc_yagashura.flag~ //Creates install "flag"
-INCLUDE ~ascension/lib/tougheryaga.tpa~ //Install Library
+REQUIRE_PREDICATE GAME_INCLUDES ~tob~ @2 // ToB is required
+REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ OR MOD_IS_INSTALLED ~setup-bg2fixpack.tp2~ ~0~ "You must install the BG2 Fixpack before installing Ascension"
+
+INCLUDE ~ascension/lib/tougheryaga.tpa~
 
 //Compile common scripts, if Tougher Gromnir hasn't been installed already
 ACTION_IF !FILE_EXISTS ~override/asc_gromnir.flag~ BEGIN
 	INCLUDE ~ascension/lib/toughercommon.tpa~
 END
 
+COPY_EXISTING ~sw1h01.itm~ ~override/asc_yagashura.flag~ //Creates install "flag"
+
 /////////////////////////////////
 // Ascension Portraits - Bodhi //	
 /////////////////////////////////
 
 BEGIN ~Ascension Portraits - Bodhi~ DESIGNATED 101
-REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2
-REQUIRE_FILE ~override/asc_main.flag~ ~Cannot install without Ascension!~
-COPY_EXISTING ~sw1h01.itm~ ~override/asc_altbodhi.flag~ //Creates install "flag"
+REQUIRE_PREDICATE GAME_INCLUDES ~tob~ @2 // ToB is required
+REQUIRE_FILE ~override/asc_main.flag~ ~Cannot install without Ascension core!~
+
 COPY ~ascension/ascports/altbodhi~ ~override~
+
 COPY_EXISTING ~FINBODH.CRE~ ~override~
  WRITE_ASCII 0x34 ~ABODHIS~ //Portrait Swap
  WRITE_ASCII 0x3c ~ABODHIL~ //Portrait Swap
 BUT_ONLY
+
+COPY_EXISTING ~sw1h01.itm~ ~override/asc_altbodhi.flag~ //Creates install "flag"
 
 //////////////////////////////////////////////////////
 // Ascension Portraits - Alternate Balthazar by Cuv //	
 //////////////////////////////////////////////////////
 
 BEGIN ~Ascension Portraits - Original Balthazar by Cuv~ DESIGNATED 102
-REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2
-REQUIRE_FILE ~override/asc_main.flag~ ~Cannot install without Ascension!~
-COPY_EXISTING ~sw1h01.itm~ ~override/asc_altbalth.flag~ //Creates install "flag"
+REQUIRE_PREDICATE GAME_INCLUDES ~tob~ @2 // ToB is required
+REQUIRE_FILE ~override/asc_main.flag~ ~Cannot install without Ascension core!~
+
 COPY ~ascension/ascports/cuvbalth~ ~override~
-COPY_EXISTING ~BALTH.CRE~ ~override~ ~balth2.CRE~ ~override~ ~finbalth.cre~ ~override~
+
+COPY_EXISTING ~balth.cre~ ~override~   ~balth2.cre~ ~override~   ~finbalth.cre~ ~override~
  WRITE_ASCII 0x34 ~CBALTHAS~ //Portrait Swap
  WRITE_ASCII 0x3c ~CBALTHAL~ //Portrait Swap
 BUT_ONLY
+
+COPY_EXISTING ~sw1h01.itm~ ~override/asc_altbalth.flag~ //Creates install "flag"
 
 ////////////////////////////////////////////////
 // Restored Bhaalspawn Powers by David Gaider //	
 ////////////////////////////////////////////////
 
 BEGIN ~Restored Bhaalspawn Powers by David Gaider~ DESIGNATED 103
-REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2
+REQUIRE_PREDICATE GAME_INCLUDES ~tob~ @2 // ToB is required
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_rest_powers.flag~ //Creates install "flag"
-INCLUDE ~ascension/lib/charset.tpa~
-INCLUDE ~ascension/lib/ds.tpa~
-INCLUDE ~ascension/lib/bhaalspawnpower.tpa~ //Patching Library
+
+INCLUDE ~ascension/lib/bhaalspawnpower.tpa~
+
 ADD_JOURNAL @2000 @2001 @2002 @2003 @2004 @2005 @2006 @2007
 
 //////////////////////////////////
 // Extended Epilogues by shawne //
 //////////////////////////////////
 
-BEGIN ~Extended Epilogues by shawne~ DESIGNATED 104
-REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2
+BEGIN ~Extended Epilogues for Bioware NPCs by shawne~ DESIGNATED 104
+REQUIRE_PREDICATE GAME_INCLUDES ~tob~ @2 // ToB is required
 REQUIRE_PREDICATE ("%LANGUAGE%" STRING_COMPARE_CASE "american" = 0) ~This component is currently only available in english language~
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_shawnes.flag~ //Creates install "flag"
-INCLUDE ~ascension/lib/charset.tpa~
+
 INCLUDE ~ascension/lib/epilogue_update.tph~
 
 LOAD_TRA ~ascension/tra/autotra/american/shawnesepilogues.tra~
+
 LAF update_epilogues STR_VAR filepath = ~ascension/lib/shawnesepilogues.tbl~ END
-ACTION_IF FILE_EXISTS ~override/asc_main.flag~ BEGIN
-LAF update_epilogues STR_VAR filepath = ~ascension/lib/shawnesepilogues_asconly.tbl~ END
+
+ACTION_IF FILE_EXISTS ~override/asc_main.flag~ BEGIN // additional epilogues that require Ascension
+  LAF update_epilogues STR_VAR filepath = ~ascension/lib/shawnesepilogues_asconly.tbl~ END
 END
 
 /////////////////////////////////////
 // Extended EE Epilogues by shawne //
 /////////////////////////////////////
 
-BEGIN ~Extended EE Epilogues by shawne~ DESIGNATED 105
+BEGIN ~Extended Epilogues for Beamdog NPCs by shawne~ DESIGNATED 105
 REQUIRE_PREDICATE GAME_IS ~bg2ee eet~ ~This component is for BG2:EE or EET only~
 REQUIRE_PREDICATE ("%LANGUAGE%" STRING_COMPARE_CASE "american" = 0) ~This component is currently only available in english language~
 COPY_EXISTING ~sw1h01.itm~ ~override/asc_shawnesEE.flag~ //Creates install "flag"
-INCLUDE ~ascension/lib/charset.tpa~
+
 INCLUDE ~ascension/lib/epilogue_update.tph~
 
 EXTEND_TOP ~ar6200.bcs~ ~ascension/shawnesEE/baf/eAR6200.baf~
@@ -216,17 +235,19 @@ EXTEND_TOP ~ar6200.bcs~ ~ascension/shawnesEE/baf/eAR6200.baf~
 COPY ~ascension/shawnesEE/2da~ ~override~
 
 LOAD_TRA ~ascension/tra/autotra/american/shawnesEEepilogues.tra~
+
 LAF update_epilogues STR_VAR filepath = ~ascension/lib/shawnesepiloguesEE.tbl~ END
 
-/////////////////////////
-// Ascension Epilogues //
-/////////////////////////
+////////////////////////////////
+// Ascension - Epilogues Only //
+////////////////////////////////
 
-BEGIN ~Ascension Epilogues~ DESIGNATED 106
-REQUIRE_PREDICATE GAME_IS ~tob bg2ee eet~ @2
-FORBID_FILE ~override/asc_main.flag~ ~Ascension Epilogues are included in The Ascension!~
-COPY_EXISTING ~sw1h01.itm~ ~override/asc_epi_only.flag~
-INCLUDE ~ascension/lib/charset.tpa~
+BEGIN ~Install Only Ascension's Epilogues~ DESIGNATED 106
+REQUIRE_PREDICATE GAME_INCLUDES ~tob~ @2 // ToB is required
+FORBID_FILE ~override/asc_main.flag~ ~These epilogues are included in the full Ascension!~
+
 INCLUDE ~ascension/lib/epilogue_update.tph~
 
 LAF update_epilogues STR_VAR filepath = ~ascension/lib/epilogues.tbl~ END
+
+COPY_EXISTING ~sw1h01.itm~ ~override/asc_epi_only.flag~ //Creates install "flag"

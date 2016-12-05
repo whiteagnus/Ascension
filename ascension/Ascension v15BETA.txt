@@ -20,6 +20,13 @@ I also want to stress that all of the work done was geared towards producing a r
 CHANGELOG/CREDITS
 I felt it easiest to describe who did what and also display what's changed by using this method:
 
+05.12.2016 (agb1)
+- Resolved installation issues when installing on non-Enhanced Edition BG2:ToB or BGT-WeiDU (BG2 Fixpack is now a prerequisite for non-EE installations; BG2 Fixpack should NOT be installed for EE)
+
+04.20.2016 (agb1)
+- Updated WeiDU version to 24000
+- Removed component 999 (workaround until new WeiDU version)
+
 04.11.2016 (agb1)
 - EET fix - Replaced KAISHAS_CHANGE in finiren.baf and finmel.baf with WIZARD_COMET (KAISHAS_CHANGE is a duplicate IDS entry for WIZARD_COMET that EET removes)
 - BG2EE fix - Replaced 30/60 with FIVE_ROUNDS/TEN_ROUNDS in ABAZDRAG_o6.baf and ABAZDRAG_n6.baf

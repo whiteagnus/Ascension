@@ -219,40 +219,42 @@ BUT_ONLY
 //SCRIPT PATCHING
 //Abazdrag.bcs
 COPY_EXISTING ~ABAZDRAG.bcs~ ~override~
-DECOMPILE_AND_PATCH BEGIN
-REPLACE_TEXTUALLY ~SetGlobalTimer("WINGBUFFET","LOCALS",8)[%TAB% %LNL%%MNL%%WNL%]+ForceSpell(NearestEnemyOf(Myself),DRAGON_WING_BUFFET)[%TAB% %LNL%%MNL%%WNL%]+Wait(1)~ ~SetGlobalTimer("WINGBUFFET","LOCALS",8) ForceSpell(NearestEnemyOf(Myself),DRAGON_WING_BUFFET) Wait(1) ApplySpell(Myself,0)~
-REPLACE_TEXTUALLY ~!CheckStatGT(Myself,0,STONESKINS)~ ~~
-REPLACE_TEXTUALLY ~True()~ ~ActionListEmpty() !HPPercentLT(Myself,40)~
-REPLACE_TEXTUALLY ~EquipMostDamagingMelee()~ ~~
-END
-
-R_B_B ~ascension/tougher/abazigal/baf/ABAZDRAG_o1.baf~ ~ascension/tougher/abazigal/baf/ABAZDRAG_n1.baf~
-R_B_B ~ascension/tougher/abazigal/baf/ABAZDRAG_o2.baf~ ~ascension/tougher/abazigal/baf/ABAZDRAG_n2.baf~
-R_B_B ~ascension/tougher/abazigal/baf/ABAZDRAG_o3.baf~ ~ascension/tougher/abazigal/baf/ABAZDRAG_n3.baf~
-R_B_B ~ascension/tougher/abazigal/baf/ABAZDRAG_o4.baf~ ~ascension/tougher/abazigal/baf/ABAZDRAG_n4.baf~
-R_B_B ~ascension/tougher/abazigal/baf/ABAZDRAG_o5.baf~ ~ascension/tougher/abazigal/baf/ABAZDRAG_n5.baf~
-R_B_B ~ascension/tougher/abazigal/baf/ABAZDRAG_o6.baf~ ~ascension/tougher/abazigal/baf/ABAZDRAG_n6.baf~
-R_B_B ~ascension/tougher/abazigal/baf/ABAZDRAG_o7.baf~ ~ascension/tougher/abazigal/baf/ABAZDRAG_n7.baf~
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~SetGlobalTimer("WINGBUFFET","LOCALS",8)[%TAB% %LNL%%MNL%%WNL%]+ForceSpell(NearestEnemyOf(Myself),DRAGON_WING_BUFFET)[%TAB% %LNL%%MNL%%WNL%]+Wait(1)~ ~SetGlobalTimer("WINGBUFFET","LOCALS",8) ForceSpell(NearestEnemyOf(Myself),DRAGON_WING_BUFFET) Wait(1) ApplySpell(Myself,0)~
+    REPLACE_TEXTUALLY ~!CheckStatGT(Myself,0,STONESKINS)~ ~~
+    REPLACE_TEXTUALLY ~True()~ ~ActionListEmpty() !HPPercentLT(Myself,40)~
+    REPLACE_TEXTUALLY ~EquipMostDamagingMelee()~ ~~
+  END
+  R_B_B ~ascension/tougher/abazigal/baf/ABAZDRAG_o1.baf~   ~ascension/tougher/abazigal/baf/ABAZDRAG_n1.baf~
+  PATCH_IF GAME_IS ~tob~ THEN BEGIN
+    R_B_B ~ascension/tougher/abazigal/baf/ABAZDRAG_o2.baf~ ~ascension/tougher/abazigal/baf/ABAZDRAG_n2.baf~ // remove ReallyForceSpell(LastSeenBy(Myself),0) - only present in ToB classic
+  END
+  R_B_B ~ascension/tougher/abazigal/baf/ABAZDRAG_o3.baf~   ~ascension/tougher/abazigal/baf/ABAZDRAG_n3.baf~
+  R_B_B ~ascension/tougher/abazigal/baf/ABAZDRAG_o4.baf~   ~ascension/tougher/abazigal/baf/ABAZDRAG_n4.baf~
+  R_B_B ~ascension/tougher/abazigal/baf/ABAZDRAG_o5.baf~   ~ascension/tougher/abazigal/baf/ABAZDRAG_n5.baf~
+  R_B_B ~ascension/tougher/abazigal/baf/ABAZDRAG_o6.baf~   ~ascension/tougher/abazigal/baf/ABAZDRAG_n6.baf~
+  R_B_B ~ascension/tougher/abazigal/baf/ABAZDRAG_o7.baf~   ~ascension/tougher/abazigal/baf/ABAZDRAG_n7.baf~
 
 EXTEND_BOTTOM ~ABAZDRAG.bcs~ ~ascension/tougher/abazigal/baf/ABAZDRAG_bottom.baf~
 
+//Abaz2.bcs
 COPY_EXISTING ~abaz2.bcs~ ~override~
-DECOMPILE_AND_PATCH BEGIN
-REPLACE_TEXTUALLY ~!GlobalTimerNotExpired("Hardiness","LOCALS")~ ~See(NearestEnemyOf(Myself)) !GlobalTimerNotExpired("Hardiness","LOCALS")~
-REPLACE_TEXTUALLY ~See(LastAttackerOf(Myself))~ ~See(LastAttackerOf(Myself)) !CheckStatGT(LastSeenBy(Myself),25,INT) !Gender(LastSeenBy(Myself),ILLUSIONARY)~
-REPLACE_TEXTUALLY ~Range(NearestEnemyOf(Myself),4)[%TAB% %LNL%%MNL%%WNL%]+See(NearestEnemyOf(Myself))~ ~Range(NearestEnemyOf(Myself),4) See(NearestEnemyOf(Myself)) !CheckStatGT(LastSeenBy(Myself),25,INT) !Gender(LastSeenBy(Myself),ILLUSIONARY)~
-REPLACE_TEXTUALLY ~AttackReevaluate(LastSeenBy(Myself),45)~ ~~
-REPLACE_TEXTUALLY ~True()~ ~GlobalTimerNotExpired("KaiAttack","LOCALS") !HPPercentLT(Myself,50) RandomNum(2,1)~
-REPLACE_TEXTUALLY ~EquipMostDamagingMelee()~ ~~
-END
-
-R_B_B ~ascension/tougher/abazigal/baf/abaz2_o1.baf~ ~ascension/tougher/abazigal/baf/abaz2_n1.baf~
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~!GlobalTimerNotExpired("Hardiness","LOCALS")~ ~See(NearestEnemyOf(Myself)) !GlobalTimerNotExpired("Hardiness","LOCALS")~
+    REPLACE_TEXTUALLY ~See(LastAttackerOf(Myself))~ ~See(LastAttackerOf(Myself)) !CheckStatGT(LastSeenBy(Myself),25,INT) !Gender(LastSeenBy(Myself),ILLUSIONARY)~
+    REPLACE_TEXTUALLY ~Range(NearestEnemyOf(Myself),4)[%TAB% %LNL%%MNL%%WNL%]+See(NearestEnemyOf(Myself))~ ~Range(NearestEnemyOf(Myself),4) See(NearestEnemyOf(Myself)) !CheckStatGT(LastSeenBy(Myself),25,INT) !Gender(LastSeenBy(Myself),ILLUSIONARY)~
+    REPLACE_TEXTUALLY ~AttackReevaluate(LastSeenBy(Myself),45)~ ~~
+    REPLACE_TEXTUALLY ~True()~ ~GlobalTimerNotExpired("KaiAttack","LOCALS") !HPPercentLT(Myself,50) RandomNum(2,1)~
+    REPLACE_TEXTUALLY ~EquipMostDamagingMelee()~ ~~
+  END
+  R_B_B ~ascension/tougher/abazigal/baf/abaz2_o1.baf~ ~ascension/tougher/abazigal/baf/abaz2_n1.baf~
 
 EXTEND_BOTTOM ~abaz2.bcs~ ~ascension/tougher/abazigal/baf/abaz2_bottom.baf~
 
+//ar6005.bcs
 COPY_EXISTING ~ar6005.bcs~ ~override~
-DECOMPILE_AND_PATCH BEGIN
-REPLACE_TEXTUALLY ~Dead("Abazigal")~ ~Dead("Abazigal") CombatCounter(0)~
-END
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~Dead("Abazigal")~ ~Dead("Abazigal") CombatCounter(0)~
+  END
 
-EXTEND_TOP ~ar6005.bcs~ ~ascension/tougher/abazigal/baf/ar6005_Top.baf~
+EXTEND_TOP ~ar6005.bcs~ ~ascension/tougher/abazigal/baf/ar6005_Top.baf~ EVALUATE_BUFFER

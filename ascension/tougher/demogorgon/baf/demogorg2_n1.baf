@@ -29,5 +29,5 @@ THEN
 		SetGlobal("StoppedTime","LOCALS",2)
 		SetGlobalTimer("SumReinf","LOCALS",3)
 		DisplayStringHead(Myself,70999) // Now you will pay, foolish mortals!
-		ReallyForceSpell(NearestEnemyOf(Myself),SUMMON_INFERNAL_HOST) // SPIN549.SPL (Summon the Infernal Host)
+		ReallyForceSpell(NearestEnemyOf(Myself),SUMMON_INFERNAL_HOST)
 END

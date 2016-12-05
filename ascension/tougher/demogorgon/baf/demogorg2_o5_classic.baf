@@ -1,0 +1,11 @@
+IF
+	Global("StoppedTime","LOCALS",2)
+	!GlobalTimerNotExpired("quake","LOCALS")
+	RandomNum(4,3)
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		SetGlobalTimer("quake","LOCALS",TEN_ROUNDS)
+		IncrementGlobal("demospell","LOCALS",1)
+		ForceSpell(Myself,CLERIC_EARTHQUAKE)
+END

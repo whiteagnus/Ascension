@@ -3,13 +3,13 @@ IF
 THEN
   RESPONSE #100
     StartCutSceneMode()
-    LeaveAreaLUAPanic("AR4000","",[1300.1840],W)
-    ActionOverride(Player1,LeaveAreaLUA("AR4000","",[1300.1840],W))
-    ActionOverride(Player2,LeaveAreaLUA("AR4000","",[1300.1840],W))
-    ActionOverride(Player3,LeaveAreaLUA("AR4000","",[1300.1840],W))
-    ActionOverride(Player4,LeaveAreaLUA("AR4000","",[1300.1840],SW))
-    ActionOverride(Player5,LeaveAreaLUA("AR4000","",[1300.1840],S))
-    ActionOverride(Player6,LeaveAreaLUA("AR4000","",[1300.1840],S))
+    LeaveAreaLUAPanic("AR4000","",[1300.1840],%FaceW%)
+    ActionOverride(Player1,LeaveAreaLUA("AR4000","",[1300.1840],%FaceW%))
+    ActionOverride(Player2,LeaveAreaLUA("AR4000","",[1300.1840],%FaceW%))
+    ActionOverride(Player3,LeaveAreaLUA("AR4000","",[1300.1840],%FaceW%))
+    ActionOverride(Player4,LeaveAreaLUA("AR4000","",[1300.1840],%FaceSW%))
+    ActionOverride(Player5,LeaveAreaLUA("AR4000","",[1300.1840],%FaceS%))
+    ActionOverride(Player6,LeaveAreaLUA("AR4000","",[1300.1840],%FaceS%))
     SetGlobal("FORCETOBPARTYMOVE4000","GLOBAL",1)
     EndCutSceneMode()
-END
+END // newline below is important because Ascension adds this script block using APPEND_FILE for ToB classic

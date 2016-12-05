@@ -54,17 +54,17 @@ COPY_EXISTING ~ILLASERA.CRE~ ~override~
 	LPF ADD_CRE_EFFECT INT_VAR opcode = 101 parameter1 = 0 parameter2 = effct timing = 9 END
 	END //Immunity to effect: Disintegrate, Imprisonment, Polymorph, Petrification, Slay, Stun, Sleep, Panic, Intelligence bonus, Kill target, Charm creature 
 	REMOVE_CRE_ITEM ~HELMNOAN~ ~POTN52~ ~CHAN14~ ~DAGG15~ ~BOOT01~
-	ADD_CRE_ITEM ~ILLAS04~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~
-	ADD_CRE_ITEM ~ILLAS01~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP
-	ADD_CRE_ITEM ~ILLAS02~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON2~
-	ADD_CRE_ITEM ~ILLAS03~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON3~
-	ADD_CRE_ITEM ~DAGG15~ #0 #0 #0 ~NONE~ ~WEAPON4~
-	ADD_CRE_ITEM ~AROW15~ #16 #0 #0 ~NONE~ ~QUIVER1~
-	ADD_CRE_ITEM ~POTN55~ #3 #0 #0 ~NONE~ ~QITEM1~
-	ADD_CRE_ITEM ~POTN55~ #3 #0 #0 ~NONE~ ~QITEM2~
+	ADD_CRE_ITEM ~ILLAS04~  #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~
+	ADD_CRE_ITEM ~ILLAS01~  #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON1~ EQUIP
+	ADD_CRE_ITEM ~ILLAS02~  #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON2~
+	ADD_CRE_ITEM ~ILLAS03~  #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~WEAPON3~
+	ADD_CRE_ITEM ~DAGG15~   #0 #0 #0 ~NONE~ ~WEAPON4~
+	ADD_CRE_ITEM ~AROW15~   #16 #0 #0 ~NONE~ ~QUIVER1~
+	ADD_CRE_ITEM ~POTN55~   #3 #0 #0 ~NONE~ ~QITEM1~
+	ADD_CRE_ITEM ~POTN55~   #3 #0 #0 ~NONE~ ~QITEM2~
 	ADD_CRE_ITEM ~RNDTRE05~ #0 #0 #0 ~NONE~ ~QITEM3~
-	ADD_CRE_ITEM ~CHAN14~ #0 #0 #0 ~UNSTEALABLE~ ~INV~
-	ADD_CRE_ITEM ~BOOT01~ #0 #0 #0 ~UNSTEALABLE~ ~INV~
+	ADD_CRE_ITEM ~CHAN14~   #0 #0 #0 ~UNSTEALABLE~ ~INV~
+	ADD_CRE_ITEM ~BOOT01~   #0 #0 #0 ~UNSTEALABLE~ ~INV~
 BUT_ONLY
 COPY_EXISTING ~ZILARC01.CRE~ ~override~
 	WRITE_BYTE 	0x10 	0				//flags
@@ -371,23 +371,29 @@ COPY_EXISTING ~ZILMAG01.cre~ ~override~
 	ADD_MEMORIZED_SPELL ~SPWI909~ #8 wizard ( 1 )
 	LPF ADD_CRE_EFFECT INT_VAR opcode = 233 parameter1 = 1 parameter2 = 102 timing = 9 END//WA: Proficiency for Quarterstaff, Original Ascension added all BG1 proficiency to this creature, but why? :p
 	REMOVE_CRE_ITEM ~CLCK14~
-	ADD_CRE_ITEM ~CLCK16~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~
-	ADD_CRE_ITEM ~RING07~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~RRING~
-	ADD_CRE_ITEM ~AMUL21~ #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~AMULET~
-	ADD_CRE_ITEM ~POTN55~ #2 #0 #0 ~NONE~ ~QITEM1~
+	ADD_CRE_ITEM ~CLCK16~   #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~ARMOR~
+	ADD_CRE_ITEM ~RING07~   #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~RRING~
+	ADD_CRE_ITEM ~AMUL21~   #0 #0 #0 ~UNSTEALABLE&UNDROPPABLE~ ~AMULET~
+	ADD_CRE_ITEM ~POTN55~   #2 #0 #0 ~NONE~ ~QITEM1~
 	ADD_CRE_ITEM ~RNDTRE05~ #0 #0 #0 ~NONE~ ~QITEM2~
-	ADD_CRE_ITEM ~CLCK14~ #0 #0 #0 ~UNSTEALABLE~ ~INV~
+	ADD_CRE_ITEM ~CLCK14~   #0 #0 #0 ~UNSTEALABLE~ ~INV~
 BUT_ONLY
 
 //Script Patching
 
-//Area Script - Note that EE appears to handle Drow Item disintegration on it's own
+//Area Script - Note that EE appears to handle Drow Item disintegration on its own
 //so this is not patched into the relevant script. Also note that installing Tougher
 //Illasera will mean that you will always receive the toughest encounter regardless
 //of level or party size.
 COPY_EXISTING ~AR4000.bcs~ ~override~
-R_B_B ~ascension/tougher/illasera/BAF/AR4000_O1.baf~ ~ascension/tougher/illasera/BAF/AR4000_N1.baf~
-R_B_B ~ascension/tougher/illasera/BAF/AR4000_O2.baf~ ~ascension/tougher/illasera/BAF/AR4000_N2.baf~
+  // Following patch adds StartCutSceneMode() and EndCutSceneMode() around the FORCETOBPARTYMOVE4000 script block for EE - or adds the block to ToB classic as it is not in the original script
+  PATCH_IF GAME_IS ~bg2ee eet~ THEN BEGIN
+    R_B_B EVALUATE_BUFFER ~ascension/tougher/illasera/BAF/AR4000_O1.baf~ ~ascension/tougher/illasera/BAF/AR4000_N1.baf~
+  END ELSE BEGIN
+    APPEND_FILE ~ascension/tougher/illasera/BAF/AR4000_N1.baf~
+  END
+  // Following patch removes alternative cutscenes based on party level - CUT204F always will be used
+  R_B_B ~ascension/tougher/illasera/BAF/AR4000_O2.baf~ ~ascension/tougher/illasera/BAF/AR4000_N2.baf~
 
 //Here we overwrite Illasera's script, because it's significantly more complex.
 COMPILE ~ascension/tougher/illasera/baf/overwrite~
